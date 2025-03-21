@@ -19,6 +19,7 @@ using Microsoft.Extensions.DependencyInjection;
 
 using Serilog;
 using Microsoft.Extensions.Options;
+using Microsoft.Extensions.Configuration;
 
 
 
@@ -110,6 +111,7 @@ builder.Services.AddCors(options =>
 builder.Services.AddDbContext<AppDbContext>(options => 
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"),
     b => b.MigrationsAssembly("Infrastructure")));
+
 
 // Add services to the container.
 //builder.Services.AddScoped<IGenericRepository<Product>, GenericRepository<Product>>();

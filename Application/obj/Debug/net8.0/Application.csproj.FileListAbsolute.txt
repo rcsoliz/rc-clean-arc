@@ -13,3 +13,4 @@ D:\DESARROLLO\2025\CleanArchitectureApi\Application\obj\Debug\net8.0\Application
 D:\DESARROLLO\2025\CleanArchitectureApi\Application\obj\Debug\net8.0\refint\Application.dll
 D:\DESARROLLO\2025\CleanArchitectureApi\Application\obj\Debug\net8.0\Application.pdb
 D:\DESARROLLO\2025\CleanArchitectureApi\Application\obj\Debug\net8.0\ref\Application.dll
+D:\DESARROLLO\2025\CleanArchitectureApi\Application\obj\Debug\net8.0\Application.sourcelink.json

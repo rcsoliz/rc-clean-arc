@@ -17,3 +17,4 @@ D:\DESARROLLO\2025\CleanArchitectureApi\Infrastructure\obj\Debug\net8.0\refint\I
 D:\DESARROLLO\2025\CleanArchitectureApi\Infrastructure\obj\Debug\net8.0\Infrastructure.pdb
 D:\DESARROLLO\2025\CleanArchitectureApi\Infrastructure\obj\Debug\net8.0\Infrastructure.genruntimeconfig.cache
 D:\DESARROLLO\2025\CleanArchitectureApi\Infrastructure\obj\Debug\net8.0\ref\Infrastructure.dll
+D:\DESARROLLO\2025\CleanArchitectureApi\Infrastructure\obj\Debug\net8.0\Infrastructure.sourcelink.json
