@@ -2,7 +2,7 @@
   {
     "ContainingType": "Presentation.Controllers.AuthenticationController",
     "Method": "GetById",
-    "RelativePath": "{id}",
+    "RelativePath": "api/authentication/{id}",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -26,17 +26,43 @@
     ]
   },
   {
-    "ContainingType": "Presentation.Controllers.AuthController",
+    "ContainingType": "Presentation.Controllers.AuthenticationController",
     "Method": "Login",
-    "RelativePath": "api/Auth/login",
+    "RelativePath": "api/authentication/login",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "username",
-        "Type": "System.String",
-        "IsRequired": false
+        "Name": "loginRequest",
+        "Type": "Microsoft.AspNetCore.Identity.Data.LoginRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Presentation.Controllers.AuthenticationController",
+    "Method": "Logout",
+    "RelativePath": "api/authentication/logout",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Presentation.Controllers.AuthenticationController",
+    "Method": "Create",
+    "RelativePath": "api/authentication/register",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "command",
+        "Type": "Core.Models.UserModel",
+        "IsRequired": true
       }
     ],
     "ReturnTypes": []
@@ -136,58 +162,6 @@
         "Name": "id",
         "Type": "System.Int32",
         "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "Presentation.Controllers.AuthenticationController",
-    "Method": "Login",
-    "RelativePath": "login",
-    "HttpMethod": "POST",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "loginRequest",
-        "Type": "Microsoft.AspNetCore.Identity.Data.LoginRequest",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "Presentation.Controllers.AuthenticationController",
-    "Method": "Logout",
-    "RelativePath": "logout",
-    "HttpMethod": "POST",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "Presentation.Controllers.AuthenticationController",
-    "Method": "Create",
-    "RelativePath": "register",
-    "HttpMethod": "POST",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "Username",
-        "Type": "System.String",
-        "IsRequired": false
-      },
-      {
-        "Name": "Email",
-        "Type": "System.String",
-        "IsRequired": false
-      },
-      {
-        "Name": "Password",
-        "Type": "System.String",
-        "IsRequired": false
       }
     ],
     "ReturnTypes": []

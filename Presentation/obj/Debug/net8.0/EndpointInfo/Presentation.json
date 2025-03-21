@@ -5,55 +5,30 @@
     "version": "v1"
   },
   "paths": {
-    "/api/Auth/login": {
-      "post": {
-        "tags": [
-          "Auth"
-        ],
-        "parameters": [
-          {
-            "name": "username",
-            "in": "query",
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
-    "/register": {
+    "/api/authentication/register": {
       "post": {
         "tags": [
           "Authentication"
         ],
-        "parameters": [
-          {
-            "name": "Username",
-            "in": "query",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "Email",
-            "in": "query",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "Password",
-            "in": "query",
-            "schema": {
-              "type": "string"
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UserModel"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UserModel"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/UserModel"
+              }
             }
           }
-        ],
+        },
         "responses": {
           "200": {
             "description": "OK"
@@ -61,7 +36,7 @@
         }
       }
     },
-    "/{id}": {
+    "/api/authentication/{id}": {
       "get": {
         "tags": [
           "Authentication"
@@ -101,7 +76,7 @@
         }
       }
     },
-    "/logout": {
+    "/api/authentication/logout": {
       "post": {
         "tags": [
           "Authentication"
@@ -113,7 +88,7 @@
         }
       }
     },
-    "/login": {
+    "/api/authentication/login": {
       "post": {
         "tags": [
           "Authentication"
@@ -529,6 +504,24 @@
             "items": {
               "$ref": "#/components/schemas/Comment"
             },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "UserModel": {
+        "type": "object",
+        "properties": {
+          "username": {
+            "type": "string",
+            "nullable": true
+          },
+          "email": {
+            "type": "string",
+            "nullable": true
+          },
+          "password": {
+            "type": "string",
             "nullable": true
           }
         },

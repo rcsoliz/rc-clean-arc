@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using Core.Entities;
 using Core.Interfaces;
 using Infrastructure.Data;
@@ -49,6 +49,7 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
 builder.Services.AddAuthorization();
 
 //Services swagger access by token in Swagger
+/*
 builder.Services.AddSwaggerGen(c =>
 {
     c.SwaggerDoc("v1", new OpenApiInfo { Title = "CleanArchitecture", Version = "v1" });
@@ -78,6 +79,63 @@ builder.Services.AddSwaggerGen(c =>
         }
     });
 });
+*/
+builder.Services.AddSwaggerGen(c =>
+{
+    c.SwaggerDoc("v1", new OpenApiInfo { Title = "CleanArchitecture", Version = "v1" });
+
+    c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
+    {
+        Name = "Authorization",
+        Type = SecuritySchemeType.Http,
+        Scheme = "Bearer",
+        BearerFormat = "JWT",
+        In = ParameterLocation.Header,
+        Description = "Ingrese el token en este formato: Bearer {token}"
+    });
+
+    c.AddSecurityRequirement(new OpenApiSecurityRequirement
+    {
+        {
+            new OpenApiSecurityScheme
+            {
+                Reference = new OpenApiReference
+                {
+                    Type = ReferenceType.SecurityScheme,
+                    Id = "Bearer"
+                }
+            },
+            new string[] {}
+        }
+    });
+
+    // 🔹 🔥 Agregar el filtro para solo `AuthenticationController`
+    //c.TagActionsBy(api =>
+    //{
+    //    if (api.GroupName != null)
+    //    {
+    //        return new[] { api.GroupName };
+    //    }
+
+    //    return new[] { api.ActionDescriptor.RouteValues["controller"] };
+    //});
+
+    //c.DocInclusionPredicate((name, api) => api.RelativePath.StartsWith("api/authentication"));
+
+    c.TagActionsBy(api =>
+    {
+        if (api.GroupName != null)
+        {
+            return new[] { api.GroupName };
+        }
+
+        return new[] { api.ActionDescriptor.RouteValues["controller"] };
+    });
+
+    c.DocInclusionPredicate((name, api) => true);
+    
+});
+
 
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 

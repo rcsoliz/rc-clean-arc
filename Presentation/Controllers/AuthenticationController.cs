@@ -6,6 +6,7 @@ using Core.Interfaces;
 using Core.Models;
 using Infrastructure.Data;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity.Data;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -16,6 +17,8 @@ using System.Text;
 
 namespace Presentation.Controllers
 {
+    [Route("api/authentication")]
+    [ApiController]
     public class AuthenticationController : Controller
     {
 
@@ -31,6 +34,7 @@ namespace Presentation.Controllers
         }
 
         [HttpPost("register")]
+        [AllowAnonymous]
         public async Task<ActionResult> Create(UserModel command)
         {
             var validationResult = new UserValidator().Validate(new User { Username = command.Username,Email = command.Email, Password = command.Password });
@@ -60,6 +64,7 @@ namespace Presentation.Controllers
         }
 
         [HttpPost("login")]
+        [AllowAnonymous]
         public async Task<IActionResult> Login([FromBody] LoginRequest loginRequest)
         {
             var user = await _userRepository.Access(new User { Email = loginRequest.Email, Password = loginRequest.Password });
@@ -84,6 +89,8 @@ namespace Presentation.Controllers
                 new Claim(ClaimTypes.Email, user.Email)
             }),
                 Expires = DateTime.UtcNow.AddHours(1),
+                Issuer = _config["Jwt:Issuer"],
+                Audience = _config["Jwt:Audience"],
                 SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
             };
 
