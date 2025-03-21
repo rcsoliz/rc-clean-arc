@@ -8,6 +8,7 @@ D:\DESARROLLO\2025\CleanArchitectureApi\Presentation\bin\Debug\net8.0\Presentati
 D:\DESARROLLO\2025\CleanArchitectureApi\Presentation\bin\Debug\net8.0\Presentation.pdb
 D:\DESARROLLO\2025\CleanArchitectureApi\Presentation\bin\Debug\net8.0\Azure.Core.dll
 D:\DESARROLLO\2025\CleanArchitectureApi\Presentation\bin\Debug\net8.0\Azure.Identity.dll
+D:\DESARROLLO\2025\CleanArchitectureApi\Presentation\bin\Debug\net8.0\BCrypt.Net-Next.dll
 D:\DESARROLLO\2025\CleanArchitectureApi\Presentation\bin\Debug\net8.0\FluentValidation.dll
 D:\DESARROLLO\2025\CleanArchitectureApi\Presentation\bin\Debug\net8.0\FluentValidation.AspNetCore.dll
 D:\DESARROLLO\2025\CleanArchitectureApi\Presentation\bin\Debug\net8.0\FluentValidation.DependencyInjectionExtensions.dll
@@ -144,6 +145,7 @@ D:\DESARROLLO\2025\CleanArchitectureApi\Presentation\obj\Debug\net8.0\Presentati
 D:\DESARROLLO\2025\CleanArchitectureApi\Presentation\obj\Debug\net8.0\Presentation.csproj.CoreCompileInputs.cache
 D:\DESARROLLO\2025\CleanArchitectureApi\Presentation\obj\Debug\net8.0\Presentation.MvcApplicationPartsAssemblyInfo.cs
 D:\DESARROLLO\2025\CleanArchitectureApi\Presentation\obj\Debug\net8.0\Presentation.MvcApplicationPartsAssemblyInfo.cache
+D:\DESARROLLO\2025\CleanArchitectureApi\Presentation\obj\Debug\net8.0\Presentation.sourcelink.json
 D:\DESARROLLO\2025\CleanArchitectureApi\Presentation\obj\Debug\net8.0\scopedcss\bundle\Presentation.styles.css
 D:\DESARROLLO\2025\CleanArchitectureApi\Presentation\obj\Debug\net8.0\staticwebassets.build.json
 D:\DESARROLLO\2025\CleanArchitectureApi\Presentation\obj\Debug\net8.0\staticwebassets.development.json
@@ -161,4 +163,3 @@ D:\DESARROLLO\2025\CleanArchitectureApi\Presentation\obj\Debug\net8.0\refint\Pre
 D:\DESARROLLO\2025\CleanArchitectureApi\Presentation\obj\Debug\net8.0\Presentation.pdb
 D:\DESARROLLO\2025\CleanArchitectureApi\Presentation\obj\Debug\net8.0\Presentation.genruntimeconfig.cache
 D:\DESARROLLO\2025\CleanArchitectureApi\Presentation\obj\Debug\net8.0\ref\Presentation.dll
-D:\DESARROLLO\2025\CleanArchitectureApi\Presentation\obj\Debug\net8.0\Presentation.sourcelink.json

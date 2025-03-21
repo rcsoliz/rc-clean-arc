@@ -79,6 +79,8 @@ builder.Services.AddSwaggerGen(c =>
     });
 });
 
+builder.Services.AddScoped<IUserRepository, UserRepository>();
+
 // Add services to Medditor.
 builder.Services.AddMediatR(typeof(GetProductsQueryHandlers));
 

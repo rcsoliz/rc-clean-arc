@@ -1,8 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "ctJSzZXln7Y=",
+  "dgSpecHash": "qqhCZYETOII=",
   "success": true,
   "projectFilePath": "D:\\DESARROLLO\\2025\\CleanArchitectureApi\\Core\\Core.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\pc\\.nuget\\packages\\bcrypt.net-next\\4.0.3\\bcrypt.net-next.4.0.3.nupkg.sha512"
+  ],
   "logs": []
 }

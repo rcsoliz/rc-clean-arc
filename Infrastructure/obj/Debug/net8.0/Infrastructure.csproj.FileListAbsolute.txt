@@ -11,10 +11,10 @@ D:\DESARROLLO\2025\CleanArchitectureApi\Infrastructure\obj\Debug\net8.0\Infrastr
 D:\DESARROLLO\2025\CleanArchitectureApi\Infrastructure\obj\Debug\net8.0\Infrastructure.AssemblyInfoInputs.cache
 D:\DESARROLLO\2025\CleanArchitectureApi\Infrastructure\obj\Debug\net8.0\Infrastructure.AssemblyInfo.cs
 D:\DESARROLLO\2025\CleanArchitectureApi\Infrastructure\obj\Debug\net8.0\Infrastructure.csproj.CoreCompileInputs.cache
+D:\DESARROLLO\2025\CleanArchitectureApi\Infrastructure\obj\Debug\net8.0\Infrastructure.sourcelink.json
 D:\DESARROLLO\2025\CleanArchitectureApi\Infrastructure\obj\Debug\net8.0\Infrastr.15EFFBFE.Up2Date
 D:\DESARROLLO\2025\CleanArchitectureApi\Infrastructure\obj\Debug\net8.0\Infrastructure.dll
 D:\DESARROLLO\2025\CleanArchitectureApi\Infrastructure\obj\Debug\net8.0\refint\Infrastructure.dll
 D:\DESARROLLO\2025\CleanArchitectureApi\Infrastructure\obj\Debug\net8.0\Infrastructure.pdb
 D:\DESARROLLO\2025\CleanArchitectureApi\Infrastructure\obj\Debug\net8.0\Infrastructure.genruntimeconfig.cache
 D:\DESARROLLO\2025\CleanArchitectureApi\Infrastructure\obj\Debug\net8.0\ref\Infrastructure.dll
-D:\DESARROLLO\2025\CleanArchitectureApi\Infrastructure\obj\Debug\net8.0\Infrastructure.sourcelink.json
