@@ -1,4 +1,5 @@
 ﻿using Core.Entities;
+using Core.Models;
 
 
 namespace Core.Interfaces
@@ -7,7 +8,7 @@ namespace Core.Interfaces
     {
         Task<IEnumerable<Comment>> GetAllAsync();
         Task<Comment> GetByIdAsync(int id);
-        Task<string> AddAsync(Comment entity);
+        Task AddAsync(CommentModel entity);
 
     }
 }

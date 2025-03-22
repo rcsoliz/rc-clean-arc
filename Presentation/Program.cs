@@ -20,6 +20,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Serilog;
 using Microsoft.Extensions.Options;
 using Microsoft.Extensions.Configuration;
+using Application.Serivces;
 
 
 
@@ -27,7 +28,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 var jwtSettings = builder.Configuration.GetSection("Jwt");
-var key = Encoding.UTF8.GetBytes(jwtSettings["Key"]); // Encoding.ASCII.GetBytes(jwtSettings["Key"]);
+var key = Encoding.UTF8.GetBytes(jwtSettings["Key"]);
 
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     .AddJwtBearer(options =>
@@ -49,7 +50,7 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
 builder.Services.AddAuthorization();
 
 //Services swagger access by token in Swagger
-/*
+
 builder.Services.AddSwaggerGen(c =>
 {
     c.SwaggerDoc("v1", new OpenApiInfo { Title = "CleanArchitecture", Version = "v1" });
@@ -78,49 +79,6 @@ builder.Services.AddSwaggerGen(c =>
             new string[] {}
         }
     });
-});
-*/
-builder.Services.AddSwaggerGen(c =>
-{
-    c.SwaggerDoc("v1", new OpenApiInfo { Title = "CleanArchitecture", Version = "v1" });
-
-    c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
-    {
-        Name = "Authorization",
-        Type = SecuritySchemeType.Http,
-        Scheme = "Bearer",
-        BearerFormat = "JWT",
-        In = ParameterLocation.Header,
-        Description = "Ingrese el token en este formato: Bearer {token}"
-    });
-
-    c.AddSecurityRequirement(new OpenApiSecurityRequirement
-    {
-        {
-            new OpenApiSecurityScheme
-            {
-                Reference = new OpenApiReference
-                {
-                    Type = ReferenceType.SecurityScheme,
-                    Id = "Bearer"
-                }
-            },
-            new string[] {}
-        }
-    });
-
-    // 🔹 🔥 Agregar el filtro para solo `AuthenticationController`
-    //c.TagActionsBy(api =>
-    //{
-    //    if (api.GroupName != null)
-    //    {
-    //        return new[] { api.GroupName };
-    //    }
-
-    //    return new[] { api.ActionDescriptor.RouteValues["controller"] };
-    //});
-
-    //c.DocInclusionPredicate((name, api) => api.RelativePath.StartsWith("api/authentication"));
 
     c.TagActionsBy(api =>
     {
@@ -165,8 +123,6 @@ builder.Services.AddCors(options =>
         });
 });
 
-
-
 // Add conectivity to the database
 builder.Services.AddDbContext<AppDbContext>(options => 
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"),
@@ -176,6 +132,10 @@ builder.Services.AddDbContext<AppDbContext>(options =>
 // Add services to the container.
 //builder.Services.AddScoped<IGenericRepository<Product>, GenericRepository<Product>>();
 builder.Services.AddScoped<IProductRepository, ProductRepository>();
+builder.Services.AddScoped<IPostRepository, PostRepository>();
+builder.Services.AddScoped<ICommentRepository, CommentRepository>();
+
+builder.Services.AddScoped<IPostService, PostService>();
 
 builder.Services.AddControllers()
     .AddFluentValidation(fv => fv.RegisterValidatorsFromAssemblyContaining<ProductValidator>());

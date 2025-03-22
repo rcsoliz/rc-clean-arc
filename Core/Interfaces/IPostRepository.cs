@@ -1,4 +1,5 @@
-﻿using Core.Entities;
+﻿using Core.Dtos;
+using Core.Entities;
 
 
 namespace Core.Interfaces
@@ -8,6 +9,8 @@ namespace Core.Interfaces
         Task<IEnumerable<Post>> GetAllAsync();
         Task<Post> GetByIdAsync(int id);
         Task AddAsync(Post entity);
+
+        Task<IEnumerable<PostDto>> GetAllPostWithDetailsAsync();
 
     }
 }

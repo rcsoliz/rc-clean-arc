@@ -1,4 +1,6 @@
-﻿using Core.Entities;
+﻿using Core.Dtos;
+using Core.Entities;
+
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -16,11 +18,16 @@ namespace Infrastructure.Data
         public DbSet<User> Users { get; set; }
         public DbSet<Post> Posts { get; set; }
         public DbSet<Comment> Comments { get; set; }
-       
+
+
+        public DbSet<PostDto> PostDtos { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
+
+            modelBuilder.Entity<PostDto>().HasNoKey();
+
 
             modelBuilder.Entity<Product>()
                 .Property(p => p.Price)
