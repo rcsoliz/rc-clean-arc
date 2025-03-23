@@ -202,6 +202,27 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "Presentation.Controllers.PostController",
+    "Method": "GetPagedPosts",
+    "RelativePath": "api/Post/paged",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "page",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "pageSize",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "Presentation.Controllers.ProductController",
     "Method": "GetAll",
     "RelativePath": "api/Product",

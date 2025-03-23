@@ -21,6 +21,7 @@ using Serilog;
 using Microsoft.Extensions.Options;
 using Microsoft.Extensions.Configuration;
 using Application.Serivces;
+using Application.Interfaces;
 
 
 
@@ -123,6 +124,8 @@ builder.Services.AddCors(options =>
         });
 });
 
+
+
 // Add conectivity to the database
 builder.Services.AddDbContext<AppDbContext>(options => 
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"),
@@ -144,6 +147,13 @@ builder.Services.AddControllers()
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
+
+builder.Services.AddHttpClient("ApiClient", client =>
+{
+    client.BaseAddress = new Uri("https://localhost:7255"); // URL de tu API backend
+});
+
+
 
 
 var app = builder.Build();

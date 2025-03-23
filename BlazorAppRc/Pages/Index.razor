@@ -1,0 +1,215 @@
+﻿@page "/"
+@using BlazorAppRc.Models
+@inject HttpClient Http
+@inject BlazorAppRc.Services.AuthState AuthState
+@inject IJSRuntime JS
+
+<div class="d-flex justify-content-between align-items-center mb-3">
+<h3>Últimas publicaciones</h3>
+@if (AuthState.IsAuthenticated)
+{
+    <button class="btn btn-primary me-2" @onclick="MostrarModal">Postear</button>
+}
+</div>
+
+<div>
+    @* Simulación de publicaciones *@
+    <div class="card mb-3" style="padding: 15px;">
+        <strong>rcsoliz</strong>
+        <p>Esta es una publicación de ejemplo...</p>
+    </div>
+</div>
+
+<!-- Modal -->
+@if (mostrarModal)
+{
+    <div class="modal fade show d-block" tabindex="-1" style="background-color: rgba(0,0,0,0.5);">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Nueva publicación</h5>
+                    <button type="button" class="btn-close" @onclick="CerrarModal"></button>
+                </div>
+                <div class="modal-body">
+                    <textarea class="form-control" rows="5" maxlength="1000"
+                              @bind="contenido"
+                              @oninput="LimitarTexto"
+                              placeholder="Escribe tu publicación (máx. 1000 caracteres)">
+                        </textarea>
+                    <div class="text-end text-muted mt-1">@contenido.Length / 1000</div>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" @onclick="CerrarModal">Cancelar</button>
+                    <button class="btn btn-primary" @onclick="Publicar">Publicar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+@if (pagedPosts == null)
+{
+    <p><em>Cargando publicaciones...</em></p>
+}
+else if (pagedPosts.Items.Count == 0)
+{
+    <p><em>No hay publicaciones para esta página.</em></p>
+}
+else
+{
+    @foreach (var post in pagedPosts.Items)
+    {
+        <div class="card mb-3 p-3 shadow-sm border rounded">
+            <div class="d-flex justify-content-between">
+                <strong>@post.Username</strong>
+                <small>@DateTime.Parse(post.Created).ToString("dd/MM")</small>
+            </div>
+            <p>
+                @if (expandedPostId == post.Id)
+                {
+                    @post.PostContent
+                }
+                else
+                {
+                    @(post.PostContent.Length > 100 ? post.PostContent.Substring(0, 100) + "..." : post.PostContent)
+                }
+            </p>
+            <a href="#" @onclick="() => ToggleExpand(post.Id)" class="text-primary">
+                @(expandedPostId == post.Id ? "Ver menos" : "Ver más")
+            </a>
+        </div>
+    }
+
+    <div class="d-flex justify-content-center mt-3">
+        <nav>
+            <ul class="pagination">
+                <li class="page-item @(currentPage == 1 ? "disabled" : "")">
+                    <button class="page-link" @onclick="async () => await FirstPage()">«</button>
+                </li>
+                @for (int i = 1; i <= totalPages; i++)
+                {
+                    <li class="page-item @(currentPage == i ? "active" : "")">
+                        <button class="page-link" @onclick="async () => await ChangePage(i)">@i</button>
+                    </li>
+                }
+                <li class="page-item @(currentPage == totalPages ? "disabled" : "")">
+                    <button class="page-link" @onclick="async () => await NextPage()">»</button>
+                </li>
+            </ul>
+        </nav>
+    </div>
+}
+
+
+
+@code {
+    private PagedResult<PostDto>? pagedPosts;
+    private int currentPage = 1;
+    private int pageSize = 5;
+    private int totalPages => (int)Math.Ceiling((double)(pagedPosts?.TotalCount ?? 0) / pageSize);
+    private int? expandedPostId = null;
+
+    protected override async Task OnInitializedAsync()
+    {
+        await LoadPosts();
+    }
+
+    private async Task LoadPosts()
+    {
+        pagedPosts = await Http.GetFromJsonAsync<PagedResult<PostDto>>($"api/post/paged?page={currentPage}&pageSize={pageSize}");
+    }
+
+    private void ToggleExpand(int id)
+    {
+        expandedPostId = expandedPostId == id ? null : id;
+    }
+
+    private async Task ChangePage(int page)
+    {
+        currentPage = page;
+        await LoadPosts();
+    }
+
+    private async Task FirstPage()
+    {
+        if (currentPage > 1)
+        {
+            currentPage = 1;
+            await LoadPosts();
+        }
+    }
+
+    private async Task NextPage()
+    {
+        if (currentPage < totalPages)
+        {
+            currentPage++;
+            await LoadPosts();
+        }
+    }
+
+    // Publicar De Post
+    private bool mostrarModal = false;
+    private string contenido = string.Empty;
+    private string? mensajeError;
+
+    private void MostrarModal() => mostrarModal = true;
+
+    private void CerrarModal()
+    {
+        mostrarModal = false;
+        contenido = string.Empty;
+    }
+
+    private void LimitarTexto(ChangeEventArgs e)
+    {
+        var value = e.Value?.ToString() ?? "";
+        contenido = value.Length > 1000 ? value.Substring(0, 1000) : value;
+    }
+
+  
+    private async Task Publicar()
+    {
+        mensajeError = null;
+
+        try
+        {
+            var token = await JS.InvokeAsync<string>("localStorage.getItem", "jwt");
+            if (string.IsNullOrEmpty(token))
+            {
+                mensajeError = "Debe iniciar sesión para publicar.";
+                return;
+            }
+
+            Http.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
+
+            var postData = new
+            {
+                PostContent = contenido,
+                UserId = AuthState.Id
+            };
+
+            //await JS.InvokeVoidAsync("console.log", postData);
+            //  pagedPosts = await Http.GetFromJsonAsync<PagedResult<PostDto>>($"api/post/paged?page={currentPage}&pageSize={pageSize}");
+            var response = await Http.PostAsJsonAsync("api/post", postData);
+
+            if (response.IsSuccessStatusCode)
+            {
+                CerrarModal(); // cerrar modal al publicar con éxito
+            }
+            else
+            {
+                var error = await response.Content.ReadAsStringAsync();
+                mensajeError = $"Error al publicar: {error}";
+            }
+        }
+        catch (Exception ex)
+        {
+            mensajeError = $"Error de red: {ex.Message}";
+        }
+        CerrarModal();
+    }
+
+}
+
+

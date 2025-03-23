@@ -8,7 +8,7 @@ namespace Core.Dtos
 {
     public class PostDto
     {
-        public int PostId { get; set; }
+        public int Id { get; set; }
         public string PostContent { get; set; }
         public string Username { get; set; }
         public int UserId { get; set; }

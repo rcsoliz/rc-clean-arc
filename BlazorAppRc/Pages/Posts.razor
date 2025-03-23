@@ -1,0 +1,52 @@
+﻿@page "/posts"
+@using BlazorAppRc.Models
+
+@inject HttpClient Http
+
+<h3>Publicaciones detalladas</h3>
+
+@if (posts == null)
+{
+    <p><em>Cargando publicaciones...</em></p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Contenido</th>
+                <th>Username</th>
+                <th>UserId</th>
+                <th>Created</th>
+                <th>CommentCount</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var post in posts)
+            {
+                <tr>
+                    <td>@post.Id</td>
+                    <td>@post.PostContent</td>
+                    <td>@post.Username</td>
+                    <td>@post.UserId</td>
+                    <td>@post.Created</td>
+                    <td>@post.CommentCount</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+
+@code {
+
+}
+@code {
+    private List<PostDto>? posts;
+
+    protected override async Task OnInitializedAsync()
+    {
+        posts = await Http.GetFromJsonAsync<List<PostDto>>("api/post/detailed");
+    }
+}

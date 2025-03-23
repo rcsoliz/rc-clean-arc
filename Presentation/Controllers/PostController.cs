@@ -1,4 +1,5 @@
-﻿using Application.Queries.PostCommands;
+﻿using Application.Interfaces;
+using Application.Queries.PostCommands;
 using Application.Serivces;
 using Application.Validators;
 using Core.Entities;
@@ -16,11 +17,12 @@ namespace Presentation.Controllers
     {
         private readonly IMediator _mediator;
         private readonly IPostService _postService;
-
-        public PostController(IMediator mediator, IPostService postService)
+        private readonly IPostRepository _repository;
+        public PostController(IMediator mediator, IPostService postService, IPostRepository repository)
         {
             _mediator = mediator;
             _postService = postService;
+            _repository = repository;
         }
 
         [HttpGet]
@@ -52,12 +54,20 @@ namespace Presentation.Controllers
         }
 
         [HttpGet("detailed")]
+        [AllowAnonymous]
         public async Task<IActionResult> GetDetailedPosts()
         {
             var posts = await _postService.GetAllDetailedPostsAsync();
             return Ok(posts);
         }
 
+        [HttpGet("paged")]
+        [AllowAnonymous]
+        public async Task<IActionResult> GetPagedPosts(int page , int pageSize)
+        {
+            var posts = await _repository.GetPagedPostsAsyncRefactory(page, pageSize);
+            return Ok(posts);
+        }
 
     }
 }

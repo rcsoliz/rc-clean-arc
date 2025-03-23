@@ -1,4 +1,5 @@
-﻿using Core.Dtos;
+﻿using Application.Interfaces;
+using Core.Dtos;
 using Core.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -19,6 +20,11 @@ namespace Application.Serivces
         public async Task<IEnumerable<PostDto>> GetAllDetailedPostsAsync()
         {
             return await _postRepository.GetAllPostWithDetailsAsync();
+        }
+
+        public async Task<List<PostDto>> GetPagedPostsAsync(int page, int pageSize)
+        {
+            return await _postRepository.GetPagedPostsAsync(page, pageSize);
         }
     }
 }

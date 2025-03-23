@@ -1,0 +1,93 @@
+﻿@inherits LayoutComponentBase
+@inject IJSRuntime JS
+@inject NavigationManager Navigation
+@inject BlazorAppRc.Services.AuthState AuthState
+
+<header class="navbar navbar-light bg-light px-3 d-flex justify-content-between shadow-sm">
+    <span class="fw-bold">Mi App</span>
+    <div>
+        @if (AuthState.IsAuthenticated)
+        {
+            <span class="me-2">@AuthState.Username</span>
+            <span class="mx-2">|</span>
+            <a href="#" class="text-decoration-none" @onclick="Logout">Cerrar sesión</a>
+        }
+        else
+        {
+            <a href="/login" class="me-2 text-decoration-none">Login</a>
+            <span class="mx-2">|</span>
+            <a href="/register" class="ms-2 text-decoration-none">Registro</a>
+        }
+    </div>
+</header>
+
+<div class="container mt-4" style="max-width: 700px;">
+    @Body
+</div>
+
+@code {
+    private bool _initialized = false;
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender && !_initialized)
+        {
+            try
+            {
+                var token = await JS.InvokeAsync<string>("localStorage.getItem", "jwt");
+
+                if (!string.IsNullOrEmpty(token))
+                {
+                    AuthState.IsAuthenticated = true;
+
+                    var parts = token.Split('.');
+                    if (parts.Length == 3)
+                    {
+                        var payload = parts[1];
+                        var json = System.Text.Encoding.UTF8.GetString(ParseBase64WithoutPadding(payload));
+                        var data = System.Text.Json.JsonSerializer.Deserialize<Dictionary<string, object>>(json);
+                        if (data != null && data.ContainsKey("unique_name"))
+                        {
+                            AuthState.Username = data["unique_name"].ToString();
+                            AuthState.Id = data["nameid"].ToString(); ;
+                        }
+                        else if (data != null && data.ContainsKey("sub"))
+                        {
+                            AuthState.Username = data["sub"].ToString();
+                        }
+                        else
+                        {
+                            AuthState.Username = "Usuario";
+                        }
+                    }
+
+                    StateHasChanged();
+                }
+
+                _initialized = true;
+            }
+            catch
+            {
+                // Fallback: no JS interop disponible aún
+            }
+        }
+    }
+
+    private async Task Logout()
+    {
+        await JS.InvokeVoidAsync("localStorage.removeItem", "jwt");
+        AuthState.IsAuthenticated = false;
+        AuthState.Username = null;
+        Navigation.NavigateTo("/", true);
+    }
+
+    private static byte[] ParseBase64WithoutPadding(string base64)
+    {
+        switch (base64.Length % 4)
+        {
+            case 2: base64 += "=="; break;
+            case 3: base64 += "="; break;
+        }
+        return Convert.FromBase64String(base64.Replace('-', '+').Replace('_', '/'));
+    }
+}
