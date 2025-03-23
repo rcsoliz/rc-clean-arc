@@ -40,6 +40,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTG9naW4ucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
+[D:/DESARROLLO/2025/CleanArchitectureApi/BlazorAppRc/Pages/Mispost.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTWlzcG9zdC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
 [D:/DESARROLLO/2025/CleanArchitectureApi/BlazorAppRc/Pages/PostDetalle.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUG9zdERldGFsbGUucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 

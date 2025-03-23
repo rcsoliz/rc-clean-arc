@@ -21,5 +21,7 @@ namespace Application.Interfaces
 
         Task<PagedResult<PostDto>> GetPagedPostsAsyncRefactory(int page, int pageSize);
         IQueryable<Post> GetQueryableWithUserAndComments();
+
+        Task<PagedResult<PostDto>> GetAllPostByUserId(int id);
     }
 }

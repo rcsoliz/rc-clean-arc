@@ -70,5 +70,13 @@ namespace Presentation.Controllers
             return Ok(posts);
         }
 
+        [HttpGet("user/{id}")]
+        public async Task<IActionResult> GetAllPostByUserId(int id)
+        {
+            var post = await _mediator.Send(new GetAllPostByUserIdQuery(id));
+            if (post == null) return NotFound();
+            return Ok(post);
+        }
+
     }
 }

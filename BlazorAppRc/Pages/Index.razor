@@ -53,26 +53,6 @@ else
 {
     @foreach (var post in pagedPosts.Items)
     {
-    @*     <div class="card mb-3 p-3 shadow-sm border rounded">
-            <div class="d-flex justify-content-between">
-                <strong>@post.Username</strong>
-                <small>@DateTime.Parse(post.Created).ToString("dd/MM")</small>
-            </div>
-            <p>
-                @if (expandedPostId == post.Id)
-                {
-                    @post.PostContent
-                }
-                else
-                {
-                    @(post.PostContent.Length > 100 ? post.PostContent.Substring(0, 100) + "..." : post.PostContent)
-                }
-            </p>
-            <a href="#" @onclick="() => ToggleExpand(post.Id)" class="text-primary">
-                @(expandedPostId == post.Id ? "Ver menos" : "Ver más")
-            </a>
-        </div> *@
-
         <div class="card mb-3 p-3 shadow-sm border rounded"
             style="cursor: pointer;"
             @onclick="() => IrADetalle(post.Id)">
@@ -81,7 +61,7 @@ else
                 <small>@DateTime.Parse(post.Created).ToString("dd/MM")</small>
             </div>
             <p>
-                @(post.PostContent.Length > 100 ? post.PostContent.Substring(0, 100) + "..." : post.PostContent)
+                @(post.PostContent.Length > 140 ? post.PostContent.Substring(0, 140) + "..." : post.PostContent)
             </p>
             <span class="text-primary">Ver más</span>
         </div>
@@ -201,8 +181,6 @@ else
                 UserId = AuthState.Id
             };
 
-            //await JS.InvokeVoidAsync("console.log", postData);
-            //  pagedPosts = await Http.GetFromJsonAsync<PagedResult<PostDto>>($"api/post/paged?page={currentPage}&pageSize={pageSize}");
             var response = await Http.PostAsJsonAsync("api/post", postData);
 
             if (response.IsSuccessStatusCode)

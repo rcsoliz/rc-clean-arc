@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "q6NbjESN/WJEeQuti2EXb9eT9W+cd4rQi1UKQF9CWF8=",
+  "Hash": "icQA7PWCsh1s5Gp0MgpxZTkBES4fu9vp28vPgN0XG7c=",
   "Source": "BlazorAppRc",
   "BasePath": "_content/BlazorAppRc",
   "Mode": "Default",
@@ -330,6 +330,27 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\favicon.png"
+    },
+    {
+      "Identity": "D:\\DESARROLLO\\2025\\CleanArchitectureApi\\BlazorAppRc\\wwwroot\\js\\site.js",
+      "SourceId": "BlazorAppRc",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\DESARROLLO\\2025\\CleanArchitectureApi\\BlazorAppRc\\wwwroot\\",
+      "BasePath": "_content/BlazorAppRc",
+      "RelativePath": "js/site#[.{fingerprint}]?.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "xi5fq86m0n",
+      "Integrity": "R9yVw2FFHWfNSD+GzIag0OMny44bdr1EEFyFgsxq1Us=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\site.js"
     }
   ],
   "Endpoints": [
@@ -356,7 +377,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sun, 23 Mar 2025 15:11:10 GMT"
+          "Value": "Sun, 23 Mar 2025 20:23:52 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -401,7 +422,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sun, 23 Mar 2025 15:11:10 GMT"
+          "Value": "Sun, 23 Mar 2025 20:23:52 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -446,7 +467,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sun, 23 Mar 2025 15:11:10 GMT"
+          "Value": "Sun, 23 Mar 2025 20:23:52 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -483,7 +504,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sun, 23 Mar 2025 15:11:10 GMT"
+          "Value": "Sun, 23 Mar 2025 20:23:52 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -1560,6 +1581,88 @@
         {
           "Name": "integrity",
           "Value": "sha256-4mWsDy3aHl36ZbGt8zByK7Pvd4kRUoNgTYzRnwmPHwg="
+        }
+      ]
+    },
+    {
+      "Route": "js/site.js",
+      "AssetFile": "D:\\DESARROLLO\\2025\\CleanArchitectureApi\\BlazorAppRc\\wwwroot\\js\\site.js",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "345"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"R9yVw2FFHWfNSD+GzIag0OMny44bdr1EEFyFgsxq1Us=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sun, 23 Mar 2025 18:59:07 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-R9yVw2FFHWfNSD+GzIag0OMny44bdr1EEFyFgsxq1Us="
+        }
+      ]
+    },
+    {
+      "Route": "js/site.xi5fq86m0n.js",
+      "AssetFile": "D:\\DESARROLLO\\2025\\CleanArchitectureApi\\BlazorAppRc\\wwwroot\\js\\site.js",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "345"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"R9yVw2FFHWfNSD+GzIag0OMny44bdr1EEFyFgsxq1Us=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sun, 23 Mar 2025 18:59:07 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "xi5fq86m0n"
+        },
+        {
+          "Name": "label",
+          "Value": "js/site.js"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-R9yVw2FFHWfNSD+GzIag0OMny44bdr1EEFyFgsxq1Us="
         }
       ]
     }

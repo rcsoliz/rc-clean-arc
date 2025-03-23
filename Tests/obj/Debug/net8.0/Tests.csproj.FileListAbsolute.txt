@@ -1,10 +1,4 @@
 D:\DESARROLLO\2025\CleanArchitectureApi\Tests\bin\Debug\net8.0\CoverletSourceRootsMapping_Tests
-D:\DESARROLLO\2025\CleanArchitectureApi\Tests\obj\Debug\net8.0\Tests.csproj.AssemblyReference.cache
-D:\DESARROLLO\2025\CleanArchitectureApi\Tests\obj\Debug\net8.0\Tests.GeneratedMSBuildEditorConfig.editorconfig
-D:\DESARROLLO\2025\CleanArchitectureApi\Tests\obj\Debug\net8.0\Tests.AssemblyInfoInputs.cache
-D:\DESARROLLO\2025\CleanArchitectureApi\Tests\obj\Debug\net8.0\Tests.AssemblyInfo.cs
-D:\DESARROLLO\2025\CleanArchitectureApi\Tests\obj\Debug\net8.0\Tests.csproj.CoreCompileInputs.cache
-D:\DESARROLLO\2025\CleanArchitectureApi\Tests\obj\Debug\net8.0\Tests.sourcelink.json
 D:\DESARROLLO\2025\CleanArchitectureApi\Tests\bin\Debug\net8.0\testhost.dll
 D:\DESARROLLO\2025\CleanArchitectureApi\Tests\bin\Debug\net8.0\Presentation.deps.json
 D:\DESARROLLO\2025\CleanArchitectureApi\Tests\bin\Debug\net8.0\Presentation.runtimeconfig.json
@@ -171,6 +165,12 @@ D:\DESARROLLO\2025\CleanArchitectureApi\Tests\bin\Debug\net8.0\Application.pdb
 D:\DESARROLLO\2025\CleanArchitectureApi\Tests\bin\Debug\net8.0\Core.pdb
 D:\DESARROLLO\2025\CleanArchitectureApi\Tests\bin\Debug\net8.0\Presentation.pdb
 D:\DESARROLLO\2025\CleanArchitectureApi\Tests\bin\Debug\net8.0\Infrastructure.pdb
+D:\DESARROLLO\2025\CleanArchitectureApi\Tests\obj\Debug\net8.0\Tests.csproj.AssemblyReference.cache
+D:\DESARROLLO\2025\CleanArchitectureApi\Tests\obj\Debug\net8.0\Tests.GeneratedMSBuildEditorConfig.editorconfig
+D:\DESARROLLO\2025\CleanArchitectureApi\Tests\obj\Debug\net8.0\Tests.AssemblyInfoInputs.cache
+D:\DESARROLLO\2025\CleanArchitectureApi\Tests\obj\Debug\net8.0\Tests.AssemblyInfo.cs
+D:\DESARROLLO\2025\CleanArchitectureApi\Tests\obj\Debug\net8.0\Tests.csproj.CoreCompileInputs.cache
+D:\DESARROLLO\2025\CleanArchitectureApi\Tests\obj\Debug\net8.0\Tests.sourcelink.json
 D:\DESARROLLO\2025\CleanArchitectureApi\Tests\obj\Debug\net8.0\Tests.csproj.Up2Date
 D:\DESARROLLO\2025\CleanArchitectureApi\Tests\obj\Debug\net8.0\Tests.dll
 D:\DESARROLLO\2025\CleanArchitectureApi\Tests\obj\Debug\net8.0\refint\Tests.dll

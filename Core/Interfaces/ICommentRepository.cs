@@ -11,5 +11,6 @@ namespace Core.Interfaces
         Task<Comment> GetByIdAsync(int id);
         Task AddAsync(CommentModel entity);
         Task<IEnumerable<CommentDto>> GetAllCommentByPostId(int Id);
+        Task DeleteAsync(int id);
     }
 }

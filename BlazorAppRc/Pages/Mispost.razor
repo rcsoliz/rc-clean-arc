@@ -1,0 +1,91 @@
+﻿@page "/mispost"
+@using BlazorAppRc.Models
+@using BlazorAppRc.Services
+@inject HttpClient Http
+@inject NavigationManager Navigation
+@inject AuthState AuthState
+@inject IJSRuntime JS
+
+<h3>Publicaciones de @AuthState.Username</h3>
+
+<div class="d-flex justify-content-between align-items-center mb-3">
+    <button class="btn btn-secondary mb-3" @onclick="VolverAlInicio">
+        Volver a publicaciones
+    </button>
+    <span class="fw-bold">Cantidad de post: @posts?.Items.Count()</span>
+</div>
+
+@if (posts == null)
+{
+    <p><em>Cargando publicaciones...</em></p>
+}
+else if (posts.Items.Count == 0)
+{
+    <p>Este usuario no tiene publicaciones.</p>
+}
+else
+{
+    @foreach (var post in posts.Items)
+    {
+        <div class="card mb-3 p-3 shadow-sm border rounded">
+            <div class="d-flex justify-content-between">
+                <strong>@post.Username</strong>
+                <small>@DateTime.Parse(post.Created).ToString("dd/MM")</small>
+            </div>
+            <p>
+                @* @(post.PostContent.Length > 140 ? post.PostContent.Substring(0, 140) + "..." : post.PostContent) *@
+
+                @post.PostContent
+            </p>
+           @*  <a href="/post/@post.Id" class="text-primary">Ver más</a> *@
+        </div>
+    }
+}
+
+
+@code {
+    [Parameter] public string Username { get; set; } = string.Empty;
+
+    //private PagedResult<PostDto>? posts;
+    private PagedResult<PostDto>? posts;
+
+    protected override async Task OnInitializedAsync()
+    {
+        //posts = await Http.GetFromJsonAsync<PagedResult<PostDto>>($"api/post/user/{AuthState.Id}");
+
+        if (!AuthState.IsAuthenticated)
+        {
+            Navigation.NavigateTo("/login");
+            return;
+        }
+
+        var token = await JS.InvokeAsync<string>("localStorage.getItem", "jwt");
+
+        if (string.IsNullOrEmpty(token))
+        {
+            Navigation.NavigateTo("/login");
+            return;
+        }
+
+        // Agregar el token a los headers
+        Http.DefaultRequestHeaders.Authorization =
+            new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
+
+        try
+        {
+            var result = await Http.GetFromJsonAsync<PagedResult<PostDto>>($"api/post/user/{AuthState.Id}");
+            posts = result;
+        }
+        catch (HttpRequestException ex)
+        {
+            Console.WriteLine("Error HTTP: " + ex.Message);
+            Navigation.NavigateTo("/login");
+        }
+
+    }
+
+    private void VolverAlInicio()
+    {
+        Navigation.NavigateTo("/");
+    }
+}

@@ -8,7 +8,9 @@
     <div>
         @if (AuthState.IsAuthenticated)
         {
-            <span class="me-2">@AuthState.Username</span>
+            @* <span class="me-2">@AuthState.Username</span> *@
+            <a class="me-2 text-decoration-none" href="#" @onclick="IrAMisPost">@AuthState.Username</a>
+
             <span class="mx-2">|</span>
             <a href="#" class="text-decoration-none" @onclick="Logout">Cerrar sesión</a>
         }
@@ -89,5 +91,13 @@
             case 3: base64 += "="; break;
         }
         return Convert.FromBase64String(base64.Replace('-', '+').Replace('_', '/'));
+    }
+
+    private void IrAMisPost()
+    {
+        if (!string.IsNullOrEmpty(AuthState.Id))
+        {
+            Navigation.NavigateTo($"/mispost");
+        }
     }
 }

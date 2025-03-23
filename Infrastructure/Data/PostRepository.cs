@@ -1,5 +1,6 @@
 ﻿using Application.Common;
 using Application.Interfaces;
+using Azure;
 using Core.Dtos;
 using Core.Entities;
 using Core.Interfaces;
@@ -108,6 +109,35 @@ namespace Infrastructure.Data
                 .Include(p => p.Comments);
         }
 
-  
+        public async Task<PagedResult<PostDto>> GetAllPostByUserId(int id)
+        {
+            var query = _context.Posts
+                 .Where(p => p.UserId == id)
+                 .Include(p => p.User)
+                 .Include(p => p.Comments);
+
+            var totalCount = await query.CountAsync();
+
+            var items = await query
+                .OrderByDescending(p => p.CreatedAt)
+                .Select(p => new PostDto
+                {
+                    Id = p.Id,
+                    PostContent = p.PostContent,
+                    Username = p.User.Username,
+                    UserId = p.UserId,
+                    Created = p.CreatedAt.ToString(),
+                    CommentCount = p.Comments.Count
+                })
+                .ToListAsync();
+
+            return new PagedResult<PostDto>
+            {
+                Items = items,
+                TotalCount = totalCount
+            };
+        }
+
+
     }
 }

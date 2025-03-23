@@ -1,4 +1,5 @@
 ﻿using Application.Queries.CommentCommands;
+using Application.Queries.ProductCommads;
 using Application.Validators;
 using Core.Dtos;
 using Core.Entities;
@@ -55,6 +56,15 @@ namespace Presentation.Controllers
             var comments = await _mediator.Send(new GetAllCommentByPostIdQuery(id));
 
             return Ok(comments);
+        }
+
+        [HttpDelete("{id}")]
+        public async Task<ActionResult> Delete(int id)
+        {
+            var comment = await _mediator.Send(new DeleteCommentCommand(id));
+            if (!comment) return NotFound();
+
+            return NoContent();
         }
 
     }
