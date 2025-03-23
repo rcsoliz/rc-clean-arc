@@ -12,7 +12,7 @@ namespace Application.Interfaces
     public interface IPostRepository
     {
         Task<IEnumerable<Post>> GetAllAsync();
-        Task<Post> GetByIdAsync(int id);
+        Task<PostDto> GetByIdAsync(int id);
         Task AddAsync(Post entity);
 
         Task<IEnumerable<PostDto>> GetAllPostWithDetailsAsync();

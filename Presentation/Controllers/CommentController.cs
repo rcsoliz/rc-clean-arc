@@ -1,9 +1,11 @@
 ﻿using Application.Queries.CommentCommands;
 using Application.Validators;
+using Core.Dtos;
 using Core.Entities;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using static System.Net.WebRequestMethods;
 
 namespace Presentation.Controllers
 {
@@ -26,7 +28,7 @@ namespace Presentation.Controllers
             return Ok(comments);
         }
 
-        [HttpPost("{id}")]
+        [HttpGet("{id}")]
         public async Task<ActionResult<Comment>> GetById(int Id)
         {
             var comment = await _mediator.Send(new GetCommentByIdQuery(Id));
@@ -45,6 +47,14 @@ namespace Presentation.Controllers
 
             var comment = await _mediator.Send(command);
             return CreatedAtAction(nameof(GetById), new { id = comment.Id }, comment);
+        }
+
+        [HttpGet("post/{id}")]
+        public async Task<ActionResult<IEnumerable<CommentDto>>> GetAllCommentByPostId([FromRoute] int id)
+        {
+            var comments = await _mediator.Send(new GetAllCommentByPostIdQuery(id));
+
+            return Ok(comments);
         }
 
     }

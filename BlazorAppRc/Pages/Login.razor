@@ -50,7 +50,7 @@
                 if (result is not null && !string.IsNullOrEmpty(result.Token))
                 {
                     await JS.InvokeVoidAsync("localStorage.setItem", "jwt", result.Token);
-                    Navigation.NavigateTo("/");
+                    Navigation.NavigateTo("/", true);
                 }
                 else
                 {

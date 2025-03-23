@@ -28,9 +28,20 @@ namespace Infrastructure.Data
                 .ToListAsync();
         }
 
-        public async Task<Post> GetByIdAsync(int id)
+        public async Task<PostDto> GetByIdAsync(int id)
         {
-            return await _context.Posts.FindAsync(id);
+            // return await _context.Posts.FindAsync(id);
+
+            return await _context.Posts
+                .Where(c => c.Id == id)
+                .Select(c => new PostDto
+                {
+                    Id = c.Id,
+                    PostContent = c.PostContent,
+                    Username = c.User.Username,
+                    UserId = c.UserId,
+                    Created = c.CreatedAt.ToString()
+                }).FirstOrDefaultAsync(); ;
         }
 
         public async Task<IEnumerable<PostDto>> GetAllPostWithDetailsAsync()

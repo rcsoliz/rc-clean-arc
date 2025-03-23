@@ -1,4 +1,5 @@
-﻿using Core.Entities;
+﻿using Core.Dtos;
+using Core.Entities;
 using Core.Interfaces;
 using Core.Models;
 using Infrastructure.Common;
@@ -42,6 +43,24 @@ namespace Infrastructure.Data
         public async Task<Comment> GetByIdAsync(int id)
         {
             return await _context.Comments.FindAsync(id);
+        }
+
+        public async Task<IEnumerable<CommentDto>> GetAllCommentByPostId(int Id)
+        {
+            return await _context.Comments
+                .Where(c => c.PostId == Id)
+                .OrderByDescending(c => c.CreatedAt)
+                .Select(c => new CommentDto
+                {
+                    Id = c.Id,
+                    CommentContent = c.CommentContent,
+                    Username = c.User.Username,
+                    UserId = c.UserId,
+                    Created = c.CreatedAt.ToString(),
+                    PostId = c.PostId,
+                    ParentCommentId = c.ParentCommentId
+                })
+                .ToListAsync();
         }
     }
 }

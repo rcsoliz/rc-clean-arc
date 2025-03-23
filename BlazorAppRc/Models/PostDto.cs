@@ -8,5 +8,9 @@
         public int UserId { get; set; }
         public string Created { get; set; } = string.Empty;
         public int CommentCount { get; set; }
+
+
+
+
     }
 }

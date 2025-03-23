@@ -1,0 +1,152 @@
+﻿@page "/post/{Id:int}"
+@using BlazorAppRc.Models
+@using BlazorAppRc.Services
+@inject HttpClient Http
+@inject AuthState AuthState
+@inject IJSRuntime JS
+@inject NavigationManager Navigation
+
+<h3>PostDetalle</h3>
+<button class="btn btn-secondary mb-3" @onclick="VolverAlInicio">
+    Volver a publicaciones
+</button>
+@if (post == null)
+{
+    <p><em>Cargando publicación...</em></p>
+
+}
+else
+{
+    <div class="card mb-4 p-3">
+        <h5>@post.Username</h5>
+        <p>@post.PostContent</p>
+        <small class="text-muted">@DateTime.Parse(post.Created).ToString("dd/MM")</small>
+    </div>
+    <h5>Comentarios</h5>
+    @if (comentarios == null)
+    {
+        <p><em>Cargando comentarios...</em></p>
+    }
+    else if (comentarios.Count == 0)
+    {
+        <p>No hay comentarios aún.</p>
+    }
+    else
+    {
+        <ul class="list-group mb-4">
+            @foreach (var c in comentarios)
+            {
+                <li class="list-group-item">
+                    <strong>@c.Username:</strong> @c.CommentContent
+                    <div class="text-muted small">@DateTime.Parse(c.Created).ToString("dd/MM")</div>
+                </li>
+            }
+        </ul>
+    }
+
+
+    @if (AuthState.IsAuthenticated)
+    {
+        <div class="mb-3">
+            <textarea class="form-control" rows="3" placeholder="Escribe un comentario..."
+                      @bind="nuevoComentario"></textarea>
+        </div>
+        <button class="btn btn-primary" @onclick="EnviarComentario">Comentar</button>
+    }
+
+    else
+    {
+        <p><em>Inicia sesión para comentar.</em></p>
+    }
+
+    @if (!string.IsNullOrEmpty(errorMensaje))
+    {
+        <div class="text-danger mt-3">@errorMensaje</div>
+    }
+
+}
+
+@code {
+    [Parameter]
+    public int Id { get; set; }
+
+    private PostDto? post;
+    private List<ComentarioDto>? comentarios;
+    private string nuevoComentario = string.Empty;
+    private string? errorMensaje;
+
+    protected override async Task OnInitializedAsync()
+    {
+        await CargarPostYComentarios();
+    }
+
+    private async Task CargarPostYComentarios()
+    {
+        try
+        {
+            var token = await JS.InvokeAsync<string>("localStorage.getItem", "jwt");
+
+            if (string.IsNullOrEmpty(token))
+            {
+                // No está autenticado
+                return;
+            }
+
+            Http.DefaultRequestHeaders.Authorization =
+                new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
+
+            post = await Http.GetFromJsonAsync<PostDto>($"api/post/{Id}");
+            comentarios = await Http.GetFromJsonAsync<List<ComentarioDto>>($"/api/Comment/post/{Id}");
+        }
+        catch (Exception ex)
+        {
+            errorMensaje = "Error al cargar el post o comentarios.";
+        }
+    }
+
+    private async Task EnviarComentario()
+    {
+        errorMensaje = null;
+
+        try
+        {
+            var token = await JS.InvokeAsync<string>("localStorage.getItem", "jwt");
+            if (string.IsNullOrEmpty(token))
+            {
+                errorMensaje = "Debes iniciar sesión para comentar.";
+                return;
+            }
+
+            Http.DefaultRequestHeaders.Authorization =
+                new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
+
+            var comentario = new
+            {
+                Content = nuevoComentario,
+                PostId = Id,
+                UserId = AuthState.Username
+            };
+
+            var response = await Http.PostAsJsonAsync("api/comments", comentario);
+            if (response.IsSuccessStatusCode)
+            {
+                nuevoComentario = "";
+                await CargarPostYComentarios(); // recargar los comentarios
+            }
+            else
+            {
+                errorMensaje = "Error al comentar.";
+            }
+        }
+        catch (Exception ex)
+        {
+            errorMensaje = "Error de red al comentar.";
+        }
+    }
+
+    private void VolverAlInicio()
+    {
+        Navigation.NavigateTo("/");
+    }
+
+}

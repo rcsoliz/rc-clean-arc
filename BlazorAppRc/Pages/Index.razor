@@ -3,6 +3,8 @@
 @inject HttpClient Http
 @inject BlazorAppRc.Services.AuthState AuthState
 @inject IJSRuntime JS
+@inject NavigationManager Navigation
+
 
 <div class="d-flex justify-content-between align-items-center mb-3">
 <h3>Últimas publicaciones</h3>
@@ -10,14 +12,6 @@
 {
     <button class="btn btn-primary me-2" @onclick="MostrarModal">Postear</button>
 }
-</div>
-
-<div>
-    @* Simulación de publicaciones *@
-    <div class="card mb-3" style="padding: 15px;">
-        <strong>rcsoliz</strong>
-        <p>Esta es una publicación de ejemplo...</p>
-    </div>
 </div>
 
 <!-- Modal -->
@@ -59,7 +53,7 @@ else
 {
     @foreach (var post in pagedPosts.Items)
     {
-        <div class="card mb-3 p-3 shadow-sm border rounded">
+    @*     <div class="card mb-3 p-3 shadow-sm border rounded">
             <div class="d-flex justify-content-between">
                 <strong>@post.Username</strong>
                 <small>@DateTime.Parse(post.Created).ToString("dd/MM")</small>
@@ -77,6 +71,19 @@ else
             <a href="#" @onclick="() => ToggleExpand(post.Id)" class="text-primary">
                 @(expandedPostId == post.Id ? "Ver menos" : "Ver más")
             </a>
+        </div> *@
+
+        <div class="card mb-3 p-3 shadow-sm border rounded"
+            style="cursor: pointer;"
+            @onclick="() => IrADetalle(post.Id)">
+            <div class="d-flex justify-content-between">
+                <strong>@post.Username</strong>
+                <small>@DateTime.Parse(post.Created).ToString("dd/MM")</small>
+            </div>
+            <p>
+                @(post.PostContent.Length > 100 ? post.PostContent.Substring(0, 100) + "..." : post.PostContent)
+            </p>
+            <span class="text-primary">Ver más</span>
         </div>
     }
 
@@ -148,6 +155,11 @@ else
         }
     }
 
+    private void IrADetalle(int postId)
+    {
+        Navigation.NavigateTo($"/post/{postId}");
+    }
+
     // Publicar De Post
     private bool mostrarModal = false;
     private string contenido = string.Empty;
@@ -195,7 +207,9 @@ else
 
             if (response.IsSuccessStatusCode)
             {
+
                 CerrarModal(); // cerrar modal al publicar con éxito
+                Navigation.NavigateTo("/", true);
             }
             else
             {

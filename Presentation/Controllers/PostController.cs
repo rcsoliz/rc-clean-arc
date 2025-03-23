@@ -2,6 +2,7 @@
 using Application.Queries.PostCommands;
 using Application.Serivces;
 using Application.Validators;
+using Core.Dtos;
 using Core.Entities;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
@@ -33,7 +34,7 @@ namespace Presentation.Controllers
         }
 
         [HttpGet("{id}")]
-        public async Task<ActionResult<Post>> GetById(int id)
+        public async Task<ActionResult<PostDto>> GetById(int id)
         {
             var post = await _mediator.Send(new GetPostByIdQuery(id));
             if (post == null) return NotFound();

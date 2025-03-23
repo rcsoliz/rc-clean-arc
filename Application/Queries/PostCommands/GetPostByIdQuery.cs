@@ -1,8 +1,9 @@
-﻿using Core.Entities;
+﻿using Core.Dtos;
+using Core.Entities;
 using MediatR;
 
 namespace Application.Queries.PostCommands
 {
-    public record GetPostByIdQuery(int id) : IRequest<Post>;
+    public record GetPostByIdQuery(int id) : IRequest<PostDto>;
 
 }

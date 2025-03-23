@@ -1,12 +1,13 @@
 ﻿using Application.Interfaces;
 using Application.Queries.PostCommands;
+using Core.Dtos;
 using Core.Entities;
 using Core.Interfaces;
 using MediatR;
 
 namespace Application.Handlers.PostHandlers
 {
-    public class GetPostByIdQueryHandler : IRequestHandler<GetPostByIdQuery, Post>
+    public class GetPostByIdQueryHandler : IRequestHandler<GetPostByIdQuery, PostDto>
     {
         private readonly IPostRepository _postRepository;
 
@@ -14,9 +15,10 @@ namespace Application.Handlers.PostHandlers
         {
             _postRepository = postRepository;
         }
-        public async Task<Post> Handle(GetPostByIdQuery request, CancellationToken cancellationToken)
+        public async Task<PostDto> Handle(GetPostByIdQuery request, CancellationToken cancellationToken)
         {
             return await _postRepository.GetByIdAsync(request.id);
         }
+
     }
 }
