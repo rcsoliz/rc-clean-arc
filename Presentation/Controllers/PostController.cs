@@ -1,4 +1,5 @@
 ﻿using Application.Interfaces;
+using Application.Queries.CommentCommands;
 using Application.Queries.PostCommands;
 using Application.Serivces;
 using Application.Validators;
@@ -78,5 +79,13 @@ namespace Presentation.Controllers
             return Ok(post);
         }
 
+
+        [HttpPost("filter")]
+        [AllowAnonymous]
+        public async Task<ActionResult> FiltersPost([FromBody]  PostFilterDto filter)
+        {
+            var fileter = await _mediator.Send(new FiltersPostQuery(filter));
+            return Ok(fileter);
+        }
     }
 }

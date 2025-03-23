@@ -245,6 +245,22 @@
   },
   {
     "ContainingType": "Presentation.Controllers.PostController",
+    "Method": "FiltersPost",
+    "RelativePath": "api/Post/filter",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "filter",
+        "Type": "Core.Dtos.PostFilterDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Presentation.Controllers.PostController",
     "Method": "GetPagedPosts",
     "RelativePath": "api/Post/paged",
     "HttpMethod": "GET",

@@ -5,14 +5,16 @@
 @inject IJSRuntime JS
 @inject NavigationManager Navigation
 
-
-<div class="d-flex justify-content-between align-items-center mb-3">
-<h3>Últimas publicaciones</h3>
-@if (AuthState.IsAuthenticated)
-{
-    <button class="btn btn-primary me-2" @onclick="MostrarModal">Postear</button>
-}
-</div>
+<h3 class="d-flex justify-content-between align-items-center mb-4">
+    <span>Últimas publicaciones</span>
+    <div>
+        <button class="btn btn-secondary me-2" @onclick="MostrarModalFiltro">Filtros</button>
+        @if (AuthState.IsAuthenticated)
+        {
+            <button class="btn btn-primary" @onclick="AbrirModal">Postear</button>
+        }
+    </div>
+</h3>
 
 <!-- Modal -->
 @if (mostrarModal)
@@ -54,18 +56,48 @@ else
     @foreach (var post in pagedPosts.Items)
     {
         <div class="card mb-3 p-3 shadow-sm border rounded"
-            style="cursor: pointer;"
-            @onclick="() => IrADetalle(post.Id)">
+             style="cursor: pointer;"
+             @onclick="() => IrADetalle(post.Id)">
+
             <div class="d-flex justify-content-between">
                 <strong>@post.Username</strong>
                 <small>@DateTime.Parse(post.Created).ToString("dd/MM")</small>
             </div>
+
             <p>
-                @(post.PostContent.Length > 140 ? post.PostContent.Substring(0, 140) + "..." : post.PostContent)
+                @if (expandedPostId == post.Id)
+                {
+                    @post.PostContent
+                }
+                else
+                {
+                    @(post.PostContent.Length > 140
+                        ? post.PostContent.Substring(0, 140) + "..."
+                        : post.PostContent)
+                }
             </p>
-            <span class="text-primary">Ver más</span>
+
+            @if (post.PostContent.Length > 140)
+            {
+               @*  <a class="text-primary"
+                   href="#"
+                   style="cursor: pointer;"
+                @onclick:stopPropagation
+                   @onclick="() => ToggleExpand(post.Id)">
+                    @(expandedPostId == post.Id ? "Ver menos" : "Ver más")
+                </a> *@
+
+                <span class="text-primary"
+                      role="button"
+                      style="cursor: pointer;"
+                @onclick:stopPropagation
+                      @onclick="() => ToggleExpand(post.Id)">
+                    @(expandedPostId == post.Id ? "Ver menos" : "Ver más")
+                </span>
+            }
         </div>
     }
+
 
     <div class="d-flex justify-content-center mt-3">
         <nav>
@@ -87,14 +119,57 @@ else
     </div>
 }
 
+<!-- Modal de filtros -->
+@if (mostrarModalFiltro)
+{
+    
+    <div class="modal fade show d-block" style="background-color: rgba(0,0,0,0.5);">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Filtrar publicaciones</h5>
+                    <button type="button" class="btn-close" @onclick="CerrarModalFiltro"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <label>Buscar texto</label>
+                        <input class="form-control" @bind="filtro.SearchText" />
+                    </div>
+                    <div class="mb-3">
+                        <label>Usuario</label>
+                        <input class="form-control" @bind="filtro.Username" />
+                    </div>
+                    <div class="mb-3">
+                        <label>Desde</label>
+                        <InputDate class="form-control" @bind-Value="filtro.StartDate" />
+                    </div>
+                    <div class="mb-3">
+                        <label>Hasta</label>
+                        <InputDate class="form-control" @bind-Value="filtro.EndDate" />
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" @onclick="CerrarModalFiltro">Cancelar</button>
+                    <button class="btn btn-primary" @onclick="AplicarFiltro">Aplicar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
 
 
 @code {
     private PagedResult<PostDto>? pagedPosts;
     private int currentPage = 1;
-    private int pageSize = 5;
+    private int pageSize = 10;
     private int totalPages => (int)Math.Ceiling((double)(pagedPosts?.TotalCount ?? 0) / pageSize);
     private int? expandedPostId = null;
+
+   // private PagedResult<PostDto> pagedPosts = new();
+    // private int expandedPostId = 0;
+    private bool mostrarModalFiltro = false;
+    private PostFilterDto filtro = new() { Page = 1, PageSize = 10 };
 
     protected override async Task OnInitializedAsync()
     {
@@ -202,6 +277,29 @@ else
         CerrarModal();
     }
 
+    private async Task CargarPosts()
+    {
+        var response = await Http.PostAsJsonAsync("api/post/filter", filtro);
+        if (response.IsSuccessStatusCode)
+        {
+            pagedPosts = await response.Content.ReadFromJsonAsync<PagedResult<PostDto>>() ?? new();
+        }
+    }
+
+    private void MostrarModalFiltro() => mostrarModalFiltro = true;
+    private void CerrarModalFiltro() => mostrarModalFiltro = false;
+
+    private async Task AplicarFiltro()
+    {
+        mostrarModalFiltro = false;
+        await CargarPosts();
+    }
+
+    private void AbrirModal()
+    {
+        // tu código actual de abrir modal para postear
+        mostrarModalFiltro = true;
+    }
 }
 
 

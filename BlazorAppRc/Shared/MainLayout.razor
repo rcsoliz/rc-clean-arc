@@ -4,7 +4,8 @@
 @inject BlazorAppRc.Services.AuthState AuthState
 
 <header class="navbar navbar-light bg-light px-3 d-flex justify-content-between shadow-sm">
-    <span class="fw-bold">Mi App</span>
+    <span class="fw-bold me-2 text-decoration-none" style="cursor: pointer;" @onclick="Recargar">Mi App</span>
+
     <div>
         @if (AuthState.IsAuthenticated)
         {
@@ -99,5 +100,10 @@
         {
             Navigation.NavigateTo($"/mispost");
         }
+    }
+
+    private void Recargar()
+    {
+        Navigation.NavigateTo("/", forceLoad: true);
     }
 }
