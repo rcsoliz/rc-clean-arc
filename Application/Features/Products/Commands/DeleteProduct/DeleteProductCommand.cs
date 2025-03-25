@@ -1,7 +1,7 @@
 ﻿using MediatR;
 
 
-namespace Application.Queries.ProductCommads
+namespace Application.Features.Products.Commands.DeleteProduct
 {
     public record DeleteProductCommand(int Id) : IRequest<bool>;
 

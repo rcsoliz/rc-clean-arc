@@ -3,14 +3,12 @@ using Application.Features.Comments.Commands.DeleteComment;
 using Application.Features.Comments.Queries.GetAllCommentByPostId;
 using Application.Features.Comments.Queries.GetAllComments;
 using Application.Features.Comments.Queries.GetCommentById;
-using Application.Queries.ProductCommads;
 using Application.Validators;
 using Core.Dtos;
 using Core.Entities;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using static System.Net.WebRequestMethods;
 
 namespace Presentation.Controllers
 {

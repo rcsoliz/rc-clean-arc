@@ -1,5 +1,4 @@
 ﻿using Application.Interfaces;
-using Application.Queries.ProductCommads;
 using Core.Entities;
 using MediatR;
 using System;
@@ -8,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Application.Handlers.ProductHandlers
+namespace Application.Features.Products.Queries.GetProductById
 {
     public class GetProductByIdQueryHandler: IRequestHandler<GetProductByIdQuery, Product>
     {

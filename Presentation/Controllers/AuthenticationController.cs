@@ -1,15 +1,12 @@
-﻿using Application.Queries.ProductCommads;
-using Application.Queries.UserCommands;
+﻿using Application.Features.Users.Queries.GetUserById;
 using Application.Serivces;
 using Application.Validators;
 using Core.Entities;
 using Core.Models;
-using Infrastructure.Data;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity.Data;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;

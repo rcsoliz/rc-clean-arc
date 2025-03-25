@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Application.Handlers.UserHandlers
+namespace Application.Features.Users.Commands.CreateUser
 {
-    class CreateUserCommand
+    class CreateUserCommandHandler
     {
     }
 }

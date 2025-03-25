@@ -1,13 +1,13 @@
-﻿using Application.Handlers.ProductHandlers;
-using Application.Queries;
-using Application.Queries.ProductCommads;
+﻿using Application.Features.Products.Commands.CreateProduct;
+using Application.Features.Products.Commands.DeleteProduct;
+using Application.Features.Products.Commands.UpdateProduct;
+using Application.Features.Products.Queries.GetAllProducts;
+using Application.Features.Products.Queries.GetProductById;
 using Application.Validators;
 using Core.Entities;
-using Infrastructure.Data;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using System.Collections;
 
 namespace Presentation.Controllers
 {

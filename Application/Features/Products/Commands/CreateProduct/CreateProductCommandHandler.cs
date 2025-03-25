@@ -1,9 +1,8 @@
 ﻿using Application.Interfaces;
-using Application.Queries.ProductCommads;
 using Core.Entities;
 using MediatR;
 
-namespace Application.Handlers.ProductHandlers
+namespace Application.Features.Products.Commands.CreateProduct
 {
     public class CreateProductCommandHandler : IRequestHandler<CreateProductCommand, Product>
     {

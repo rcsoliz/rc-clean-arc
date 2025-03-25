@@ -3,7 +3,7 @@ using MediatR;
 using System.Collections.Generic;
 
 
-namespace Application.Queries
+namespace Application.Features.Products.Queries.GetAllProducts
 {
     public record GetAllProductsQuery(): IRequest<IEnumerable<Product>>;
 

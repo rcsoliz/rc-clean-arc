@@ -13,7 +13,6 @@ using System.Text;
 using Microsoft.OpenApi.Models;
 
 using MediatR;
-using Application.Handlers;
 using Microsoft.Extensions.DependencyInjection;
 
 using Serilog;
@@ -21,6 +20,7 @@ using Microsoft.Extensions.Options;
 using Microsoft.Extensions.Configuration;
 using Application.Serivces;
 using Application.Interfaces;
+using Application.Features.Products.Queries.GetAllProducts;
 
 
 
@@ -98,7 +98,7 @@ builder.Services.AddSwaggerGen(c =>
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 
 // Add services to Medditor.
-builder.Services.AddMediatR(typeof(GetProductsQueryHandlers));
+builder.Services.AddMediatR(typeof(GetAllProductsQueryHandlers));
 
 
 // Add Serilog

@@ -1,15 +1,14 @@
 ﻿using Application.Interfaces;
-using Application.Queries;
 using Core.Entities;
 using MediatR;
 
-namespace Application.Handlers
+namespace Application.Features.Products.Queries.GetAllProducts
 {
-    public class GetProductsQueryHandlers : IRequestHandler<GetAllProductsQuery, IEnumerable<Product>>
+    public class GetAllProductsQueryHandlers : IRequestHandler<GetAllProductsQuery, IEnumerable<Product>>
     {
         private readonly IProductRepository _productRepository;
 
-        public GetProductsQueryHandlers(IProductRepository productRepository)
+        public GetAllProductsQueryHandlers(IProductRepository productRepository)
         {
             _productRepository = productRepository;
         }
