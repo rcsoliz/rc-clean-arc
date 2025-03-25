@@ -4,7 +4,6 @@ using Application.Features.Posts.Queries.GetAllPost;
 using Application.Features.Posts.Queries.GetAllPostByUserId;
 using Application.Features.Posts.Queries.GetPostById;
 using Application.Interfaces;
-using Application.Queries.CommentCommands;
 using Application.Serivces;
 using Application.Validators;
 using Core.Dtos;

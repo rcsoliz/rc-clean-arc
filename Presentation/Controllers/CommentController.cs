@@ -1,4 +1,8 @@
-﻿using Application.Queries.CommentCommands;
+﻿using Application.Features.Comments.Commands.CreateComment;
+using Application.Features.Comments.Commands.DeleteComment;
+using Application.Features.Comments.Queries.GetAllCommentByPostId;
+using Application.Features.Comments.Queries.GetAllComments;
+using Application.Features.Comments.Queries.GetCommentById;
 using Application.Queries.ProductCommads;
 using Application.Validators;
 using Core.Dtos;

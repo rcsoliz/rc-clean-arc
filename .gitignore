@@ -1,3 +1,46 @@
+# Visual Studio
 .vs/
+<<<<<<< HEAD
 **/obj/
 **/bin/
+=======
+*.user
+*.suo
+
+# Build outputs
+**/bin/
+**/obj/
+
+# NuGet
+*.nupkg
+*.snupkg
+packages/
+*.nuspec
+
+# Logs
+*.log
+
+# Cache
+*.pdb
+*.dll
+*.cache
+*.FileListAbsolute.txt
+*.sourcelink.json
+
+# ASP.NET generated
+wwwroot/
+appsettings.Development.json
+appsettings.json
+
+# Test results
+TestResult*/
+*.trx
+*.coverage
+*.coveragexml
+
+# Others
+*.db
+*.bak
+*.mdf
+*.ldf
+>>>>>>> 65f78db (add on fectures ->comments)
