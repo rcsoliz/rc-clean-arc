@@ -1,9 +1,8 @@
 ﻿using Application.Interfaces;
-using Application.Queries.PostCommands;
 using Core.Dtos;
 using MediatR;
 
-namespace Application.Handlers.PostHandlers
+namespace Application.Features.Posts.Queries.GetPostById
 {
     public class GetPostByIdQueryHandler : IRequestHandler<GetPostByIdQuery, PostDto>
     {

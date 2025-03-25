@@ -201,7 +201,7 @@
     "Parameters": [
       {
         "Name": "command",
-        "Type": "Application.Queries.PostCommands.CreatePostCommand",
+        "Type": "Application.Features.Posts.Commands.CreatePost.CreatePostCommand",
         "IsRequired": true
       }
     ],

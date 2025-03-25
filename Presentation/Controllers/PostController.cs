@@ -1,6 +1,10 @@
-﻿using Application.Interfaces;
+﻿using Application.Features.Posts.Commands.CreatePost;
+using Application.Features.Posts.Queries.FiltersPos;
+using Application.Features.Posts.Queries.GetAllPost;
+using Application.Features.Posts.Queries.GetAllPostByUserId;
+using Application.Features.Posts.Queries.GetPostById;
+using Application.Interfaces;
 using Application.Queries.CommentCommands;
-using Application.Queries.PostCommands;
 using Application.Serivces;
 using Application.Validators;
 using Core.Dtos;

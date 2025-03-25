@@ -1,11 +1,10 @@
 ﻿using Application.Common;
 using Application.Interfaces;
-using Application.Queries.PostCommands;
 using Core.Dtos;
 using MediatR;
 
 
-namespace Application.Handlers.PostHandlers
+namespace Application.Features.Posts.Queries.FiltersPos
 {
     public class FiltersPostQueryHandler : IRequestHandler<FiltersPostQuery, PagedResult<PostDto>>
     {
