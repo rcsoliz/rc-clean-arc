@@ -59,7 +59,8 @@
             }
             else
             {
-                errorMessage = "Credenciales incorrectas.";
+                var error = await response.Content.ReadAsStringAsync();
+                errorMessage = error;
             }
         }
         catch (Exception ex)
