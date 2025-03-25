@@ -326,7 +326,7 @@
     "Parameters": [
       {
         "Name": "command",
-        "Type": "Application.Queries.ProductCommads.CreateProductCommand",
+        "Type": "Application.Features.Products.Commands.CreateProduct.CreateProductCommand",
         "IsRequired": true
       }
     ],
@@ -373,7 +373,7 @@
       },
       {
         "Name": "command",
-        "Type": "Application.Queries.ProductCommads.UpdateProductCommand",
+        "Type": "Application.Features.Products.Commands.UpdateProduct.UpdateProductCommand",
         "IsRequired": true
       }
     ],

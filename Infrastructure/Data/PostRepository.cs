@@ -1,9 +1,9 @@
 ﻿using Application.Common;
+using Application.Common.Settings;
 using Application.Interfaces;
 using Azure;
 using Core.Dtos;
 using Core.Entities;
-using Infrastructure.Common;
 using Microsoft.EntityFrameworkCore;
 
 namespace Infrastructure.Data
@@ -47,7 +47,7 @@ namespace Infrastructure.Data
         public async Task<IEnumerable<PostDto>> GetAllPostWithDetailsAsync()
         {
             return await _context.PostDtos
-                .FromSqlRaw(SqlCommandBuilder.Exec(StoredProcedures.GetAllPosts))
+                .FromSqlRaw(SqlCommandBuilderSp.Exec(StoredProcedures.GetAllPosts))
                 .ToListAsync();
         }
 

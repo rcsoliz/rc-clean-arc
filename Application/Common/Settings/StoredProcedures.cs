@@ -1,4 +1,4 @@
-﻿namespace Infrastructure.Common
+﻿namespace Application.Common.Settings
 {
     public static class StoredProcedures
     {
