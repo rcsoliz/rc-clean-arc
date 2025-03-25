@@ -1,6 +1,6 @@
-﻿using Application.Queries.CommentCommands;
+﻿using Application.Interfaces;
+using Application.Queries.CommentCommands;
 using Core.Entities;
-using Core.Interfaces;
 using MediatR;
 
 namespace Application.Handlers.CommentHandlers

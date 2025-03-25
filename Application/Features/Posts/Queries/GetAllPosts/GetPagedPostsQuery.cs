@@ -1,13 +1,8 @@
 ﻿using Application.Common;
 using Core.Dtos;
 using MediatR;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace Application.Queries.PostCommands
+namespace Application.Features.Posts.Queries.GetAllPosts
 {
     public class GetPagedPostsQuery : IRequest<PagedResult<PostDto>>
     {

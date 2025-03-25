@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "iLDNznIa/oA=",
+  "dgSpecHash": "AOp33Q3L+Ho=",
   "success": true,
-  "projectFilePath": "D:\\DESARROLLO\\2025\\CleanArchitectureApi\\Application\\Application.csproj",
+  "projectFilePath": "D:\\Automatizacion\\2025\\Nacional\\Application\\Application.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\pc\\.nuget\\packages\\bcrypt.net-next\\4.0.3\\bcrypt.net-next.4.0.3.nupkg.sha512",
     "C:\\Users\\pc\\.nuget\\packages\\fluentvalidation\\11.11.0\\fluentvalidation.11.11.0.nupkg.sha512",

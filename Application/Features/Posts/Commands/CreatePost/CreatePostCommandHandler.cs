@@ -1,5 +1,4 @@
 ﻿using Application.Interfaces;
-using Application.Queries.PostCommands;
 using Core.Entities;
 using MediatR;
 using System;
@@ -8,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Application.Handlers.PostHandlers
+namespace Application.Features.Posts.Commands.CreatePost
 {
     public class CreatePostCommandHandler : IRequestHandler<CreatePostCommand, Post>
     {

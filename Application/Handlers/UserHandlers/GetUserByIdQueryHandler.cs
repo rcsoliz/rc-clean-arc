@@ -1,7 +1,7 @@
 ﻿using Application.Queries.ProductCommads;
 using Application.Queries.UserCommands;
+using Application.Serivces;
 using Core.Entities;
-using Core.Interfaces;
 using MediatR;
 using System;
 using System.Collections.Generic;

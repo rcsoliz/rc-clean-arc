@@ -2,8 +2,7 @@
 using Core.Entities;
 using Core.Models;
 
-
-namespace Core.Interfaces
+namespace Application.Interfaces
 {
     public interface ICommentRepository
     {

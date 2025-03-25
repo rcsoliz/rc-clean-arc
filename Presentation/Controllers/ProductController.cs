@@ -3,7 +3,6 @@ using Application.Queries;
 using Application.Queries.ProductCommads;
 using Application.Validators;
 using Core.Entities;
-using Core.Interfaces;
 using Infrastructure.Data;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;

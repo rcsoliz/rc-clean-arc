@@ -1,5 +1,5 @@
-﻿using Core.Entities;
-using Core.Interfaces;
+﻿using Application.Interfaces;
+using Core.Entities;
 using Microsoft.EntityFrameworkCore;
 
 namespace Infrastructure.Data

@@ -1,6 +1,6 @@
-﻿using Application.Queries;
+﻿using Application.Interfaces;
+using Application.Queries;
 using Core.Entities;
-using Core.Interfaces;
 using MediatR;
 
 namespace Application.Handlers

@@ -1,8 +1,8 @@
 ﻿using Application.Queries.ProductCommads;
 using Application.Queries.UserCommands;
+using Application.Serivces;
 using Application.Validators;
 using Core.Entities;
-using Core.Interfaces;
 using Core.Models;
 using Infrastructure.Data;
 using MediatR;

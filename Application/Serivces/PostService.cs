@@ -1,6 +1,5 @@
 ﻿using Application.Interfaces;
 using Core.Dtos;
-using Core.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;

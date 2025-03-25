@@ -1,6 +1,6 @@
-﻿using Application.Queries.ProductCommads;
+﻿using Application.Interfaces;
+using Application.Queries.ProductCommads;
 using Core.Entities;
-using Core.Interfaces;
 using MediatR;
 using System;
 using System.Collections.Generic;
