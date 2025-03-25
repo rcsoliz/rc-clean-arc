@@ -79,14 +79,6 @@ else
 
             @if (post.PostContent.Length > 140)
             {
-               @*  <a class="text-primary"
-                   href="#"
-                   style="cursor: pointer;"
-                @onclick:stopPropagation
-                   @onclick="() => ToggleExpand(post.Id)">
-                    @(expandedPostId == post.Id ? "Ver menos" : "Ver más")
-                </a> *@
-
                 <span class="text-primary"
                       role="button"
                       style="cursor: pointer;"
@@ -107,12 +99,13 @@ else
                 </li>
                 @for (int i = 1; i <= totalPages; i++)
                 {
-                    <li class="page-item @(currentPage == i ? "active" : "")">
-                        <button class="page-link" @onclick="async () => await ChangePage(i)">@i</button>
+                    var pageNumber = i;
+                    <li class="page-item @(currentPage == pageNumber ? "active" : "")">
+                        <button class="page-link" @onclick="async () => await ChangePage(pageNumber)">@pageNumber</button>
                     </li>
                 }
                 <li class="page-item @(currentPage == totalPages ? "disabled" : "")">
-                    <button class="page-link" @onclick="async () => await NextPage()">»</button>
+                    <button class="page-link" @onclick="async () => await LastPage()">»</button>
                 </li>
             </ul>
         </nav>
@@ -162,14 +155,12 @@ else
 @code {
     private PagedResult<PostDto>? pagedPosts;
     private int currentPage = 1;
-    private int pageSize = 10;
+    private int pageSize = 4;
     private int totalPages => (int)Math.Ceiling((double)(pagedPosts?.TotalCount ?? 0) / pageSize);
     private int? expandedPostId = null;
 
-   // private PagedResult<PostDto> pagedPosts = new();
-    // private int expandedPostId = 0;
     private bool mostrarModalFiltro = false;
-    private PostFilterDto filtro = new() { Page = 1, PageSize = 10 };
+    private PostFilterDto filtro = new() { Page = 1, PageSize = 4 };
 
     protected override async Task OnInitializedAsync()
     {
@@ -201,13 +192,10 @@ else
         }
     }
 
-    private async Task NextPage()
+    private async Task LastPage()
     {
-        if (currentPage < totalPages)
-        {
-            currentPage++;
-            await LoadPosts();
-        }
+        currentPage = totalPages;
+        await LoadPosts();
     }
 
     private void IrADetalle(int postId)
@@ -298,7 +286,7 @@ else
     private void AbrirModal()
     {
         // tu código actual de abrir modal para postear
-        mostrarModalFiltro = true;
+        mostrarModal= true;
     }
 }
 

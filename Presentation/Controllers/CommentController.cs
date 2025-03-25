@@ -51,6 +51,7 @@ namespace Presentation.Controllers
         }
 
         [HttpGet("post/{id}")]
+        [AllowAnonymous]
         public async Task<ActionResult<IEnumerable<CommentDto>>> GetAllCommentByPostId([FromRoute] int id)
         {
             var comments = await _mediator.Send(new GetAllCommentByPostIdQuery(id));

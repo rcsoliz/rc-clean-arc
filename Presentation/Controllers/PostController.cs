@@ -35,6 +35,7 @@ namespace Presentation.Controllers
         }
 
         [HttpGet("{id}")]
+        [AllowAnonymous]
         public async Task<ActionResult<PostDto>> GetById(int id)
         {
             var post = await _mediator.Send(new GetPostByIdQuery(id));

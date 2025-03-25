@@ -92,16 +92,16 @@ else
     {
         try
         {
-            var token = await JS.InvokeAsync<string>("localStorage.getItem", "jwt");
+            // var token = await JS.InvokeAsync<string>("localStorage.getItem", "jwt");
 
-            if (string.IsNullOrEmpty(token))
-            {
-                // No está autenticado
-                return;
-            }
+            // if (string.IsNullOrEmpty(token))
+            // {
+            //     // No está autenticado
+            //     return;
+            // }
 
-            Http.DefaultRequestHeaders.Authorization =
-                new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
+            // Http.DefaultRequestHeaders.Authorization =
+            //     new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
 
             post = await Http.GetFromJsonAsync<PostDto>($"api/post/{Id}");
             comentarios = await Http.GetFromJsonAsync<List<ComentarioDto>>($"/api/Comment/post/{Id}");
