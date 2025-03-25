@@ -1,12 +1,13 @@
 ﻿using Application.Common;
 using Application.Common.Settings;
+using Application.DTOs;
 using Application.Interfaces;
 using Azure;
-using Core.Dtos;
 using Core.Entities;
+using Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
 
-namespace Infrastructure.Data
+namespace Infrastructure.Data.Repositories
 {
     public class PostRepository : IPostRepository
     {

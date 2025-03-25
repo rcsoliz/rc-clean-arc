@@ -161,7 +161,7 @@
     ],
     "ReturnTypes": [
       {
-        "Type": "System.Collections.Generic.IEnumerable\u00601[[Core.Dtos.CommentDto, Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[Application.DTOs.CommentDto, Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -223,7 +223,7 @@
     ],
     "ReturnTypes": [
       {
-        "Type": "Core.Dtos.PostDto",
+        "Type": "Application.DTOs.PostDto",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -253,7 +253,7 @@
     "Parameters": [
       {
         "Name": "filter",
-        "Type": "Core.Dtos.PostFilterDto",
+        "Type": "Application.DTOs.PostFilterDto",
         "IsRequired": true
       }
     ],

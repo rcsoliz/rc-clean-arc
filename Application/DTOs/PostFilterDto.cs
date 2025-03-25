@@ -1,5 +1,5 @@
 ﻿
-namespace Core.Dtos
+namespace Application.DTOs
 {
     public class PostFilterDto
     {

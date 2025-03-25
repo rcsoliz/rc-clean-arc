@@ -1,4 +1,4 @@
-﻿using Core.Dtos;
+﻿using Application.DTOs;
 using MediatR;
 
 namespace Application.Features.Comments.Queries.GetAllCommentByPostId

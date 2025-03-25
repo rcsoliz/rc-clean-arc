@@ -1,6 +1,5 @@
 ﻿using System;
 using Core.Entities;
-using Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
 using FluentValidation;
 using FluentValidation.AspNetCore;
@@ -21,6 +20,8 @@ using Microsoft.Extensions.Configuration;
 using Application.Serivces;
 using Application.Interfaces;
 using Application.Features.Products.Queries.GetAllProducts;
+using Infrastructure.Data;
+using Infrastructure.Data.Repositories;
 
 
 

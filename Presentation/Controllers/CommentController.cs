@@ -1,10 +1,10 @@
-﻿using Application.Features.Comments.Commands.CreateComment;
+﻿using Application.DTOs;
+using Application.Features.Comments.Commands.CreateComment;
 using Application.Features.Comments.Commands.DeleteComment;
 using Application.Features.Comments.Queries.GetAllCommentByPostId;
 using Application.Features.Comments.Queries.GetAllComments;
 using Application.Features.Comments.Queries.GetCommentById;
 using Application.Validators;
-using Core.Dtos;
 using Core.Entities;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;

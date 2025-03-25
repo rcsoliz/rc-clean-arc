@@ -1,6 +1,6 @@
 ﻿using Application.Common;
 using Application.Interfaces;
-using Core.Dtos;
+using Application.DTOs;
 using MediatR;
 
 namespace Application.Features.Posts.Queries.GetAllPostByUserId

@@ -41,7 +41,9 @@ else
                     <strong>@c.Username:</strong> @c.CommentContent
                     <div class="text-muted small">@DateTime.Parse(c.Created).ToString("dd/MM")</div>
                 </div>
-                @if (int.TryParse(AuthState.Id, out var userId) && (userId == c.UserId || userId == post.UserId))
+
+                @if (AuthState.IsAuthenticated && int.TryParse(AuthState.Id, out var userId) &&(userId == c.UserId || userId == post.UserId))
+                @* @if (int.TryParse(AuthState.Id, out var userId) && (userId == c.UserId || userId == post.UserId)) *@
                 {
                     <button class="btn btn-sm btn-outline-danger ms-2" title="Eliminar"
                             @onclick="() => ConfirmarEliminarComentario(c.Id)">

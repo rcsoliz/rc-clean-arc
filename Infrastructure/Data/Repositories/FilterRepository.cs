@@ -1,9 +1,9 @@
 ﻿using Application.Common;
+using Application.DTOs;
 using Application.Interfaces;
-using Core.Dtos;
 using Microsoft.EntityFrameworkCore;
 
-namespace Infrastructure.Data
+namespace Infrastructure.Data.Repositories
 {
     public class FilterRepository : IFilterRepository
     {

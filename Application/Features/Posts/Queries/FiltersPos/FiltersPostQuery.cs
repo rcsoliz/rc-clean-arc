@@ -1,5 +1,5 @@
 ﻿using Application.Common;
-using Core.Dtos;
+using Application.DTOs;
 using MediatR;
 
 namespace Application.Features.Posts.Queries.FiltersPos

@@ -1,10 +1,11 @@
-﻿using Application.Interfaces;
-using Core.Dtos;
+﻿using Application.DTOs;
+using Application.Interfaces;
 using Core.Entities;
 using Core.Models;
+using Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
 
-namespace Infrastructure.Data
+namespace Infrastructure.Data.Repositories
 {
     public class CommentRepository : ICommentRepository
     {
