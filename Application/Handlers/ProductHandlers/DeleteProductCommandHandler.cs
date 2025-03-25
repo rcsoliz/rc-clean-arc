@@ -1,5 +1,5 @@
-﻿using Application.Queries.ProductCommads;
-using Core.Interfaces;
+﻿using Application.Interfaces;
+using Application.Queries.ProductCommads;
 using MediatR;
 using System;
 using System.Collections.Generic;

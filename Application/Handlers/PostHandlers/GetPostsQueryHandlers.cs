@@ -1,7 +1,6 @@
 ﻿using Application.Interfaces;
 using Application.Queries.PostCommands;
 using Core.Entities;
-using Core.Interfaces;
 using MediatR;
 using System;
 using System.Collections.Generic;

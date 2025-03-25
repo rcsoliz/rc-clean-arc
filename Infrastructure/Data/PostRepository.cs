@@ -3,7 +3,6 @@ using Application.Interfaces;
 using Azure;
 using Core.Dtos;
 using Core.Entities;
-using Core.Interfaces;
 using Infrastructure.Common;
 using Microsoft.EntityFrameworkCore;
 

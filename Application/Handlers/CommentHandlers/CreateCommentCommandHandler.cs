@@ -1,5 +1,5 @@
-﻿using Application.Queries.CommentCommands;
-using Core.Interfaces;
+﻿using Application.Interfaces;
+using Application.Queries.CommentCommands;
 using Core.Models;
 using MediatR;
 

@@ -1,8 +1,6 @@
 ﻿using Application.Interfaces;
 using Application.Queries.PostCommands;
 using Core.Dtos;
-using Core.Entities;
-using Core.Interfaces;
 using MediatR;
 
 namespace Application.Handlers.PostHandlers

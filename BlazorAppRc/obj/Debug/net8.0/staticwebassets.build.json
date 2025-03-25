@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "0Z3pqSvX2JYdWntp/Aog8VsSdAcumwa3V+xv79z96Bk=",
+  "Hash": "Tlfvyl0LPd/pnORQLZa1zNRnxs3C4+UsSzB9FcOR+0s=",
   "Source": "BlazorAppRc",
   "BasePath": "_content/BlazorAppRc",
   "Mode": "Default",
@@ -10,17 +10,17 @@
     {
       "Name": "BlazorAppRc\\wwwroot",
       "Source": "BlazorAppRc",
-      "ContentRoot": "D:\\DESARROLLO\\2025\\CleanArchitectureApi\\BlazorAppRc\\wwwroot\\",
+      "ContentRoot": "D:\\Automatizacion\\2025\\Nacional\\BlazorAppRc\\wwwroot\\",
       "BasePath": "_content/BlazorAppRc",
       "Pattern": "**"
     }
   ],
   "Assets": [
     {
-      "Identity": "D:\\DESARROLLO\\2025\\CleanArchitectureApi\\BlazorAppRc\\obj\\Debug\\net8.0\\scopedcss\\bundle\\BlazorAppRc.styles.css",
+      "Identity": "D:\\Automatizacion\\2025\\Nacional\\BlazorAppRc\\obj\\Debug\\net8.0\\scopedcss\\bundle\\BlazorAppRc.styles.css",
       "SourceId": "BlazorAppRc",
       "SourceType": "Computed",
-      "ContentRoot": "D:\\DESARROLLO\\2025\\CleanArchitectureApi\\BlazorAppRc\\obj\\Debug\\net8.0\\scopedcss\\bundle\\",
+      "ContentRoot": "D:\\Automatizacion\\2025\\Nacional\\BlazorAppRc\\obj\\Debug\\net8.0\\scopedcss\\bundle\\",
       "BasePath": "_content/BlazorAppRc",
       "RelativePath": "BlazorAppRc#[.{fingerprint}]?.styles.css",
       "AssetKind": "All",
@@ -35,13 +35,13 @@
       "Integrity": "i7Kv3Jh2VKt3F31fnLmdlmlvp+mLhBmy6tDg0MhfvME=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "D:\\DESARROLLO\\2025\\CleanArchitectureApi\\BlazorAppRc\\obj\\Debug\\net8.0\\scopedcss\\bundle\\BlazorAppRc.styles.css"
+      "OriginalItemSpec": "D:\\Automatizacion\\2025\\Nacional\\BlazorAppRc\\obj\\Debug\\net8.0\\scopedcss\\bundle\\BlazorAppRc.styles.css"
     },
     {
-      "Identity": "D:\\DESARROLLO\\2025\\CleanArchitectureApi\\BlazorAppRc\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\BlazorAppRc.bundle.scp.css",
+      "Identity": "D:\\Automatizacion\\2025\\Nacional\\BlazorAppRc\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\BlazorAppRc.bundle.scp.css",
       "SourceId": "BlazorAppRc",
       "SourceType": "Computed",
-      "ContentRoot": "D:\\DESARROLLO\\2025\\CleanArchitectureApi\\BlazorAppRc\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\",
+      "ContentRoot": "D:\\Automatizacion\\2025\\Nacional\\BlazorAppRc\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\",
       "BasePath": "_content/BlazorAppRc",
       "RelativePath": "BlazorAppRc#[.{fingerprint}]!.bundle.scp.css",
       "AssetKind": "All",
@@ -56,13 +56,13 @@
       "Integrity": "i7Kv3Jh2VKt3F31fnLmdlmlvp+mLhBmy6tDg0MhfvME=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "D:\\DESARROLLO\\2025\\CleanArchitectureApi\\BlazorAppRc\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\BlazorAppRc.bundle.scp.css"
+      "OriginalItemSpec": "D:\\Automatizacion\\2025\\Nacional\\BlazorAppRc\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\BlazorAppRc.bundle.scp.css"
     },
     {
-      "Identity": "D:\\DESARROLLO\\2025\\CleanArchitectureApi\\BlazorAppRc\\wwwroot\\css\\bootstrap\\bootstrap.min.css",
+      "Identity": "D:\\Automatizacion\\2025\\Nacional\\BlazorAppRc\\wwwroot\\css\\bootstrap\\bootstrap.min.css",
       "SourceId": "BlazorAppRc",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\DESARROLLO\\2025\\CleanArchitectureApi\\BlazorAppRc\\wwwroot\\",
+      "ContentRoot": "D:\\Automatizacion\\2025\\Nacional\\BlazorAppRc\\wwwroot\\",
       "BasePath": "_content/BlazorAppRc",
       "RelativePath": "css/bootstrap/bootstrap.min#[.{fingerprint}]?.css",
       "AssetKind": "All",
@@ -73,17 +73,17 @@
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
-      "Fingerprint": "bpk8xqwxhs",
-      "Integrity": "z8OR40MowJ8GgK6P89Y+hiJK5+cclzFHzLhFQLL92bg=",
+      "Fingerprint": "6gzpyzhau4",
+      "Integrity": "SiIVMGgRhdXjKSTIddX7mh9IbOXVcwQWc7/p4nS6D/0=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\css\\bootstrap\\bootstrap.min.css"
     },
     {
-      "Identity": "D:\\DESARROLLO\\2025\\CleanArchitectureApi\\BlazorAppRc\\wwwroot\\css\\bootstrap\\bootstrap.min.css.map",
+      "Identity": "D:\\Automatizacion\\2025\\Nacional\\BlazorAppRc\\wwwroot\\css\\bootstrap\\bootstrap.min.css.map",
       "SourceId": "BlazorAppRc",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\DESARROLLO\\2025\\CleanArchitectureApi\\BlazorAppRc\\wwwroot\\",
+      "ContentRoot": "D:\\Automatizacion\\2025\\Nacional\\BlazorAppRc\\wwwroot\\",
       "BasePath": "_content/BlazorAppRc",
       "RelativePath": "css/bootstrap/bootstrap.min.css#[.{fingerprint}]?.map",
       "AssetKind": "All",
@@ -101,10 +101,10 @@
       "OriginalItemSpec": "wwwroot\\css\\bootstrap\\bootstrap.min.css.map"
     },
     {
-      "Identity": "D:\\DESARROLLO\\2025\\CleanArchitectureApi\\BlazorAppRc\\wwwroot\\css\\open-iconic\\font\\css\\open-iconic-bootstrap.min.css",
+      "Identity": "D:\\Automatizacion\\2025\\Nacional\\BlazorAppRc\\wwwroot\\css\\open-iconic\\font\\css\\open-iconic-bootstrap.min.css",
       "SourceId": "BlazorAppRc",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\DESARROLLO\\2025\\CleanArchitectureApi\\BlazorAppRc\\wwwroot\\",
+      "ContentRoot": "D:\\Automatizacion\\2025\\Nacional\\BlazorAppRc\\wwwroot\\",
       "BasePath": "_content/BlazorAppRc",
       "RelativePath": "css/open-iconic/font/css/open-iconic-bootstrap.min#[.{fingerprint}]?.css",
       "AssetKind": "All",
@@ -122,10 +122,10 @@
       "OriginalItemSpec": "wwwroot\\css\\open-iconic\\font\\css\\open-iconic-bootstrap.min.css"
     },
     {
-      "Identity": "D:\\DESARROLLO\\2025\\CleanArchitectureApi\\BlazorAppRc\\wwwroot\\css\\open-iconic\\font\\fonts\\open-iconic.eot",
+      "Identity": "D:\\Automatizacion\\2025\\Nacional\\BlazorAppRc\\wwwroot\\css\\open-iconic\\font\\fonts\\open-iconic.eot",
       "SourceId": "BlazorAppRc",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\DESARROLLO\\2025\\CleanArchitectureApi\\BlazorAppRc\\wwwroot\\",
+      "ContentRoot": "D:\\Automatizacion\\2025\\Nacional\\BlazorAppRc\\wwwroot\\",
       "BasePath": "_content/BlazorAppRc",
       "RelativePath": "css/open-iconic/font/fonts/open-iconic#[.{fingerprint}]?.eot",
       "AssetKind": "All",
@@ -143,10 +143,10 @@
       "OriginalItemSpec": "wwwroot\\css\\open-iconic\\font\\fonts\\open-iconic.eot"
     },
     {
-      "Identity": "D:\\DESARROLLO\\2025\\CleanArchitectureApi\\BlazorAppRc\\wwwroot\\css\\open-iconic\\font\\fonts\\open-iconic.otf",
+      "Identity": "D:\\Automatizacion\\2025\\Nacional\\BlazorAppRc\\wwwroot\\css\\open-iconic\\font\\fonts\\open-iconic.otf",
       "SourceId": "BlazorAppRc",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\DESARROLLO\\2025\\CleanArchitectureApi\\BlazorAppRc\\wwwroot\\",
+      "ContentRoot": "D:\\Automatizacion\\2025\\Nacional\\BlazorAppRc\\wwwroot\\",
       "BasePath": "_content/BlazorAppRc",
       "RelativePath": "css/open-iconic/font/fonts/open-iconic#[.{fingerprint}]?.otf",
       "AssetKind": "All",
@@ -164,10 +164,10 @@
       "OriginalItemSpec": "wwwroot\\css\\open-iconic\\font\\fonts\\open-iconic.otf"
     },
     {
-      "Identity": "D:\\DESARROLLO\\2025\\CleanArchitectureApi\\BlazorAppRc\\wwwroot\\css\\open-iconic\\font\\fonts\\open-iconic.svg",
+      "Identity": "D:\\Automatizacion\\2025\\Nacional\\BlazorAppRc\\wwwroot\\css\\open-iconic\\font\\fonts\\open-iconic.svg",
       "SourceId": "BlazorAppRc",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\DESARROLLO\\2025\\CleanArchitectureApi\\BlazorAppRc\\wwwroot\\",
+      "ContentRoot": "D:\\Automatizacion\\2025\\Nacional\\BlazorAppRc\\wwwroot\\",
       "BasePath": "_content/BlazorAppRc",
       "RelativePath": "css/open-iconic/font/fonts/open-iconic#[.{fingerprint}]?.svg",
       "AssetKind": "All",
@@ -185,10 +185,10 @@
       "OriginalItemSpec": "wwwroot\\css\\open-iconic\\font\\fonts\\open-iconic.svg"
     },
     {
-      "Identity": "D:\\DESARROLLO\\2025\\CleanArchitectureApi\\BlazorAppRc\\wwwroot\\css\\open-iconic\\font\\fonts\\open-iconic.ttf",
+      "Identity": "D:\\Automatizacion\\2025\\Nacional\\BlazorAppRc\\wwwroot\\css\\open-iconic\\font\\fonts\\open-iconic.ttf",
       "SourceId": "BlazorAppRc",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\DESARROLLO\\2025\\CleanArchitectureApi\\BlazorAppRc\\wwwroot\\",
+      "ContentRoot": "D:\\Automatizacion\\2025\\Nacional\\BlazorAppRc\\wwwroot\\",
       "BasePath": "_content/BlazorAppRc",
       "RelativePath": "css/open-iconic/font/fonts/open-iconic#[.{fingerprint}]?.ttf",
       "AssetKind": "All",
@@ -206,10 +206,10 @@
       "OriginalItemSpec": "wwwroot\\css\\open-iconic\\font\\fonts\\open-iconic.ttf"
     },
     {
-      "Identity": "D:\\DESARROLLO\\2025\\CleanArchitectureApi\\BlazorAppRc\\wwwroot\\css\\open-iconic\\font\\fonts\\open-iconic.woff",
+      "Identity": "D:\\Automatizacion\\2025\\Nacional\\BlazorAppRc\\wwwroot\\css\\open-iconic\\font\\fonts\\open-iconic.woff",
       "SourceId": "BlazorAppRc",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\DESARROLLO\\2025\\CleanArchitectureApi\\BlazorAppRc\\wwwroot\\",
+      "ContentRoot": "D:\\Automatizacion\\2025\\Nacional\\BlazorAppRc\\wwwroot\\",
       "BasePath": "_content/BlazorAppRc",
       "RelativePath": "css/open-iconic/font/fonts/open-iconic#[.{fingerprint}]?.woff",
       "AssetKind": "All",
@@ -227,10 +227,10 @@
       "OriginalItemSpec": "wwwroot\\css\\open-iconic\\font\\fonts\\open-iconic.woff"
     },
     {
-      "Identity": "D:\\DESARROLLO\\2025\\CleanArchitectureApi\\BlazorAppRc\\wwwroot\\css\\open-iconic\\FONT-LICENSE",
+      "Identity": "D:\\Automatizacion\\2025\\Nacional\\BlazorAppRc\\wwwroot\\css\\open-iconic\\FONT-LICENSE",
       "SourceId": "BlazorAppRc",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\DESARROLLO\\2025\\CleanArchitectureApi\\BlazorAppRc\\wwwroot\\",
+      "ContentRoot": "D:\\Automatizacion\\2025\\Nacional\\BlazorAppRc\\wwwroot\\",
       "BasePath": "_content/BlazorAppRc",
       "RelativePath": "css/open-iconic/FONT-LICENSE#[.{fingerprint}]?",
       "AssetKind": "All",
@@ -248,10 +248,10 @@
       "OriginalItemSpec": "wwwroot\\css\\open-iconic\\FONT-LICENSE"
     },
     {
-      "Identity": "D:\\DESARROLLO\\2025\\CleanArchitectureApi\\BlazorAppRc\\wwwroot\\css\\open-iconic\\ICON-LICENSE",
+      "Identity": "D:\\Automatizacion\\2025\\Nacional\\BlazorAppRc\\wwwroot\\css\\open-iconic\\ICON-LICENSE",
       "SourceId": "BlazorAppRc",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\DESARROLLO\\2025\\CleanArchitectureApi\\BlazorAppRc\\wwwroot\\",
+      "ContentRoot": "D:\\Automatizacion\\2025\\Nacional\\BlazorAppRc\\wwwroot\\",
       "BasePath": "_content/BlazorAppRc",
       "RelativePath": "css/open-iconic/ICON-LICENSE#[.{fingerprint}]?",
       "AssetKind": "All",
@@ -269,10 +269,10 @@
       "OriginalItemSpec": "wwwroot\\css\\open-iconic\\ICON-LICENSE"
     },
     {
-      "Identity": "D:\\DESARROLLO\\2025\\CleanArchitectureApi\\BlazorAppRc\\wwwroot\\css\\open-iconic\\README.md",
+      "Identity": "D:\\Automatizacion\\2025\\Nacional\\BlazorAppRc\\wwwroot\\css\\open-iconic\\README.md",
       "SourceId": "BlazorAppRc",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\DESARROLLO\\2025\\CleanArchitectureApi\\BlazorAppRc\\wwwroot\\",
+      "ContentRoot": "D:\\Automatizacion\\2025\\Nacional\\BlazorAppRc\\wwwroot\\",
       "BasePath": "_content/BlazorAppRc",
       "RelativePath": "css/open-iconic/README#[.{fingerprint}]?.md",
       "AssetKind": "All",
@@ -290,10 +290,10 @@
       "OriginalItemSpec": "wwwroot\\css\\open-iconic\\README.md"
     },
     {
-      "Identity": "D:\\DESARROLLO\\2025\\CleanArchitectureApi\\BlazorAppRc\\wwwroot\\css\\site.css",
+      "Identity": "D:\\Automatizacion\\2025\\Nacional\\BlazorAppRc\\wwwroot\\css\\site.css",
       "SourceId": "BlazorAppRc",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\DESARROLLO\\2025\\CleanArchitectureApi\\BlazorAppRc\\wwwroot\\",
+      "ContentRoot": "D:\\Automatizacion\\2025\\Nacional\\BlazorAppRc\\wwwroot\\",
       "BasePath": "_content/BlazorAppRc",
       "RelativePath": "css/site#[.{fingerprint}]?.css",
       "AssetKind": "All",
@@ -311,10 +311,10 @@
       "OriginalItemSpec": "wwwroot\\css\\site.css"
     },
     {
-      "Identity": "D:\\DESARROLLO\\2025\\CleanArchitectureApi\\BlazorAppRc\\wwwroot\\favicon.png",
+      "Identity": "D:\\Automatizacion\\2025\\Nacional\\BlazorAppRc\\wwwroot\\favicon.png",
       "SourceId": "BlazorAppRc",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\DESARROLLO\\2025\\CleanArchitectureApi\\BlazorAppRc\\wwwroot\\",
+      "ContentRoot": "D:\\Automatizacion\\2025\\Nacional\\BlazorAppRc\\wwwroot\\",
       "BasePath": "_content/BlazorAppRc",
       "RelativePath": "favicon#[.{fingerprint}]?.png",
       "AssetKind": "All",
@@ -332,10 +332,10 @@
       "OriginalItemSpec": "wwwroot\\favicon.png"
     },
     {
-      "Identity": "D:\\DESARROLLO\\2025\\CleanArchitectureApi\\BlazorAppRc\\wwwroot\\js\\site.js",
+      "Identity": "D:\\Automatizacion\\2025\\Nacional\\BlazorAppRc\\wwwroot\\js\\site.js",
       "SourceId": "BlazorAppRc",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\DESARROLLO\\2025\\CleanArchitectureApi\\BlazorAppRc\\wwwroot\\",
+      "ContentRoot": "D:\\Automatizacion\\2025\\Nacional\\BlazorAppRc\\wwwroot\\",
       "BasePath": "_content/BlazorAppRc",
       "RelativePath": "js/site#[.{fingerprint}]?.js",
       "AssetKind": "All",
@@ -356,7 +356,7 @@
   "Endpoints": [
     {
       "Route": "BlazorAppRc.3ikj87kkc1.bundle.scp.css",
-      "AssetFile": "D:\\DESARROLLO\\2025\\CleanArchitectureApi\\BlazorAppRc\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\BlazorAppRc.bundle.scp.css",
+      "AssetFile": "D:\\Automatizacion\\2025\\Nacional\\BlazorAppRc\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\BlazorAppRc.bundle.scp.css",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -377,7 +377,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Tue, 25 Mar 2025 02:08:14 GMT"
+          "Value": "Tue, 25 Mar 2025 02:47:41 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -401,7 +401,7 @@
     },
     {
       "Route": "BlazorAppRc.3ikj87kkc1.styles.css",
-      "AssetFile": "D:\\DESARROLLO\\2025\\CleanArchitectureApi\\BlazorAppRc\\obj\\Debug\\net8.0\\scopedcss\\bundle\\BlazorAppRc.styles.css",
+      "AssetFile": "D:\\Automatizacion\\2025\\Nacional\\BlazorAppRc\\obj\\Debug\\net8.0\\scopedcss\\bundle\\BlazorAppRc.styles.css",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -422,7 +422,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Tue, 25 Mar 2025 02:08:14 GMT"
+          "Value": "Tue, 25 Mar 2025 02:47:41 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -446,7 +446,7 @@
     },
     {
       "Route": "BlazorAppRc.bundle.scp.css",
-      "AssetFile": "D:\\DESARROLLO\\2025\\CleanArchitectureApi\\BlazorAppRc\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\BlazorAppRc.bundle.scp.css",
+      "AssetFile": "D:\\Automatizacion\\2025\\Nacional\\BlazorAppRc\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\BlazorAppRc.bundle.scp.css",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -467,7 +467,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Tue, 25 Mar 2025 02:08:14 GMT"
+          "Value": "Tue, 25 Mar 2025 02:47:41 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -483,7 +483,7 @@
     },
     {
       "Route": "BlazorAppRc.styles.css",
-      "AssetFile": "D:\\DESARROLLO\\2025\\CleanArchitectureApi\\BlazorAppRc\\obj\\Debug\\net8.0\\scopedcss\\bundle\\BlazorAppRc.styles.css",
+      "AssetFile": "D:\\Automatizacion\\2025\\Nacional\\BlazorAppRc\\obj\\Debug\\net8.0\\scopedcss\\bundle\\BlazorAppRc.styles.css",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -504,7 +504,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Tue, 25 Mar 2025 02:08:14 GMT"
+          "Value": "Tue, 25 Mar 2025 02:47:41 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -519,8 +519,8 @@
       ]
     },
     {
-      "Route": "css/bootstrap/bootstrap.min.bpk8xqwxhs.css",
-      "AssetFile": "D:\\DESARROLLO\\2025\\CleanArchitectureApi\\BlazorAppRc\\wwwroot\\css\\bootstrap\\bootstrap.min.css",
+      "Route": "css/bootstrap/bootstrap.min.6gzpyzhau4.css",
+      "AssetFile": "D:\\Automatizacion\\2025\\Nacional\\BlazorAppRc\\wwwroot\\css\\bootstrap\\bootstrap.min.css",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -529,7 +529,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "162720"
+          "Value": "162726"
         },
         {
           "Name": "Content-Type",
@@ -537,11 +537,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"z8OR40MowJ8GgK6P89Y+hiJK5+cclzFHzLhFQLL92bg=\""
+          "Value": "\"SiIVMGgRhdXjKSTIddX7mh9IbOXVcwQWc7/p4nS6D/0=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sat, 22 Mar 2025 22:00:16 GMT"
+          "Value": "Tue, 25 Mar 2025 02:23:53 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -551,7 +551,7 @@
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "bpk8xqwxhs"
+          "Value": "6gzpyzhau4"
         },
         {
           "Name": "label",
@@ -559,13 +559,13 @@
         },
         {
           "Name": "integrity",
-          "Value": "sha256-z8OR40MowJ8GgK6P89Y+hiJK5+cclzFHzLhFQLL92bg="
+          "Value": "sha256-SiIVMGgRhdXjKSTIddX7mh9IbOXVcwQWc7/p4nS6D/0="
         }
       ]
     },
     {
       "Route": "css/bootstrap/bootstrap.min.css",
-      "AssetFile": "D:\\DESARROLLO\\2025\\CleanArchitectureApi\\BlazorAppRc\\wwwroot\\css\\bootstrap\\bootstrap.min.css",
+      "AssetFile": "D:\\Automatizacion\\2025\\Nacional\\BlazorAppRc\\wwwroot\\css\\bootstrap\\bootstrap.min.css",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -574,7 +574,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "162720"
+          "Value": "162726"
         },
         {
           "Name": "Content-Type",
@@ -582,11 +582,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"z8OR40MowJ8GgK6P89Y+hiJK5+cclzFHzLhFQLL92bg=\""
+          "Value": "\"SiIVMGgRhdXjKSTIddX7mh9IbOXVcwQWc7/p4nS6D/0=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sat, 22 Mar 2025 22:00:16 GMT"
+          "Value": "Tue, 25 Mar 2025 02:23:53 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -596,13 +596,13 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-z8OR40MowJ8GgK6P89Y+hiJK5+cclzFHzLhFQLL92bg="
+          "Value": "sha256-SiIVMGgRhdXjKSTIddX7mh9IbOXVcwQWc7/p4nS6D/0="
         }
       ]
     },
     {
       "Route": "css/bootstrap/bootstrap.min.css.8inm30yfxf.map",
-      "AssetFile": "D:\\DESARROLLO\\2025\\CleanArchitectureApi\\BlazorAppRc\\wwwroot\\css\\bootstrap\\bootstrap.min.css.map",
+      "AssetFile": "D:\\Automatizacion\\2025\\Nacional\\BlazorAppRc\\wwwroot\\css\\bootstrap\\bootstrap.min.css.map",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -623,7 +623,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sat, 22 Mar 2025 22:00:16 GMT"
+          "Value": "Tue, 25 Mar 2025 02:23:53 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -647,7 +647,7 @@
     },
     {
       "Route": "css/bootstrap/bootstrap.min.css.map",
-      "AssetFile": "D:\\DESARROLLO\\2025\\CleanArchitectureApi\\BlazorAppRc\\wwwroot\\css\\bootstrap\\bootstrap.min.css.map",
+      "AssetFile": "D:\\Automatizacion\\2025\\Nacional\\BlazorAppRc\\wwwroot\\css\\bootstrap\\bootstrap.min.css.map",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -668,7 +668,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sat, 22 Mar 2025 22:00:16 GMT"
+          "Value": "Tue, 25 Mar 2025 02:23:53 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -684,7 +684,7 @@
     },
     {
       "Route": "css/open-iconic/font/css/open-iconic-bootstrap.min.cmapd0fi15.css",
-      "AssetFile": "D:\\DESARROLLO\\2025\\CleanArchitectureApi\\BlazorAppRc\\wwwroot\\css\\open-iconic\\font\\css\\open-iconic-bootstrap.min.css",
+      "AssetFile": "D:\\Automatizacion\\2025\\Nacional\\BlazorAppRc\\wwwroot\\css\\open-iconic\\font\\css\\open-iconic-bootstrap.min.css",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -705,7 +705,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sat, 22 Mar 2025 22:00:15 GMT"
+          "Value": "Tue, 25 Mar 2025 02:23:53 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -729,7 +729,7 @@
     },
     {
       "Route": "css/open-iconic/font/css/open-iconic-bootstrap.min.css",
-      "AssetFile": "D:\\DESARROLLO\\2025\\CleanArchitectureApi\\BlazorAppRc\\wwwroot\\css\\open-iconic\\font\\css\\open-iconic-bootstrap.min.css",
+      "AssetFile": "D:\\Automatizacion\\2025\\Nacional\\BlazorAppRc\\wwwroot\\css\\open-iconic\\font\\css\\open-iconic-bootstrap.min.css",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -750,7 +750,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sat, 22 Mar 2025 22:00:15 GMT"
+          "Value": "Tue, 25 Mar 2025 02:23:53 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -766,7 +766,7 @@
     },
     {
       "Route": "css/open-iconic/font/fonts/open-iconic.0uw8dim9nl.eot",
-      "AssetFile": "D:\\DESARROLLO\\2025\\CleanArchitectureApi\\BlazorAppRc\\wwwroot\\css\\open-iconic\\font\\fonts\\open-iconic.eot",
+      "AssetFile": "D:\\Automatizacion\\2025\\Nacional\\BlazorAppRc\\wwwroot\\css\\open-iconic\\font\\fonts\\open-iconic.eot",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -787,7 +787,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sat, 22 Mar 2025 22:00:15 GMT"
+          "Value": "Tue, 25 Mar 2025 02:23:53 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -811,7 +811,7 @@
     },
     {
       "Route": "css/open-iconic/font/fonts/open-iconic.eot",
-      "AssetFile": "D:\\DESARROLLO\\2025\\CleanArchitectureApi\\BlazorAppRc\\wwwroot\\css\\open-iconic\\font\\fonts\\open-iconic.eot",
+      "AssetFile": "D:\\Automatizacion\\2025\\Nacional\\BlazorAppRc\\wwwroot\\css\\open-iconic\\font\\fonts\\open-iconic.eot",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -832,7 +832,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sat, 22 Mar 2025 22:00:15 GMT"
+          "Value": "Tue, 25 Mar 2025 02:23:53 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -848,7 +848,7 @@
     },
     {
       "Route": "css/open-iconic/font/fonts/open-iconic.h4d0pazwgy.woff",
-      "AssetFile": "D:\\DESARROLLO\\2025\\CleanArchitectureApi\\BlazorAppRc\\wwwroot\\css\\open-iconic\\font\\fonts\\open-iconic.woff",
+      "AssetFile": "D:\\Automatizacion\\2025\\Nacional\\BlazorAppRc\\wwwroot\\css\\open-iconic\\font\\fonts\\open-iconic.woff",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -869,7 +869,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sat, 22 Mar 2025 22:00:15 GMT"
+          "Value": "Tue, 25 Mar 2025 02:23:53 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -893,7 +893,7 @@
     },
     {
       "Route": "css/open-iconic/font/fonts/open-iconic.ll5grcv8wv.ttf",
-      "AssetFile": "D:\\DESARROLLO\\2025\\CleanArchitectureApi\\BlazorAppRc\\wwwroot\\css\\open-iconic\\font\\fonts\\open-iconic.ttf",
+      "AssetFile": "D:\\Automatizacion\\2025\\Nacional\\BlazorAppRc\\wwwroot\\css\\open-iconic\\font\\fonts\\open-iconic.ttf",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -914,7 +914,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sat, 22 Mar 2025 22:00:15 GMT"
+          "Value": "Tue, 25 Mar 2025 02:23:53 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -938,7 +938,7 @@
     },
     {
       "Route": "css/open-iconic/font/fonts/open-iconic.otf",
-      "AssetFile": "D:\\DESARROLLO\\2025\\CleanArchitectureApi\\BlazorAppRc\\wwwroot\\css\\open-iconic\\font\\fonts\\open-iconic.otf",
+      "AssetFile": "D:\\Automatizacion\\2025\\Nacional\\BlazorAppRc\\wwwroot\\css\\open-iconic\\font\\fonts\\open-iconic.otf",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -959,7 +959,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sat, 22 Mar 2025 22:00:15 GMT"
+          "Value": "Tue, 25 Mar 2025 02:23:53 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -975,7 +975,7 @@
     },
     {
       "Route": "css/open-iconic/font/fonts/open-iconic.sjnzgf7e1h.svg",
-      "AssetFile": "D:\\DESARROLLO\\2025\\CleanArchitectureApi\\BlazorAppRc\\wwwroot\\css\\open-iconic\\font\\fonts\\open-iconic.svg",
+      "AssetFile": "D:\\Automatizacion\\2025\\Nacional\\BlazorAppRc\\wwwroot\\css\\open-iconic\\font\\fonts\\open-iconic.svg",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -996,7 +996,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sat, 22 Mar 2025 22:00:15 GMT"
+          "Value": "Tue, 25 Mar 2025 02:23:53 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -1020,7 +1020,7 @@
     },
     {
       "Route": "css/open-iconic/font/fonts/open-iconic.svg",
-      "AssetFile": "D:\\DESARROLLO\\2025\\CleanArchitectureApi\\BlazorAppRc\\wwwroot\\css\\open-iconic\\font\\fonts\\open-iconic.svg",
+      "AssetFile": "D:\\Automatizacion\\2025\\Nacional\\BlazorAppRc\\wwwroot\\css\\open-iconic\\font\\fonts\\open-iconic.svg",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -1041,7 +1041,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sat, 22 Mar 2025 22:00:15 GMT"
+          "Value": "Tue, 25 Mar 2025 02:23:53 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -1057,7 +1057,7 @@
     },
     {
       "Route": "css/open-iconic/font/fonts/open-iconic.ttf",
-      "AssetFile": "D:\\DESARROLLO\\2025\\CleanArchitectureApi\\BlazorAppRc\\wwwroot\\css\\open-iconic\\font\\fonts\\open-iconic.ttf",
+      "AssetFile": "D:\\Automatizacion\\2025\\Nacional\\BlazorAppRc\\wwwroot\\css\\open-iconic\\font\\fonts\\open-iconic.ttf",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -1078,7 +1078,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sat, 22 Mar 2025 22:00:15 GMT"
+          "Value": "Tue, 25 Mar 2025 02:23:53 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -1094,7 +1094,7 @@
     },
     {
       "Route": "css/open-iconic/font/fonts/open-iconic.wk8x8xm0ah.otf",
-      "AssetFile": "D:\\DESARROLLO\\2025\\CleanArchitectureApi\\BlazorAppRc\\wwwroot\\css\\open-iconic\\font\\fonts\\open-iconic.otf",
+      "AssetFile": "D:\\Automatizacion\\2025\\Nacional\\BlazorAppRc\\wwwroot\\css\\open-iconic\\font\\fonts\\open-iconic.otf",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -1115,7 +1115,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sat, 22 Mar 2025 22:00:15 GMT"
+          "Value": "Tue, 25 Mar 2025 02:23:53 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -1139,7 +1139,7 @@
     },
     {
       "Route": "css/open-iconic/font/fonts/open-iconic.woff",
-      "AssetFile": "D:\\DESARROLLO\\2025\\CleanArchitectureApi\\BlazorAppRc\\wwwroot\\css\\open-iconic\\font\\fonts\\open-iconic.woff",
+      "AssetFile": "D:\\Automatizacion\\2025\\Nacional\\BlazorAppRc\\wwwroot\\css\\open-iconic\\font\\fonts\\open-iconic.woff",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -1160,7 +1160,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sat, 22 Mar 2025 22:00:15 GMT"
+          "Value": "Tue, 25 Mar 2025 02:23:53 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -1176,7 +1176,7 @@
     },
     {
       "Route": "css/open-iconic/FONT-LICENSE",
-      "AssetFile": "D:\\DESARROLLO\\2025\\CleanArchitectureApi\\BlazorAppRc\\wwwroot\\css\\open-iconic\\FONT-LICENSE",
+      "AssetFile": "D:\\Automatizacion\\2025\\Nacional\\BlazorAppRc\\wwwroot\\css\\open-iconic\\FONT-LICENSE",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -1197,7 +1197,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sat, 22 Mar 2025 22:00:16 GMT"
+          "Value": "Tue, 25 Mar 2025 02:23:53 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -1213,7 +1213,7 @@
     },
     {
       "Route": "css/open-iconic/FONT-LICENSE.48tmkg660f",
-      "AssetFile": "D:\\DESARROLLO\\2025\\CleanArchitectureApi\\BlazorAppRc\\wwwroot\\css\\open-iconic\\FONT-LICENSE",
+      "AssetFile": "D:\\Automatizacion\\2025\\Nacional\\BlazorAppRc\\wwwroot\\css\\open-iconic\\FONT-LICENSE",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -1234,7 +1234,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sat, 22 Mar 2025 22:00:16 GMT"
+          "Value": "Tue, 25 Mar 2025 02:23:53 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -1258,7 +1258,7 @@
     },
     {
       "Route": "css/open-iconic/ICON-LICENSE",
-      "AssetFile": "D:\\DESARROLLO\\2025\\CleanArchitectureApi\\BlazorAppRc\\wwwroot\\css\\open-iconic\\ICON-LICENSE",
+      "AssetFile": "D:\\Automatizacion\\2025\\Nacional\\BlazorAppRc\\wwwroot\\css\\open-iconic\\ICON-LICENSE",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -1279,7 +1279,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sat, 22 Mar 2025 22:00:16 GMT"
+          "Value": "Tue, 25 Mar 2025 02:23:53 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -1295,7 +1295,7 @@
     },
     {
       "Route": "css/open-iconic/ICON-LICENSE.4dwjve0o0b",
-      "AssetFile": "D:\\DESARROLLO\\2025\\CleanArchitectureApi\\BlazorAppRc\\wwwroot\\css\\open-iconic\\ICON-LICENSE",
+      "AssetFile": "D:\\Automatizacion\\2025\\Nacional\\BlazorAppRc\\wwwroot\\css\\open-iconic\\ICON-LICENSE",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -1316,7 +1316,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sat, 22 Mar 2025 22:00:16 GMT"
+          "Value": "Tue, 25 Mar 2025 02:23:53 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -1340,7 +1340,7 @@
     },
     {
       "Route": "css/open-iconic/README.5bzwdl5l6x.md",
-      "AssetFile": "D:\\DESARROLLO\\2025\\CleanArchitectureApi\\BlazorAppRc\\wwwroot\\css\\open-iconic\\README.md",
+      "AssetFile": "D:\\Automatizacion\\2025\\Nacional\\BlazorAppRc\\wwwroot\\css\\open-iconic\\README.md",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -1361,7 +1361,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sat, 22 Mar 2025 22:00:16 GMT"
+          "Value": "Tue, 25 Mar 2025 02:23:53 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -1385,7 +1385,7 @@
     },
     {
       "Route": "css/open-iconic/README.md",
-      "AssetFile": "D:\\DESARROLLO\\2025\\CleanArchitectureApi\\BlazorAppRc\\wwwroot\\css\\open-iconic\\README.md",
+      "AssetFile": "D:\\Automatizacion\\2025\\Nacional\\BlazorAppRc\\wwwroot\\css\\open-iconic\\README.md",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -1406,7 +1406,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sat, 22 Mar 2025 22:00:16 GMT"
+          "Value": "Tue, 25 Mar 2025 02:23:53 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -1422,7 +1422,7 @@
     },
     {
       "Route": "css/site.css",
-      "AssetFile": "D:\\DESARROLLO\\2025\\CleanArchitectureApi\\BlazorAppRc\\wwwroot\\css\\site.css",
+      "AssetFile": "D:\\Automatizacion\\2025\\Nacional\\BlazorAppRc\\wwwroot\\css\\site.css",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -1443,7 +1443,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sat, 22 Mar 2025 22:00:15 GMT"
+          "Value": "Tue, 25 Mar 2025 02:23:53 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -1459,7 +1459,7 @@
     },
     {
       "Route": "css/site.zh9s866nx2.css",
-      "AssetFile": "D:\\DESARROLLO\\2025\\CleanArchitectureApi\\BlazorAppRc\\wwwroot\\css\\site.css",
+      "AssetFile": "D:\\Automatizacion\\2025\\Nacional\\BlazorAppRc\\wwwroot\\css\\site.css",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -1480,7 +1480,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sat, 22 Mar 2025 22:00:15 GMT"
+          "Value": "Tue, 25 Mar 2025 02:23:53 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -1504,7 +1504,7 @@
     },
     {
       "Route": "favicon.ifv42okdf2.png",
-      "AssetFile": "D:\\DESARROLLO\\2025\\CleanArchitectureApi\\BlazorAppRc\\wwwroot\\favicon.png",
+      "AssetFile": "D:\\Automatizacion\\2025\\Nacional\\BlazorAppRc\\wwwroot\\favicon.png",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -1525,7 +1525,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sat, 22 Mar 2025 22:00:16 GMT"
+          "Value": "Tue, 25 Mar 2025 02:23:53 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -1549,7 +1549,7 @@
     },
     {
       "Route": "favicon.png",
-      "AssetFile": "D:\\DESARROLLO\\2025\\CleanArchitectureApi\\BlazorAppRc\\wwwroot\\favicon.png",
+      "AssetFile": "D:\\Automatizacion\\2025\\Nacional\\BlazorAppRc\\wwwroot\\favicon.png",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -1570,7 +1570,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sat, 22 Mar 2025 22:00:16 GMT"
+          "Value": "Tue, 25 Mar 2025 02:23:53 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -1586,7 +1586,7 @@
     },
     {
       "Route": "js/site.js",
-      "AssetFile": "D:\\DESARROLLO\\2025\\CleanArchitectureApi\\BlazorAppRc\\wwwroot\\js\\site.js",
+      "AssetFile": "D:\\Automatizacion\\2025\\Nacional\\BlazorAppRc\\wwwroot\\js\\site.js",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -1607,7 +1607,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sun, 23 Mar 2025 18:59:07 GMT"
+          "Value": "Tue, 25 Mar 2025 02:23:53 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -1623,7 +1623,7 @@
     },
     {
       "Route": "js/site.xi5fq86m0n.js",
-      "AssetFile": "D:\\DESARROLLO\\2025\\CleanArchitectureApi\\BlazorAppRc\\wwwroot\\js\\site.js",
+      "AssetFile": "D:\\Automatizacion\\2025\\Nacional\\BlazorAppRc\\wwwroot\\js\\site.js",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -1644,7 +1644,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sun, 23 Mar 2025 18:59:07 GMT"
+          "Value": "Tue, 25 Mar 2025 02:23:53 GMT"
         },
         {
           "Name": "Cache-Control",

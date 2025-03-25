@@ -1163,3 +1163,206 @@ ORDER BY [t].[CreatedAt] DESC
 2025-03-24 22:03:12.839 -04:00 [INF] Executed action Presentation.Controllers.PostController.GetPagedPosts (Presentation) in 14.086ms
 2025-03-24 22:03:12.841 -04:00 [INF] Executed endpoint 'Presentation.Controllers.PostController.GetPagedPosts (Presentation)'
 2025-03-24 22:03:12.842 -04:00 [INF] Request finished HTTP/1.1 GET https://localhost:7255/api/post/paged?page=1&pageSize=4 - 200 null application/json; charset=utf-8 23.3253ms
+2025-03-24 22:29:32.071 -04:00 [INF] User profile is available. Using 'C:\Users\pc\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-03-24 22:29:32.526 -04:00 [INF] Now listening on: https://localhost:7255
+2025-03-24 22:29:32.528 -04:00 [INF] Now listening on: http://localhost:5072
+2025-03-24 22:29:32.767 -04:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-03-24 22:29:32.770 -04:00 [INF] Hosting environment: Development
+2025-03-24 22:29:32.772 -04:00 [INF] Content root path: D:\Automatizacion\2025\Nacional\Presentation
+2025-03-24 22:29:34.704 -04:00 [INF] Request starting HTTP/2 GET https://localhost:7255/swagger/index.html - null null
+2025-03-24 22:29:35.768 -04:00 [INF] Request finished HTTP/2 GET https://localhost:7255/swagger/index.html - 200 null text/html;charset=utf-8 1078.3079ms
+2025-03-24 22:29:35.824 -04:00 [INF] Request starting HTTP/2 GET https://localhost:7255/_framework/aspnetcore-browser-refresh.js - null null
+2025-03-24 22:29:35.824 -04:00 [INF] Request starting HTTP/2 GET https://localhost:7255/_vs/browserLink - null null
+2025-03-24 22:29:35.843 -04:00 [INF] Request finished HTTP/2 GET https://localhost:7255/_framework/aspnetcore-browser-refresh.js - 200 13760 application/javascript; charset=utf-8 19.4912ms
+2025-03-24 22:29:36.024 -04:00 [INF] Request finished HTTP/2 GET https://localhost:7255/_vs/browserLink - 200 null text/javascript; charset=UTF-8 200.2404ms
+2025-03-24 22:29:36.139 -04:00 [INF] Request starting HTTP/2 GET https://localhost:7255/swagger/v1/swagger.json - null null
+2025-03-24 22:29:36.218 -04:00 [INF] Request finished HTTP/2 GET https://localhost:7255/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 79.2565ms
+2025-03-24 22:29:40.226 -04:00 [INF] Request starting HTTP/1.1 GET https://localhost:7255/api/post/paged?page=1&pageSize=4 - null null
+2025-03-24 22:29:40.473 -04:00 [INF] Executing endpoint 'Presentation.Controllers.PostController.GetPagedPosts (Presentation)'
+2025-03-24 22:29:40.530 -04:00 [INF] Route matched with {action = "GetPagedPosts", controller = "Post"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetPagedPosts(Int32, Int32) on controller Presentation.Controllers.PostController (Presentation).
+2025-03-24 22:29:42.555 -04:00 [INF] Executed DbCommand (39ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Posts] AS [p]
+2025-03-24 22:29:42.754 -04:00 [INF] Executed DbCommand (40ms) [Parameters=[@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[Id], [t].[PostContent], [u].[Username], [t].[UserId], CONVERT(varchar(100), [t].[CreatedAt]) AS [Created], (
+    SELECT COUNT(*)
+    FROM [Comments] AS [c]
+    WHERE [t].[Id] = [c].[PostId]) AS [CommentCount]
+FROM (
+    SELECT [p].[Id], [p].[CreatedAt], [p].[PostContent], [p].[UserId]
+    FROM [Posts] AS [p]
+    ORDER BY [p].[CreatedAt] DESC
+    OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+) AS [t]
+INNER JOIN [Users] AS [u] ON [t].[UserId] = [u].[Id]
+ORDER BY [t].[CreatedAt] DESC
+2025-03-24 22:29:42.772 -04:00 [INF] Executing OkObjectResult, writing value of type 'Application.Common.PagedResult`1[[Core.Dtos.PostDto, Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-03-24 22:29:42.790 -04:00 [INF] Executed action Presentation.Controllers.PostController.GetPagedPosts (Presentation) in 2250.6475ms
+2025-03-24 22:29:42.792 -04:00 [INF] Executed endpoint 'Presentation.Controllers.PostController.GetPagedPosts (Presentation)'
+2025-03-24 22:29:42.802 -04:00 [INF] Request finished HTTP/1.1 GET https://localhost:7255/api/post/paged?page=1&pageSize=4 - 200 null application/json; charset=utf-8 2577.3585ms
+2025-03-24 22:29:43.316 -04:00 [INF] Request starting HTTP/1.1 GET https://localhost:7255/api/post/paged?page=1&pageSize=4 - null null
+2025-03-24 22:29:43.327 -04:00 [INF] Executing endpoint 'Presentation.Controllers.PostController.GetPagedPosts (Presentation)'
+2025-03-24 22:29:43.329 -04:00 [INF] Route matched with {action = "GetPagedPosts", controller = "Post"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetPagedPosts(Int32, Int32) on controller Presentation.Controllers.PostController (Presentation).
+2025-03-24 22:29:43.368 -04:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Posts] AS [p]
+2025-03-24 22:29:43.377 -04:00 [INF] Executed DbCommand (1ms) [Parameters=[@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[Id], [t].[PostContent], [u].[Username], [t].[UserId], CONVERT(varchar(100), [t].[CreatedAt]) AS [Created], (
+    SELECT COUNT(*)
+    FROM [Comments] AS [c]
+    WHERE [t].[Id] = [c].[PostId]) AS [CommentCount]
+FROM (
+    SELECT [p].[Id], [p].[CreatedAt], [p].[PostContent], [p].[UserId]
+    FROM [Posts] AS [p]
+    ORDER BY [p].[CreatedAt] DESC
+    OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+) AS [t]
+INNER JOIN [Users] AS [u] ON [t].[UserId] = [u].[Id]
+ORDER BY [t].[CreatedAt] DESC
+2025-03-24 22:29:43.383 -04:00 [INF] Executing OkObjectResult, writing value of type 'Application.Common.PagedResult`1[[Core.Dtos.PostDto, Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-03-24 22:29:43.389 -04:00 [INF] Executed action Presentation.Controllers.PostController.GetPagedPosts (Presentation) in 55.5194ms
+2025-03-24 22:29:43.392 -04:00 [INF] Executed endpoint 'Presentation.Controllers.PostController.GetPagedPosts (Presentation)'
+2025-03-24 22:29:43.399 -04:00 [INF] Request finished HTTP/1.1 GET https://localhost:7255/api/post/paged?page=1&pageSize=4 - 200 null application/json; charset=utf-8 83.1273ms
+2025-03-24 22:31:16.717 -04:00 [INF] Request starting HTTP/1.1 POST https://localhost:7255/api/authentication/login - application/json; charset=utf-8 null
+2025-03-24 22:31:16.724 -04:00 [INF] Executing endpoint 'Presentation.Controllers.AuthenticationController.Login (Presentation)'
+2025-03-24 22:31:16.730 -04:00 [INF] Route matched with {action = "Login", controller = "Authentication"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(Microsoft.AspNetCore.Identity.Data.LoginRequest) on controller Presentation.Controllers.AuthenticationController (Presentation).
+2025-03-24 22:31:16.933 -04:00 [INF] Executed DbCommand (2ms) [Parameters=[@__user_Email_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [u].[Id], [u].[CreatedAt], [u].[Email], [u].[Password], [u].[UpdatedAt], [u].[Username]
+FROM [Users] AS [u]
+WHERE [u].[Email] = @__user_Email_0
+2025-03-24 22:31:17.548 -04:00 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType1`1[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-03-24 22:31:17.553 -04:00 [INF] Executed action Presentation.Controllers.AuthenticationController.Login (Presentation) in 820.7672ms
+2025-03-24 22:31:17.555 -04:00 [INF] Executed endpoint 'Presentation.Controllers.AuthenticationController.Login (Presentation)'
+2025-03-24 22:31:17.557 -04:00 [INF] Request finished HTTP/1.1 POST https://localhost:7255/api/authentication/login - 200 null application/json; charset=utf-8 839.5481ms
+2025-03-24 22:31:17.618 -04:00 [INF] Request starting HTTP/1.1 GET https://localhost:7255/api/post/paged?page=1&pageSize=4 - null null
+2025-03-24 22:31:17.622 -04:00 [INF] Executing endpoint 'Presentation.Controllers.PostController.GetPagedPosts (Presentation)'
+2025-03-24 22:31:17.623 -04:00 [INF] Route matched with {action = "GetPagedPosts", controller = "Post"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetPagedPosts(Int32, Int32) on controller Presentation.Controllers.PostController (Presentation).
+2025-03-24 22:31:17.634 -04:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Posts] AS [p]
+2025-03-24 22:31:17.642 -04:00 [INF] Executed DbCommand (1ms) [Parameters=[@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[Id], [t].[PostContent], [u].[Username], [t].[UserId], CONVERT(varchar(100), [t].[CreatedAt]) AS [Created], (
+    SELECT COUNT(*)
+    FROM [Comments] AS [c]
+    WHERE [t].[Id] = [c].[PostId]) AS [CommentCount]
+FROM (
+    SELECT [p].[Id], [p].[CreatedAt], [p].[PostContent], [p].[UserId]
+    FROM [Posts] AS [p]
+    ORDER BY [p].[CreatedAt] DESC
+    OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+) AS [t]
+INNER JOIN [Users] AS [u] ON [t].[UserId] = [u].[Id]
+ORDER BY [t].[CreatedAt] DESC
+2025-03-24 22:31:17.645 -04:00 [INF] Executing OkObjectResult, writing value of type 'Application.Common.PagedResult`1[[Core.Dtos.PostDto, Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-03-24 22:31:17.647 -04:00 [INF] Executed action Presentation.Controllers.PostController.GetPagedPosts (Presentation) in 22.1662ms
+2025-03-24 22:31:17.649 -04:00 [INF] Executed endpoint 'Presentation.Controllers.PostController.GetPagedPosts (Presentation)'
+2025-03-24 22:31:17.650 -04:00 [INF] Request finished HTTP/1.1 GET https://localhost:7255/api/post/paged?page=1&pageSize=4 - 200 null application/json; charset=utf-8 32.248ms
+2025-03-24 22:31:17.750 -04:00 [INF] Request starting HTTP/1.1 GET https://localhost:7255/api/post/paged?page=1&pageSize=4 - null null
+2025-03-24 22:31:17.753 -04:00 [INF] Executing endpoint 'Presentation.Controllers.PostController.GetPagedPosts (Presentation)'
+2025-03-24 22:31:17.754 -04:00 [INF] Route matched with {action = "GetPagedPosts", controller = "Post"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetPagedPosts(Int32, Int32) on controller Presentation.Controllers.PostController (Presentation).
+2025-03-24 22:31:17.759 -04:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Posts] AS [p]
+2025-03-24 22:31:17.765 -04:00 [INF] Executed DbCommand (1ms) [Parameters=[@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[Id], [t].[PostContent], [u].[Username], [t].[UserId], CONVERT(varchar(100), [t].[CreatedAt]) AS [Created], (
+    SELECT COUNT(*)
+    FROM [Comments] AS [c]
+    WHERE [t].[Id] = [c].[PostId]) AS [CommentCount]
+FROM (
+    SELECT [p].[Id], [p].[CreatedAt], [p].[PostContent], [p].[UserId]
+    FROM [Posts] AS [p]
+    ORDER BY [p].[CreatedAt] DESC
+    OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+) AS [t]
+INNER JOIN [Users] AS [u] ON [t].[UserId] = [u].[Id]
+ORDER BY [t].[CreatedAt] DESC
+2025-03-24 22:31:17.774 -04:00 [INF] Executing OkObjectResult, writing value of type 'Application.Common.PagedResult`1[[Core.Dtos.PostDto, Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-03-24 22:31:17.794 -04:00 [INF] Executed action Presentation.Controllers.PostController.GetPagedPosts (Presentation) in 37.6035ms
+2025-03-24 22:31:17.796 -04:00 [INF] Executed endpoint 'Presentation.Controllers.PostController.GetPagedPosts (Presentation)'
+2025-03-24 22:31:17.799 -04:00 [INF] Request finished HTTP/1.1 GET https://localhost:7255/api/post/paged?page=1&pageSize=4 - 200 null application/json; charset=utf-8 49.1037ms
+2025-03-24 22:31:20.266 -04:00 [INF] Request starting HTTP/1.1 GET https://localhost:7255/api/post/19 - null null
+2025-03-24 22:31:20.272 -04:00 [INF] Executing endpoint 'Presentation.Controllers.PostController.GetById (Presentation)'
+2025-03-24 22:31:20.282 -04:00 [INF] Route matched with {action = "GetById", controller = "Post"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[Core.Dtos.PostDto]] GetById(Int32) on controller Presentation.Controllers.PostController (Presentation).
+2025-03-24 22:31:20.311 -04:00 [INF] Executed DbCommand (3ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [p].[Id], [p].[PostContent], [u].[Username], [p].[UserId], CONVERT(varchar(100), [p].[CreatedAt]) AS [Created]
+FROM [Posts] AS [p]
+INNER JOIN [Users] AS [u] ON [p].[UserId] = [u].[Id]
+WHERE [p].[Id] = @__id_0
+2025-03-24 22:31:20.319 -04:00 [INF] Executing OkObjectResult, writing value of type 'Core.Dtos.PostDto'.
+2025-03-24 22:31:20.321 -04:00 [INF] Executed action Presentation.Controllers.PostController.GetById (Presentation) in 36.3841ms
+2025-03-24 22:31:20.322 -04:00 [INF] Executed endpoint 'Presentation.Controllers.PostController.GetById (Presentation)'
+2025-03-24 22:31:20.324 -04:00 [INF] Request finished HTTP/1.1 GET https://localhost:7255/api/post/19 - 200 null application/json; charset=utf-8 58.157ms
+2025-03-24 22:31:20.327 -04:00 [INF] Request starting HTTP/1.1 GET https://localhost:7255/api/Comment/post/19 - null null
+2025-03-24 22:31:20.330 -04:00 [INF] Executing endpoint 'Presentation.Controllers.CommentController.GetAllCommentByPostId (Presentation)'
+2025-03-24 22:31:20.334 -04:00 [INF] Route matched with {action = "GetAllCommentByPostId", controller = "Comment"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.IEnumerable`1[Core.Dtos.CommentDto]]] GetAllCommentByPostId(Int32) on controller Presentation.Controllers.CommentController (Presentation).
+2025-03-24 22:31:20.353 -04:00 [INF] Executed DbCommand (5ms) [Parameters=[@__Id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [c].[Id], [c].[CommentContent], [u].[Username], [c].[UserId], CONVERT(varchar(100), [c].[CreatedAt]) AS [Created], [c].[PostId], [c].[ParentCommentId]
+FROM [Comments] AS [c]
+INNER JOIN [Users] AS [u] ON [c].[UserId] = [u].[Id]
+WHERE [c].[PostId] = @__Id_0
+ORDER BY [c].[CreatedAt] DESC
+2025-03-24 22:31:20.357 -04:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[Core.Dtos.CommentDto, Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-03-24 22:31:20.363 -04:00 [INF] Executed action Presentation.Controllers.CommentController.GetAllCommentByPostId (Presentation) in 26.9435ms
+2025-03-24 22:31:20.365 -04:00 [INF] Executed endpoint 'Presentation.Controllers.CommentController.GetAllCommentByPostId (Presentation)'
+2025-03-24 22:31:20.367 -04:00 [INF] Request finished HTTP/1.1 GET https://localhost:7255/api/Comment/post/19 - 200 null application/json; charset=utf-8 39.118ms
+2025-03-24 22:31:54.243 -04:00 [INF] Request starting HTTP/1.1 POST https://localhost:7255/api/comment - application/json; charset=utf-8 null
+2025-03-24 22:31:54.294 -04:00 [INF] Executing endpoint 'Presentation.Controllers.CommentController.Create (Presentation)'
+2025-03-24 22:31:54.298 -04:00 [INF] Route matched with {action = "Create", controller = "Comment"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult] Create(Application.Queries.CommentCommands.CreateCommentCommand) on controller Presentation.Controllers.CommentController (Presentation).
+2025-03-24 22:31:54.502 -04:00 [INF] Executed DbCommand (11ms) [Parameters=[@p0='?' (Size = 4000), @p1='?' (DbType = DateTime2), @p2='?' (DbType = Int32), @p3='?' (DbType = Int32), @p4='?' (DbType = DateTime2), @p5='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [Comments] ([CommentContent], [CreatedAt], [ParentCommentId], [PostId], [UpdatedAt], [UserId])
+OUTPUT INSERTED.[Id]
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5);
+2025-03-24 22:31:54.542 -04:00 [INF] Executing CreatedAtActionResult, writing value of type 'Core.Models.CommentModel'.
+2025-03-24 22:31:54.566 -04:00 [INF] Executed action Presentation.Controllers.CommentController.Create (Presentation) in 265.1387ms
+2025-03-24 22:31:54.568 -04:00 [INF] Executed endpoint 'Presentation.Controllers.CommentController.Create (Presentation)'
+2025-03-24 22:31:54.569 -04:00 [INF] Request finished HTTP/1.1 POST https://localhost:7255/api/comment - 201 null application/json; charset=utf-8 325.4577ms
+2025-03-24 22:31:54.573 -04:00 [INF] Request starting HTTP/1.1 GET https://localhost:7255/api/post/19 - null null
+2025-03-24 22:31:54.576 -04:00 [INF] Executing endpoint 'Presentation.Controllers.PostController.GetById (Presentation)'
+2025-03-24 22:31:54.577 -04:00 [INF] Route matched with {action = "GetById", controller = "Post"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[Core.Dtos.PostDto]] GetById(Int32) on controller Presentation.Controllers.PostController (Presentation).
+2025-03-24 22:31:54.583 -04:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [p].[Id], [p].[PostContent], [u].[Username], [p].[UserId], CONVERT(varchar(100), [p].[CreatedAt]) AS [Created]
+FROM [Posts] AS [p]
+INNER JOIN [Users] AS [u] ON [p].[UserId] = [u].[Id]
+WHERE [p].[Id] = @__id_0
+2025-03-24 22:31:54.588 -04:00 [INF] Executing OkObjectResult, writing value of type 'Core.Dtos.PostDto'.
+2025-03-24 22:31:54.589 -04:00 [INF] Executed action Presentation.Controllers.PostController.GetById (Presentation) in 10.2412ms
+2025-03-24 22:31:54.592 -04:00 [INF] Executed endpoint 'Presentation.Controllers.PostController.GetById (Presentation)'
+2025-03-24 22:31:54.593 -04:00 [INF] Request finished HTTP/1.1 GET https://localhost:7255/api/post/19 - 200 null application/json; charset=utf-8 20.3138ms
+2025-03-24 22:31:54.597 -04:00 [INF] Request starting HTTP/1.1 GET https://localhost:7255/api/Comment/post/19 - null null
+2025-03-24 22:31:54.599 -04:00 [INF] Executing endpoint 'Presentation.Controllers.CommentController.GetAllCommentByPostId (Presentation)'
+2025-03-24 22:31:54.600 -04:00 [INF] Route matched with {action = "GetAllCommentByPostId", controller = "Comment"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.IEnumerable`1[Core.Dtos.CommentDto]]] GetAllCommentByPostId(Int32) on controller Presentation.Controllers.CommentController (Presentation).
+2025-03-24 22:31:54.608 -04:00 [INF] Executed DbCommand (2ms) [Parameters=[@__Id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [c].[Id], [c].[CommentContent], [u].[Username], [c].[UserId], CONVERT(varchar(100), [c].[CreatedAt]) AS [Created], [c].[PostId], [c].[ParentCommentId]
+FROM [Comments] AS [c]
+INNER JOIN [Users] AS [u] ON [c].[UserId] = [u].[Id]
+WHERE [c].[PostId] = @__Id_0
+ORDER BY [c].[CreatedAt] DESC
+2025-03-24 22:31:54.612 -04:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[Core.Dtos.CommentDto, Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-03-24 22:31:54.614 -04:00 [INF] Executed action Presentation.Controllers.CommentController.GetAllCommentByPostId (Presentation) in 11.7949ms
+2025-03-24 22:31:54.616 -04:00 [INF] Executed endpoint 'Presentation.Controllers.CommentController.GetAllCommentByPostId (Presentation)'
+2025-03-24 22:31:54.617 -04:00 [INF] Request finished HTTP/1.1 GET https://localhost:7255/api/Comment/post/19 - 200 null application/json; charset=utf-8 20.8311ms
+2025-03-24 22:32:14.462 -04:00 [INF] Request starting HTTP/1.1 GET https://localhost:7255/api/post/paged?page=1&pageSize=4 - null null
+2025-03-24 22:32:14.465 -04:00 [INF] Executing endpoint 'Presentation.Controllers.PostController.GetPagedPosts (Presentation)'
+2025-03-24 22:32:14.467 -04:00 [INF] Route matched with {action = "GetPagedPosts", controller = "Post"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetPagedPosts(Int32, Int32) on controller Presentation.Controllers.PostController (Presentation).
+2025-03-24 22:32:14.476 -04:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Posts] AS [p]
+2025-03-24 22:32:14.483 -04:00 [INF] Executed DbCommand (1ms) [Parameters=[@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[Id], [t].[PostContent], [u].[Username], [t].[UserId], CONVERT(varchar(100), [t].[CreatedAt]) AS [Created], (
+    SELECT COUNT(*)
+    FROM [Comments] AS [c]
+    WHERE [t].[Id] = [c].[PostId]) AS [CommentCount]
+FROM (
+    SELECT [p].[Id], [p].[CreatedAt], [p].[PostContent], [p].[UserId]
+    FROM [Posts] AS [p]
+    ORDER BY [p].[CreatedAt] DESC
+    OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+) AS [t]
+INNER JOIN [Users] AS [u] ON [t].[UserId] = [u].[Id]
+ORDER BY [t].[CreatedAt] DESC
+2025-03-24 22:32:14.489 -04:00 [INF] Executing OkObjectResult, writing value of type 'Application.Common.PagedResult`1[[Core.Dtos.PostDto, Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-03-24 22:32:14.493 -04:00 [INF] Executed action Presentation.Controllers.PostController.GetPagedPosts (Presentation) in 20.0154ms
+2025-03-24 22:32:14.496 -04:00 [INF] Executed endpoint 'Presentation.Controllers.PostController.GetPagedPosts (Presentation)'
+2025-03-24 22:32:14.498 -04:00 [INF] Request finished HTTP/1.1 GET https://localhost:7255/api/post/paged?page=1&pageSize=4 - 200 null application/json; charset=utf-8 36.9652ms
