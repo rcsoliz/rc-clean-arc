@@ -11,7 +11,13 @@ namespace Core.Entities
         public string PostContent { get; set; }
         public int UserId { get; set; }
         public User User { get; set; }
+
+        public string ImageUrl { get; set; }
         public ICollection<Comment> Comments { get; set; }
+
+        public ICollection<PostCategory> PostCategories { get; set; }
+
+        public ICollection<Like> Likes { get; set; }
 
     }
 }

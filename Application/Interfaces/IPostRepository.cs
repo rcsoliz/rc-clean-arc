@@ -8,7 +8,13 @@ namespace Application.Interfaces
     {
         Task<IEnumerable<Post>> GetAllAsync();
         Task<PostDto> GetByIdAsync(int id);
+
         Task AddAsync(Post entity);
+        Task AddAsyncRefactory(Post entity, List<int> categoryIds);
+
+        Task UpdateAsync(Post entity, List<int> categoryIds);
+
+        Task DeleteAsync(int id, List<int> categoryIds);
 
         Task<IEnumerable<PostDto>> GetAllPostWithDetailsAsync();
 
