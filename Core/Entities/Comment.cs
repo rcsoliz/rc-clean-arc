@@ -18,5 +18,6 @@ namespace Core.Entities
         public int? ParentCommentId { get; set; }
         public Comment ParentComment { get; set; }  // Comentario padre
         public ICollection<Comment> Replies { get; set; } = new List<Comment>();
+
     }
 }
