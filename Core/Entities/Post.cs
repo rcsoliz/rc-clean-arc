@@ -8,6 +8,8 @@ namespace Core.Entities
 {
     public class Post: BaseEntity
     {
+
+
         public string PostContent { get; set; }
         public int UserId { get; set; }
         public User User { get; set; }
