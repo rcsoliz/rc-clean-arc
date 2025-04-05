@@ -11,7 +11,5 @@ namespace Core.Entities
         public int CommentId { get; set; }
         public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
   
-    
-
     }
 }
