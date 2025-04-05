@@ -44,3 +44,10 @@ TestResult*/
 *.mdf
 *.ldf
 >>>>>>> 65f78db (add on fectures ->comments)
+bin/
+obj/
+*.user
+*.suo
+*.cache
+*.vs/
+*.vscode/
