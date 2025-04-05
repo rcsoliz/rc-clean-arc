@@ -19,12 +19,16 @@ namespace Core.Entities
         }
         public bool VerifyPassword(string password)
         {
+
             return BCrypt.Net.BCrypt.Verify(password, Password);
         }
+
 
         public ICollection<Post> Posts { get; set; }
         public ICollection<Comment> Comments { get; set; }
 
         public ICollection<Like> Likes { get; set; }
+
+
     }
 }
