@@ -1,8 +1,12 @@
 {
   "version": 2,
+<<<<<<< HEAD
   "dgSpecHash": "yH0fYG8uFcU=",
+=======
+  "dgSpecHash": "+IU/6AbAa2E=",
+>>>>>>> aac9bd8d905a3f8f1f37b9a72a6d8ee7cfd2348e
   "success": true,
-  "projectFilePath": "D:\\DESARROLLO\\2025\\CleanArchitectureApi\\Infrastructure\\Infrastructure.csproj",
+  "projectFilePath": "D:\\DESARROLLO\\RAMAS\\MASTER\\rc-clean-arc\\Infrastructure\\Infrastructure.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\pc\\.nuget\\packages\\azure.core\\1.25.0\\azure.core.1.25.0.nupkg.sha512",
     "C:\\Users\\pc\\.nuget\\packages\\azure.identity\\1.7.0\\azure.identity.1.7.0.nupkg.sha512",
