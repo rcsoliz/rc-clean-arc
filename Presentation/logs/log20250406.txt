@@ -400,3 +400,109 @@ WHERE [Id] = @p1;
 2025-04-06 22:03:08.627 -04:00 [INF] Executed action Presentation.Controllers.CategoryController.Update (Presentation) in 363.8937ms
 2025-04-06 22:03:08.629 -04:00 [INF] Executed endpoint 'Presentation.Controllers.CategoryController.Update (Presentation)'
 2025-04-06 22:03:08.632 -04:00 [INF] Request finished HTTP/2 PUT https://localhost:7255/api/Category/2 - 204 null null 399.9486ms
+2025-04-06 22:39:00.645 -04:00 [INF] User profile is available. Using 'C:\Users\pc\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-04-06 22:39:00.928 -04:00 [INF] Now listening on: https://localhost:7255
+2025-04-06 22:39:00.929 -04:00 [INF] Now listening on: http://localhost:5072
+2025-04-06 22:39:01.021 -04:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-04-06 22:39:01.024 -04:00 [INF] Hosting environment: Development
+2025-04-06 22:39:01.025 -04:00 [INF] Content root path: D:\DESARROLLO\2025\CleanArchitectureApi\Presentation
+2025-04-06 22:39:01.717 -04:00 [INF] Request starting HTTP/2 GET https://localhost:7255/swagger/index.html - null null
+2025-04-06 22:39:02.218 -04:00 [INF] Request starting HTTP/2 GET https://localhost:7255/_framework/aspnetcore-browser-refresh.js - null null
+2025-04-06 22:39:02.221 -04:00 [INF] Request finished HTTP/2 GET https://localhost:7255/swagger/index.html - 200 null text/html;charset=utf-8 512.2102ms
+2025-04-06 22:39:02.223 -04:00 [INF] Request starting HTTP/2 GET https://localhost:7255/_vs/browserLink - null null
+2025-04-06 22:39:02.285 -04:00 [INF] Request finished HTTP/2 GET https://localhost:7255/_framework/aspnetcore-browser-refresh.js - 200 13760 application/javascript; charset=utf-8 67.1334ms
+2025-04-06 22:39:02.417 -04:00 [INF] Request finished HTTP/2 GET https://localhost:7255/_vs/browserLink - 200 null text/javascript; charset=UTF-8 194.4714ms
+2025-04-06 22:39:02.542 -04:00 [INF] Request starting HTTP/2 GET https://localhost:7255/swagger/v1/swagger.json - null null
+2025-04-06 22:39:02.722 -04:00 [INF] Request finished HTTP/2 GET https://localhost:7255/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 180.4401ms
+2025-04-06 22:39:34.044 -04:00 [INF] Request starting HTTP/2 POST https://localhost:7255/api/Auth/login - application/json 58
+2025-04-06 22:39:34.062 -04:00 [INF] CORS policy execution failed.
+2025-04-06 22:39:34.064 -04:00 [INF] Request origin https://localhost:7255 does not have permission to access the resource.
+2025-04-06 22:39:34.141 -04:00 [INF] Executing endpoint 'Presentation.Controllers.AuthController.Login (Presentation)'
+2025-04-06 22:39:34.167 -04:00 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult] Login(Application.Features.Auth.Commands.Login.LoginCommand) on controller Presentation.Controllers.AuthController (Presentation).
+2025-04-06 22:39:35.751 -04:00 [INF] Executed DbCommand (51ms) [Parameters=[@__request_Email_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[CreatedAt], [u].[Email], [u].[PasswordHash], [u].[UpdatedAt], [u].[Username]
+FROM [Users] AS [u]
+WHERE [u].[Email] = @__request_Email_0
+2025-04-06 22:39:36.612 -04:00 [INF] Executed DbCommand (12ms) [Parameters=[@p0='?' (Size = 450), @p1='?' (DbType = Int32), @p2='?' (DbType = DateTime2), @p3='?' (DbType = DateTime2), @p4='?' (DbType = Int32), @p5='?' (DbType = DateTime2), @p6='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [UserRefreshTokens] ([RefreshToken], [UserId], [CreatedAt], [ExpirationDate], [Id], [RevokedAt], [UpdatedAt])
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6);
+2025-04-06 22:39:36.641 -04:00 [INF] Executing OkObjectResult, writing value of type 'Application.Features.Auth.Commands.Login.LoginResponse'.
+2025-04-06 22:39:36.653 -04:00 [INF] Executed action Presentation.Controllers.AuthController.Login (Presentation) in 2479.1183ms
+2025-04-06 22:39:36.655 -04:00 [INF] Executed endpoint 'Presentation.Controllers.AuthController.Login (Presentation)'
+2025-04-06 22:39:36.670 -04:00 [INF] Request finished HTTP/2 POST https://localhost:7255/api/Auth/login - 200 null application/json; charset=utf-8 2625.159ms
+2025-04-06 22:39:56.133 -04:00 [INF] Request starting HTTP/2 GET https://localhost:7255/api/Category - null null
+2025-04-06 22:39:56.214 -04:00 [INF] Executing endpoint 'Presentation.Controllers.CategoryController.GetAll (Presentation)'
+2025-04-06 22:39:56.221 -04:00 [INF] Route matched with {action = "GetAll", controller = "Category"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.IEnumerable`1[Application.DTOs.CategoryDto]]] GetAll() on controller Presentation.Controllers.CategoryController (Presentation).
+2025-04-06 22:39:56.264 -04:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [c].[Id], [c].[Name]
+FROM [Categories] AS [c]
+2025-04-06 22:39:56.278 -04:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[Application.DTOs.CategoryDto, Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-04-06 22:39:56.282 -04:00 [INF] Executed action Presentation.Controllers.CategoryController.GetAll (Presentation) in 58.4167ms
+2025-04-06 22:39:56.284 -04:00 [INF] Executed endpoint 'Presentation.Controllers.CategoryController.GetAll (Presentation)'
+2025-04-06 22:39:56.286 -04:00 [INF] Request finished HTTP/2 GET https://localhost:7255/api/Category - 200 null application/json; charset=utf-8 153.8221ms
+2025-04-06 22:40:15.992 -04:00 [INF] Request starting HTTP/2 POST https://localhost:7255/api/Category - application/json 24
+2025-04-06 22:40:15.996 -04:00 [INF] CORS policy execution failed.
+2025-04-06 22:40:15.998 -04:00 [INF] Request origin https://localhost:7255 does not have permission to access the resource.
+2025-04-06 22:40:16.004 -04:00 [INF] Executing endpoint 'Presentation.Controllers.CategoryController.Create (Presentation)'
+2025-04-06 22:40:16.009 -04:00 [INF] Route matched with {action = "Create", controller = "Category"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[Core.Entities.Category]] Create(Application.Features.Categories.Commands.CreateCategory.CreateCategoryCommand) on controller Presentation.Controllers.CategoryController (Presentation).
+2025-04-06 22:40:16.159 -04:00 [INF] Executed DbCommand (4ms) [Parameters=[@p0='?' (DbType = DateTime2), @p1='?' (Size = 4000), @p2='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [Categories] ([CreatedAt], [Name], [UpdatedAt])
+OUTPUT INSERTED.[Id]
+VALUES (@p0, @p1, @p2);
+2025-04-06 22:40:16.192 -04:00 [INF] Executing CreatedAtActionResult, writing value of type 'Core.Entities.Category'.
+2025-04-06 22:40:16.226 -04:00 [INF] Executed action Presentation.Controllers.CategoryController.Create (Presentation) in 210.2922ms
+2025-04-06 22:40:16.228 -04:00 [INF] Executed endpoint 'Presentation.Controllers.CategoryController.Create (Presentation)'
+2025-04-06 22:40:16.229 -04:00 [INF] Request finished HTTP/2 POST https://localhost:7255/api/Category - 201 null application/json; charset=utf-8 236.7307ms
+2025-04-06 22:40:24.167 -04:00 [INF] Request starting HTTP/2 GET https://localhost:7255/api/Category/2 - null null
+2025-04-06 22:40:24.172 -04:00 [INF] Executing endpoint 'Presentation.Controllers.CategoryController.GetById (Presentation)'
+2025-04-06 22:40:24.179 -04:00 [INF] Route matched with {action = "GetById", controller = "Category"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[Application.DTOs.CategoryDto]] GetById(Int32) on controller Presentation.Controllers.CategoryController (Presentation).
+2025-04-06 22:40:24.239 -04:00 [INF] Executed DbCommand (2ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [c].[Id], [c].[CreatedAt], [c].[Name], [c].[UpdatedAt]
+FROM [Categories] AS [c]
+WHERE [c].[Id] = @__p_0
+2025-04-06 22:40:24.245 -04:00 [INF] Executing OkObjectResult, writing value of type 'Application.DTOs.CategoryDto'.
+2025-04-06 22:40:24.246 -04:00 [INF] Executed action Presentation.Controllers.CategoryController.GetById (Presentation) in 50.4038ms
+2025-04-06 22:40:24.248 -04:00 [INF] Executed endpoint 'Presentation.Controllers.CategoryController.GetById (Presentation)'
+2025-04-06 22:40:24.249 -04:00 [INF] Request finished HTTP/2 GET https://localhost:7255/api/Category/2 - 200 null application/json; charset=utf-8 82.1906ms
+2025-04-06 22:40:42.491 -04:00 [INF] Request starting HTTP/2 PUT https://localhost:7255/api/Category/2 - application/json 33
+2025-04-06 22:40:42.494 -04:00 [INF] CORS policy execution failed.
+2025-04-06 22:40:42.495 -04:00 [INF] Request origin https://localhost:7255 does not have permission to access the resource.
+2025-04-06 22:40:42.497 -04:00 [INF] Executing endpoint 'Presentation.Controllers.CategoryController.Update (Presentation)'
+2025-04-06 22:40:42.506 -04:00 [INF] Route matched with {action = "Update", controller = "Category"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult] Update(Int32, Application.Features.Categories.Commands.UpdateCategory.UpdateCategoryCommand) on controller Presentation.Controllers.CategoryController (Presentation).
+2025-04-06 22:40:42.536 -04:00 [INF] Executed DbCommand (1ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [c].[Id], [c].[CreatedAt], [c].[Name], [c].[UpdatedAt]
+FROM [Categories] AS [c]
+WHERE [c].[Id] = @__p_0
+2025-04-06 22:40:42.557 -04:00 [INF] Executed DbCommand (10ms) [Parameters=[@p1='?' (DbType = Int32), @p0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+UPDATE [Categories] SET [Name] = @p0
+OUTPUT 1
+WHERE [Id] = @p1;
+2025-04-06 22:40:42.567 -04:00 [INF] Executing StatusCodeResult, setting HTTP status code 204
+2025-04-06 22:40:42.568 -04:00 [INF] Executed action Presentation.Controllers.CategoryController.Update (Presentation) in 57.9988ms
+2025-04-06 22:40:42.569 -04:00 [INF] Executed endpoint 'Presentation.Controllers.CategoryController.Update (Presentation)'
+2025-04-06 22:40:42.571 -04:00 [INF] Request finished HTTP/2 PUT https://localhost:7255/api/Category/2 - 204 null null 79.9527ms
+2025-04-06 22:40:52.270 -04:00 [INF] Request starting HTTP/2 DELETE https://localhost:7255/api/Category/2 - null null
+2025-04-06 22:40:52.273 -04:00 [INF] CORS policy execution failed.
+2025-04-06 22:40:52.274 -04:00 [INF] Request origin https://localhost:7255 does not have permission to access the resource.
+2025-04-06 22:40:52.277 -04:00 [INF] Executing endpoint 'Presentation.Controllers.CategoryController.Delete (Presentation)'
+2025-04-06 22:40:52.288 -04:00 [INF] Route matched with {action = "Delete", controller = "Category"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult] Delete(Int32) on controller Presentation.Controllers.CategoryController (Presentation).
+2025-04-06 22:40:52.311 -04:00 [INF] Executed DbCommand (1ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [c].[Id], [c].[CreatedAt], [c].[Name], [c].[UpdatedAt]
+FROM [Categories] AS [c]
+WHERE [c].[Id] = @__p_0
+2025-04-06 22:40:52.327 -04:00 [INF] Executed DbCommand (3ms) [Parameters=[@p0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+DELETE FROM [Categories]
+OUTPUT 1
+WHERE [Id] = @p0;
+2025-04-06 22:40:52.334 -04:00 [INF] Executing StatusCodeResult, setting HTTP status code 204
+2025-04-06 22:40:52.335 -04:00 [INF] Executed action Presentation.Controllers.CategoryController.Delete (Presentation) in 31.8951ms
+2025-04-06 22:40:52.337 -04:00 [INF] Executed endpoint 'Presentation.Controllers.CategoryController.Delete (Presentation)'
+2025-04-06 22:40:52.338 -04:00 [INF] Request finished HTTP/2 DELETE https://localhost:7255/api/Category/2 - 204 null null 68.6065ms

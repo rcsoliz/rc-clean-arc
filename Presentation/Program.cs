@@ -23,7 +23,8 @@ using Application.Features.Products.Queries.GetAllProducts;
 using Infrastructure.Data;
 using Infrastructure.Data.Repositories;
 using Infrastructure.Data.Repositories.Auth;
-
+using Application.DependencyInjection;
+using Infrastructure.DependencyInjection;
 
 
 var builder = WebApplication.CreateBuilder(args);
@@ -135,19 +136,8 @@ builder.Services.AddDbContext<AppDbContext>(options =>
 
 // Add services to the container.
 //builder.Services.AddScoped<IGenericRepository<Product>, GenericRepository<Product>>();
-builder.Services.AddScoped<IApplicationDbContext>(provider => provider.GetRequiredService<AppDbContext>());
-builder.Services.AddScoped<IProductRepository, ProductRepository>();
-builder.Services.AddScoped<IPostRepository, PostRepository>();
-builder.Services.AddScoped<ICommentRepository, CommentRepository>();
-builder.Services.AddScoped<IFilterRepository, FilterRepository>();
-builder.Services.AddScoped<IJwtService, JwtServiceRepository>();
-
-builder.Services.AddScoped<IRefreshTokenService, RefreshTokenService>();
-builder.Services.AddScoped<IPostCategoryRepository, PostCategoryRepository>();
-builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
-builder.Services.AddScoped<ILikeRepository, LikeRepository>();
-
-builder.Services.AddScoped<IPostService, PostService>();
+builder.Services.AddApplicationLayer();
+builder.Services.AddInfrastructure(builder.Configuration);
 
 builder.Services.AddControllers()
     .AddFluentValidation(fv => fv.RegisterValidatorsFromAssemblyContaining<ProductValidator>());
