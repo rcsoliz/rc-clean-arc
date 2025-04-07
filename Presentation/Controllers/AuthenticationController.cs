@@ -34,7 +34,7 @@ namespace Presentation.Controllers
         [AllowAnonymous]
         public async Task<ActionResult> Create(UserModel command)
         {
-            var validationResult = new UserValidator().Validate(new User { Username = command.Username,Email = command.Email, Password = command.Password });
+            var validationResult = new UserValidator().Validate(new User { Username = command.Username,Email = command.Email, PasswordHash = command.Password });
             if (!validationResult.IsValid)
             {
                 return BadRequest(validationResult.Errors);
@@ -64,7 +64,7 @@ namespace Presentation.Controllers
         [AllowAnonymous]
         public async Task<IActionResult> Login([FromBody] LoginRequest loginRequest)
         {
-            var user = await _userRepository.Access(new User { Email = loginRequest.Email, Password = loginRequest.Password });
+            var user = await _userRepository.Access(new User { Email = loginRequest.Email, PasswordHash = loginRequest.Password });
 
             if (user == null || string.IsNullOrEmpty(user.Email))
                 return Unauthorized("Credenciales incorrectas.");

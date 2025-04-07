@@ -2,13 +2,13 @@
 using Core.Entities;
 using MediatR;
 
-namespace Application.Features.Posts.Commands.UpdatePostCategory
+namespace Application.Features.PostsCategories.UpdatePostCategories
 {
     public class UpdatePostCategoryCommandHandler : IRequestHandler<UpdatePostCategoryCommand, (Post post, List<int> categories)>
     {
-        private readonly IPostRepository _postRepository;
+        private readonly IPostCategoryRepository _postRepository;
 
-        public  UpdatePostCategoryCommandHandler(IPostRepository postRepository)
+        public  UpdatePostCategoryCommandHandler(IPostCategoryRepository postRepository)
         {
             _postRepository = postRepository;
         }

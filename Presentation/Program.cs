@@ -22,6 +22,7 @@ using Application.Interfaces;
 using Application.Features.Products.Queries.GetAllProducts;
 using Infrastructure.Data;
 using Infrastructure.Data.Repositories;
+using Infrastructure.Data.Repositories.Auth;
 
 
 
@@ -134,10 +135,12 @@ builder.Services.AddDbContext<AppDbContext>(options =>
 
 // Add services to the container.
 //builder.Services.AddScoped<IGenericRepository<Product>, GenericRepository<Product>>();
+builder.Services.AddScoped<IApplicationDbContext>(provider => provider.GetRequiredService<AppDbContext>());
 builder.Services.AddScoped<IProductRepository, ProductRepository>();
 builder.Services.AddScoped<IPostRepository, PostRepository>();
 builder.Services.AddScoped<ICommentRepository, CommentRepository>();
 builder.Services.AddScoped<IFilterRepository, FilterRepository>();
+builder.Services.AddScoped<IJwtService, JwtServiceRepository>();
 
 
 builder.Services.AddScoped<IPostService, PostService>();

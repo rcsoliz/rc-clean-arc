@@ -11,20 +11,21 @@ namespace Core.Entities
     {
         public string Username { get; set; }
         public string Email { get; set; }
-        public string Password { get;  set; }
-
+        //public string Password { get;  set; }
+        public string PasswordHash { get; set; }
         public void SetPassword(string password)
         {
-            Password = BCrypt.Net.BCrypt.HashPassword(password);
+            PasswordHash = BCrypt.Net.BCrypt.HashPassword(password);
         }
         public bool VerifyPassword(string password)
         {
-            return BCrypt.Net.BCrypt.Verify(password, Password);
+            return BCrypt.Net.BCrypt.Verify(password, PasswordHash);
         }
 
         public ICollection<Post> Posts { get; set; }
         public ICollection<Comment> Comments { get; set; }
 
         public ICollection<Like> Likes { get; set; }
+        public ICollection<UserRefreshToken> UserRefreshTokens { get; set; }
     }
 }

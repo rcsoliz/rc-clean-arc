@@ -1,15 +1,14 @@
-﻿using Application.Features.Posts.Commands.CreatePostRefactory;
-using Application.Interfaces;
+﻿using Application.Interfaces;
 using Core.Entities;
 using MediatR;
 
-namespace Application.Features.Posts.Commands.CreatePostCategory
+namespace Application.Features.PostsCategories.CreatePostCategories
 {
     public class CreatePostCategoryCommandHandler : IRequestHandler<CreatePostCategoryCommand, (Post post, List<int> categories)>
     {
-        private readonly IPostRepository _repository;
+        private readonly IPostCategoryRepository _repository;
 
-        public CreatePostCategoryCommandHandler(IPostRepository repository)
+        public CreatePostCategoryCommandHandler(IPostCategoryRepository repository)
         {
             _repository = repository;
         }
@@ -23,7 +22,7 @@ namespace Application.Features.Posts.Commands.CreatePostCategory
                 ImageUrl = request.ImageUrl,
             };
 
-            await _repository.AddAsyncRefactory(post, request.CategoryIds);
+            await _repository.AddAsync(post, request.CategoryIds);
 
             return (post, request.CategoryIds);
         }

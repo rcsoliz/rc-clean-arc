@@ -11,7 +11,7 @@ namespace Application.Validators
             RuleFor(p => p.Email)
                 .NotEmpty().WithMessage("El email del usuario es obligatorio")
                 .EmailAddress().WithMessage("El email no es valido");
-            RuleFor(p => p.Password)
+            RuleFor(p => p.PasswordHash)
                 .NotEmpty().WithMessage("La contraseña del usuario es obligatoria")
                 .NotNull().WithMessage("La contraseña del usuario es obligatoria")
                 .MinimumLength(6).WithMessage("La contraseña debe tener al menos 6 caracteres");

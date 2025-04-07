@@ -1,11 +1,13 @@
 ﻿using Application.DTOs;
+using Application.Interfaces;
 using Core.Entities;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Migrations;
 
 
 namespace Infrastructure.Data
 {
-    public class AppDbContext: DbContext
+    public class AppDbContext: DbContext, IApplicationDbContext
     {
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options){}
         public DbSet<Product> Products { get; set; }
@@ -17,6 +19,8 @@ namespace Infrastructure.Data
         public DbSet<Like> Likes { get; set; }
         public DbSet<Category> Categories { get; set; }
         public DbSet<PostCategory> PostCategories { get; set; }
+
+        public DbSet<UserRefreshToken> UserRefreshTokens { get; set; }
 
         // public DbSet<PostDto> PostDtos { get; set; }
 
@@ -67,7 +71,7 @@ namespace Infrastructure.Data
 
             modelBuilder.Entity<PostCategory>()
                 .HasKey(pc => new { pc.PostId, pc.CategoryId });
-
+                
             modelBuilder.Entity<PostCategory>()
                 .HasOne(pc => pc.Post)
                 .WithMany(p => p.PostCategories )
@@ -91,6 +95,17 @@ namespace Infrastructure.Data
                 .WithMany(p => p.Likes)
                 .HasForeignKey(l => l.PostId)
                 .OnDelete(DeleteBehavior.Cascade);
+
+            modelBuilder.Entity<UserRefreshToken>(entity =>
+            {
+                entity.HasKey(urt => new { urt.UserId, urt.RefreshToken });
+
+                entity.HasOne(urt => urt.User)
+                    .WithMany(u => u.UserRefreshTokens)
+                    .HasForeignKey(urt => urt.UserId);
+            });
+
+
 
         }
     }

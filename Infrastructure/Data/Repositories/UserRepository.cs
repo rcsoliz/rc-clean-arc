@@ -17,7 +17,7 @@ namespace Infrastructure.Data.Repositories
         public async Task<User> Access(User user)
         {
             var userByEmail = await _context.Users.SingleOrDefaultAsync(u => u.Email == user.Email);
-            if (userByEmail == null || !userByEmail.VerifyPassword(user.Password))
+            if (userByEmail == null || !userByEmail.VerifyPassword(user.PasswordHash))
                 return new User();
 
        
