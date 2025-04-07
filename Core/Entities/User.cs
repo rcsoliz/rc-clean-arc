@@ -11,7 +11,6 @@ namespace Core.Entities
     {
         public string Username { get; set; }
         public string Email { get; set; }
-        //public string Password { get;  set; }
         public string PasswordHash { get; set; }
         public void SetPassword(string password)
         {
@@ -19,12 +18,7 @@ namespace Core.Entities
         }
         public bool VerifyPassword(string password)
         {
-<<<<<<< HEAD
             return BCrypt.Net.BCrypt.Verify(password, PasswordHash);
-=======
-
-            return BCrypt.Net.BCrypt.Verify(password, Password);
->>>>>>> aac9bd8d905a3f8f1f37b9a72a6d8ee7cfd2348e
         }
 
 
@@ -32,11 +26,7 @@ namespace Core.Entities
         public ICollection<Comment> Comments { get; set; }
 
         public ICollection<Like> Likes { get; set; }
-<<<<<<< HEAD
         public ICollection<UserRefreshToken> UserRefreshTokens { get; set; }
-=======
 
-
->>>>>>> aac9bd8d905a3f8f1f37b9a72a6d8ee7cfd2348e
     }
 }

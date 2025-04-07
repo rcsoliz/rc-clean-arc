@@ -59,16 +59,16 @@ namespace Presentation.Controllers
             if(id != command.Id) return BadRequest();
 
             var category = await _mediator.Send(command);
-            if (category == null) return NoContent();
+            if (category == null) return NotFound();
 
-            return NotFound();
+            return NoContent();
         }
 
         [HttpDelete("{id}")]
         public async Task<ActionResult> Delete(int id) 
         {
             var category = await _mediator.Send(new DeleteCategoryCommand(id));
-            if(!category) return NoContent();
+            if(!category) return NotFound();
 
             return NoContent();
         }

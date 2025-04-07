@@ -53,12 +53,16 @@ namespace Infrastructure.Data.Repositories
 
         public async Task UpdateAsync(Category entity)
         {
-           var category = await _context.Categories.FindAsync(entity.Id);
+            var category = await _context.Categories.FindAsync(entity.Id);
             if (category != null)
             {
+                category.Id = entity.Id;
                 category.Name = entity.Name;
                 await _context.SaveChangesAsync();
             }
+
+            //_context.Categories.Update(entity);
+            //await _context.SaveChangesAsync();
         }
     }
 }

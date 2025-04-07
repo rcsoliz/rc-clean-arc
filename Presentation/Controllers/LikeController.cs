@@ -2,6 +2,7 @@
 using Application.Features.Categories.Commands.UpdateCategory;
 using Application.Features.Likes.Commands.CreateLike;
 using Application.Features.Likes.Commands.DeleteLike;
+using Application.Features.Likes.Commands.UpdateLike;
 using Application.Features.Likes.Queries.GeAllLikes;
 using Application.Features.Likes.Queries.GetLikesById;
 using Application.Validators;
@@ -52,7 +53,7 @@ namespace Presentation.Controllers
         }
 
         [HttpPut("{id}")]
-        public async Task<ActionResult> Update(int id, UpdateCategoryCommand command)
+        public async Task<ActionResult> Update(int id, UpdateLikeCommand command)
         {
             if(id != command.Id) return BadRequest();
 

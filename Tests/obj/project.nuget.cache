@@ -1,12 +1,8 @@
 {
   "version": 2,
-<<<<<<< HEAD
   "dgSpecHash": "Y5Q2mbf8PH4=",
-=======
-  "dgSpecHash": "2y0QkMIspXg=",
->>>>>>> aac9bd8d905a3f8f1f37b9a72a6d8ee7cfd2348e
   "success": true,
-  "projectFilePath": "D:\\DESARROLLO\\RAMAS\\MASTER\\rc-clean-arc\\Tests\\Tests.csproj",
+  "projectFilePath": "D:\\DESARROLLO\\2025\\CleanArchitectureApi\\Tests\\Tests.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\pc\\.nuget\\packages\\azure.core\\1.25.0\\azure.core.1.25.0.nupkg.sha512",
     "C:\\Users\\pc\\.nuget\\packages\\azure.identity\\1.7.0\\azure.identity.1.7.0.nupkg.sha512",
@@ -178,5 +174,12 @@
     "C:\\Users\\pc\\.nuget\\packages\\xunit.extensibility.execution\\2.5.3\\xunit.extensibility.execution.2.5.3.nupkg.sha512",
     "C:\\Users\\pc\\.nuget\\packages\\xunit.runner.visualstudio\\2.5.3\\xunit.runner.visualstudio.2.5.3.nupkg.sha512"
   ],
-  "logs": []
+  "logs": [
+    {
+      "code": "Undefined",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Problema al leer el archivo de caché D:\\DESARROLLO\\2025\\CleanArchitectureApi\\Tests\\obj\\project.nuget.cache : Invalid property identifier character: <. Path 'version', line 3, position 0."
+    }
+  ]
 }
