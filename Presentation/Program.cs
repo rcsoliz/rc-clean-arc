@@ -1,31 +1,23 @@
-﻿using System;
-using Core.Entities;
-using Microsoft.EntityFrameworkCore;
-using FluentValidation;
+﻿using Microsoft.EntityFrameworkCore;
 using FluentValidation.AspNetCore;
 using Application.Validators;
-
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
-
 using Microsoft.OpenApi.Models;
-
 using MediatR;
-using Microsoft.Extensions.DependencyInjection;
-
 using Serilog;
-using Microsoft.Extensions.Options;
-using Microsoft.Extensions.Configuration;
 using Application.Serivces;
-using Application.Interfaces;
 using Application.Features.Products.Queries.GetAllProducts;
 using Infrastructure.Data;
 using Infrastructure.Data.Repositories;
-using Infrastructure.Data.Repositories.Auth;
 using Application.DependencyInjection;
 using Infrastructure.DependencyInjection;
-
+using HealthChecks.UI.Client;
+using Microsoft.AspNetCore.Diagnostics.HealthChecks;
+using System.Text.Json;
+using Prometheus;
+using OpenTelemetry.Metrics;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -51,6 +43,24 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     });
 
 builder.Services.AddAuthorization();
+
+// Health Checks
+builder.Services.AddHealthChecks()
+    .AddSqlServer(
+        builder.Configuration.GetConnectionString("DefaultConnection"),
+        name: "SQL Server",
+        failureStatus: Microsoft.Extensions.Diagnostics.HealthChecks.HealthStatus.Unhealthy
+     );
+
+builder.Services.AddOpenTelemetry()
+    .WithMetrics(metrics =>
+    {
+        metrics
+            .AddAspNetCoreInstrumentation()
+            .AddHttpClientInstrumentation()
+            .AddRuntimeInstrumentation()
+            .AddPrometheusExporter();
+    });
 
 //Services swagger access by token in Swagger
 
@@ -168,12 +178,43 @@ if (app.Environment.IsDevelopment())
     });
 }
 
+// Mide todas las peticiones HTTP
+app.UseHttpMetrics();
+
+// Mapea el endpoint /metrics
+app.MapMetrics(); // Esto expone /metrics en formato Prometheus
+
+app.UseOpenTelemetryPrometheusScrapingEndpoint("/metrics");
+
 app.UseHttpsRedirection();
 
 app.UseCors(MyAllowSpecificOrigins); // Service CORS
 
 app.UseAuthentication();
 app.UseAuthorization();
+
+//Health Checks
+// Health Checks en formato Json para util para Dashboard Monitoreo
+app.MapHealthChecks("/health", new HealthCheckOptions
+{
+     ResponseWriter = async (context, report) =>
+     {
+         context.Response.ContentType = "application/json";
+         var result = JsonSerializer.Serialize(new
+         {
+             status = report.Status.ToString(),
+             checks = report.Entries.Select(e => new {
+                 name = e.Key,
+                 status = e.Value.Status.ToString(),
+                 duration = e.Value.Duration.ToString(),
+                 description = e.Value.Description,
+                 tags = e.Value.Tags.ToArray()
+             }),
+             totalDuration = report.TotalDuration.ToString()
+         });
+         await context.Response.WriteAsync(result);
+     }
+});
 
 app.MapControllers();
 

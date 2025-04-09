@@ -1,0 +1,375 @@
+2025-04-08 23:14:57.083 -04:00 [INF] User profile is available. Using 'C:\Users\pc\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-04-08 23:14:57.427 -04:00 [INF] Now listening on: https://localhost:7255
+2025-04-08 23:14:57.429 -04:00 [INF] Now listening on: http://localhost:5072
+2025-04-08 23:14:57.538 -04:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-04-08 23:14:57.540 -04:00 [INF] Hosting environment: Development
+2025-04-08 23:14:57.541 -04:00 [INF] Content root path: D:\DESARROLLO\2025\CleanArchitectureApi\Presentation
+2025-04-08 23:14:58.754 -04:00 [INF] Request starting HTTP/2 GET https://localhost:7255/swagger/index.html - null null
+2025-04-08 23:14:59.252 -04:00 [INF] Request finished HTTP/2 GET https://localhost:7255/swagger/index.html - 200 null text/html;charset=utf-8 505.9694ms
+2025-04-08 23:14:59.253 -04:00 [INF] Request starting HTTP/2 GET https://localhost:7255/_framework/aspnetcore-browser-refresh.js - null null
+2025-04-08 23:14:59.261 -04:00 [INF] Request starting HTTP/2 GET https://localhost:7255/_vs/browserLink - null null
+2025-04-08 23:14:59.300 -04:00 [INF] Request finished HTTP/2 GET https://localhost:7255/_framework/aspnetcore-browser-refresh.js - 200 13760 application/javascript; charset=utf-8 47.0818ms
+2025-04-08 23:14:59.421 -04:00 [INF] Request finished HTTP/2 GET https://localhost:7255/_vs/browserLink - 200 null text/javascript; charset=UTF-8 160.1158ms
+2025-04-08 23:14:59.947 -04:00 [INF] Request starting HTTP/2 GET https://localhost:7255/swagger/v1/swagger.json - null null
+2025-04-08 23:15:00.050 -04:00 [INF] Request finished HTTP/2 GET https://localhost:7255/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 103.4594ms
+2025-04-08 23:15:33.463 -04:00 [INF] Request starting HTTP/2 POST https://localhost:7255/api/Auth/login - application/json 58
+2025-04-08 23:15:33.478 -04:00 [INF] CORS policy execution failed.
+2025-04-08 23:15:33.479 -04:00 [INF] Request origin https://localhost:7255 does not have permission to access the resource.
+2025-04-08 23:15:33.603 -04:00 [INF] Executing endpoint 'Presentation.Controllers.AuthController.Login (Presentation)'
+2025-04-08 23:15:33.634 -04:00 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult] Login(Application.Features.Auth.Commands.Login.LoginCommand) on controller Presentation.Controllers.AuthController (Presentation).
+2025-04-08 23:15:35.395 -04:00 [INF] Executed DbCommand (60ms) [Parameters=[@__request_Email_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[CreatedAt], [u].[Email], [u].[PasswordHash], [u].[UpdatedAt], [u].[Username]
+FROM [Users] AS [u]
+WHERE [u].[Email] = @__request_Email_0
+2025-04-08 23:15:36.266 -04:00 [INF] Executed DbCommand (8ms) [Parameters=[@p0='?' (Size = 450), @p1='?' (DbType = Int32), @p2='?' (DbType = DateTime2), @p3='?' (DbType = DateTime2), @p4='?' (DbType = Int32), @p5='?' (DbType = DateTime2), @p6='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [UserRefreshTokens] ([RefreshToken], [UserId], [CreatedAt], [ExpirationDate], [Id], [RevokedAt], [UpdatedAt])
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6);
+2025-04-08 23:15:36.291 -04:00 [INF] Executing OkObjectResult, writing value of type 'Application.Features.Auth.Commands.Login.LoginResponse'.
+2025-04-08 23:15:36.301 -04:00 [INF] Executed action Presentation.Controllers.AuthController.Login (Presentation) in 2661.5805ms
+2025-04-08 23:15:36.304 -04:00 [INF] Executed endpoint 'Presentation.Controllers.AuthController.Login (Presentation)'
+2025-04-08 23:15:36.314 -04:00 [INF] Request finished HTTP/2 POST https://localhost:7255/api/Auth/login - 200 null application/json; charset=utf-8 2851.1776ms
+2025-04-08 23:16:21.955 -04:00 [INF] Request starting HTTP/2 GET https://localhost:7255/health - null null
+2025-04-08 23:16:21.976 -04:00 [ERR] An unhandled exception has occurred while executing the request.
+Microsoft.AspNetCore.Routing.Matching.AmbiguousMatchException: The request matched multiple endpoints. Matches: 
+
+Health checks
+Health checks
+   at Microsoft.AspNetCore.Routing.Matching.DefaultEndpointSelector.ReportAmbiguity(Span`1 candidateState)
+   at Microsoft.AspNetCore.Routing.Matching.DefaultEndpointSelector.ProcessFinalCandidates(HttpContext httpContext, Span`1 candidateState)
+   at Microsoft.AspNetCore.Routing.Matching.DefaultEndpointSelector.Select(HttpContext httpContext, Span`1 candidateState)
+   at Microsoft.AspNetCore.Routing.Matching.DfaMatcher.MatchAsync(HttpContext httpContext)
+   at Microsoft.AspNetCore.Routing.EndpointRoutingMiddleware.Invoke(HttpContext httpContext)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+2025-04-08 23:16:22.118 -04:00 [INF] Request finished HTTP/2 GET https://localhost:7255/health - 500 null text/html; charset=utf-8 162.9068ms
+2025-04-08 23:16:22.140 -04:00 [INF] Request starting HTTP/2 GET https://localhost:7255/_vs/browserLink - null null
+2025-04-08 23:16:22.148 -04:00 [INF] Request starting HTTP/2 GET https://localhost:7255/_framework/aspnetcore-browser-refresh.js - null null
+2025-04-08 23:16:22.165 -04:00 [INF] Request finished HTTP/2 GET https://localhost:7255/_framework/aspnetcore-browser-refresh.js - 200 13760 application/javascript; charset=utf-8 15.9336ms
+2025-04-08 23:16:22.175 -04:00 [INF] Request finished HTTP/2 GET https://localhost:7255/_vs/browserLink - 200 null text/javascript; charset=UTF-8 34.9765ms
+2025-04-08 23:16:22.463 -04:00 [INF] Request starting HTTP/2 GET https://localhost:7255/favicon.ico - null null
+2025-04-08 23:16:22.471 -04:00 [INF] Request finished HTTP/2 GET https://localhost:7255/favicon.ico - 404 0 null 8.3505ms
+2025-04-08 23:16:22.476 -04:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET https://localhost:7255/favicon.ico, Response status code: 404
+2025-04-08 23:17:05.508 -04:00 [INF] Request starting HTTP/2 GET https://localhost:7255/api/Category - null null
+2025-04-08 23:17:05.626 -04:00 [INF] Executing endpoint 'Presentation.Controllers.CategoryController.GetAll (Presentation)'
+2025-04-08 23:17:05.635 -04:00 [INF] Route matched with {action = "GetAll", controller = "Category"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.IEnumerable`1[Application.DTOs.CategoryDto]]] GetAll() on controller Presentation.Controllers.CategoryController (Presentation).
+2025-04-08 23:17:05.699 -04:00 [INF] Executed DbCommand (5ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [c].[Id], [c].[Name]
+FROM [Categories] AS [c]
+2025-04-08 23:17:05.709 -04:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[Application.DTOs.CategoryDto, Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-04-08 23:17:05.715 -04:00 [INF] Executed action Presentation.Controllers.CategoryController.GetAll (Presentation) in 76.3721ms
+2025-04-08 23:17:05.718 -04:00 [INF] Executed endpoint 'Presentation.Controllers.CategoryController.GetAll (Presentation)'
+2025-04-08 23:17:05.720 -04:00 [INF] Request finished HTTP/2 GET https://localhost:7255/api/Category - 200 null application/json; charset=utf-8 212.4969ms
+2025-04-08 23:17:11.308 -04:00 [INF] Request starting HTTP/2 GET https://localhost:7255/health - null null
+2025-04-08 23:17:11.315 -04:00 [ERR] An unhandled exception has occurred while executing the request.
+Microsoft.AspNetCore.Routing.Matching.AmbiguousMatchException: The request matched multiple endpoints. Matches: 
+
+Health checks
+Health checks
+   at Microsoft.AspNetCore.Routing.Matching.DefaultEndpointSelector.ReportAmbiguity(Span`1 candidateState)
+   at Microsoft.AspNetCore.Routing.Matching.DefaultEndpointSelector.ProcessFinalCandidates(HttpContext httpContext, Span`1 candidateState)
+   at Microsoft.AspNetCore.Routing.Matching.DefaultEndpointSelector.Select(HttpContext httpContext, Span`1 candidateState)
+   at Microsoft.AspNetCore.Routing.Matching.DfaMatcher.MatchAsync(HttpContext httpContext)
+   at Microsoft.AspNetCore.Routing.EndpointRoutingMiddleware.Invoke(HttpContext httpContext)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+2025-04-08 23:17:11.333 -04:00 [INF] Request finished HTTP/2 GET https://localhost:7255/health - 500 null text/html; charset=utf-8 25.4103ms
+2025-04-08 23:17:11.356 -04:00 [INF] Request starting HTTP/2 GET https://localhost:7255/_vs/browserLink - null null
+2025-04-08 23:17:11.361 -04:00 [INF] Request starting HTTP/2 GET https://localhost:7255/_framework/aspnetcore-browser-refresh.js - null null
+2025-04-08 23:17:11.378 -04:00 [INF] Request finished HTTP/2 GET https://localhost:7255/_framework/aspnetcore-browser-refresh.js - 200 13760 application/javascript; charset=utf-8 16.9465ms
+2025-04-08 23:17:11.381 -04:00 [INF] Request finished HTTP/2 GET https://localhost:7255/_vs/browserLink - 200 null text/javascript; charset=UTF-8 25.0467ms
+2025-04-08 23:22:02.476 -04:00 [INF] User profile is available. Using 'C:\Users\pc\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-04-08 23:22:02.774 -04:00 [INF] Now listening on: https://localhost:7255
+2025-04-08 23:22:02.776 -04:00 [INF] Now listening on: http://localhost:5072
+2025-04-08 23:22:02.851 -04:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-04-08 23:22:02.853 -04:00 [INF] Hosting environment: Development
+2025-04-08 23:22:02.854 -04:00 [INF] Content root path: D:\DESARROLLO\2025\CleanArchitectureApi\Presentation
+2025-04-08 23:22:03.631 -04:00 [INF] Request starting HTTP/2 GET https://localhost:7255/swagger/index.html - null null
+2025-04-08 23:22:04.042 -04:00 [INF] Request finished HTTP/2 GET https://localhost:7255/swagger/index.html - 200 null text/html;charset=utf-8 418.3362ms
+2025-04-08 23:22:04.076 -04:00 [INF] Request starting HTTP/2 GET https://localhost:7255/_framework/aspnetcore-browser-refresh.js - null null
+2025-04-08 23:22:04.077 -04:00 [INF] Request starting HTTP/2 GET https://localhost:7255/_vs/browserLink - null null
+2025-04-08 23:22:04.121 -04:00 [INF] Request finished HTTP/2 GET https://localhost:7255/_framework/aspnetcore-browser-refresh.js - 200 13760 application/javascript; charset=utf-8 45.4207ms
+2025-04-08 23:22:04.189 -04:00 [INF] Request finished HTTP/2 GET https://localhost:7255/_vs/browserLink - 200 null text/javascript; charset=UTF-8 111.7143ms
+2025-04-08 23:22:04.729 -04:00 [INF] Request starting HTTP/2 GET https://localhost:7255/swagger/v1/swagger.json - null null
+2025-04-08 23:22:04.816 -04:00 [INF] Request finished HTTP/2 GET https://localhost:7255/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 87.1955ms
+2025-04-08 23:22:20.446 -04:00 [INF] Request starting HTTP/2 GET https://localhost:7255/api/Category - null null
+2025-04-08 23:22:20.593 -04:00 [INF] Executing endpoint 'Presentation.Controllers.CategoryController.GetAll (Presentation)'
+2025-04-08 23:22:20.614 -04:00 [INF] Route matched with {action = "GetAll", controller = "Category"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.IEnumerable`1[Application.DTOs.CategoryDto]]] GetAll() on controller Presentation.Controllers.CategoryController (Presentation).
+2025-04-08 23:22:22.096 -04:00 [INF] Executed DbCommand (36ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [c].[Id], [c].[Name]
+FROM [Categories] AS [c]
+2025-04-08 23:22:22.135 -04:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[Application.DTOs.CategoryDto, Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-04-08 23:22:22.146 -04:00 [INF] Executed action Presentation.Controllers.CategoryController.GetAll (Presentation) in 1526.0132ms
+2025-04-08 23:22:22.149 -04:00 [INF] Executed endpoint 'Presentation.Controllers.CategoryController.GetAll (Presentation)'
+2025-04-08 23:22:22.159 -04:00 [INF] Request finished HTTP/2 GET https://localhost:7255/api/Category - 200 null application/json; charset=utf-8 1713.4323ms
+2025-04-08 23:22:44.903 -04:00 [INF] Request starting HTTP/2 GET https://localhost:7255/health - null null
+2025-04-08 23:22:44.928 -04:00 [INF] Executing endpoint 'Health checks'
+2025-04-08 23:22:45.040 -04:00 [INF] Executed endpoint 'Health checks'
+2025-04-08 23:22:45.042 -04:00 [INF] Request finished HTTP/2 GET https://localhost:7255/health - 200 null application/json 139.4649ms
+2025-04-08 23:23:06.259 -04:00 [INF] Request starting HTTP/2 GET https://localhost:7255/api/Comment - null null
+2025-04-08 23:23:06.272 -04:00 [INF] Executing endpoint 'Presentation.Controllers.CommentController.GetAll (Presentation)'
+2025-04-08 23:23:06.285 -04:00 [INF] Route matched with {action = "GetAll", controller = "Comment"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.IEnumerable`1[Core.Entities.Comment]]] GetAll() on controller Presentation.Controllers.CommentController (Presentation).
+2025-04-08 23:23:06.364 -04:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [c].[Id], [c].[CommentContent], [c].[CreatedAt], [c].[ParentCommentId], [c].[PostId], [c].[UpdatedAt], [c].[UserId]
+FROM [Comments] AS [c]
+2025-04-08 23:23:06.369 -04:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[Core.Entities.Comment, Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-04-08 23:23:06.383 -04:00 [INF] Executed action Presentation.Controllers.CommentController.GetAll (Presentation) in 88.4088ms
+2025-04-08 23:23:06.386 -04:00 [INF] Executed endpoint 'Presentation.Controllers.CommentController.GetAll (Presentation)'
+2025-04-08 23:23:06.388 -04:00 [INF] Request finished HTTP/2 GET https://localhost:7255/api/Comment - 200 null application/json; charset=utf-8 128.8963ms
+2025-04-08 23:23:10.728 -04:00 [INF] Request starting HTTP/2 GET https://localhost:7255/health - null null
+2025-04-08 23:23:10.733 -04:00 [INF] Executing endpoint 'Health checks'
+2025-04-08 23:23:10.737 -04:00 [INF] Executed endpoint 'Health checks'
+2025-04-08 23:23:10.739 -04:00 [INF] Request finished HTTP/2 GET https://localhost:7255/health - 200 null application/json 11.8994ms
+2025-04-08 23:23:28.201 -04:00 [INF] Request starting HTTP/2 GET https://localhost:7255/api/Post - null null
+2025-04-08 23:23:28.208 -04:00 [INF] Executing endpoint 'Presentation.Controllers.PostController.GetAll (Presentation)'
+2025-04-08 23:23:28.215 -04:00 [INF] Route matched with {action = "GetAll", controller = "Post"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.IEnumerable`1[Core.Entities.Post]]] GetAll() on controller Presentation.Controllers.PostController (Presentation).
+2025-04-08 23:23:28.312 -04:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [p].[Id], [p].[CreatedAt], [p].[ImageUrl], [p].[PostContent], [p].[UpdatedAt], [p].[UserId]
+FROM [Posts] AS [p]
+2025-04-08 23:23:28.318 -04:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[Core.Entities.Post, Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-04-08 23:23:28.321 -04:00 [INF] Executed action Presentation.Controllers.PostController.GetAll (Presentation) in 85.5879ms
+2025-04-08 23:23:28.323 -04:00 [INF] Executed endpoint 'Presentation.Controllers.PostController.GetAll (Presentation)'
+2025-04-08 23:23:28.325 -04:00 [INF] Request finished HTTP/2 GET https://localhost:7255/api/Post - 200 null application/json; charset=utf-8 124.3134ms
+2025-04-08 23:23:34.987 -04:00 [INF] Request starting HTTP/2 GET https://localhost:7255/health - null null
+2025-04-08 23:23:34.993 -04:00 [INF] Executing endpoint 'Health checks'
+2025-04-08 23:23:34.997 -04:00 [INF] Executed endpoint 'Health checks'
+2025-04-08 23:23:35.000 -04:00 [INF] Request finished HTTP/2 GET https://localhost:7255/health - 200 null application/json 12.8904ms
+2025-04-08 23:23:36.671 -04:00 [INF] Request starting HTTP/2 GET https://localhost:7255/health - null null
+2025-04-08 23:23:36.677 -04:00 [INF] Executing endpoint 'Health checks'
+2025-04-08 23:23:36.681 -04:00 [INF] Executed endpoint 'Health checks'
+2025-04-08 23:23:36.683 -04:00 [INF] Request finished HTTP/2 GET https://localhost:7255/health - 200 null application/json 12.1984ms
+2025-04-08 23:23:37.544 -04:00 [INF] Request starting HTTP/2 GET https://localhost:7255/health - null null
+2025-04-08 23:23:37.549 -04:00 [INF] Executing endpoint 'Health checks'
+2025-04-08 23:23:37.552 -04:00 [INF] Executed endpoint 'Health checks'
+2025-04-08 23:23:37.554 -04:00 [INF] Request finished HTTP/2 GET https://localhost:7255/health - 200 null application/json 10.9897ms
+2025-04-08 23:23:39.756 -04:00 [INF] Request starting HTTP/2 GET https://localhost:7255/health - null null
+2025-04-08 23:23:39.763 -04:00 [INF] Executing endpoint 'Health checks'
+2025-04-08 23:23:39.767 -04:00 [INF] Executed endpoint 'Health checks'
+2025-04-08 23:23:39.769 -04:00 [INF] Request finished HTTP/2 GET https://localhost:7255/health - 200 null application/json 13.7655ms
+2025-04-08 23:23:40.797 -04:00 [INF] Request starting HTTP/2 GET https://localhost:7255/health - null null
+2025-04-08 23:23:40.802 -04:00 [INF] Executing endpoint 'Health checks'
+2025-04-08 23:23:40.805 -04:00 [INF] Executed endpoint 'Health checks'
+2025-04-08 23:23:40.807 -04:00 [INF] Request finished HTTP/2 GET https://localhost:7255/health - 200 null application/json 10.5404ms
+2025-04-08 23:23:43.158 -04:00 [INF] Request starting HTTP/2 GET https://localhost:7255/health - null null
+2025-04-08 23:23:43.163 -04:00 [INF] Executing endpoint 'Health checks'
+2025-04-08 23:23:43.166 -04:00 [INF] Executed endpoint 'Health checks'
+2025-04-08 23:23:43.171 -04:00 [INF] Request finished HTTP/2 GET https://localhost:7255/health - 200 null application/json 12.7161ms
+2025-04-08 23:23:43.695 -04:00 [INF] Request starting HTTP/2 GET https://localhost:7255/health - null null
+2025-04-08 23:23:43.708 -04:00 [INF] Executing endpoint 'Health checks'
+2025-04-08 23:23:43.713 -04:00 [INF] Executed endpoint 'Health checks'
+2025-04-08 23:23:43.715 -04:00 [INF] Request finished HTTP/2 GET https://localhost:7255/health - 200 null application/json 20.5509ms
+2025-04-08 23:23:44.163 -04:00 [INF] Request starting HTTP/2 GET https://localhost:7255/health - null null
+2025-04-08 23:23:44.168 -04:00 [INF] Executing endpoint 'Health checks'
+2025-04-08 23:23:44.172 -04:00 [INF] Executed endpoint 'Health checks'
+2025-04-08 23:23:44.174 -04:00 [INF] Request finished HTTP/2 GET https://localhost:7255/health - 200 null application/json 10.86ms
+2025-04-08 23:25:56.207 -04:00 [INF] User profile is available. Using 'C:\Users\pc\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-04-08 23:25:56.490 -04:00 [INF] Now listening on: https://localhost:7255
+2025-04-08 23:25:56.491 -04:00 [INF] Now listening on: http://localhost:5072
+2025-04-08 23:25:56.553 -04:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-04-08 23:25:56.554 -04:00 [INF] Hosting environment: Development
+2025-04-08 23:25:56.556 -04:00 [INF] Content root path: D:\DESARROLLO\2025\CleanArchitectureApi\Presentation
+2025-04-08 23:25:57.489 -04:00 [INF] Request starting HTTP/2 GET https://localhost:7255/swagger/index.html - null null
+2025-04-08 23:25:57.804 -04:00 [INF] Request finished HTTP/2 GET https://localhost:7255/swagger/index.html - 200 null text/html;charset=utf-8 325.4042ms
+2025-04-08 23:25:57.816 -04:00 [INF] Request starting HTTP/2 GET https://localhost:7255/_framework/aspnetcore-browser-refresh.js - null null
+2025-04-08 23:25:57.817 -04:00 [INF] Request starting HTTP/2 GET https://localhost:7255/_vs/browserLink - null null
+2025-04-08 23:25:57.832 -04:00 [INF] Request finished HTTP/2 GET https://localhost:7255/_framework/aspnetcore-browser-refresh.js - 200 13760 application/javascript; charset=utf-8 16.0801ms
+2025-04-08 23:25:57.889 -04:00 [INF] Request finished HTTP/2 GET https://localhost:7255/_vs/browserLink - 200 null text/javascript; charset=UTF-8 72.9047ms
+2025-04-08 23:25:58.091 -04:00 [INF] Request starting HTTP/2 GET https://localhost:7255/swagger/v1/swagger.json - null null
+2025-04-08 23:25:58.142 -04:00 [INF] Request finished HTTP/2 GET https://localhost:7255/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 51.0956ms
+2025-04-08 23:26:31.442 -04:00 [INF] Request starting HTTP/2 GET https://localhost:7255/api/Category - null null
+2025-04-08 23:26:31.619 -04:00 [INF] Executing endpoint 'Presentation.Controllers.CategoryController.GetAll (Presentation)'
+2025-04-08 23:26:31.641 -04:00 [INF] Route matched with {action = "GetAll", controller = "Category"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.IEnumerable`1[Application.DTOs.CategoryDto]]] GetAll() on controller Presentation.Controllers.CategoryController (Presentation).
+2025-04-08 23:26:33.194 -04:00 [INF] Executed DbCommand (37ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [c].[Id], [c].[Name]
+FROM [Categories] AS [c]
+2025-04-08 23:26:33.246 -04:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[Application.DTOs.CategoryDto, Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-04-08 23:26:33.259 -04:00 [INF] Executed action Presentation.Controllers.CategoryController.GetAll (Presentation) in 1612.2789ms
+2025-04-08 23:26:33.261 -04:00 [INF] Executed endpoint 'Presentation.Controllers.CategoryController.GetAll (Presentation)'
+2025-04-08 23:26:33.272 -04:00 [INF] Request finished HTTP/2 GET https://localhost:7255/api/Category - 200 null application/json; charset=utf-8 1831.0131ms
+2025-04-08 23:26:41.324 -04:00 [INF] Request starting HTTP/2 GET https://localhost:7255/health - null null
+2025-04-08 23:26:41.345 -04:00 [INF] Executing endpoint 'Health checks'
+2025-04-08 23:26:41.387 -04:00 [INF] Executed endpoint 'Health checks'
+2025-04-08 23:26:41.389 -04:00 [INF] Request finished HTTP/2 GET https://localhost:7255/health - 200 null application/json 65.5022ms
+2025-04-08 23:26:43.720 -04:00 [INF] Request starting HTTP/2 GET https://localhost:7255/health - null null
+2025-04-08 23:26:43.729 -04:00 [INF] Executing endpoint 'Health checks'
+2025-04-08 23:26:43.734 -04:00 [INF] Executed endpoint 'Health checks'
+2025-04-08 23:26:43.735 -04:00 [INF] Request finished HTTP/2 GET https://localhost:7255/health - 200 null application/json 15.6805ms
+2025-04-08 23:26:47.580 -04:00 [INF] Request starting HTTP/2 GET https://localhost:7255/health - null null
+2025-04-08 23:26:47.586 -04:00 [INF] Executing endpoint 'Health checks'
+2025-04-08 23:26:47.590 -04:00 [INF] Executed endpoint 'Health checks'
+2025-04-08 23:26:47.592 -04:00 [INF] Request finished HTTP/2 GET https://localhost:7255/health - 200 null application/json 12.333ms
+2025-04-08 23:26:47.792 -04:00 [INF] Request starting HTTP/2 GET https://localhost:7255/health - null null
+2025-04-08 23:26:47.798 -04:00 [INF] Executing endpoint 'Health checks'
+2025-04-08 23:26:47.801 -04:00 [INF] Executed endpoint 'Health checks'
+2025-04-08 23:26:47.802 -04:00 [INF] Request finished HTTP/2 GET https://localhost:7255/health - 200 null application/json 10.541ms
+2025-04-08 23:30:19.988 -04:00 [INF] User profile is available. Using 'C:\Users\pc\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-04-08 23:30:20.267 -04:00 [INF] Now listening on: https://localhost:7255
+2025-04-08 23:30:20.268 -04:00 [INF] Now listening on: http://localhost:5072
+2025-04-08 23:30:20.344 -04:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-04-08 23:30:20.345 -04:00 [INF] Hosting environment: Development
+2025-04-08 23:30:20.346 -04:00 [INF] Content root path: D:\DESARROLLO\2025\CleanArchitectureApi\Presentation
+2025-04-08 23:30:21.161 -04:00 [INF] Request starting HTTP/2 GET https://localhost:7255/swagger/index.html - null null
+2025-04-08 23:30:21.565 -04:00 [INF] Request finished HTTP/2 GET https://localhost:7255/swagger/index.html - 200 null text/html;charset=utf-8 411.9314ms
+2025-04-08 23:30:21.589 -04:00 [INF] Request starting HTTP/2 GET https://localhost:7255/_framework/aspnetcore-browser-refresh.js - null null
+2025-04-08 23:30:21.598 -04:00 [INF] Request starting HTTP/2 GET https://localhost:7255/_vs/browserLink - null null
+2025-04-08 23:30:21.649 -04:00 [INF] Request finished HTTP/2 GET https://localhost:7255/_framework/aspnetcore-browser-refresh.js - 200 13760 application/javascript; charset=utf-8 60.3439ms
+2025-04-08 23:30:21.723 -04:00 [INF] Request finished HTTP/2 GET https://localhost:7255/_vs/browserLink - 200 null text/javascript; charset=UTF-8 125.9057ms
+2025-04-08 23:30:22.064 -04:00 [INF] Request starting HTTP/2 GET https://localhost:7255/swagger/v1/swagger.json - null null
+2025-04-08 23:30:22.179 -04:00 [INF] Request finished HTTP/2 GET https://localhost:7255/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 116.6495ms
+2025-04-08 23:30:48.934 -04:00 [INF] Request starting HTTP/2 GET https://localhost:7255/api/Category - null null
+2025-04-08 23:30:49.101 -04:00 [INF] Executing endpoint 'Presentation.Controllers.CategoryController.GetAll (Presentation)'
+2025-04-08 23:30:49.120 -04:00 [INF] Route matched with {action = "GetAll", controller = "Category"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.IEnumerable`1[Application.DTOs.CategoryDto]]] GetAll() on controller Presentation.Controllers.CategoryController (Presentation).
+2025-04-08 23:30:50.669 -04:00 [INF] Executed DbCommand (34ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [c].[Id], [c].[Name]
+FROM [Categories] AS [c]
+2025-04-08 23:30:50.708 -04:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[Application.DTOs.CategoryDto, Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-04-08 23:30:50.721 -04:00 [INF] Executed action Presentation.Controllers.CategoryController.GetAll (Presentation) in 1594.4515ms
+2025-04-08 23:30:50.723 -04:00 [INF] Executed endpoint 'Presentation.Controllers.CategoryController.GetAll (Presentation)'
+2025-04-08 23:30:50.734 -04:00 [INF] Request finished HTTP/2 GET https://localhost:7255/api/Category - 200 null application/json; charset=utf-8 1807.0163ms
+2025-04-08 23:30:59.770 -04:00 [INF] Request starting HTTP/2 GET https://localhost:7255/health - null null
+2025-04-08 23:30:59.786 -04:00 [INF] Executing endpoint 'Health checks'
+2025-04-08 23:30:59.827 -04:00 [INF] Executed endpoint 'Health checks'
+2025-04-08 23:30:59.830 -04:00 [INF] Request finished HTTP/2 GET https://localhost:7255/health - 200 null application/json 60.1954ms
+2025-04-08 23:32:39.413 -04:00 [INF] User profile is available. Using 'C:\Users\pc\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-04-08 23:32:39.693 -04:00 [INF] Now listening on: https://localhost:7255
+2025-04-08 23:32:39.694 -04:00 [INF] Now listening on: http://localhost:5072
+2025-04-08 23:32:39.759 -04:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-04-08 23:32:39.760 -04:00 [INF] Hosting environment: Development
+2025-04-08 23:32:39.761 -04:00 [INF] Content root path: D:\DESARROLLO\2025\CleanArchitectureApi\Presentation
+2025-04-08 23:32:40.522 -04:00 [INF] Request starting HTTP/2 GET https://localhost:7255/swagger/index.html - null null
+2025-04-08 23:32:40.850 -04:00 [INF] Request finished HTTP/2 GET https://localhost:7255/swagger/index.html - 200 null text/html;charset=utf-8 338.9818ms
+2025-04-08 23:32:40.862 -04:00 [INF] Request starting HTTP/2 GET https://localhost:7255/_framework/aspnetcore-browser-refresh.js - null null
+2025-04-08 23:32:40.865 -04:00 [INF] Request starting HTTP/2 GET https://localhost:7255/_vs/browserLink - null null
+2025-04-08 23:32:40.883 -04:00 [INF] Request finished HTTP/2 GET https://localhost:7255/_framework/aspnetcore-browser-refresh.js - 200 13760 application/javascript; charset=utf-8 21.0334ms
+2025-04-08 23:32:40.947 -04:00 [INF] Request finished HTTP/2 GET https://localhost:7255/_vs/browserLink - 200 null text/javascript; charset=UTF-8 82.9811ms
+2025-04-08 23:32:41.179 -04:00 [INF] Request starting HTTP/2 GET https://localhost:7255/swagger/v1/swagger.json - null null
+2025-04-08 23:32:41.236 -04:00 [INF] Request finished HTTP/2 GET https://localhost:7255/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 57.601ms
+2025-04-08 23:32:51.868 -04:00 [INF] Request starting HTTP/2 GET https://localhost:7255/api/Category - null null
+2025-04-08 23:32:52.057 -04:00 [INF] Executing endpoint 'Presentation.Controllers.CategoryController.GetAll (Presentation)'
+2025-04-08 23:32:52.079 -04:00 [INF] Route matched with {action = "GetAll", controller = "Category"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.IEnumerable`1[Application.DTOs.CategoryDto]]] GetAll() on controller Presentation.Controllers.CategoryController (Presentation).
+2025-04-08 23:32:53.556 -04:00 [INF] Executed DbCommand (35ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [c].[Id], [c].[Name]
+FROM [Categories] AS [c]
+2025-04-08 23:32:53.598 -04:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[Application.DTOs.CategoryDto, Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-04-08 23:32:53.610 -04:00 [INF] Executed action Presentation.Controllers.CategoryController.GetAll (Presentation) in 1524.8932ms
+2025-04-08 23:32:53.612 -04:00 [INF] Executed endpoint 'Presentation.Controllers.CategoryController.GetAll (Presentation)'
+2025-04-08 23:32:53.622 -04:00 [INF] Request finished HTTP/2 GET https://localhost:7255/api/Category - 200 null application/json; charset=utf-8 1755.1426ms
+2025-04-08 23:32:57.616 -04:00 [INF] Request starting HTTP/2 GET https://localhost:7255/health - null null
+2025-04-08 23:32:57.637 -04:00 [INF] Executing endpoint 'Health checks'
+2025-04-08 23:32:57.678 -04:00 [INF] Executed endpoint 'Health checks'
+2025-04-08 23:32:57.680 -04:00 [INF] Request finished HTTP/2 GET https://localhost:7255/health - 200 null application/json 63.541ms
+2025-04-08 23:45:41.851 -04:00 [INF] User profile is available. Using 'C:\Users\pc\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-04-08 23:45:42.191 -04:00 [INF] Now listening on: https://localhost:7255
+2025-04-08 23:45:42.192 -04:00 [INF] Now listening on: http://localhost:5072
+2025-04-08 23:45:42.255 -04:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-04-08 23:45:42.256 -04:00 [INF] Hosting environment: Development
+2025-04-08 23:45:42.257 -04:00 [INF] Content root path: D:\DESARROLLO\2025\CleanArchitectureApi\Presentation
+2025-04-08 23:45:43.224 -04:00 [INF] Request starting HTTP/2 GET https://localhost:7255/swagger/index.html - null null
+2025-04-08 23:45:43.886 -04:00 [INF] Request finished HTTP/2 GET https://localhost:7255/swagger/index.html - 200 null text/html;charset=utf-8 666.695ms
+2025-04-08 23:45:43.915 -04:00 [INF] Request starting HTTP/2 GET https://localhost:7255/_framework/aspnetcore-browser-refresh.js - null null
+2025-04-08 23:45:43.916 -04:00 [INF] Request starting HTTP/2 GET https://localhost:7255/_vs/browserLink - null null
+2025-04-08 23:45:43.995 -04:00 [INF] Request finished HTTP/2 GET https://localhost:7255/_framework/aspnetcore-browser-refresh.js - 200 13760 application/javascript; charset=utf-8 80.3221ms
+2025-04-08 23:45:44.168 -04:00 [INF] Request finished HTTP/2 GET https://localhost:7255/_vs/browserLink - 200 null text/javascript; charset=UTF-8 251.8154ms
+2025-04-08 23:45:44.514 -04:00 [INF] Request starting HTTP/2 GET https://localhost:7255/swagger/v1/swagger.json - null null
+2025-04-08 23:45:44.622 -04:00 [INF] Request finished HTTP/2 GET https://localhost:7255/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 107.7181ms
+2025-04-08 23:47:25.740 -04:00 [INF] Request starting HTTP/2 GET https://localhost:7255/api/Category - null null
+2025-04-08 23:47:25.904 -04:00 [INF] Failed to validate the token.
+Microsoft.IdentityModel.Tokens.SecurityTokenExpiredException: IDX10223: Lifetime validation failed. The token is expired. ValidTo (UTC): '09/04/2025 3:30:36', Current time (UTC): '09/04/2025 3:47:25'.
+   at Microsoft.IdentityModel.Tokens.ValidatorUtilities.ValidateLifetime(Nullable`1 notBefore, Nullable`1 expires, SecurityToken securityToken, TokenValidationParameters validationParameters)
+   at Microsoft.IdentityModel.Tokens.Validators.ValidateLifetime(Nullable`1 notBefore, Nullable`1 expires, SecurityToken securityToken, TokenValidationParameters validationParameters)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ValidateTokenPayloadAsync(JsonWebToken jsonWebToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ValidateJWSAsync(JsonWebToken jsonWebToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+2025-04-08 23:47:25.940 -04:00 [INF] Bearer was not authenticated. Failure message: IDX10223: Lifetime validation failed. The token is expired. ValidTo (UTC): '09/04/2025 3:30:36', Current time (UTC): '09/04/2025 3:47:25'.
+2025-04-08 23:47:25.950 -04:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2025-04-08 23:47:25.958 -04:00 [INF] AuthenticationScheme: Bearer was challenged.
+2025-04-08 23:47:25.959 -04:00 [INF] Request finished HTTP/2 GET https://localhost:7255/api/Category - 401 0 null 220.5522ms
+2025-04-08 23:47:31.658 -04:00 [INF] Request starting HTTP/2 GET https://localhost:7255/api/Category - null null
+2025-04-08 23:47:31.666 -04:00 [INF] Failed to validate the token.
+Microsoft.IdentityModel.Tokens.SecurityTokenExpiredException: IDX10223: Lifetime validation failed. The token is expired. ValidTo (UTC): '09/04/2025 3:30:36', Current time (UTC): '09/04/2025 3:47:31'.
+   at Microsoft.IdentityModel.Tokens.ValidatorUtilities.ValidateLifetime(Nullable`1 notBefore, Nullable`1 expires, SecurityToken securityToken, TokenValidationParameters validationParameters)
+   at Microsoft.IdentityModel.Tokens.Validators.ValidateLifetime(Nullable`1 notBefore, Nullable`1 expires, SecurityToken securityToken, TokenValidationParameters validationParameters)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ValidateTokenPayloadAsync(JsonWebToken jsonWebToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ValidateJWSAsync(JsonWebToken jsonWebToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+2025-04-08 23:47:31.676 -04:00 [INF] Bearer was not authenticated. Failure message: IDX10223: Lifetime validation failed. The token is expired. ValidTo (UTC): '09/04/2025 3:30:36', Current time (UTC): '09/04/2025 3:47:31'.
+2025-04-08 23:47:31.679 -04:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2025-04-08 23:47:31.683 -04:00 [INF] AuthenticationScheme: Bearer was challenged.
+2025-04-08 23:47:31.684 -04:00 [INF] Request finished HTTP/2 GET https://localhost:7255/api/Category - 401 0 null 26.9556ms
+2025-04-08 23:47:54.512 -04:00 [INF] Request starting HTTP/2 POST https://localhost:7255/api/Auth/login - application/json 58
+2025-04-08 23:47:54.527 -04:00 [INF] CORS policy execution failed.
+2025-04-08 23:47:54.529 -04:00 [INF] Request origin https://localhost:7255 does not have permission to access the resource.
+2025-04-08 23:47:54.533 -04:00 [INF] Failed to validate the token.
+Microsoft.IdentityModel.Tokens.SecurityTokenExpiredException: IDX10223: Lifetime validation failed. The token is expired. ValidTo (UTC): '09/04/2025 3:30:36', Current time (UTC): '09/04/2025 3:47:54'.
+   at Microsoft.IdentityModel.Tokens.ValidatorUtilities.ValidateLifetime(Nullable`1 notBefore, Nullable`1 expires, SecurityToken securityToken, TokenValidationParameters validationParameters)
+   at Microsoft.IdentityModel.Tokens.Validators.ValidateLifetime(Nullable`1 notBefore, Nullable`1 expires, SecurityToken securityToken, TokenValidationParameters validationParameters)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ValidateTokenPayloadAsync(JsonWebToken jsonWebToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ValidateJWSAsync(JsonWebToken jsonWebToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+2025-04-08 23:47:54.540 -04:00 [INF] Bearer was not authenticated. Failure message: IDX10223: Lifetime validation failed. The token is expired. ValidTo (UTC): '09/04/2025 3:30:36', Current time (UTC): '09/04/2025 3:47:54'.
+2025-04-08 23:47:54.544 -04:00 [INF] Executing endpoint 'Presentation.Controllers.AuthController.Login (Presentation)'
+2025-04-08 23:47:54.571 -04:00 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult] Login(Application.Features.Auth.Commands.Login.LoginCommand) on controller Presentation.Controllers.AuthController (Presentation).
+2025-04-08 23:47:56.174 -04:00 [INF] Executed DbCommand (51ms) [Parameters=[@__request_Email_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[CreatedAt], [u].[Email], [u].[PasswordHash], [u].[UpdatedAt], [u].[Username]
+FROM [Users] AS [u]
+WHERE [u].[Email] = @__request_Email_0
+2025-04-08 23:47:56.995 -04:00 [INF] Executed DbCommand (10ms) [Parameters=[@p0='?' (Size = 450), @p1='?' (DbType = Int32), @p2='?' (DbType = DateTime2), @p3='?' (DbType = DateTime2), @p4='?' (DbType = Int32), @p5='?' (DbType = DateTime2), @p6='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [UserRefreshTokens] ([RefreshToken], [UserId], [CreatedAt], [ExpirationDate], [Id], [RevokedAt], [UpdatedAt])
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6);
+2025-04-08 23:47:57.021 -04:00 [INF] Executing OkObjectResult, writing value of type 'Application.Features.Auth.Commands.Login.LoginResponse'.
+2025-04-08 23:47:57.030 -04:00 [INF] Executed action Presentation.Controllers.AuthController.Login (Presentation) in 2452.8415ms
+2025-04-08 23:47:57.032 -04:00 [INF] Executed endpoint 'Presentation.Controllers.AuthController.Login (Presentation)'
+2025-04-08 23:47:57.042 -04:00 [INF] Request finished HTTP/2 POST https://localhost:7255/api/Auth/login - 200 null application/json; charset=utf-8 2533.1514ms
+2025-04-08 23:48:13.680 -04:00 [INF] Request starting HTTP/2 GET https://localhost:7255/api/Category - null null
+2025-04-08 23:48:13.699 -04:00 [INF] Executing endpoint 'Presentation.Controllers.CategoryController.GetAll (Presentation)'
+2025-04-08 23:48:13.707 -04:00 [INF] Route matched with {action = "GetAll", controller = "Category"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.IEnumerable`1[Application.DTOs.CategoryDto]]] GetAll() on controller Presentation.Controllers.CategoryController (Presentation).
+2025-04-08 23:48:13.754 -04:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [c].[Id], [c].[Name]
+FROM [Categories] AS [c]
+2025-04-08 23:48:13.762 -04:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[Application.DTOs.CategoryDto, Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-04-08 23:48:13.766 -04:00 [INF] Executed action Presentation.Controllers.CategoryController.GetAll (Presentation) in 54.0737ms
+2025-04-08 23:48:13.773 -04:00 [INF] Executed endpoint 'Presentation.Controllers.CategoryController.GetAll (Presentation)'
+2025-04-08 23:48:13.777 -04:00 [INF] Request finished HTTP/2 GET https://localhost:7255/api/Category - 200 null application/json; charset=utf-8 97.3959ms
+2025-04-08 23:48:18.814 -04:00 [INF] Request starting HTTP/2 GET https://localhost:7255/health - null null
+2025-04-08 23:48:18.827 -04:00 [INF] Executing endpoint 'Health checks'
+2025-04-08 23:48:18.862 -04:00 [INF] Executed endpoint 'Health checks'
+2025-04-08 23:48:18.863 -04:00 [INF] Request finished HTTP/2 GET https://localhost:7255/health - 200 null application/json 49.6894ms
+2025-04-08 23:52:22.670 -04:00 [INF] User profile is available. Using 'C:\Users\pc\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-04-08 23:52:23.004 -04:00 [INF] Now listening on: https://localhost:7255
+2025-04-08 23:52:23.006 -04:00 [INF] Now listening on: http://localhost:5072
+2025-04-08 23:52:23.077 -04:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-04-08 23:52:23.078 -04:00 [INF] Hosting environment: Development
+2025-04-08 23:52:23.079 -04:00 [INF] Content root path: D:\DESARROLLO\2025\CleanArchitectureApi\Presentation
+2025-04-08 23:52:24.596 -04:00 [INF] Request starting HTTP/2 GET https://localhost:7255/swagger/index.html - null null
+2025-04-08 23:52:25.010 -04:00 [INF] Request finished HTTP/2 GET https://localhost:7255/swagger/index.html - 200 null text/html;charset=utf-8 423.1568ms
+2025-04-08 23:52:25.036 -04:00 [INF] Request starting HTTP/2 GET https://localhost:7255/_framework/aspnetcore-browser-refresh.js - null null
+2025-04-08 23:52:25.045 -04:00 [INF] Request starting HTTP/2 GET https://localhost:7255/_vs/browserLink - null null
+2025-04-08 23:52:25.102 -04:00 [INF] Request finished HTTP/2 GET https://localhost:7255/_framework/aspnetcore-browser-refresh.js - 200 13760 application/javascript; charset=utf-8 66.7925ms
+2025-04-08 23:52:25.190 -04:00 [INF] Request finished HTTP/2 GET https://localhost:7255/_vs/browserLink - 200 null text/javascript; charset=UTF-8 145.6646ms
+2025-04-08 23:52:25.544 -04:00 [INF] Request starting HTTP/2 GET https://localhost:7255/swagger/v1/swagger.json - null null
+2025-04-08 23:52:25.678 -04:00 [INF] Request finished HTTP/2 GET https://localhost:7255/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 134.0641ms
+2025-04-08 23:52:29.009 -04:00 [INF] Request starting HTTP/2 GET https://localhost:7255/health - null null
+2025-04-08 23:52:29.128 -04:00 [INF] Executing endpoint 'Health checks'
+2025-04-08 23:52:29.498 -04:00 [INF] Executed endpoint 'Health checks'
+2025-04-08 23:52:29.511 -04:00 [INF] Request finished HTTP/2 GET https://localhost:7255/health - 200 null application/json 502.8028ms
+2025-04-08 23:52:46.040 -04:00 [INF] Request starting HTTP/2 GET https://localhost:7255/prometheus - null null
+2025-04-08 23:52:46.053 -04:00 [INF] Request finished HTTP/2 GET https://localhost:7255/prometheus - 404 0 null 12.6303ms
+2025-04-08 23:52:46.074 -04:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET https://localhost:7255/prometheus, Response status code: 404
+2025-04-08 23:52:57.886 -04:00 [INF] Request starting HTTP/2 GET https://localhost:7255/metrics - null null
+2025-04-08 23:52:57.896 -04:00 [INF] Executing endpoint 'Prometheus metrics'
+2025-04-08 23:52:57.987 -04:00 [INF] Executed endpoint 'Prometheus metrics'
+2025-04-08 23:52:57.988 -04:00 [INF] Request finished HTTP/2 GET https://localhost:7255/metrics - 200 null text/plain; version=0.0.4; charset=utf-8 102.2525ms
+2025-04-08 23:53:36.745 -04:00 [INF] Request starting HTTP/2 GET https://localhost:7255/api/Category - null null
+2025-04-08 23:53:36.828 -04:00 [INF] Executing endpoint 'Presentation.Controllers.CategoryController.GetAll (Presentation)'
+2025-04-08 23:53:36.852 -04:00 [INF] Route matched with {action = "GetAll", controller = "Category"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.IEnumerable`1[Application.DTOs.CategoryDto]]] GetAll() on controller Presentation.Controllers.CategoryController (Presentation).
+2025-04-08 23:53:37.966 -04:00 [INF] Executed DbCommand (12ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [c].[Id], [c].[Name]
+FROM [Categories] AS [c]
+2025-04-08 23:53:38.002 -04:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[Application.DTOs.CategoryDto, Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-04-08 23:53:38.012 -04:00 [INF] Executed action Presentation.Controllers.CategoryController.GetAll (Presentation) in 1152.9932ms
+2025-04-08 23:53:38.014 -04:00 [INF] Executed endpoint 'Presentation.Controllers.CategoryController.GetAll (Presentation)'
+2025-04-08 23:53:38.024 -04:00 [INF] Request finished HTTP/2 GET https://localhost:7255/api/Category - 200 null application/json; charset=utf-8 1327.1151ms
+2025-04-08 23:53:41.347 -04:00 [INF] Request starting HTTP/2 GET https://localhost:7255/metrics - null null
+2025-04-08 23:53:41.362 -04:00 [INF] Executing endpoint 'Prometheus metrics'
+2025-04-08 23:53:41.384 -04:00 [INF] Executed endpoint 'Prometheus metrics'
+2025-04-08 23:53:41.386 -04:00 [INF] Request finished HTTP/2 GET https://localhost:7255/metrics - 200 null text/plain; version=0.0.4; charset=utf-8 42.4327ms
