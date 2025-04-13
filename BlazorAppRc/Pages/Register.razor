@@ -52,7 +52,7 @@
     {
         try
         {
-            var response = await Http.PostAsJsonAsync("api/authentication/register", userModel);
+            var response = await Http.PostAsJsonAsync("api/user/register", userModel);
             if (response.IsSuccessStatusCode)
             {
                 successMessage = "Usuario creado correctamente.";

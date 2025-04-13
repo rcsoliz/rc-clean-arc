@@ -32,3 +32,67 @@ FROM [Categories] AS [c]
 2025-04-09 00:03:18.146 -04:00 [INF] Request finished HTTP/2 GET https://localhost:7255/health - 200 null application/json 21.9627ms
 2025-04-09 00:03:25.435 -04:00 [INF] Request starting HTTP/2 GET https://localhost:7255/metrics - null null
 2025-04-09 00:03:25.489 -04:00 [INF] Request finished HTTP/2 GET https://localhost:7255/metrics - 200 null text/plain; charset=utf-8; version=0.0.4 53.9226ms
+2025-04-09 23:07:03.564 -04:00 [INF] User profile is available. Using 'C:\Users\pc\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-04-09 23:07:03.996 -04:00 [INF] Now listening on: https://localhost:7255
+2025-04-09 23:07:03.997 -04:00 [INF] Now listening on: http://localhost:5072
+2025-04-09 23:07:04.071 -04:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-04-09 23:07:04.072 -04:00 [INF] Hosting environment: Development
+2025-04-09 23:07:04.073 -04:00 [INF] Content root path: D:\DESARROLLO\2025\CleanArchitectureApi\Presentation
+2025-04-09 23:07:05.376 -04:00 [INF] Request starting HTTP/2 GET https://localhost:7255/swagger/index.html - null null
+2025-04-09 23:07:06.125 -04:00 [INF] Request finished HTTP/2 GET https://localhost:7255/swagger/index.html - 200 null text/html;charset=utf-8 791.7469ms
+2025-04-09 23:07:06.193 -04:00 [INF] Request starting HTTP/2 GET https://localhost:7255/_framework/aspnetcore-browser-refresh.js - null null
+2025-04-09 23:07:06.193 -04:00 [INF] Request starting HTTP/2 GET https://localhost:7255/_vs/browserLink - null null
+2025-04-09 23:07:06.252 -04:00 [INF] Request finished HTTP/2 GET https://localhost:7255/_framework/aspnetcore-browser-refresh.js - 200 13760 application/javascript; charset=utf-8 59.6665ms
+2025-04-09 23:07:06.353 -04:00 [INF] Request finished HTTP/2 GET https://localhost:7255/_vs/browserLink - 200 null text/javascript; charset=UTF-8 160.7897ms
+2025-04-09 23:07:06.677 -04:00 [INF] Request starting HTTP/2 GET https://localhost:7255/swagger/v1/swagger.json - null null
+2025-04-09 23:07:06.734 -04:00 [INF] Request finished HTTP/2 GET https://localhost:7255/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 57.3975ms
+2025-04-09 23:07:15.451 -04:00 [INF] Request starting HTTP/2 GET https://localhost:7255/health - null null
+2025-04-09 23:07:15.728 -04:00 [INF] Executing endpoint 'Health checks'
+2025-04-09 23:07:16.202 -04:00 [INF] Executed endpoint 'Health checks'
+2025-04-09 23:07:16.220 -04:00 [INF] Request finished HTTP/2 GET https://localhost:7255/health - 200 null application/json 769.4502ms
+2025-04-09 23:07:16.430 -04:00 [INF] Request starting HTTP/2 GET https://localhost:7255/favicon.ico - null null
+2025-04-09 23:07:16.435 -04:00 [INF] Request finished HTTP/2 GET https://localhost:7255/favicon.ico - 404 0 null 5.4992ms
+2025-04-09 23:07:16.448 -04:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET https://localhost:7255/favicon.ico, Response status code: 404
+2025-04-09 23:07:19.263 -04:00 [INF] Request starting HTTP/2 GET https://localhost:7255/health - null null
+2025-04-09 23:07:19.272 -04:00 [INF] Executing endpoint 'Health checks'
+2025-04-09 23:07:19.285 -04:00 [INF] Executed endpoint 'Health checks'
+2025-04-09 23:07:19.288 -04:00 [INF] Request finished HTTP/2 GET https://localhost:7255/health - 200 null application/json 25.3625ms
+2025-04-09 23:19:14.175 -04:00 [INF] User profile is available. Using 'C:\Users\pc\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-04-09 23:19:14.509 -04:00 [INF] Now listening on: https://localhost:7255
+2025-04-09 23:19:14.510 -04:00 [INF] Now listening on: http://localhost:5072
+2025-04-09 23:19:14.571 -04:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-04-09 23:19:14.572 -04:00 [INF] Hosting environment: Development
+2025-04-09 23:19:14.573 -04:00 [INF] Content root path: D:\DESARROLLO\2025\CleanArchitectureApi\Presentation
+2025-04-09 23:19:15.515 -04:00 [INF] Request starting HTTP/2 GET https://localhost:7255/swagger/index.html - null null
+2025-04-09 23:19:16.351 -04:00 [INF] Request finished HTTP/2 GET https://localhost:7255/swagger/index.html - 200 null text/html;charset=utf-8 869.2418ms
+2025-04-09 23:19:16.390 -04:00 [INF] Request starting HTTP/2 GET https://localhost:7255/_vs/browserLink - null null
+2025-04-09 23:19:16.391 -04:00 [INF] Request starting HTTP/2 GET https://localhost:7255/_framework/aspnetcore-browser-refresh.js - null null
+2025-04-09 23:19:16.468 -04:00 [INF] Request finished HTTP/2 GET https://localhost:7255/_framework/aspnetcore-browser-refresh.js - 200 13760 application/javascript; charset=utf-8 78.0415ms
+2025-04-09 23:19:16.539 -04:00 [INF] Request finished HTTP/2 GET https://localhost:7255/_vs/browserLink - 200 null text/javascript; charset=UTF-8 149.8394ms
+2025-04-09 23:19:16.859 -04:00 [INF] Request starting HTTP/2 GET https://localhost:7255/swagger/v1/swagger.json - null null
+2025-04-09 23:19:16.954 -04:00 [INF] Request finished HTTP/2 GET https://localhost:7255/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 95.6457ms
+2025-04-09 23:19:20.052 -04:00 [INF] Request starting HTTP/2 GET https://localhost:7255/health - null null
+2025-04-09 23:19:20.164 -04:00 [INF] Executing endpoint 'Health checks'
+2025-04-09 23:19:20.524 -04:00 [INF] Executed endpoint 'Health checks'
+2025-04-09 23:19:20.537 -04:00 [INF] Request finished HTTP/2 GET https://localhost:7255/health - 200 null application/json 484.4702ms
+2025-04-09 23:19:25.533 -04:00 [INF] Request starting HTTP/2 GET https://localhost:7255/health - null null
+2025-04-09 23:19:25.546 -04:00 [INF] Executing endpoint 'Health checks'
+2025-04-09 23:19:25.565 -04:00 [INF] Executed endpoint 'Health checks'
+2025-04-09 23:19:25.568 -04:00 [INF] Request finished HTTP/2 GET https://localhost:7255/health - 200 null application/json 35.7706ms
+2025-04-09 23:19:27.386 -04:00 [INF] Request starting HTTP/2 GET https://localhost:7255/metrics - null null
+2025-04-09 23:19:27.402 -04:00 [ERR] An unhandled exception has occurred while executing the request.
+Microsoft.AspNetCore.Routing.Matching.AmbiguousMatchException: The request matched multiple endpoints. Matches: 
+
+Prometheus metrics
+Prometheus metrics
+   at Microsoft.AspNetCore.Routing.Matching.DefaultEndpointSelector.ReportAmbiguity(Span`1 candidateState)
+   at Microsoft.AspNetCore.Routing.Matching.DefaultEndpointSelector.ProcessFinalCandidates(HttpContext httpContext, Span`1 candidateState)
+   at Microsoft.AspNetCore.Routing.Matching.DefaultEndpointSelector.Select(HttpContext httpContext, Span`1 candidateState)
+   at Microsoft.AspNetCore.Routing.Matching.DfaMatcher.MatchAsync(HttpContext httpContext)
+   at Microsoft.AspNetCore.Routing.EndpointRoutingMiddleware.Invoke(HttpContext httpContext)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+2025-04-09 23:19:27.471 -04:00 [INF] Request finished HTTP/2 GET https://localhost:7255/metrics - 500 null text/html; charset=utf-8 85.5048ms
+2025-04-09 23:19:27.502 -04:00 [INF] Request starting HTTP/2 GET https://localhost:7255/_vs/browserLink - null null
+2025-04-09 23:19:27.512 -04:00 [INF] Request starting HTTP/2 GET https://localhost:7255/_framework/aspnetcore-browser-refresh.js - null null
+2025-04-09 23:19:27.518 -04:00 [INF] Request finished HTTP/2 GET https://localhost:7255/_framework/aspnetcore-browser-refresh.js - 200 13760 application/javascript; charset=utf-8 6.3135ms
+2025-04-09 23:19:27.533 -04:00 [INF] Request finished HTTP/2 GET https://localhost:7255/_vs/browserLink - 200 null text/javascript; charset=UTF-8 31.3925ms

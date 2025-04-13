@@ -3,7 +3,6 @@
 @inject NavigationManager Navigation
 @inject IJSRuntime JS
 
-
 @using System.ComponentModel.DataAnnotations
 @using System.Net.Http.Headers
 @using BlazorAppRc.Models
@@ -47,9 +46,10 @@
             if (response.IsSuccessStatusCode)
             {
                 var result = await response.Content.ReadFromJsonAsync<TokenResponse>();
-                if (result is not null && !string.IsNullOrEmpty(result.Token))
+                if (result is not null && !string.IsNullOrEmpty(result.AccessToken))
                 {
-                    await JS.InvokeVoidAsync("localStorage.setItem", "jwt", result.Token);
+                    await JS.InvokeVoidAsync("localStorage.setItem", "jwt", result.AccessToken);
+                    await JS.InvokeVoidAsync("localStorage.setItem", "refreshToken", result.RefreshToken);
                     Navigation.NavigateTo("/", true);
                 }
                 else

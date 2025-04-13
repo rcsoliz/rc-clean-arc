@@ -9,7 +9,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Presentation.Controllers
 {
-    [Route("api/authentication")]
+    [Route("api/[controller]")]
     [ApiController]
     public class UserController : Controller
     {

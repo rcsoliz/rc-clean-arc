@@ -9,11 +9,11 @@ namespace Presentation.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class AuthController : Controller
+    public class AuthenticationController : Controller
     {
         private readonly IMediator _mediator;
 
-        public AuthController(IMediator mediator)
+        public AuthenticationController(IMediator mediator)
         {
             _mediator = mediator;
         }

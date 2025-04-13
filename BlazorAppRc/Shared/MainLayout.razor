@@ -1,4 +1,6 @@
 ﻿@using BlazorAppRc.Data
+@using static System.Net.WebRequestMethods
+@inject HttpClient Http
 @inherits LayoutComponentBase
 @inject IJSRuntime JS
 @inject NavigationManager Navigation
@@ -51,15 +53,35 @@
                         var payload = parts[1];
                         var json = System.Text.Encoding.UTF8.GetString(ParseBase64WithoutPadding(payload));
                         var data = System.Text.Json.JsonSerializer.Deserialize<Dictionary<string, object>>(json);
-                        if (data != null && data.ContainsKey("unique_name"))
+                        if (data != null)
                         {
-                            AuthState.Username = data["unique_name"].ToString();
-                            AuthState.Id = data["nameid"].ToString(); ;
+                            if (data.TryGetValue("http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier", out var idValue))
+                            {
+                                AuthState.Id = idValue?.ToString();
+                            }
+
+                            if (data.TryGetValue("http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name", out var usernameValue))
+                            {
+                                AuthState.Username = usernameValue?.ToString();
+                            }
+                            else if (data.TryGetValue("sub", out var subValue))
+                            {
+                                AuthState.Username = subValue?.ToString();
+                            }
+                            else
+                            {
+                                AuthState.Username = "Usuario";
+                            }
                         }
-                        else if (data != null && data.ContainsKey("sub"))
-                        {
-                            AuthState.Username = data["sub"].ToString();
-                        }
+                        // if (data != null && data.ContainsKey("unique_name"))
+                        // {
+                        //     AuthState.Username = data["unique_name"].ToString();
+                        //     AuthState.Id = data["nameid"].ToString(); ;
+                        // }
+                        // else if (data != null && data.ContainsKey("sub"))
+                        // {
+                        //     AuthState.Username = data["sub"].ToString();
+                        // }
                         else
                         {
                             AuthState.Username = "Usuario";
@@ -80,7 +102,12 @@
 
     private async Task Logout()
     {
+        var refreshToken = await JS.InvokeAsync<string>("localStorage.getItem", "refreshToken");
+        await Http.PostAsJsonAsync("api/authentication/logout", new { RefreshToken = refreshToken });
+
         await JS.InvokeVoidAsync("localStorage.removeItem", "jwt");
+        await JS.InvokeVoidAsync("localStorage.removeItem", "refreshToken");
+
         AuthState.IsAuthenticated = false;
         AuthState.Username = null;
         Navigation.NavigateTo("/", true);

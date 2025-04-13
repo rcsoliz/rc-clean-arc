@@ -11,7 +11,11 @@ namespace Application.Interfaces
 
         Task DeleteAsync(int id, List<int> categoryIds);
 
+        Task<IEnumerable<PostDto>> GetAllPostsWithCategoriesAsync();
+
+        Task<PostDto> GetByPostByIdtWithCategoriesAsync(int id);
+
+        Task<IEnumerable<PostDto>> GetPostWithCategoryIdAsync(int categoryId);
         
-        Task<(PostDto Post, IEnumerable<PostCategoryDtos> Categories)> GetByIDAsync(int id);
     }
 }

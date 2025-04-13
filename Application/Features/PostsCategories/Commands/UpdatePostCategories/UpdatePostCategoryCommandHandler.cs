@@ -2,7 +2,7 @@
 using Core.Entities;
 using MediatR;
 
-namespace Application.Features.PostsCategories.UpdatePostCategories
+namespace Application.Features.PostsCategories.Commands.UpdatePostCategories
 {
     public class UpdatePostCategoryCommandHandler : IRequestHandler<UpdatePostCategoryCommand, (Post post, List<int> categories)>
     {

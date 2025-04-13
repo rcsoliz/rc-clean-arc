@@ -1,7 +1,7 @@
 ﻿using Application.Interfaces;
 using MediatR;
 
-namespace Application.Features.PostsCategories.DeletePostCategories
+namespace Application.Features.PostsCategories.Commands.DeletePostCategories
 {
     public class DeletePostCategoryCommandHandler : IRequestHandler<DeletePostCategoryCommand, bool>
     {
@@ -14,8 +14,8 @@ namespace Application.Features.PostsCategories.DeletePostCategories
 
         public async Task<bool> Handle(DeletePostCategoryCommand request, CancellationToken cancellationToken)
         {
-            var post = await _repository.GetByIDAsync(request.id);
-            if (post.Post == null) return false;
+            var post = await _repository.GetByPosByIdtWithCategoriesAsync(request.id);
+            if (post == null) return false;
 
             await _repository.DeleteAsync(request.id, request.categoryIds);
             return true;

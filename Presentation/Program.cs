@@ -178,6 +178,9 @@ if (app.Environment.IsDevelopment())
     });
 }
 
+// Mapea el endpoint /metrics
+app.MapMetrics(); // Esto expone /metrics en formato Prometheus
+
 // Mide todas las peticiones HTTP
 app.UseHttpMetrics();
 

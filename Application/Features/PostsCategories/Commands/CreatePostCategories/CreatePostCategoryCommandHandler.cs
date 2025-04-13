@@ -2,7 +2,7 @@
 using Core.Entities;
 using MediatR;
 
-namespace Application.Features.PostsCategories.CreatePostCategories
+namespace Application.Features.PostsCategories.Commands.CreatePostCategories
 {
     public class CreatePostCategoryCommandHandler : IRequestHandler<CreatePostCategoryCommand, (Post post, List<int> categories)>
     {
