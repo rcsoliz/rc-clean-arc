@@ -7,7 +7,6 @@ using Application.Features.PostsCategories.Queries.GetByPostWithCategoriesById;
 using Core.Entities;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Presentation.Controllers
@@ -34,7 +33,7 @@ namespace Presentation.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<PostCategory>> GetById(int id)
         {
-            var postCategory = await _mediator.Send(new GetByPostWithCategoriesByIdQuery(id));
+            var postCategory = await _mediator.Send(new GetPostByIdWithCategoriesQuery(id));
             if (postCategory == null) return NotFound();
             return Ok(postCategory);
         }

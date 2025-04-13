@@ -14,7 +14,7 @@ namespace Application.Features.PostsCategories.Commands.DeletePostCategories
 
         public async Task<bool> Handle(DeletePostCategoryCommand request, CancellationToken cancellationToken)
         {
-            var post = await _repository.GetByPosByIdtWithCategoriesAsync(request.id);
+            var post = await _repository.GetPostByIdtWithCategoriesAsync(request.id);
             if (post == null) return false;
 
             await _repository.DeleteAsync(request.id, request.categoryIds);

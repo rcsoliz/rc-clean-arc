@@ -1,5 +1,4 @@
 ﻿using Application.DTOs;
-using Application.Features.Categories.Commands.UpdateCategory;
 using Application.Features.Likes.Commands.CreateLike;
 using Application.Features.Likes.Commands.DeleteLike;
 using Application.Features.Likes.Commands.UpdateLike;

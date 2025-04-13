@@ -67,9 +67,10 @@ namespace Infrastructure.Data.Repositories
             }
         }
 
-        // GetByPostWithCategoriesByIdAsync
-        public async Task<PostDto> GetByPostByIdtWithCategoriesAsync(int id)
+   
+        public async Task<PostDto> GetPostByIdtWithCategoriesAsync(int id)
         {
+            // PostWithCategoriesDto
             var post = await _context.Posts
                 .Include(p => p.User)
                 .Include(p => p.PostCategories)
@@ -91,7 +92,7 @@ namespace Infrastructure.Data.Repositories
 
             return post;
         }
-        // GetPostWithCategoryIdAsync
+
         public async Task<IEnumerable<PostDto>> GetPostWithCategoryIdAsync(int categoryId)
         {
             var posts = await _context.Posts
@@ -114,10 +115,8 @@ namespace Infrastructure.Data.Repositories
                         Name = pc.Category.Name
                     }).ToList()
                 })
-                .FirstOrDefaultAsync();
+                .ToListAsync();
 
-
-            // Return the posts and the unique categories
             return posts;
         }
 
@@ -178,11 +177,5 @@ namespace Infrastructure.Data.Repositories
             }
         }
 
-
-        /*
-        Task<IEnumerable<PostDto>> GetAllPostsWithCategoriesAsync();
-
-        Task<IEnumerable<PostDto>> GetByPostWithCategoriesByIdAsync(int id);
-         */
     }
 }

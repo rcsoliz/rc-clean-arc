@@ -1,36 +1,27 @@
 ﻿using Application.DTOs;
 using Application.Interfaces;
+using AutoMapper;
 using MediatR;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Application.Features.PostsCategories.Queries.GetAllPostsWithCategories
 {
     public class GetAllPostsWithCategoriesHandler : IRequestHandler<GetAllPostsWithCategoriesQuery, IEnumerable<PostWithCategoriesDto>>
     {
         private readonly IPostCategoryRepository _postCategoryRepository;
+        private readonly IMapper _mapper;
 
-        public GetAllPostsWithCategoriesHandler(IPostCategoryRepository postCategoryRepository)
+        public GetAllPostsWithCategoriesHandler(IPostCategoryRepository postCategoryRepository, IMapper mapper)
         {
             _postCategoryRepository = postCategoryRepository;
+            _mapper = mapper;
         }
 
         public async Task<IEnumerable<PostWithCategoriesDto>> Handle(GetAllPostsWithCategoriesQuery request, CancellationToken cancellationToken)
         {
             var posts = await _postCategoryRepository.GetAllPostsWithCategoriesAsync();
             if (posts == null) return null;
-            var result = posts
-                .Select(p => new PostWithCategoriesDto
-                {
-                    Post = p,
-                    Categories = p.Categories
-                }).ToList();
 
-            // Flatten the list of categories from all posts
-            return result;
+            return _mapper.Map<IEnumerable<PostWithCategoriesDto>>(posts);
         }
     }
 

@@ -13,7 +13,7 @@ namespace Application.Interfaces
 
         Task<IEnumerable<PostDto>> GetAllPostsWithCategoriesAsync();
 
-        Task<PostDto> GetByPostByIdtWithCategoriesAsync(int id);
+        Task<PostDto> GetPostByIdtWithCategoriesAsync(int id);
 
         Task<IEnumerable<PostDto>> GetPostWithCategoryIdAsync(int categoryId);
         

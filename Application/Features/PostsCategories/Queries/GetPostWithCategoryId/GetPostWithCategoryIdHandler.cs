@@ -1,29 +1,25 @@
 ﻿using Application.DTOs;
 using Application.Interfaces;
+using AutoMapper;
 using MediatR;
 
 namespace Application.Features.PostsCategories.Queries.GetAllPostWithCategoryId
 {
-    public class GetPostWithCategoryIdHandler : IRequestHandler<GetPostWithCategoryIdQuery, PostWithCategoriesDto>
+    public class GetPostWithCategoryIdHandler : IRequestHandler<GetPostWithCategoryIdQuery, IEnumerable<PostWithCategoriesDto>>
     {
         private readonly IPostCategoryRepository _postCategoryRepository;
-        public GetPostWithCategoryIdHandler(IPostCategoryRepository postCategoryRepository)
+        private readonly IMapper _mapper;
+        public GetPostWithCategoryIdHandler(IPostCategoryRepository postCategoryRepository, IMapper mapper)
         {
             _postCategoryRepository = postCategoryRepository;
+            _mapper = mapper;
         }
-        public async Task<PostWithCategoriesDto> Handle(GetPostWithCategoryIdQuery request, CancellationToken cancellationToken)
+        public async Task<IEnumerable<PostWithCategoriesDto>> Handle(GetPostWithCategoryIdQuery request, CancellationToken cancellationToken)
         {
-            var post = await _postCategoryRepository.GetPostWithCategoryIdAsync(request.categoryId);
-            if (post == null) return null;
+            var posts = await _postCategoryRepository.GetPostWithCategoryIdAsync(request.categoryId);
+            if (posts == null) return null;
 
-            var result = post
-                .Select(p => new PostWithCategoriesDto
-                { 
-                    Post = p,
-                    Categories = p.Categories
-                }).ToList();
-
-            return result;
+            return _mapper.Map<IEnumerable<PostWithCategoriesDto>>(posts);
         }
 
     }

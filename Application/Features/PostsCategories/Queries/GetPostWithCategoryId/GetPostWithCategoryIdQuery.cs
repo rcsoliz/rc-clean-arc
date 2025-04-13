@@ -3,5 +3,5 @@ using MediatR;
 
 namespace Application.Features.PostsCategories.Queries.GetAllPostWithCategoryId
 {
-    public record GetPostWithCategoryIdQuery(int categoryId) : IRequest<PostWithCategoriesDto>;
+    public record GetPostWithCategoryIdQuery(int categoryId) : IRequest<IEnumerable<PostWithCategoriesDto>>;
 }

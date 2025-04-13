@@ -15,5 +15,6 @@ namespace Application.DTOs
 
         public int LikeCount { get; set; }
         public List<PostCategoryDtos> Categories { get; set; }
+        
     }
 }

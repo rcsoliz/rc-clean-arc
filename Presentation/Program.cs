@@ -1,23 +1,23 @@
-﻿using Microsoft.EntityFrameworkCore;
-using FluentValidation.AspNetCore;
-using Application.Validators;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.IdentityModel.Tokens;
-using System.Text;
-using Microsoft.OpenApi.Models;
-using MediatR;
-using Serilog;
-using Application.Serivces;
+﻿using Application.DependencyInjection;
 using Application.Features.Products.Queries.GetAllProducts;
+using Application.Mapping;
+using Application.Serivces;
+using Application.Validators;
+using FluentValidation.AspNetCore;
 using Infrastructure.Data;
 using Infrastructure.Data.Repositories;
-using Application.DependencyInjection;
 using Infrastructure.DependencyInjection;
-using HealthChecks.UI.Client;
+using MediatR;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Diagnostics.HealthChecks;
-using System.Text.Json;
-using Prometheus;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
+using Microsoft.OpenApi.Models;
 using OpenTelemetry.Metrics;
+using Prometheus;
+using Serilog;
+using System.Text;
+using System.Text.Json;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -61,6 +61,9 @@ builder.Services.AddOpenTelemetry()
             .AddRuntimeInstrumentation()
             .AddPrometheusExporter();
     });
+
+// Add AutoMapper
+builder.Services.AddAutoMapper(typeof(MappingProfile));
 
 //Services swagger access by token in Swagger
 
