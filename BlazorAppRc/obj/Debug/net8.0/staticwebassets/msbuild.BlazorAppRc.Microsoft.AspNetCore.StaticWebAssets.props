@@ -264,11 +264,29 @@
       <RelatedAsset></RelatedAsset>
       <AssetTraitName></AssetTraitName>
       <AssetTraitValue></AssetTraitValue>
-      <Fingerprint>xi5fq86m0n</Fingerprint>
-      <Integrity>R9yVw2FFHWfNSD+GzIag0OMny44bdr1EEFyFgsxq1Us=</Integrity>
+      <Fingerprint>mnkb92co1r</Fingerprint>
+      <Integrity>rhFEZOlIfiKvVP6i2uSjskv7bsm4bOZzoefK5XX832Q=</Integrity>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\js\site.js'))</OriginalItemSpec>
+    </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\js\site1.js'))">
+      <SourceType>Package</SourceType>
+      <SourceId>BlazorAppRc</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/BlazorAppRc</BasePath>
+      <RelativePath>js/site1.js</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <Fingerprint>gou8fegrxf</Fingerprint>
+      <Integrity>UHS6xWH+1qxfGEpJ8S9J99uY6bW3e/WIHeIVw6c4rHo=</Integrity>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\js\site1.js'))</OriginalItemSpec>
     </StaticWebAsset>
   </ItemGroup>
 </Project>

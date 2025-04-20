@@ -83,4 +83,38 @@ https://localhost:#miNroPuerto/metrics
 * Prometheus Settings
 crear un file prometheus.yml
 
+/*Settings ejecucion*/
+Ve a la página oficial de descargas: https://prometheus.io/download/
+
+En la sección "Prometheus", descarga la versión para Windows (por ejemplo: prometheus-2.X.X.windows-amd64.zip).
+
+Extrae el contenido del archivo .zip en una carpeta, por ejemplo:
+C:\Prometheus
+
+Paso 2: Configurar prometheus.yml
+global:
+  scrape_interval: 15s
+
+scrape_configs:
+  - job_name: 'prometheus'
+    static_configs:
+      - targets: ['localhost:#nroPuertoDetuApplicacion'] 
+
+
+Paso 3: Ejecutar Prometheus
+Abre una ventana de CMD o PowerShell.
+
+Navega hasta la carpeta donde está Prometheus, por ejemplo:
+
+bash
+cd C:\Prometheus\prometheus-2.X.X.windows-amd64
+Ejecuta Prometheus con:
+
+bash
+prometheus.exe --config.file=prometheus.yml
+
+Paso 4: Acceder a la interfaz web
+Abre tu navegador y entra a: http://localhost:9090
+mejor directo a ver http://localhost:9090/targets
+
 ===================================  Grafana

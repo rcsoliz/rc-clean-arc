@@ -15,6 +15,7 @@ builder.Services.AddScoped<HttpClient>(sp =>
 });
 
 // Add services to the container.
+builder.Services.AddScoped<AuthService>();
 builder.Services.AddSingleton<AuthState>();
 builder.Services.AddRazorPages();
 builder.Services.AddServerSideBlazor();

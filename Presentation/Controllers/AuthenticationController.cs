@@ -33,7 +33,7 @@ namespace Presentation.Controllers
         public async Task<ActionResult> RefreshToken([FromBody] RefreshTokenCommand command)
         {
             var result = await _mediator.Send(command);
-            if (result == null)
+            if (result == null || string.IsNullOrWhiteSpace(result.AccessToken))
             {
                 return Unauthorized();
             }

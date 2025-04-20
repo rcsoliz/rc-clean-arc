@@ -33,7 +33,7 @@ namespace Infrastructure.Data.Repositories.Auth
                 issuer: _configuration["Jwt:Issuer"],
                 audience: _configuration["Jwt:Audience"],
                 claims: claims,
-                expires: DateTime.UtcNow.AddMinutes(15),
+                expires: DateTime.UtcNow.AddDays(7),
                 signingCredentials: creds
             );
 

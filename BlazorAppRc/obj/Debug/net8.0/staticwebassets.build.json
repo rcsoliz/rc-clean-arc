@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "xSYF/Ghb2d3W+fy+16FPJTEbWl/xjUrjj7z4UL+2ueI=",
+  "Hash": "cMh140ul5dwcyyJqwyKkj/GAoGQteRk8CT+nta8r43E=",
   "Source": "BlazorAppRc",
   "BasePath": "_content/BlazorAppRc",
   "Mode": "Default",
@@ -346,11 +346,32 @@
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
-      "Fingerprint": "xi5fq86m0n",
-      "Integrity": "R9yVw2FFHWfNSD+GzIag0OMny44bdr1EEFyFgsxq1Us=",
+      "Fingerprint": "mnkb92co1r",
+      "Integrity": "rhFEZOlIfiKvVP6i2uSjskv7bsm4bOZzoefK5XX832Q=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\js\\site.js"
+    },
+    {
+      "Identity": "D:\\DESARROLLO\\2025\\CleanArchitectureApi\\BlazorAppRc\\wwwroot\\js\\site1.js",
+      "SourceId": "BlazorAppRc",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\DESARROLLO\\2025\\CleanArchitectureApi\\BlazorAppRc\\wwwroot\\",
+      "BasePath": "_content/BlazorAppRc",
+      "RelativePath": "js/site1#[.{fingerprint}]?.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "gou8fegrxf",
+      "Integrity": "UHS6xWH+1qxfGEpJ8S9J99uY6bW3e/WIHeIVw6c4rHo=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\site1.js"
     }
   ],
   "Endpoints": [
@@ -377,7 +398,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sun, 13 Apr 2025 21:37:59 GMT"
+          "Value": "Sun, 20 Apr 2025 12:55:54 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -422,7 +443,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sun, 13 Apr 2025 21:37:59 GMT"
+          "Value": "Sun, 20 Apr 2025 12:55:54 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -467,7 +488,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sun, 13 Apr 2025 21:37:59 GMT"
+          "Value": "Sun, 20 Apr 2025 12:55:54 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -504,7 +525,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sun, 13 Apr 2025 21:37:59 GMT"
+          "Value": "Sun, 20 Apr 2025 12:55:54 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -1595,7 +1616,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "345"
+          "Value": "347"
         },
         {
           "Name": "Content-Type",
@@ -1603,11 +1624,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"R9yVw2FFHWfNSD+GzIag0OMny44bdr1EEFyFgsxq1Us=\""
+          "Value": "\"rhFEZOlIfiKvVP6i2uSjskv7bsm4bOZzoefK5XX832Q=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sun, 23 Mar 2025 18:59:07 GMT"
+          "Value": "Sun, 20 Apr 2025 13:13:56 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -1617,12 +1638,12 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-R9yVw2FFHWfNSD+GzIag0OMny44bdr1EEFyFgsxq1Us="
+          "Value": "sha256-rhFEZOlIfiKvVP6i2uSjskv7bsm4bOZzoefK5XX832Q="
         }
       ]
     },
     {
-      "Route": "js/site.xi5fq86m0n.js",
+      "Route": "js/site.mnkb92co1r.js",
       "AssetFile": "D:\\DESARROLLO\\2025\\CleanArchitectureApi\\BlazorAppRc\\wwwroot\\js\\site.js",
       "Selectors": [],
       "ResponseHeaders": [
@@ -1632,7 +1653,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "345"
+          "Value": "347"
         },
         {
           "Name": "Content-Type",
@@ -1640,11 +1661,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"R9yVw2FFHWfNSD+GzIag0OMny44bdr1EEFyFgsxq1Us=\""
+          "Value": "\"rhFEZOlIfiKvVP6i2uSjskv7bsm4bOZzoefK5XX832Q=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sun, 23 Mar 2025 18:59:07 GMT"
+          "Value": "Sun, 20 Apr 2025 13:13:56 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -1654,7 +1675,7 @@
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "xi5fq86m0n"
+          "Value": "mnkb92co1r"
         },
         {
           "Name": "label",
@@ -1662,7 +1683,89 @@
         },
         {
           "Name": "integrity",
-          "Value": "sha256-R9yVw2FFHWfNSD+GzIag0OMny44bdr1EEFyFgsxq1Us="
+          "Value": "sha256-rhFEZOlIfiKvVP6i2uSjskv7bsm4bOZzoefK5XX832Q="
+        }
+      ]
+    },
+    {
+      "Route": "js/site1.gou8fegrxf.js",
+      "AssetFile": "D:\\DESARROLLO\\2025\\CleanArchitectureApi\\BlazorAppRc\\wwwroot\\js\\site1.js",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "323"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"UHS6xWH+1qxfGEpJ8S9J99uY6bW3e/WIHeIVw6c4rHo=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sun, 20 Apr 2025 13:13:50 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "gou8fegrxf"
+        },
+        {
+          "Name": "label",
+          "Value": "js/site1.js"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-UHS6xWH+1qxfGEpJ8S9J99uY6bW3e/WIHeIVw6c4rHo="
+        }
+      ]
+    },
+    {
+      "Route": "js/site1.js",
+      "AssetFile": "D:\\DESARROLLO\\2025\\CleanArchitectureApi\\BlazorAppRc\\wwwroot\\js\\site1.js",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "323"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"UHS6xWH+1qxfGEpJ8S9J99uY6bW3e/WIHeIVw6c4rHo=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sun, 20 Apr 2025 13:13:50 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-UHS6xWH+1qxfGEpJ8S9J99uY6bW3e/WIHeIVw6c4rHo="
         }
       ]
     }

@@ -61,6 +61,10 @@
       "PackagePath": "staticwebassets\\js\\site.js"
     },
     {
+      "Id": "D:\\DESARROLLO\\2025\\CleanArchitectureApi\\BlazorAppRc\\wwwroot\\js\\site1.js",
+      "PackagePath": "staticwebassets\\js\\site1.js"
+    },
+    {
       "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.BlazorAppRc.Microsoft.AspNetCore.StaticWebAssetEndpoints.props",
       "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssetEndpoints.props"
     },

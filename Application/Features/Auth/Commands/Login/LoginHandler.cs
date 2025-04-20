@@ -1,6 +1,4 @@
-﻿using Application.DTOs.Auth;
-using Application.Interfaces;
-using Application.Serivces;
+﻿using Application.Interfaces;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 
@@ -31,19 +29,19 @@ namespace Application.Features.Auth.Commands.Login
             }
 
             // 1. Generar access token
-            var accessToken = _jwtService.GenerateAccessToken(user);
+            var jwtToken = _jwtService.GenerateAccessToken(user);
 
             // 2. Generar refresh token
             var refreshToken = _jwtService.GenerateRefreshToken();
 
             // 3. Guardar en BD
-            var expiration = DateTime.UtcNow.AddHours(1);
+            var expiration = DateTime.UtcNow.AddDays(7);
             await _refreshTokenService.SaveRefreshTokenAsync(user, refreshToken, expiration);
 
             // 4. Devolver tokens
             return new LoginResponse
             {
-                AccessToken = accessToken,
+                JwtToken = jwtToken,
                 RefreshToken = refreshToken
             };
         }

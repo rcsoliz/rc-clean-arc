@@ -14,9 +14,9 @@ namespace BlazorAppRc.Models
 
     public class TokenResponse
     {
-        public string? Token { get; set; }
-        public string? AccessToken { get; set; }
+        public string? JwtToken { get; set; }
         public string RefreshToken { get; set; }
+
     }
 
 }

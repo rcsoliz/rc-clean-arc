@@ -23,8 +23,11 @@ namespace Application.Mapping
             CreateMap<PostCategory, PostCategoryDtos>()
                  .ForMember(dest => dest.CategoryId, opt => opt.MapFrom(src => src.CategoryId))
                  .ForMember(dest => dest.Name, opt => opt.MapFrom(src => src.Category.Name));
-                 
-        }
+
+            CreateMap<PostDto, PostWithCategoriesDto>()
+                .ForMember(dest => dest.Post, opt => opt.MapFrom(src => src));
+         
+            }
 
     }
 }

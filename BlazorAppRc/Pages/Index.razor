@@ -1,9 +1,12 @@
 ﻿@page "/"
 @using BlazorAppRc.Models
+@using BlazorAppRc.Services
 @inject HttpClient Http
 @inject BlazorAppRc.Services.AuthState AuthState
 @inject IJSRuntime JS
 @inject NavigationManager Navigation
+@inject AuthService AuthService
+
 
 <h3 class="d-flex justify-content-between align-items-center mb-4">
     <span>Últimas publicaciones</span>
@@ -28,11 +31,42 @@
                 </div>
                 <div class="modal-body">
                     <textarea class="form-control" rows="5" maxlength="1000"
-                              @bind="contenido"
-                              @oninput="LimitarTexto"
-                              placeholder="Escribe tu publicación (máx. 1000 caracteres)">
-                        </textarea>
-                    <div class="text-end text-muted mt-1">@contenido.Length / 1000</div>
+                        @bind="contenido"
+                        @oninput="LimitarTexto"
+                        placeholder="Escribe tu publicación (máx. 1000 caracteres)">
+                    </textarea>
+                     <div class="text-end text-muted mt-1">@contenido.Length / 1000</div>
+
+                    <div class="mt-3">
+                        <label class="form-label">Selecciona categorías</label>
+                        <select id="selectCategorias"
+                                multiple
+                                class="form-select"
+                                @ref="selectCategoriasRef"
+                                @onchange="SeleccionarCategorias">
+                            @foreach (var categoria in categoriasDisponibles)
+                            {
+                                <option value="@categoria.Id">@categoria.Name</option>
+                            }
+                        </select>
+
+                        @if (categoriasSeleccionadas.Any())
+                        {
+                            <div class="mt-2">
+                                @foreach (var categoria in categoriasSeleccionadas)
+                                {
+                                    <span class="badge bg-primary me-1">
+                                        @categoria.Name
+                                        <button type="button"
+                                        class="btn-close btn-close-white ms-2"
+                                        style="font-size: 0.6rem;"
+                                        @onclick="() => EliminarCategoria(categoria.Id)">
+                                        </button>
+                                    </span>
+                                }
+                            </div>
+                        }
+                    </div>
                 </div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" @onclick="CerrarModal">Cancelar</button>
@@ -56,8 +90,8 @@ else
     @foreach (var post in pagedPosts.Items)
     {
         <div class="card mb-3 p-3 shadow-sm border rounded"
-             style="cursor: pointer;"
-             @onclick="() => IrADetalle(post.Id)">
+        style="cursor: pointer;"
+        @onclick="() => IrADetalle(post.Id)">
 
             <div class="d-flex justify-content-between">
                 <strong>@post.Username</strong>
@@ -72,18 +106,18 @@ else
                 else
                 {
                     @(post.PostContent.Length > 140
-                        ? post.PostContent.Substring(0, 140) + "..."
-                        : post.PostContent)
+                                    ? post.PostContent.Substring(0, 140) + "..."
+                                    : post.PostContent)
                 }
             </p>
 
             @if (post.PostContent.Length > 140)
             {
                 <span class="text-primary"
-                      role="button"
-                      style="cursor: pointer;"
+                role="button"
+                style="cursor: pointer;"
                 @onclick:stopPropagation
-                      @onclick="() => ToggleExpand(post.Id)">
+                @onclick="() => ToggleExpand(post.Id)">
                     @(expandedPostId == post.Id ? "Ver menos" : "Ver más")
                 </span>
             }
@@ -115,7 +149,7 @@ else
 <!-- Modal de filtros -->
 @if (mostrarModalFiltro)
 {
-    
+
     <div class="modal fade show d-block" style="background-color: rgba(0,0,0,0.5);">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -162,10 +196,31 @@ else
     private bool mostrarModalFiltro = false;
     private PostFilterDto filtro = new() { Page = 1, PageSize = 4 };
 
+    // Categories
+    private List<CategoryDto> categoriasDisponibles = new();
+    private List<CategoryDto> categoriasSeleccionadas = new();
+    private ElementReference selectCategoriasRef;
+    private string? errorMensaje;
+    private bool categoriasCargadas = false;
+    private List<int> selectedCategoryIds = new();
+
+    //private bool jsInicializado = false;
+
     protected override async Task OnInitializedAsync()
     {
         await LoadPosts();
     }
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender && !categoriasCargadas)
+        {
+            await CargarCategorias();
+            categoriasCargadas = true;
+
+            StateHasChanged();
+        }
+    }
+
 
     private async Task LoadPosts()
     {
@@ -214,6 +269,7 @@ else
     {
         mostrarModal = false;
         contenido = string.Empty;
+        categoriasSeleccionadas.Clear();
     }
 
     private void LimitarTexto(ChangeEventArgs e)
@@ -222,7 +278,7 @@ else
         contenido = value.Length > 1000 ? value.Substring(0, 1000) : value;
     }
 
-  
+
     private async Task Publicar()
     {
         mensajeError = null;
@@ -241,10 +297,13 @@ else
             var postData = new
             {
                 PostContent = contenido,
-                UserId = AuthState.Id
+                UserId = AuthState.Id,
+                imageUrl = "",
+                CategoryIds = categoriasSeleccionadas.Select(c => c.Id).ToList()    
             };
 
-            var response = await Http.PostAsJsonAsync("api/post", postData);
+            var response = await Http.PostAsJsonAsync("api/postcategories", postData);
+
 
             if (response.IsSuccessStatusCode)
             {
@@ -288,6 +347,78 @@ else
         // tu código actual de abrir modal para postear
         mostrarModal= true;
     }
+
+    // Categories
+    private async Task<bool> TryWithRefreshToken(Func<Task<bool>> apiCall)
+    {
+        var success = await apiCall();
+
+        if (!success)
+        {
+            var refreshSuccess = await AuthService.RefreshTokenAsync();
+            if (refreshSuccess)
+            {
+                return await apiCall(); // intenta de nuevo con token nuevo
+            }
+        }
+
+        return false;
+    }
+    private async Task CargarCategorias()
+    {
+        errorMensaje = null;
+        try
+        {
+            await TryWithRefreshToken(async () =>
+            {
+                 var token = await AuthService.GetJwtTokenAsync();
+                 if (string.IsNullOrEmpty(token)) return false;
+                    
+                 Http.DefaultRequestHeaders.Authorization =
+                        new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
+                 var response = await Http.GetAsync("api/category");
+                 if (!response.IsSuccessStatusCode) return false;
+                 
+                 categoriasDisponibles = await response.Content.ReadFromJsonAsync<List<CategoryDto>>() ?? new();
+                  return true;
+
+            });
+        }        
+        catch (Exception ex)
+        {
+            errorMensaje = "Error de red al obtener categorías.";
+        }
+    }
+
+    private void EliminarCategoria(int id)
+    {
+        var cat = categoriasSeleccionadas.FirstOrDefault(c => c.Id == id);
+        if (cat != null)
+        {
+            categoriasSeleccionadas.Remove(cat);
+        }
+    }
+
+
+    private async Task SeleccionarCategorias()
+    {
+        try
+            {
+            var selectedValues = await JS.InvokeAsync<string[]>("getSelectedOptions");
+
+            var ids = selectedValues
+                .Where(x => int.TryParse(x, out _))
+                .Select(int.Parse)
+                .ToList();
+
+            categoriasSeleccionadas = categoriasDisponibles
+                .Where(c => ids.Contains(c.Id))
+                .ToList();
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error al capturar categorías: {ex.Message}");
+        }
+    }
+
 }
-
-

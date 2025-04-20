@@ -4,6 +4,7 @@ using Application.Features.PostsCategories.Commands.UpdatePostCategories;
 using Application.Features.PostsCategories.Queries.GetAllPostsWithCategories;
 using Application.Features.PostsCategories.Queries.GetAllPostWithCategoryId;
 using Application.Features.PostsCategories.Queries.GetByPostWithCategoriesById;
+using Application.Features.PostsCategories.Queries.GetPostsByScroll;
 using Core.Entities;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
@@ -27,6 +28,13 @@ namespace Presentation.Controllers
         public async Task<ActionResult<IEnumerable<PostCategory>>> GetAll()
         {
             var postCategories = await _mediator.Send(new GetAllPostsWithCategoriesQuery());
+            return Ok(postCategories);
+        }
+        [HttpGet("scroll")]
+        [AllowAnonymous]
+        public async Task<ActionResult<IEnumerable<PostCategory>>> GetAllWithScroll([FromQuery] DateTime? lastPostDate, [FromQuery] int take=5)
+        {
+            var postCategories = await _mediator.Send(new GetPostsByScrollQuery(lastPostDate, take));
             return Ok(postCategories);
         }
 

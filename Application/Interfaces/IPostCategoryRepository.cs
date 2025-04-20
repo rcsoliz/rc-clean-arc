@@ -16,6 +16,9 @@ namespace Application.Interfaces
         Task<PostDto> GetPostByIdtWithCategoriesAsync(int id);
 
         Task<IEnumerable<PostDto>> GetPostWithCategoryIdAsync(int categoryId);
-        
+
+        Task<IEnumerable<PostWithCategoriesDto>> GetPostsByScrollAsync(DateTime? lastPostDate, int take = 5);
+
+
     }
 }
