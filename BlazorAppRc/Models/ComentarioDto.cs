@@ -8,6 +8,6 @@
         public int PostId { get; set; }
         public int UserId {get; set;}
         public int? ParentCommentId { get; set; }
-        public string Created { get; set; } = string.Empty;
+        public DateTime Created { get; set; }
     }
 }

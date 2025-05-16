@@ -30,7 +30,7 @@ else
         <div class="card mb-3 p-3 shadow-sm border rounded">
             <div class="d-flex justify-content-between">
                 <strong>@post.Username</strong>
-                <small>@DateTime.Parse(post.Created).ToString("dd/MM")</small>
+                <small>@post.Created.ToString("dd/MM")</small>
             </div>
             <p>
                 @* @(post.PostContent.Length > 140 ? post.PostContent.Substring(0, 140) + "..." : post.PostContent) *@

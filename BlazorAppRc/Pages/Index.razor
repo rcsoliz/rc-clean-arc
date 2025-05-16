@@ -6,7 +6,7 @@
 @inject IJSRuntime JS
 @inject NavigationManager Navigation
 @inject AuthService AuthService
-
+@implements IAsyncDisposable
 
 <h3 class="d-flex justify-content-between align-items-center mb-4">
     <span>Últimas publicaciones</span>
@@ -31,19 +31,19 @@
                 </div>
                 <div class="modal-body">
                     <textarea class="form-control" rows="5" maxlength="1000"
-                        @bind="contenido"
-                        @oninput="LimitarTexto"
-                        placeholder="Escribe tu publicación (máx. 1000 caracteres)">
+                    @bind="contenido"
+                    @oninput="LimitarTexto"
+                    placeholder="Escribe tu publicación (máx. 1000 caracteres)">
                     </textarea>
-                     <div class="text-end text-muted mt-1">@contenido.Length / 1000</div>
+                    <div class="text-end text-muted mt-1">@contenido.Length / 1000</div>
 
                     <div class="mt-3">
                         <label class="form-label">Selecciona categorías</label>
                         <select id="selectCategorias"
-                                multiple
-                                class="form-select"
-                                @ref="selectCategoriasRef"
-                                @onchange="SeleccionarCategorias">
+                        multiple
+                        class="form-select"
+                        @ref="selectCategoriasRef"
+                        @onchange="SeleccionarCategorias">
                             @foreach (var categoria in categoriasDisponibles)
                             {
                                 <option value="@categoria.Id">@categoria.Name</option>
@@ -77,73 +77,62 @@
     </div>
 }
 
-@if (pagedPosts == null)
+@if (posts == null)
 {
     <p><em>Cargando publicaciones...</em></p>
 }
-else if (pagedPosts.Items.Count == 0)
+else if (posts.Count == 0)
 {
     <p><em>No hay publicaciones para esta página.</em></p>
 }
 else
 {
-    @foreach (var post in pagedPosts.Items)
+    @if (NewPostsCount >= 3)
+    {
+        <div class="text-center my-3">
+            <button class="btn btn-primary" @onclick="ShowNewPosts">
+                Mostrar @NewPostsCount posts nuevos
+            </button>
+        </div>
+    }
+
+    @foreach (var post in posts)
     {
         <div class="card mb-3 p-3 shadow-sm border rounded"
         style="cursor: pointer;"
-        @onclick="() => IrADetalle(post.Id)">
+        @onclick="() => IrADetalle(post.Post.Id)">
 
             <div class="d-flex justify-content-between">
-                <strong>@post.Username</strong>
-                <small>@DateTime.Parse(post.Created).ToString("dd/MM")</small>
+                <strong>@post.Post.Username</strong>
+                <small>@post.Post.Created.ToString("dd/MM")</small>
             </div>
 
             <p>
-                @if (expandedPostId == post.Id)
+                @if (expandedPostId == post.Post.Id)
                 {
-                    @post.PostContent
+                    @post.Post.PostContent
                 }
                 else
                 {
-                    @(post.PostContent.Length > 140
-                                    ? post.PostContent.Substring(0, 140) + "..."
-                                    : post.PostContent)
+                    @(post.Post.PostContent.Length > 140
+                            ? post.Post.PostContent.Substring(0, 140) + "..."
+                            : post.Post.PostContent)
                 }
             </p>
 
-            @if (post.PostContent.Length > 140)
+            @if (post.Post.PostContent.Length > 140)
             {
                 <span class="text-primary"
                 role="button"
                 style="cursor: pointer;"
                 @onclick:stopPropagation
-                @onclick="() => ToggleExpand(post.Id)">
-                    @(expandedPostId == post.Id ? "Ver menos" : "Ver más")
+                @onclick="() => ToggleExpand(post.Post.Id)">
+                    @(expandedPostId == post.Post.Id ? "Ver menos" : "Ver más")
                 </span>
             }
         </div>
     }
 
-
-    <div class="d-flex justify-content-center mt-3">
-        <nav>
-            <ul class="pagination">
-                <li class="page-item @(currentPage == 1 ? "disabled" : "")">
-                    <button class="page-link" @onclick="async () => await FirstPage()">«</button>
-                </li>
-                @for (int i = 1; i <= totalPages; i++)
-                {
-                    var pageNumber = i;
-                    <li class="page-item @(currentPage == pageNumber ? "active" : "")">
-                        <button class="page-link" @onclick="async () => await ChangePage(pageNumber)">@pageNumber</button>
-                    </li>
-                }
-                <li class="page-item @(currentPage == totalPages ? "disabled" : "")">
-                    <button class="page-link" @onclick="async () => await LastPage()">»</button>
-                </li>
-            </ul>
-        </nav>
-    </div>
 }
 
 <!-- Modal de filtros -->
@@ -205,52 +194,96 @@ else
     private List<int> selectedCategoryIds = new();
 
     //private bool jsInicializado = false;
+    private bool postsCargadosInicialmente = false;
+    private DotNetObjectReference<Index>? objRef;
+    private bool _scrollRegistrado = false;
+
+
+    private List<PostWithCategoriesDto> PostsList = new();
+    private int NewPostsCount = 0;
+    private DateTime LastPostDateTime = DateTime.MinValue;
+    private System.Timers.Timer checkTimer;
+
 
     protected override async Task OnInitializedAsync()
     {
-        await LoadPosts();
-    }
-    protected override async Task OnAfterRenderAsync(bool firstRender)
-    {
-        if (firstRender && !categoriasCargadas)
-        {
-            await CargarCategorias();
-            categoriasCargadas = true;
+        // PostsList = await Http.GetFromJsonAsync<List<PostWithCategoriesDto>>("api/PostCategories");
 
-            StateHasChanged();
+        // if (PostsList.Any())
+        //     LastPostDateTime = PostsList.Max(p => p.Post.Created);
+
+        
+        // StartTimerForNewPosts();
+        //await LoadPosts();
+        //await CargarPosts();
+
+        if (!postsCargadosInicialmente)
+        {
+            await CargarPosts();
+            postsCargadosInicialmente = true;
+        }
+    }
+
+    private CancellationTokenSource _cts = new();
+    private PeriodicTimer? _pollingTimer;
+
+    private async Task StartPollingForNewPosts()
+    {
+       _pollingTimer = new PeriodicTimer(TimeSpan.FromSeconds(10));
+
+        try
+        {
+            while (await _pollingTimer.WaitForNextTickAsync(_cts.Token))
+            {
+                var count = await Http.GetFromJsonAsync<int>($"api/PostCategories/countNewPosts?afterDate={LastPostDateTime:o}", _cts.Token);
+                if (count >= 3)
+                {
+                    NewPostsCount = count;
+                    await InvokeAsync(StateHasChanged);
+                }
+            }
+        }
+        catch (OperationCanceledException)
+        {
+            // Cancelación normal, no hacer nada
+        }
+    }
+
+    private async Task ShowNewPosts()
+    {
+        var newPosts = await Http.GetFromJsonAsync<List<PostWithCategoriesDto>>($"api/PostCategories/newPosts?afterDate={LastPostDateTime:o}");
+        if (newPosts != null && newPosts.Any())
+        {
+            PostsList.InsertRange(0, newPosts);
+            LastPostDateTime = PostsList.Max(p => p.Post.Created);
+            NewPostsCount = 0;
         }
     }
 
 
-    private async Task LoadPosts()
+    protected override async Task OnAfterRenderAsync(bool firstRender)
     {
-        pagedPosts = await Http.GetFromJsonAsync<PagedResult<PostDto>>($"api/post/paged?page={currentPage}&pageSize={pageSize}");
+        if (firstRender && !_scrollRegistrado)
+        {
+            // objRef = DotNetObjectReference.Create(this);
+            // await JS.InvokeVoidAsync("registerInfiniteScroll", objRef);
+
+            objRef = DotNetObjectReference.Create(this);
+            await JS.InvokeVoidAsync("registerInfiniteScroll", objRef);
+            _scrollRegistrado = true;
+        }
+
+        // if (firstRender && !categoriasCargadas)
+        // {
+        //     await CargarCategorias();
+        //     categoriasCargadas = true;
+        //     StateHasChanged();
+        // }
     }
 
     private void ToggleExpand(int id)
     {
         expandedPostId = expandedPostId == id ? null : id;
-    }
-
-    private async Task ChangePage(int page)
-    {
-        currentPage = page;
-        await LoadPosts();
-    }
-
-    private async Task FirstPage()
-    {
-        if (currentPage > 1)
-        {
-            currentPage = 1;
-            await LoadPosts();
-        }
-    }
-
-    private async Task LastPage()
-    {
-        currentPage = totalPages;
-        await LoadPosts();
     }
 
     private void IrADetalle(int postId)
@@ -324,14 +357,67 @@ else
         CerrarModal();
     }
 
+
+    private List<PostWithCategoriesDto> posts = new();
+    private bool isLoading = false;
+    private bool noMorePosts = false;
+    private DateTime? lastPostDate = null;
+
+
+
     private async Task CargarPosts()
     {
-        var response = await Http.PostAsJsonAsync("api/post/filter", filtro);
-        if (response.IsSuccessStatusCode)
+        if (isLoading || noMorePosts) return;
+
+        isLoading = true;
+
+        var nuevosPosts = await Http.GetFromJsonAsync<List<PostWithCategoriesDto>>(
+            $"api/PostCategories/scroll?lastPostDate={(lastPostDate?.ToString("s") ?? "")}&take=5");
+
+        if (nuevosPosts == null || !nuevosPosts.Any())
         {
-            pagedPosts = await response.Content.ReadFromJsonAsync<PagedResult<PostDto>>() ?? new();
+            noMorePosts = true;
+            isLoading = false; 
+            return;
         }
+
+        posts.AddRange(nuevosPosts);
+        StateHasChanged();
+        Console.WriteLine($"Posts recibidos: {nuevosPosts.Count}");
+        // Actualiza la fecha del último post recibido
+        // lastPostDate = nuevosPosts.Last().Post.Created;
+        lastPostDate = nuevosPosts.Min(p => p.Post.Created);
+        isLoading = false;
+
+        LastPostDateTime = nuevosPosts.Max(p => p.Post.Created);
+        // Actualiza la fecha del último post recibido
+        StartPollingForNewPosts();
     }
+
+    [JSInvokable("CargarMasPosts")]
+    public async Task CargarMasPosts()
+    {
+        await CargarPosts();
+    }
+    
+
+    
+    [JSInvokable("DetectarScroll")]
+    public async Task DetectarScroll()
+    {
+        await CargarPosts();
+    }
+ 
+    public async ValueTask DisposeAsync()
+    {
+        objRef?.Dispose();
+    }
+
+    public void Dispose()
+    {
+        objRef?.Dispose();
+    }
+
 
     private void MostrarModalFiltro() => mostrarModalFiltro = true;
     private void CerrarModalFiltro() => mostrarModalFiltro = false;
@@ -339,7 +425,7 @@ else
     private async Task AplicarFiltro()
     {
         mostrarModalFiltro = false;
-        await CargarPosts();
+        // await CargarPosts();
     }
 
     private void AbrirModal()

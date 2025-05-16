@@ -1,9 +1,11 @@
 ﻿using Application.Features.PostsCategories.Commands.CreatePostCategories;
 using Application.Features.PostsCategories.Commands.DeletePostCategories;
 using Application.Features.PostsCategories.Commands.UpdatePostCategories;
+using Application.Features.PostsCategories.Queries.CountNewPostsAsync;
 using Application.Features.PostsCategories.Queries.GetAllPostsWithCategories;
 using Application.Features.PostsCategories.Queries.GetAllPostWithCategoryId;
 using Application.Features.PostsCategories.Queries.GetByPostWithCategoriesById;
+using Application.Features.PostsCategories.Queries.GetNewPostsAfterAsync;
 using Application.Features.PostsCategories.Queries.GetPostsByScroll;
 using Core.Entities;
 using MediatR;
@@ -32,7 +34,7 @@ namespace Presentation.Controllers
         }
         [HttpGet("scroll")]
         [AllowAnonymous]
-        public async Task<ActionResult<IEnumerable<PostCategory>>> GetAllWithScroll([FromQuery] DateTime? lastPostDate, [FromQuery] int take=5)
+        public async Task<ActionResult<IEnumerable<PostCategory>>> GetAllWithScroll([FromQuery] DateTime? lastPostDate, [FromQuery] int take = 5)
         {
             var postCategories = await _mediator.Send(new GetPostsByScrollQuery(lastPostDate, take));
             return Ok(postCategories);
@@ -78,5 +80,22 @@ namespace Presentation.Controllers
             return NoContent();
         }
 
+        [HttpGet("newPosts")]
+        [AllowAnonymous]
+        public async Task<ActionResult<IEnumerable<PostCategory>>> GetNewPosts([FromQuery] DateTime afterDate)
+        {
+            var postCategories = await _mediator.Send(new GetNewPostsAfterAsyncQuery(afterDate));
+            if (postCategories == null) return NotFound();
+            return Ok(postCategories);
+        }
+
+        [HttpGet("countNewPosts")]
+        [AllowAnonymous]
+        public async Task<ActionResult<int>> CountNewPosts([FromQuery] DateTime afterDate)
+        {
+            var count = await _mediator.Send(new CountNewPostsAsyncQuery(afterDate));
+            return Ok(count);
+
+        }
     }
 }

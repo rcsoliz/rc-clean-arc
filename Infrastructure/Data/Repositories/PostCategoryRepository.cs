@@ -177,43 +177,6 @@ namespace Infrastructure.Data.Repositories
             }
         }
 
-        //public async Task<IEnumerable<PostDto>> GetPostsByScrollAsync(DateTime? lastPostDate, int take = 5)
-        //{
-        //    var query = _context.Posts
-        //    .Include(p => p.User)
-        //    .Include(p => p.PostCategories)
-        //        .ThenInclude(pc => pc.Category)
-        //    .Include(p => p.Likes)
-        //    .OrderByDescending(p => p.CreatedAt)
-        //    .AsQueryable();
-
-        //    if (lastPostDate.HasValue)
-        //    {
-        //        query = query.Where(p => p.CreatedAt < lastPostDate);
-        //    }
-
-        //    var posts = await query
-        //        .Take(take)
-        //        .Select(p => new PostDto
-        //        {
-        //            Id = p.Id,
-        //            PostContent = p.PostContent,
-        //            Username = p.User.Username,
-        //            UserId = p.UserId,
-        //            Created = p.CreatedAt.ToString("s"),
-        //            LikeCount = p.Likes.Count,
-        //            Categories = p.PostCategories.Select(pc => new PostCategoryDtos
-        //            {
-        //                CategoryId = pc.Category.Id,
-        //                Name = pc.Category.Name
-        //            }).ToList()
-        //        })
-        //        .ToListAsync();
-
-        //    return posts;
-
-        //}
-
         public async Task<IEnumerable<PostWithCategoriesDto>> GetPostsByScrollAsync(DateTime? lastPostDate, int take = 5)
         {
             var query = _context.Posts
@@ -254,5 +217,42 @@ namespace Infrastructure.Data.Repositories
             return posts;
         }
 
+        public async Task<int> CountNewPostsAsync(DateTime afterDate)
+        {
+            return await _context.Posts
+                .Where(p => p.CreatedAt > afterDate)
+                .CountAsync();
+        }
+        public async Task<IEnumerable<PostWithCategoriesDto>> GetNewPostsAfterAsync(DateTime afterDate)
+        {
+            var posts = await _context.Posts
+                .Where(p => p.CreatedAt > afterDate)
+                .Include(p => p.User)
+                .Include(p => p.PostCategories).ThenInclude(pc => pc.Category)
+                .Include(p => p.Likes)
+                .OrderByDescending(p => p.CreatedAt)
+                .Select(p => new PostWithCategoriesDto
+                {
+                    Post = new PostDto
+                    {
+                        Id = p.Id,
+                        PostContent = p.PostContent,
+                        Username = p.User.Username,
+                        UserId = p.UserId,
+                        Created = p.CreatedAt.ToString("s"),
+                        LikeCount = p.Likes.Count,
+                        CommentCount = p.Comments.Count,
+                        Categories = p.PostCategories.Select(pc => new PostCategoryDtos
+                        {
+                            CategoryId = pc.Category.Id,
+                            Name = pc.Category.Name
+                        }).ToList()
+                    }
+                })
+                .ToListAsync();
+
+            return posts;
+        }
+    
     }
 }

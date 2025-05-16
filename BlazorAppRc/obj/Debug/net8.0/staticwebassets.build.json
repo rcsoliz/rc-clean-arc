@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "cMh140ul5dwcyyJqwyKkj/GAoGQteRk8CT+nta8r43E=",
+  "Hash": "dxflBFTnL8fkRMDHgyz9aEoHhb0eo88KOAOIWxfUsbA=",
   "Source": "BlazorAppRc",
   "BasePath": "_content/BlazorAppRc",
   "Mode": "Default",
@@ -332,6 +332,48 @@
       "OriginalItemSpec": "wwwroot\\favicon.png"
     },
     {
+      "Identity": "D:\\DESARROLLO\\2025\\CleanArchitectureApi\\BlazorAppRc\\wwwroot\\js\\detectarScroll.js",
+      "SourceId": "BlazorAppRc",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\DESARROLLO\\2025\\CleanArchitectureApi\\BlazorAppRc\\wwwroot\\",
+      "BasePath": "_content/BlazorAppRc",
+      "RelativePath": "js/detectarScroll#[.{fingerprint}]?.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "412g70jigm",
+      "Integrity": "uHp62TD5b//Sh959zwXGP9i36UUuO26LO1mdKfgpFTw=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\detectarScroll.js"
+    },
+    {
+      "Identity": "D:\\DESARROLLO\\2025\\CleanArchitectureApi\\BlazorAppRc\\wwwroot\\js\\scroll.js",
+      "SourceId": "BlazorAppRc",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\DESARROLLO\\2025\\CleanArchitectureApi\\BlazorAppRc\\wwwroot\\",
+      "BasePath": "_content/BlazorAppRc",
+      "RelativePath": "js/scroll#[.{fingerprint}]?.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "grzkpyix63",
+      "Integrity": "9Cx/HLwGUkq2LYg9luRE2KPV8+5nGnbE/EpxX9hTAZo=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\scroll.js"
+    },
+    {
       "Identity": "D:\\DESARROLLO\\2025\\CleanArchitectureApi\\BlazorAppRc\\wwwroot\\js\\site.js",
       "SourceId": "BlazorAppRc",
       "SourceType": "Discovered",
@@ -367,8 +409,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
-      "Fingerprint": "gou8fegrxf",
-      "Integrity": "UHS6xWH+1qxfGEpJ8S9J99uY6bW3e/WIHeIVw6c4rHo=",
+      "Fingerprint": "2k1jqq9qeq",
+      "Integrity": "oqBsKxO/wu1z06zuwGKHXiqjgO6dg94vz7qAyGkVKYI=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\js\\site1.js"
@@ -398,7 +440,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sun, 20 Apr 2025 12:55:54 GMT"
+          "Value": "Sun, 20 Apr 2025 20:43:19 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -443,7 +485,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sun, 20 Apr 2025 12:55:54 GMT"
+          "Value": "Sun, 20 Apr 2025 20:43:19 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -488,7 +530,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sun, 20 Apr 2025 12:55:54 GMT"
+          "Value": "Sun, 20 Apr 2025 20:43:19 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -525,7 +567,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sun, 20 Apr 2025 12:55:54 GMT"
+          "Value": "Sun, 20 Apr 2025 20:43:19 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -1606,6 +1648,170 @@
       ]
     },
     {
+      "Route": "js/detectarScroll.412g70jigm.js",
+      "AssetFile": "D:\\DESARROLLO\\2025\\CleanArchitectureApi\\BlazorAppRc\\wwwroot\\js\\detectarScroll.js",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "566"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"uHp62TD5b//Sh959zwXGP9i36UUuO26LO1mdKfgpFTw=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sun, 20 Apr 2025 20:42:59 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "412g70jigm"
+        },
+        {
+          "Name": "label",
+          "Value": "js/detectarScroll.js"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-uHp62TD5b//Sh959zwXGP9i36UUuO26LO1mdKfgpFTw="
+        }
+      ]
+    },
+    {
+      "Route": "js/detectarScroll.js",
+      "AssetFile": "D:\\DESARROLLO\\2025\\CleanArchitectureApi\\BlazorAppRc\\wwwroot\\js\\detectarScroll.js",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "566"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"uHp62TD5b//Sh959zwXGP9i36UUuO26LO1mdKfgpFTw=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sun, 20 Apr 2025 20:42:59 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-uHp62TD5b//Sh959zwXGP9i36UUuO26LO1mdKfgpFTw="
+        }
+      ]
+    },
+    {
+      "Route": "js/scroll.grzkpyix63.js",
+      "AssetFile": "D:\\DESARROLLO\\2025\\CleanArchitectureApi\\BlazorAppRc\\wwwroot\\js\\scroll.js",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "648"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"9Cx/HLwGUkq2LYg9luRE2KPV8+5nGnbE/EpxX9hTAZo=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sun, 11 May 2025 02:21:56 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "grzkpyix63"
+        },
+        {
+          "Name": "label",
+          "Value": "js/scroll.js"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-9Cx/HLwGUkq2LYg9luRE2KPV8+5nGnbE/EpxX9hTAZo="
+        }
+      ]
+    },
+    {
+      "Route": "js/scroll.js",
+      "AssetFile": "D:\\DESARROLLO\\2025\\CleanArchitectureApi\\BlazorAppRc\\wwwroot\\js\\scroll.js",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "648"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"9Cx/HLwGUkq2LYg9luRE2KPV8+5nGnbE/EpxX9hTAZo=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sun, 11 May 2025 02:21:56 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-9Cx/HLwGUkq2LYg9luRE2KPV8+5nGnbE/EpxX9hTAZo="
+        }
+      ]
+    },
+    {
       "Route": "js/site.js",
       "AssetFile": "D:\\DESARROLLO\\2025\\CleanArchitectureApi\\BlazorAppRc\\wwwroot\\js\\site.js",
       "Selectors": [],
@@ -1688,7 +1894,7 @@
       ]
     },
     {
-      "Route": "js/site1.gou8fegrxf.js",
+      "Route": "js/site1.2k1jqq9qeq.js",
       "AssetFile": "D:\\DESARROLLO\\2025\\CleanArchitectureApi\\BlazorAppRc\\wwwroot\\js\\site1.js",
       "Selectors": [],
       "ResponseHeaders": [
@@ -1698,7 +1904,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "323"
+          "Value": "288"
         },
         {
           "Name": "Content-Type",
@@ -1706,11 +1912,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"UHS6xWH+1qxfGEpJ8S9J99uY6bW3e/WIHeIVw6c4rHo=\""
+          "Value": "\"oqBsKxO/wu1z06zuwGKHXiqjgO6dg94vz7qAyGkVKYI=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sun, 20 Apr 2025 13:13:50 GMT"
+          "Value": "Sun, 20 Apr 2025 18:32:12 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -1720,7 +1926,7 @@
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "gou8fegrxf"
+          "Value": "2k1jqq9qeq"
         },
         {
           "Name": "label",
@@ -1728,7 +1934,7 @@
         },
         {
           "Name": "integrity",
-          "Value": "sha256-UHS6xWH+1qxfGEpJ8S9J99uY6bW3e/WIHeIVw6c4rHo="
+          "Value": "sha256-oqBsKxO/wu1z06zuwGKHXiqjgO6dg94vz7qAyGkVKYI="
         }
       ]
     },
@@ -1743,7 +1949,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "323"
+          "Value": "288"
         },
         {
           "Name": "Content-Type",
@@ -1751,11 +1957,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"UHS6xWH+1qxfGEpJ8S9J99uY6bW3e/WIHeIVw6c4rHo=\""
+          "Value": "\"oqBsKxO/wu1z06zuwGKHXiqjgO6dg94vz7qAyGkVKYI=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sun, 20 Apr 2025 13:13:50 GMT"
+          "Value": "Sun, 20 Apr 2025 18:32:12 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -1765,7 +1971,7 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-UHS6xWH+1qxfGEpJ8S9J99uY6bW3e/WIHeIVw6c4rHo="
+          "Value": "sha256-oqBsKxO/wu1z06zuwGKHXiqjgO6dg94vz7qAyGkVKYI="
         }
       ]
     }

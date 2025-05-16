@@ -19,6 +19,8 @@ namespace Application.Interfaces
 
         Task<IEnumerable<PostWithCategoriesDto>> GetPostsByScrollAsync(DateTime? lastPostDate, int take = 5);
 
+        Task<int> CountNewPostsAsync(DateTime afterDate);
+        Task<IEnumerable<PostWithCategoriesDto>> GetNewPostsAfterAsync(DateTime afterDate);
 
     }
 }
