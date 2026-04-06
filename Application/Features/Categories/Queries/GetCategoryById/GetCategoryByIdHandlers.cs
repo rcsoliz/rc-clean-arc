@@ -15,7 +15,7 @@ namespace Application.Features.Categories.Queries.GetCategoryById
         }
         public async Task<Category> Handle(GetCategoryById request, CancellationToken cancellationToken)
         {
-            return await _categoryRepository.GetByIdAsync(request.Id);
+            return await _categoryRepository.GetByIdAsync(request.Id, cancellationToken);
         }
     }
 }

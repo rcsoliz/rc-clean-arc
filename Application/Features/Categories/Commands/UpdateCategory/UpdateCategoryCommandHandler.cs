@@ -16,12 +16,8 @@ namespace Application.Features.Categories.Commands.UpdateCategory
             var category = await _categoryRepository.GetByIdAsync(request.Id);
             if (category == null) return false;
 
-            var itemCategory = new Category
-            {
-                Id = request.Id,
-                Name = request.Name
-            };
-            await _categoryRepository.UpdateAsync(itemCategory);
+            category.Name = request.Name; 
+            await _categoryRepository.UpdateAsync(category, cancellationToken);
             return true;
         }
     }
