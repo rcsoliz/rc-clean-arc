@@ -2,6 +2,7 @@
 using Application.Interfaces;
 using Core.Entities;
 using Microsoft.EntityFrameworkCore;
+using System.Threading;
 
 namespace Infrastructure.Data.Repositories
 {
@@ -19,50 +20,50 @@ namespace Infrastructure.Data.Repositories
             await _context.SaveChangesAsync();
         }
 
-        public async Task DeleteAsync(int id)
+        public Task AddAsync(Category entity, CancellationToken cancellationToken = default)
         {
-            var category = await _context.Categories.FindAsync(id);
-            if (category != null)
-            {
-                _context.Categories.Remove(category);
-                await _context.SaveChangesAsync();
-            }
+            throw new NotImplementedException();
         }
 
-        public async Task<IEnumerable<CategoryDto>> GetAllAsync()
+        public async Task<bool> DeleteAsync(int id, CancellationToken cancellationToken)
         {
-           var categories = await _context.Categories
-                .Select(c => new CategoryDto
-                {
-                    Id = c.Id,
-                    Name = c.Name
-                }).ToListAsync();
+            var category = await _context.Categories.FindAsync(new object[] { id }, cancellationToken);
+            if (category is null) return false; 
 
-           return categories;
+            _context.Categories.Remove(category);
+            await _context.SaveChangesAsync(cancellationToken);
+            return true;
         }
 
-        public async Task<CategoryDto> GetByIdAsync(int id)
+        public async Task<IEnumerable<Category>> GetAllAsync(CancellationToken cancellationToken = default)
         {
-            var category = await _context.Categories.FindAsync(id);
-            return new CategoryDto
+            var categories = await _context.Categories
+                    .Select(c => new Category
+                    {
+                        Id = c.Id,
+                        Name = c.Name
+                    }).ToListAsync(cancellationToken);
+            return categories;
+        }
+        public async Task<Category> GetByIdAsync(int id, CancellationToken cancellationToken)
+        {
+            var category = await _context.Categories.FindAsync(new object[] { id }, cancellationToken);
+            return new Category
             {
                 Id = category.Id,
                 Name = category.Name
-            };  
+            };
         }
 
-        public async Task UpdateAsync(Category entity)
+        public async Task UpdateAsync(Category entity, CancellationToken cancellationToken)
         {
-            var category = await _context.Categories.FindAsync(entity.Id);
+            var category = await _context.Categories.FindAsync(new object[] { entity.Id }, cancellationToken);
             if (category != null)
             {
                 category.Id = entity.Id;
                 category.Name = entity.Name;
-                await _context.SaveChangesAsync();
+                await _context.SaveChangesAsync(cancellationToken);
             }
-
-            //_context.Categories.Update(entity);
-            //await _context.SaveChangesAsync();
         }
     }
 }
