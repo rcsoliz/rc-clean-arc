@@ -9,9 +9,6 @@ namespace Infrastructure.Data.Repositories
     public class CategoryRepository : ICategoryRepository
     {
         private readonly AppDbContext _context;
-
-
-
         public CategoryRepository(AppDbContext context)
         {
             _context = context;
@@ -21,6 +18,8 @@ namespace Infrastructure.Data.Repositories
             await _context.Categories.AddAsync(entity);
             await _context.SaveChangesAsync();
         }
+
+
 
         public Task AddAsync(Category entity, CancellationToken cancellationToken = default)
         {
