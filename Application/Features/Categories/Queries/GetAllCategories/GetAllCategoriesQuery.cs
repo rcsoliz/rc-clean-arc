@@ -4,6 +4,6 @@ using MediatR;
 
 namespace Application.Features.Categories.Queries.GatAllCategories
 {
-    public record GetAllCategoriesQuery: IRequest<IEnumerable<CategoryDto>>;
+    public record GetAllCategoriesQuery: IRequest<IEnumerable<Category>>;
 
 }

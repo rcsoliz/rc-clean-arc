@@ -1,10 +1,11 @@
 ﻿using Application.DTOs;
 using Application.Interfaces;
+using Core.Entities;
 using MediatR;
 
 namespace Application.Features.Categories.Queries.GatAllCategories
 {
-    public class GetAllCategoriesQueryHandlers : IRequestHandler<GetAllCategoriesQuery, IEnumerable<CategoryDto>>
+    public class GetAllCategoriesQueryHandlers : IRequestHandler<GetAllCategoriesQuery, IEnumerable<Category>>
     {
         private readonly ICategoryRepository _categoryRepository;
 
@@ -12,7 +13,7 @@ namespace Application.Features.Categories.Queries.GatAllCategories
         {
             _categoryRepository = categoryRepository;
         }
-        public async Task<IEnumerable<CategoryDto>> Handle(GetAllCategoriesQuery request, CancellationToken cancellationToken)
+        public async Task<IEnumerable<Category>> Handle(GetAllCategoriesQuery request, CancellationToken cancellationToken)
         {
                 return await _categoryRepository.GetAllAsync();
         }

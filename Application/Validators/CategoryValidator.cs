@@ -12,7 +12,8 @@ namespace Application.Validators
     {
         public CategoryValidator() { 
             RuleFor(c => c.Name)
-                .NotEmpty().WithMessage("El nombre es requerido");
+                .NotEmpty().WithMessage("El nombre es requerido")
+                .MaximumLength(100).WithMessage("El nombre no puede superar 100 caracteres");
         }
     }
 }

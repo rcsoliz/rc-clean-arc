@@ -1,10 +1,11 @@
-﻿using Application.Interfaces;
+﻿using Application.DTOs;
+using Application.Interfaces;
 using Core.Entities;
 using MediatR;
 
 namespace Application.Features.Categories.Commands.CreateCategory
 {
-    public class CreateCategoryCommandHandler : IRequestHandler<CreateCategoryCommand, Category>
+    public class CreateCategoryCommandHandler : IRequestHandler<CreateCategoryCommand, CategoryDto>
     {
         private readonly ICategoryRepository _categoryRepository;
 
@@ -12,15 +13,20 @@ namespace Application.Features.Categories.Commands.CreateCategory
         {
             _categoryRepository = categoryRepository;
         }
-        public async Task<Category> Handle(CreateCategoryCommand request, CancellationToken cancellationToken)
+        public async Task<CategoryDto> Handle(CreateCategoryCommand request, CancellationToken cancellationToken)
         {
             var category = new Category
             {
                 Name = request.Name
             };
-            await _categoryRepository.AddAsync(category);
 
-            return category;
+            await _categoryRepository.AddAsync(category, cancellationToken);
+
+            return new CategoryDto
+            {
+                Id = category.Id,
+                Name = category.Name
+            };
         }
     }
 }
