@@ -10,6 +10,8 @@ namespace Infrastructure.Data.Repositories
     {
         private readonly AppDbContext _context;
 
+
+
         public CategoryRepository(AppDbContext context)
         {
             _context = context;
