@@ -13,17 +13,11 @@ namespace Infrastructure.Data.Repositories
         {
             _context = context;
         }
-        public async Task AddAsync(Category entity)
+   
+        public async Task AddAsync(Category entity, CancellationToken cancellationToken = default)
         {
-            await _context.Categories.AddAsync(entity);
-            await _context.SaveChangesAsync();
-        }
-
-
-
-        public Task AddAsync(Category entity, CancellationToken cancellationToken = default)
-        {
-            throw new NotImplementedException();
+            await _context.Categories.AddAsync(entity, cancellationToken);
+            await _context.SaveChangesAsync(cancellationToken);
         }
 
         public async Task<bool> DeleteAsync(int id, CancellationToken cancellationToken)
