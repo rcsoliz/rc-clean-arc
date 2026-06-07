@@ -1,10 +1,9 @@
-﻿using Core.Entities;
+﻿using Application.DTOs;
 using MediatR;
-using System.Collections.Generic;
 
 
 namespace Application.Features.Products.Queries.GetAllProducts
 {
-    public record GetAllProductsQuery(): IRequest<IEnumerable<Product>>;
+    public record GetAllProductsQuery(): IRequest<IEnumerable<ProductDto>>;
 
 }

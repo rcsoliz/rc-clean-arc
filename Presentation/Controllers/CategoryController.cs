@@ -42,11 +42,6 @@ namespace Presentation.Controllers
         [HttpPost]
         public async Task<ActionResult<Category>> Create(CreateCategoryCommand command)
         {
-            var categoryValidator = new CategoryValidator().Validate(new Category { Name = command.Name});
-            if (!categoryValidator.IsValid) {
-                return BadRequest(categoryValidator.Errors);
-            }
-
             var category = await _mediator.Send(command);
             if (category == null) return BadRequest();
 

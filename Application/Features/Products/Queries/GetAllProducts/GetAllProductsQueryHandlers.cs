@@ -1,10 +1,10 @@
-﻿using Application.Interfaces;
-using Core.Entities;
+﻿using Application.DTOs;
+using Application.Interfaces;
 using MediatR;
 
 namespace Application.Features.Products.Queries.GetAllProducts
 {
-    public class GetAllProductsQueryHandlers : IRequestHandler<GetAllProductsQuery, IEnumerable<Product>>
+    public class GetAllProductsQueryHandlers : IRequestHandler<GetAllProductsQuery, IEnumerable<ProductDto>>
     {
         private readonly IProductRepository _productRepository;
 
@@ -12,9 +12,17 @@ namespace Application.Features.Products.Queries.GetAllProducts
         {
             _productRepository = productRepository;
         }
-        public async Task<IEnumerable<Product>> Handle(GetAllProductsQuery request, CancellationToken cancellationToken)
+        public async Task<IEnumerable<ProductDto>> Handle(GetAllProductsQuery request, CancellationToken cancellationToken)
         {
-            return await _productRepository.GetAllAsync();
+            var products = await _productRepository.GetAllAsync();
+            if (products == null) return null;
+
+            return products.Select(p => new ProductDto
+            {
+                Id = p.Id,
+                Name = p.Name,
+                Price = p.Price
+            });
         }
     }
 }

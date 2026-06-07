@@ -1,10 +1,11 @@
-﻿using Application.Interfaces;
+﻿using Application.DTOs;
+using Application.Interfaces;
 using Core.Entities;
 using MediatR;
 
 namespace Application.Features.Products.Commands.CreateProduct
 {
-    public class CreateProductCommandHandler : IRequestHandler<CreateProductCommand, Product>
+    public class CreateProductCommandHandler : IRequestHandler<CreateProductCommand, ProductDto>
     {
         private readonly IProductRepository _productRepository;
 
@@ -12,7 +13,7 @@ namespace Application.Features.Products.Commands.CreateProduct
         {
             _productRepository = productRepository;
         }   
-        public async Task<Product> Handle(CreateProductCommand request, CancellationToken cancellationToken)
+        public async Task<ProductDto> Handle(CreateProductCommand request, CancellationToken cancellationToken)
         {
             var product = new Product
             {
@@ -20,8 +21,14 @@ namespace Application.Features.Products.Commands.CreateProduct
                 Price = request.Price
             };
 
-            await _productRepository.AddAsync(product);
-            return product;
+            await _productRepository.AddAsync(product, cancellationToken);
+
+            return new ProductDto
+            {
+                Id = product.Id,
+                Name = product.Name,
+                Price = product.Price
+            } ;
         }
     }
 }

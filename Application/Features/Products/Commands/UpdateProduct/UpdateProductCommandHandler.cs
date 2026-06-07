@@ -1,14 +1,10 @@
-﻿using Application.Interfaces;
+﻿using Application.DTOs;
+using Application.Interfaces;
 using MediatR;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Application.Features.Products.Commands.UpdateProduct
 {
-    public class UpdateProductCommandHandler : IRequestHandler<UpdateProductCommand, bool>
+    public class UpdateProductCommandHandler : IRequestHandler<UpdateProductCommand, ProductDto>
     {
         public readonly IProductRepository _productRepository;
 
@@ -16,15 +12,22 @@ namespace Application.Features.Products.Commands.UpdateProduct
         {
             _productRepository = productRepository;
         }
-        public async Task<bool> Handle(UpdateProductCommand request, CancellationToken cancellationToken)
+        public async Task<ProductDto> Handle(UpdateProductCommand request, CancellationToken cancellationToken)
         {
            var product = await _productRepository.GetByIdAsync(request.Id);
-            if (product == null) return false;
+            if (product == null) return null;
 
             product.Name = request.Name;
             product.Price = request.Price;
             await _productRepository.UpdateAsync(product);
-            return true;
+
+            return new ProductDto
+            {
+                Id = product.Id,
+                Name = product.Name,
+                Price = product.Price
+            };
+
         }
     }
 }

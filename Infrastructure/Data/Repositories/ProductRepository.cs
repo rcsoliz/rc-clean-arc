@@ -13,30 +13,49 @@ namespace Infrastructure.Data.Repositories
             _context = context;
         }
 
-        public async Task<IEnumerable<Product>> GetAllAsync()
+        public async Task<IEnumerable<Product>> GetAllAsync(CancellationToken cancellationToken)
         {
-            return await _context.Products.ToListAsync();
+            var products = await _context.Products.
+                Select(p => new Product
+                {
+                    Id = p.Id,
+                    Name = p.Name,
+                    Price = p.Price
+                }).ToListAsync(cancellationToken);
+
+            return products; 
         }
 
-        public async Task<Product> GetByIdAsync(int id)
+        public async Task<Product> GetByIdAsync(int id, CancellationToken cancellationToken)
         {
-            return await _context.Products.FindAsync(id);
+            var product = await _context.Products.FindAsync(new object[] { id }, cancellationToken);
+
+            return new Product
+            {
+                Id = product.Id,
+                Name = product.Name,
+                Price = product.Price
+            };
         }
-        public async Task AddAsync(Product entity)
+        public async Task AddAsync(Product entity, CancellationToken cancellationToken)
         {
-            await _context.Products.AddAsync(entity);
+            await _context.Products.AddAsync(entity,cancellationToken);
             await _context.SaveChangesAsync();  
         }
 
-        public async Task UpdateAsync(Product entity)
+        public async Task UpdateAsync(Product entity, CancellationToken cancellationToken)
         {
-            _context.Products.Update(entity);
-            await _context.SaveChangesAsync();
+            var existingProduct = await _context.Products.FindAsync(new object[] { entity.Id }, cancellationToken);
+            if(existingProduct != null) 
+            {
+                _context.Products.Update(entity);
+                await _context.SaveChangesAsync();
+            }
         }
 
-        public async Task DeleteAsync(int id)
+        public async Task DeleteAsync(int id, CancellationToken cancellationToken)
         {
-            var product = await _context.Products.FindAsync(id);
+            var product = await _context.Products.FindAsync(id,cancellationToken);
             if (product != null)
             {
                 _context.Products.Remove(product);

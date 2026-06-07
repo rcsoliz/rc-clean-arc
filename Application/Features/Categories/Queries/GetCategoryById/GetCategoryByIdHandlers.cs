@@ -1,11 +1,10 @@
 ﻿using Application.DTOs;
 using Application.Interfaces;
-using Core.Entities;
 using MediatR;
 
 namespace Application.Features.Categories.Queries.GetCategoryById
 {
-    public class GetCategoryByIdHandlers : IRequestHandler<GetCategoryById, Category>
+    public class GetCategoryByIdHandlers : IRequestHandler<GetCategoryById, CategoryDto>
     {
         private readonly ICategoryRepository _categoryRepository;
 
@@ -13,9 +12,16 @@ namespace Application.Features.Categories.Queries.GetCategoryById
         {
             _categoryRepository = categoryRepository;
         }
-        public async Task<Category> Handle(GetCategoryById request, CancellationToken cancellationToken)
+        public async Task<CategoryDto> Handle(GetCategoryById request, CancellationToken cancellationToken)
         {
-            return await _categoryRepository.GetByIdAsync(request.Id, cancellationToken);
+            var category = await _categoryRepository.GetByIdAsync(request.Id, cancellationToken);
+            if (category == null) return null;
+            
+            return new CategoryDto
+            {
+                Id = category.Id,
+                Name = category.Name
+            };
         }
     }
 }

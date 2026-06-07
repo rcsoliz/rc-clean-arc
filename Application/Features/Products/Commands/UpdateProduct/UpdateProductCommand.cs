@@ -1,7 +1,13 @@
-﻿using Core.Entities;
+﻿using Application.DTOs;
 using MediatR;
 
 namespace Application.Features.Products.Commands.UpdateProduct
 {
-    public record UpdateProductCommand(int Id, string Name, decimal Price): IRequest<bool>;
+    public class UpdateProductCommand : IRequest<ProductDto>
+    {
+        public int Id { get; init; }
+        public string Name { get; init; }
+        public decimal Price { get; init; }
+    }
+
 }
