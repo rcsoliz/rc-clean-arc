@@ -1,4 +1,5 @@
-﻿using Application.Interfaces;
+﻿using Application.DTOs;
+using Application.Interfaces;
 using Core.Entities;
 using MediatR;
 
@@ -22,6 +23,7 @@ namespace Application.Features.Posts.Commands.CreatePost
             };
 
             await _postRepository.AddAsync(post);
+
             return post;
         }
     }

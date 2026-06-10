@@ -1,12 +1,37 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Application.DTOs;
+using Application.Serivces;
+using Core.Entities;
+using MediatR;
 
 namespace Application.Features.Users.Commands.CreateUser
 {
-    class CreateUserCommandHandler
+    public class CreateUserCommandHandler : IRequestHandler<CreateUserCommand, UserDto>
     {
+        private readonly IUserRepository _userRepository;
+
+        public CreateUserCommandHandler(IUserRepository userRepository)
+        {
+            _userRepository = userRepository;
+        }
+
+        public async Task<UserDto> Handle(CreateUserCommand request, CancellationToken cancellationToken)
+        {
+            var user = new User
+            {
+                Username = request.Username,
+                Email = request.Email,
+                PasswordHash = request.Password
+            };
+
+            var createdUser = await _userRepository.AddAsync(user);
+
+            return new UserDto
+            {
+                Id = createdUser.Id,
+                Username = createdUser.Username,
+                Email = createdUser.Email
+            };
+        }
     }
+
 }

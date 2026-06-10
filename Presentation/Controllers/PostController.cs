@@ -5,8 +5,6 @@ using Application.Features.Posts.Queries.GetAllPost;
 using Application.Features.Posts.Queries.GetAllPostByUserId;
 using Application.Features.Posts.Queries.GetAllPosts;
 using Application.Features.Posts.Queries.GetPostById;
-using Application.Validators;
-using Core.Entities;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;

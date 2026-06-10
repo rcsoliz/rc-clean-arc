@@ -24,18 +24,19 @@ namespace Infrastructure.Data.Repositories
             return userByEmail;
         }
 
-        public async Task<User> AddAsync(UserModel entity)
+        public async Task<User> AddAsync(User entity)
         {
             var user = new User();
             user.Username = entity.Username;
             user.Email = entity.Email;
-            user.SetPassword(entity.Password);
+            user.SetPassword(entity.PasswordHash);
 
             await _context.Users.AddAsync(user);
             await _context.SaveChangesAsync();
 
             return user;
         }
+
 
         public async Task<User> GetByIdAsync(int id)
         {

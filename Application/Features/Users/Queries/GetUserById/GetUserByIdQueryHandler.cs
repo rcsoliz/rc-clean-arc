@@ -1,10 +1,11 @@
-﻿using Application.Serivces;
+﻿using Application.DTOs;
+using Application.Serivces;
 using Core.Entities;
 using MediatR;
 
 namespace Application.Features.Users.Queries.GetUserById
 {
-    public class GetUserByIdQueryHandler : IRequestHandler<GetUserByIdQuery, User>
+    public class GetUserByIdQueryHandler : IRequestHandler<GetUserByIdQuery, UserDto>
     {
         private readonly IUserRepository _userRepository;
 
@@ -12,9 +13,17 @@ namespace Application.Features.Users.Queries.GetUserById
         {
             _userRepository = userRepository;
         }
-        public async Task<User> Handle(GetUserByIdQuery request, CancellationToken cancellationToken)
+        public async Task<UserDto> Handle(GetUserByIdQuery request, CancellationToken cancellationToken)
         {
-            return await _userRepository.GetByIdAsync(request.Id);
+            var user = await _userRepository.GetByIdAsync(request.Id);
+
+            var userDto = new UserDto
+            {
+                Id = user.Id,
+                Email = user.Email
+            };
+
+            return userDto;
         }
     }
 }
