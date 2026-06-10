@@ -29,13 +29,6 @@ namespace Presentation.Controllers
             _mediator = mediator;
         }
 
-        //public PostController(IMediator mediator, IPostService postService, IPostRepository repository)
-        //{
-        //    _mediator = mediator;
-        //    _postService = postService;
-        //    _repository = repository;
-        //}
-
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Post>>> GetAll()
         {
@@ -69,7 +62,6 @@ namespace Presentation.Controllers
         [AllowAnonymous]
         public async Task<IActionResult> GetDetailedPosts()
         {
-            //var posts = await _postService.GetAllDetailedPostsAsync();
             var posts = await _mediator.Send(new GetAllPostQuery());
             return Ok(posts);
         }
@@ -78,10 +70,7 @@ namespace Presentation.Controllers
         [AllowAnonymous]
         public async Task<IActionResult> GetPagedPosts(int page , int pageSize)
         {
-            // var posts = await _repository.GetPagedPostsAsyncRefactory(page, pageSize);
             var posts = await _mediator.Send(new GetPagedPostsAsyncRefactoryQuery(page, pageSize));
-
-          //  var posts = await _mediator.Send(new GetPagedPostsQuery(page, pageSize));
             return Ok(posts);
         }
 
