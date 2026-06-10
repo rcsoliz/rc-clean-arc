@@ -6,6 +6,7 @@ using Application.Serivces;
 using Application.Validators;
 using Application.Validators.Category;
 using Application.Validators.Comments;
+using Application.Validators.Posts;
 using FluentValidation;
 using FluentValidation.AspNetCore;
 using Infrastructure.Data;
@@ -153,6 +154,8 @@ builder.Services.AddValidatorsFromAssemblyContaining<DeleteCategoryCommandValida
 
 builder.Services.AddValidatorsFromAssemblyContaining<CreateCommentCommandValidator>();
 builder.Services.AddValidatorsFromAssemblyContaining<DeleteCommentCommandValidator>();
+
+builder.Services.AddValidatorsFromAssemblyContaining<CreatePostCommandValidator>();
 
 // Add conectivity to the database
 builder.Services.AddDbContext<AppDbContext>(options => 

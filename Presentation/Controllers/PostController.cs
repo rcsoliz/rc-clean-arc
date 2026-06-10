@@ -5,8 +5,6 @@ using Application.Features.Posts.Queries.GetAllPost;
 using Application.Features.Posts.Queries.GetAllPostByUserId;
 using Application.Features.Posts.Queries.GetAllPosts;
 using Application.Features.Posts.Queries.GetPostById;
-using Application.Interfaces;
-using Application.Serivces;
 using Application.Validators;
 using Core.Entities;
 using MediatR;
@@ -27,7 +25,7 @@ namespace Presentation.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Post>>> GetAll()
+        public async Task<ActionResult<IEnumerable<PostDto>>> GetAll()
         {
             var posts = await _mediator.Send(new GetAllPostQuery());
             return Ok(posts);
@@ -45,12 +43,6 @@ namespace Presentation.Controllers
         [HttpPost]
         public async Task<ActionResult> Create(CreatePostCommand command)
         {
-            var validationResult = new PostValidator().Validate(new Post { PostContent = command.PostContent });
-            if (!validationResult.IsValid)
-            {
-                return BadRequest(validationResult.Errors);
-            }
-
             var post = await _mediator.Send(command);
             return CreatedAtAction(nameof(GetById), new { id = post.Id }, post);
         }
