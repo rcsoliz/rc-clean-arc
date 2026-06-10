@@ -21,9 +21,6 @@ namespace Presentation.Controllers
     public class PostController : Controller
     {
         private readonly IMediator _mediator;
-        private readonly IPostService _postService;
-        private readonly IPostRepository _repository;
-
         public PostController(IMediator mediator)
         {
             _mediator = mediator;
