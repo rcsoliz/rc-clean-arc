@@ -7,7 +7,7 @@ namespace Application.Validators.Category
     {
         public DeleteCategoryCommandValidator()
         {
-            RuleFor(x => x.Id)
+            RuleFor(x => x.id)
                 .GreaterThan(0).WithMessage("El identificador de la categoría es requerido.");
         }
     }

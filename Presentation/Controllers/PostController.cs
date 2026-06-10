@@ -3,6 +3,7 @@ using Application.Features.Posts.Commands.CreatePost;
 using Application.Features.Posts.Queries.FiltersPos;
 using Application.Features.Posts.Queries.GetAllPost;
 using Application.Features.Posts.Queries.GetAllPostByUserId;
+using Application.Features.Posts.Queries.GetAllPosts;
 using Application.Features.Posts.Queries.GetPostById;
 using Application.Interfaces;
 using Application.Serivces;
@@ -10,7 +11,6 @@ using Application.Validators;
 using Core.Entities;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Presentation.Controllers
@@ -23,12 +23,18 @@ namespace Presentation.Controllers
         private readonly IMediator _mediator;
         private readonly IPostService _postService;
         private readonly IPostRepository _repository;
-        public PostController(IMediator mediator, IPostService postService, IPostRepository repository)
+
+        public PostController(IMediator mediator)
         {
             _mediator = mediator;
-            _postService = postService;
-            _repository = repository;
         }
+
+        //public PostController(IMediator mediator, IPostService postService, IPostRepository repository)
+        //{
+        //    _mediator = mediator;
+        //    _postService = postService;
+        //    _repository = repository;
+        //}
 
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Post>>> GetAll()
@@ -63,7 +69,8 @@ namespace Presentation.Controllers
         [AllowAnonymous]
         public async Task<IActionResult> GetDetailedPosts()
         {
-            var posts = await _postService.GetAllDetailedPostsAsync();
+            //var posts = await _postService.GetAllDetailedPostsAsync();
+            var posts = await _mediator.Send(new GetAllPostQuery());
             return Ok(posts);
         }
 
@@ -71,7 +78,10 @@ namespace Presentation.Controllers
         [AllowAnonymous]
         public async Task<IActionResult> GetPagedPosts(int page , int pageSize)
         {
-            var posts = await _repository.GetPagedPostsAsyncRefactory(page, pageSize);
+            // var posts = await _repository.GetPagedPostsAsyncRefactory(page, pageSize);
+            var posts = await _mediator.Send(new GetPagedPostsAsyncRefactoryQuery(page, pageSize));
+
+          //  var posts = await _mediator.Send(new GetPagedPostsQuery(page, pageSize));
             return Ok(posts);
         }
 

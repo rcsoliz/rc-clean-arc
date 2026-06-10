@@ -1,8 +1,12 @@
-﻿using Application.DependencyInjection;
+﻿using Application.Behaviors;
+using Application.DependencyInjection;
 using Application.Features.Products.Queries.GetAllProducts;
 using Application.Mapping;
 using Application.Serivces;
 using Application.Validators;
+using Application.Validators.Category;
+using Application.Validators.Comments;
+using FluentValidation;
 using FluentValidation.AspNetCore;
 using Infrastructure.Data;
 using Infrastructure.Data.Repositories;
@@ -140,6 +144,15 @@ builder.Services.AddCors(options =>
 });
 
 
+// Register validadores de FluentValidation
+builder.Services.AddTransient(typeof(IPipelineBehavior<,>), typeof(ValidationBehavior<,>));
+
+builder.Services.AddValidatorsFromAssemblyContaining<CreateCategoryCommandValidator>();
+builder.Services.AddValidatorsFromAssemblyContaining<UpdateCategoryCommandValidator>();
+builder.Services.AddValidatorsFromAssemblyContaining<DeleteCategoryCommandValidator>();
+
+builder.Services.AddValidatorsFromAssemblyContaining<CreateCommentCommandValidator>();
+builder.Services.AddValidatorsFromAssemblyContaining<DeleteCommentCommandValidator>();
 
 // Add conectivity to the database
 builder.Services.AddDbContext<AppDbContext>(options => 

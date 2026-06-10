@@ -25,14 +25,14 @@ namespace Presentation.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Comment>>> GetAll()
+        public async Task<ActionResult<IEnumerable<CommentDto>>> GetAll()
         {
             var comments = await _mediator.Send(new GetAllCommentQuery());
             return Ok(comments);
         }
 
         [HttpGet("{id}")]
-        public async Task<ActionResult<Comment>> GetById(int Id)
+        public async Task<ActionResult<CommentDto>> GetById(int Id)
         {
             var comment = await _mediator.Send(new GetCommentByIdQuery(Id));
             if (comment == null) return NotFound();
@@ -42,12 +42,6 @@ namespace Presentation.Controllers
         [HttpPost]
         public async Task<ActionResult> Create(CreateCommentCommand command)
         {
-            var validationResult = new CommentValidator().Validate(new Comment { CommentContent = command.CommentContent });
-            if (!validationResult.IsValid)
-            {
-                return BadRequest(validationResult.Errors);
-            }
-
             var comment = await _mediator.Send(command);
             return CreatedAtAction(nameof(GetById), new { id = comment.Id }, comment);
         }
