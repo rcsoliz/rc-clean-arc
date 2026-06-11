@@ -1,10 +1,11 @@
-﻿using Application.Interfaces;
+﻿using Application.DTOs;
+using Application.Interfaces;
 using Core.Entities;
 using MediatR;
 
 namespace Application.Features.Likes.Commands.CreateLike
 {
-    public class CreateLikeCommandHandler : IRequestHandler<CreateLikeCommand, Like>
+    public class CreateLikeCommandHandler : IRequestHandler<CreateLikeCommand, LikeDto>
     {
         private readonly ILikeRepository _likeRepository;
 
@@ -13,16 +14,23 @@ namespace Application.Features.Likes.Commands.CreateLike
             _likeRepository = likeRepository;
         }
 
-        public async Task<Like> Handle(CreateLikeCommand request, CancellationToken cancellationToken)
+        public async Task<LikeDto> Handle(CreateLikeCommand request, CancellationToken cancellationToken)
         {
-            var like = new Like
+            var like = new LikeDto
             {
                 UserId = request.UserId,
                 PostId = request.PostId,
                 CommentId = request.CommentId,
             };
 
-           await _likeRepository.AddAsync(like);
+            var createdLike = new Like
+            {
+                UserId = like.UserId,
+                PostId = like.PostId,
+                CommentId = like.CommentId,
+            };
+
+            await _likeRepository.AddAsync(createdLike);
 
             return like;
         }

@@ -6,7 +6,9 @@ using Application.Serivces;
 using Application.Validators;
 using Application.Validators.Category;
 using Application.Validators.Comments;
+using Application.Validators.Like;
 using Application.Validators.Posts;
+using Application.Validators.Users;
 using FluentValidation;
 using FluentValidation.AspNetCore;
 using Infrastructure.Data;
@@ -156,6 +158,13 @@ builder.Services.AddValidatorsFromAssemblyContaining<CreateCommentCommandValidat
 builder.Services.AddValidatorsFromAssemblyContaining<DeleteCommentCommandValidator>();
 
 builder.Services.AddValidatorsFromAssemblyContaining<CreatePostCommandValidator>();
+
+builder.Services.AddValidatorsFromAssemblyContaining<CreateUserCommandValidator>();
+
+builder.Services.AddValidatorsFromAssemblyContaining<CreateLikeCommandValidator>();
+builder.Services.AddValidatorsFromAssemblyContaining<UpdateLikeCommandValidator>();
+builder.Services.AddValidatorsFromAssemblyContaining<DeleteLikeCommandValidator>();
+
 
 // Add conectivity to the database
 builder.Services.AddDbContext<AppDbContext>(options => 

@@ -1,12 +1,12 @@
-﻿using Core.Entities;
+﻿using Application.Features.Likes.Commands.CreateLike;
 using FluentValidation;
 
-
-namespace Application.Validators 
+namespace Application.Validators.Like
 {
-    public class LikeValidator : AbstractValidator<Like>
+    public class CreateLikeCommandValidator: AbstractValidator<CreateLikeCommand>
     {
-        public LikeValidator() {
+        public CreateLikeCommandValidator()
+        {
             RuleFor(p => p.UserId)
                 .NotEmpty().WithMessage("El usuario es requerido");
             RuleFor(p => p.PostId)

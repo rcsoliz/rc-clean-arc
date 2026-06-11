@@ -1,6 +1,6 @@
-﻿using Application.Features.Users.Commands.CreateUser;
+﻿using Application.DTOs;
+using Application.Features.Users.Commands.CreateUser;
 using Application.Features.Users.Queries.GetUserById;
-using Core.Entities;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -19,7 +19,7 @@ namespace Presentation.Controllers
 
         [HttpPost("register")]
         [AllowAnonymous]
-        public async Task<ActionResult> Create(CreateUserCommand command)
+        public async Task<ActionResult<UserDto>> Register(CreateUserCommand command)
         {
             var user = await _mediator.Send(command);
             return CreatedAtAction(nameof(GetById), new { id = user.Id }, user);
@@ -27,12 +27,11 @@ namespace Presentation.Controllers
 
 
         [HttpGet("{id}")]
-        public async Task<ActionResult<User>> GetById(int id)
+        [Authorize]
+        public async Task<ActionResult<UserDto>> GetById(int id)
         {
-
             var user = await _mediator.Send(new GetUserByIdQuery(id));
             if (user == null) return NotFound();
-
             return Ok(user);
         }
 

@@ -1,6 +1,6 @@
 ﻿namespace Application.DTOs
 {
-    public class PostCategoryDtos
+    public class PostCategoryDto
     {
         public int PostId { get; set; }
         public int CategoryId { get; set; }

@@ -1,4 +1,5 @@
-﻿using Application.Features.PostsCategories.Commands.CreatePostCategories;
+﻿using Application.DTOs;
+using Application.Features.PostsCategories.Commands.CreatePostCategories;
 using Application.Features.PostsCategories.Commands.DeletePostCategories;
 using Application.Features.PostsCategories.Commands.UpdatePostCategories;
 using Application.Features.PostsCategories.Queries.CountNewPostsAsync;
@@ -27,7 +28,7 @@ namespace Presentation.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<PostCategory>>> GetAll()
+        public async Task<ActionResult<IEnumerable<PostCategoryDto>>> GetAll()
         {
             var postCategories = await _mediator.Send(new GetAllPostsWithCategoriesQuery());
             return Ok(postCategories);
@@ -41,7 +42,7 @@ namespace Presentation.Controllers
         }
 
         [HttpGet("{id}")]
-        public async Task<ActionResult<PostCategory>> GetById(int id)
+        public async Task<ActionResult<PostWithCategoriesDto>> GetById(int id)
         {
             var postCategory = await _mediator.Send(new GetPostByIdWithCategoriesQuery(id));
             if (postCategory == null) return NotFound();
@@ -49,7 +50,7 @@ namespace Presentation.Controllers
         }
 
         [HttpGet("category/{categoryId}")]
-        public async Task<ActionResult<IEnumerable<PostCategory>>> GetByCategoryId(int categoryId)
+        public async Task<ActionResult<IEnumerable<PostCategoryDto>>> GetByCategoryId(int categoryId)
         {
             var postCategories = await _mediator.Send(new GetPostWithCategoryIdQuery(categoryId));
             if (postCategories == null) return NotFound();
@@ -82,7 +83,7 @@ namespace Presentation.Controllers
 
         [HttpGet("newPosts")]
         [AllowAnonymous]
-        public async Task<ActionResult<IEnumerable<PostCategory>>> GetNewPosts([FromQuery] DateTime afterDate)
+        public async Task<ActionResult<IEnumerable<PostCategoryDto>>> GetNewPosts([FromQuery] DateTime afterDate)
         {
             var postCategories = await _mediator.Send(new GetNewPostsAfterAsyncQuery(afterDate));
             if (postCategories == null) return NotFound();
