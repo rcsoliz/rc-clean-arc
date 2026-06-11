@@ -1,5 +1,4 @@
-﻿using Core.Entities;
-using MediatR;
+﻿using MediatR;
 
 namespace Application.Features.Categories.Commands.UpdateCategory
 {

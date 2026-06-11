@@ -15,8 +15,6 @@ namespace Application.Features.Categories.Queries.GetAllCategories
         public async Task<IEnumerable<CategoryDto>> Handle(GetAllCategoriesQuery request, CancellationToken cancellationToken)
         {
             var categories = await _categoryRepository.GetAllAsync(cancellationToken);
-            if (categories == null) return null;
-
             return categories.Select(c => new CategoryDto
             {
                 Id = c.Id,
