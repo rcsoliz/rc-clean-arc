@@ -1,8 +1,6 @@
-﻿using Application.DTOs;
-using Application.Interfaces;
+﻿using Application.Interfaces;
 using Core.Entities;
 using Microsoft.EntityFrameworkCore;
-using System.Threading;
 
 namespace Infrastructure.Data.Repositories
 {

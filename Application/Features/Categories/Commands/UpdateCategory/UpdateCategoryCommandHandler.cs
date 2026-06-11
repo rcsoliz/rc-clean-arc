@@ -1,5 +1,4 @@
 ﻿using Application.Interfaces;
-using Core.Entities;
 using MediatR;
 
 namespace Application.Features.Categories.Commands.UpdateCategory
@@ -13,7 +12,7 @@ namespace Application.Features.Categories.Commands.UpdateCategory
         }
         public async Task<bool> Handle(UpdateCategoryCommand request, CancellationToken cancellationToken)
         {
-            var category = await _categoryRepository.GetByIdAsync(request.Id);
+            var category = await _categoryRepository.GetByIdAsync(request.Id, cancellationToken);
             if (category == null) return false;
 
             category.Name = request.Name; 

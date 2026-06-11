@@ -1,4 +1,4 @@
-using Application.Features.Categories.Commands.Delete_Category;
+using Application.Features.Categories.Commands.DeleteCategory;
 using FluentValidation;
 
 namespace Application.Validators.Category

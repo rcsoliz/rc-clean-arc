@@ -1,11 +1,10 @@
 ﻿using Application.DTOs;
 using Application.Features.Categories.Commands.CreateCategory;
-using Application.Features.Categories.Commands.Delete_Category;
+using Application.Features.Categories.Commands.DeleteCategory;
 using Application.Features.Categories.Commands.UpdateCategory;
 using Application.Features.Categories.Queries.GatAllCategories;
 using Application.Features.Categories.Queries.GetCategoryById;
-using Application.Validators;
-using Core.Entities;
+//using Core.Entities;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -40,7 +39,7 @@ namespace Presentation.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult<Category>> Create(CreateCategoryCommand command)
+        public async Task<ActionResult<CategoryDto>> Create(CreateCategoryCommand command)
         {
             var category = await _mediator.Send(command);
             if (category == null) return BadRequest();

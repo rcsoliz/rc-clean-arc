@@ -83,7 +83,7 @@ namespace Infrastructure.Data.Repositories
                     Username = c.User.Username,
                     UserId = c.UserId,
                     Created = c.CreatedAt.ToString(),
-                    Categories = c.PostCategories.Select(pc => new PostCategoryDtos
+                    Categories = c.PostCategories.Select(pc => new PostCategoryDto
                     {
                         CategoryId = pc.Category.Id,
                         Name = pc.Category.Name
@@ -109,7 +109,7 @@ namespace Infrastructure.Data.Repositories
                     UserId = p.UserId,
                     Created = p.CreatedAt.ToString(),
                     LikeCount = p.Likes.Count,
-                    Categories = p.PostCategories.Select(pc => new PostCategoryDtos
+                    Categories = p.PostCategories.Select(pc => new PostCategoryDto
                     {
                         CategoryId = pc.Category.Id,
                         Name = pc.Category.Name
@@ -135,7 +135,7 @@ namespace Infrastructure.Data.Repositories
                     UserId = p.UserId,
                     Created = p.CreatedAt.ToString(),
                     LikeCount = p.Likes.Count,
-                    Categories = p.PostCategories.Select(pc => new PostCategoryDtos
+                    Categories = p.PostCategories.Select(pc => new PostCategoryDto
                     {
                         CategoryId = pc.Category.Id,
                         Name = pc.Category.Name
@@ -205,7 +205,7 @@ namespace Infrastructure.Data.Repositories
                         Created = p.CreatedAt.ToString("s"),
                         LikeCount = p.Likes.Count,
                         CommentCount = p.Comments.Count,
-                        Categories = p.PostCategories.Select(pc => new PostCategoryDtos
+                        Categories = p.PostCategories.Select(pc => new PostCategoryDto
                         {
                             CategoryId = pc.Category.Id,
                             Name = pc.Category.Name
@@ -242,7 +242,7 @@ namespace Infrastructure.Data.Repositories
                         Created = p.CreatedAt.ToString("s"),
                         LikeCount = p.Likes.Count,
                         CommentCount = p.Comments.Count,
-                        Categories = p.PostCategories.Select(pc => new PostCategoryDtos
+                        Categories = p.PostCategories.Select(pc => new PostCategoryDto
                         {
                             CategoryId = pc.Category.Id,
                             Name = pc.Category.Name
