@@ -6,19 +6,19 @@ namespace Application.Interfaces
 {
     public interface IPostRepository
     {
-        Task<IEnumerable<Post>> GetAllAsync();
-        Task<PostDto> GetByIdAsync(int id);
+        Task<IEnumerable<Post>> GetAllAsync(CancellationToken cancellation);
+        Task<PostDto> GetByIdAsync(int id, CancellationToken cancellationToken);
 
-        Task AddAsync(Post entity);
+        Task AddAsync(PostDto entity, CancellationToken cancellationToken);
 
 
-        Task<IEnumerable<PostDto>> GetAllPostWithDetailsAsync();
+        Task<IEnumerable<PostDto>> GetAllPostWithDetailsAsync(CancellationToken cancellationToken);
 
-        Task<List<PostDto>> GetPagedPostsAsync(int page, int pageSize);
+        Task<List<PostDto>> GetPagedPostsAsync(int page, int pageSize, CancellationToken cancellationToken);
 
-        Task<PagedResult<PostDto>> GetPagedPostsAsyncRefactory(int page, int pageSize);
-        IQueryable<Post> GetQueryableWithUserAndComments();
+        Task<PagedResult<PostDto>> GetPagedPostsAsyncRefactory(int page, int pageSize, CancellationToken cancellationToken);
+        IQueryable<Post> GetQueryableWithUserAndComments(CancellationToken cancellationToken);
 
-        Task<PagedResult<PostDto>> GetAllPostByUserId(int id);
+        Task<PagedResult<PostDto>> GetAllPostByUserId(int id, CancellationToken cancellationToken);
     }
 }

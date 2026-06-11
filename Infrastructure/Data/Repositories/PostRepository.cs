@@ -1,8 +1,6 @@
 ﻿using Application.Common;
-using Application.Common.Settings;
 using Application.DTOs;
 using Application.Interfaces;
-using Azure;
 using Core.Entities;
 using Microsoft.EntityFrameworkCore;
 
@@ -17,19 +15,19 @@ namespace Infrastructure.Data.Repositories
         {
             _context = context;
         }
-        public async Task AddAsync(Post entity)
+        public async Task AddAsync(Post entity, CancellationToken cancellationToken)
         {
-            await _context.Posts.AddAsync(entity);
+            await _context.Posts.AddAsync(entity, cancellationToken);
             await _context.SaveChangesAsync();
         }
 
-        public async Task<IEnumerable<Post>> GetAllAsync()
+        public async Task<IEnumerable<Post>> GetAllAsync(CancellationToken cancellationToken)
         {
             return await _context.Posts
                 .ToListAsync();
         }
 
-        public async Task<PostDto> GetByIdAsync(int id)
+        public async Task<PostDto> GetByIdAsync(int id, CancellationToken cancellationToken)
         {
             return await _context.Posts
                 .Where(c => c.Id == id)
@@ -43,7 +41,7 @@ namespace Infrastructure.Data.Repositories
                 }).FirstOrDefaultAsync(); ;
         }
 
-        public async Task<IEnumerable<PostDto>> GetAllPostWithDetailsAsync()
+        public async Task<IEnumerable<PostDto>> GetAllPostWithDetailsAsync(CancellationToken cancellationToken)
         {
             return await _context.Posts
                 .Include(p => p.User)
@@ -58,12 +56,9 @@ namespace Infrastructure.Data.Repositories
                     CommentCount = p.Comments.Count
                 })
                 .ToListAsync();
-            //return await _context.PostDtos
-            //    .FromSqlRaw(SqlCommandBuilderSp.Exec(StoredProcedures.GetAllPosts))
-            //    .ToListAsync();
         }
 
-        public async Task<List<PostDto>> GetPagedPostsAsync(int page, int pageSize)
+        public async Task<List<PostDto>> GetPagedPostsAsync(int page, int pageSize, CancellationToken cancellationToken)
         {
             return await _context.Posts
                 .Include(p => p.User)
@@ -83,7 +78,7 @@ namespace Infrastructure.Data.Repositories
                 .ToListAsync();
         }
 
-        public async Task<PagedResult<PostDto>> GetPagedPostsAsyncRefactory(int page, int pageSize)
+        public async Task<PagedResult<PostDto>> GetPagedPostsAsyncRefactory(int page, int pageSize, CancellationToken cancellationToken)
         {
             var query = _context.Posts
                 .Include(p => p.User)
@@ -113,14 +108,14 @@ namespace Infrastructure.Data.Repositories
             };
         }
             
-        public IQueryable<Post> GetQueryableWithUserAndComments()
+        public IQueryable<Post> GetQueryableWithUserAndComments(CancellationToken cancellationToken)
         {
             return _context.Posts
                 .Include(p => p.User)
                 .Include(p => p.Comments);
         }
 
-        public async Task<PagedResult<PostDto>> GetAllPostByUserId(int id)
+        public async Task<PagedResult<PostDto>> GetAllPostByUserId(int id, CancellationToken cancellationToken)
         {
             var query = _context.Posts
                  .Where(p => p.UserId == id)

@@ -15,18 +15,15 @@ namespace Application.Features.Posts.Queries.GetAllPost
 
         public async Task<IEnumerable<PostDto>> Handle(GetAllPostQuery request, CancellationToken cancellationToken)
         {
-            var posts = await _postRepository.GetAllAsync();
-            var list = new List<PostDto>();
-            foreach (var post in posts)
+            var posts = await _postRepository.GetAllAsync(cancellationToken);
+            return posts.Select(p => new PostDto
             {
-                list.Add(new PostDto
-                {
-                    Id = post.Id,
-                    PostContent = post.PostContent,
-                    UserId = post.UserId
-                });
-            }
-            return list;
+                Id = p.Id,
+                PostContent = p.PostContent,
+                Username = p.User?.Username ?? string.Empty,
+                UserId = p.UserId,
+                Created = p.CreatedAt.ToString("s")
+            });
         }
     }
 }

@@ -18,7 +18,7 @@ namespace Application.Features.PostsCategories.Queries.GetAllPostsWithCategories
 
         public async Task<IEnumerable<PostWithCategoriesDto>> Handle(GetAllPostsWithCategoriesQuery request, CancellationToken cancellationToken)
         {
-            var posts = await _postCategoryRepository.GetAllPostsWithCategoriesAsync();
+            var posts = await _postCategoryRepository.GetAllPostsWithCategoriesAsync(cancellationToken);
             if (posts == null) return null;
 
             return _mapper.Map<IEnumerable<PostWithCategoriesDto>>(posts);

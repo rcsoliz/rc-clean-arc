@@ -14,7 +14,7 @@ namespace Presentation.Controllers
     [Route("api/[controller]")]
     [ApiController]
     [Authorize]
-    public class PostController : Controller
+    public class PostController : ControllerBase
     {
         private readonly IMediator _mediator;
         public PostController(IMediator mediator)

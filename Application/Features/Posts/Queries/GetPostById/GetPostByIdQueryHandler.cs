@@ -14,7 +14,7 @@ namespace Application.Features.Posts.Queries.GetPostById
         }
         public async Task<PostDto> Handle(GetPostByIdQuery request, CancellationToken cancellationToken)
         {
-            return await _postRepository.GetByIdAsync(request.id);
+            return await _postRepository.GetByIdAsync(request.id, cancellationToken);
         }
 
     }

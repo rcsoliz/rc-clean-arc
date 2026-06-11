@@ -22,7 +22,7 @@ namespace Application.Features.PostsCategories.Commands.CreatePostCategories
                 ImageUrl = request.ImageUrl,
             };
 
-            await _repository.AddAsync(post, request.CategoryIds);
+            await _repository.AddAsync(post, request.CategoryIds, cancellationToken);
 
             return (post, request.CategoryIds);
         }

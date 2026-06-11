@@ -16,7 +16,7 @@ namespace Application.Features.Posts.Queries.GetAllPosts
 
         public async Task<PagedResult<PostDto>> Handle(GetPagedPostsQuery request, CancellationToken cancellationToken)
         {
-            return await _postRepository.GetPagedPostsAsyncRefactory(request.Page, request.PageSize);
+            return await _postRepository.GetPagedPostsAsyncRefactory(request.Page, request.PageSize, cancellationToken);
         }
     }
 }

@@ -16,7 +16,7 @@ namespace Application.Features.PostsCategories.Queries.GetAllPostWithCategoryId
         }
         public async Task<IEnumerable<PostWithCategoriesDto>> Handle(GetPostWithCategoryIdQuery request, CancellationToken cancellationToken)
         {
-            var posts = await _postCategoryRepository.GetPostWithCategoryIdAsync(request.categoryId);
+            var posts = await _postCategoryRepository.GetPostWithCategoryIdAsync(request.categoryId, cancellationToken);
             if (posts == null) return null;
 
             return _mapper.Map<IEnumerable<PostWithCategoriesDto>>(posts);

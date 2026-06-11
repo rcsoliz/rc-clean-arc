@@ -16,7 +16,7 @@ namespace Application.Features.PostsCategories.Queries.CountNewPostsAsync
             {
                 return 0;
             }
-            return await _postCategoryRepository.CountNewPostsAsync(request.afterDate.Value);
+            return await _postCategoryRepository.CountNewPostsAsync(request.afterDate.Value, cancellationToken);
         }
     }
   

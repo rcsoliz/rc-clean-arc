@@ -14,9 +14,9 @@ namespace Infrastructure.Data.Repositories
             _context = context;
         }
 
-        public async Task AddAsync(Post entity, List<int> categoryIds)
+        public async Task AddAsync(Post entity, List<int> categoryIds, CancellationToken cancellationToken)
         {
-            await using var transaction = await _context.Database.BeginTransactionAsync();
+            await using var transaction = await _context.Database.BeginTransactionAsync(cancellationToken);
             try
             {
                 await _context.Posts.AddAsync(entity);
@@ -42,9 +42,9 @@ namespace Infrastructure.Data.Repositories
             }
         }
 
-        public async Task DeleteAsync(int id, List<int> categoryIds)
+        public async Task DeleteAsync(int id, List<int> categoryIds, CancellationToken cancellationToken)
         {
-           await using var trasnaction = await _context.Database.BeginTransactionAsync();
+           await using var trasnaction = await _context.Database.BeginTransactionAsync(cancellationToken);
             try
             {
                 var post =await _context.Posts.FindAsync(id);
@@ -68,7 +68,7 @@ namespace Infrastructure.Data.Repositories
         }
 
    
-        public async Task<PostDto> GetPostByIdtWithCategoriesAsync(int id)
+        public async Task<PostDto> GetPostByIdtWithCategoriesAsync(int id, CancellationToken cancellationToken)
         {
             // PostWithCategoriesDto
             var post = await _context.Posts
@@ -93,7 +93,7 @@ namespace Infrastructure.Data.Repositories
             return post;
         }
 
-        public async Task<IEnumerable<PostDto>> GetPostWithCategoryIdAsync(int categoryId)
+        public async Task<IEnumerable<PostDto>> GetPostWithCategoryIdAsync(int categoryId, CancellationToken cancellationToken)
         {
             var posts = await _context.Posts
                 .Include(p => p.User)
@@ -115,12 +115,12 @@ namespace Infrastructure.Data.Repositories
                         Name = pc.Category.Name
                     }).ToList()
                 })
-                .ToListAsync();
+                .ToListAsync(cancellationToken);
 
             return posts;
         }
 
-        public async Task<IEnumerable<PostDto>> GetAllPostsWithCategoriesAsync()
+        public async Task<IEnumerable<PostDto>> GetAllPostsWithCategoriesAsync(CancellationToken cancellationToken)
         {
             var posts = await _context.Posts
                 .Include(p => p.User)
@@ -141,12 +141,12 @@ namespace Infrastructure.Data.Repositories
                         Name = pc.Category.Name
                     }).ToList()
                 })
-                .ToListAsync();
+                .ToListAsync(cancellationToken);
 
             return posts;
         }
 
-        public async Task UpdateAsync(Post post, List<int> categoryIds)
+        public async Task UpdateAsync(Post post, List<int> categoryIds, CancellationToken cancellationToken)
         {
             await using var transaction = await _context.Database.BeginTransactionAsync();
             try
@@ -177,7 +177,7 @@ namespace Infrastructure.Data.Repositories
             }
         }
 
-        public async Task<IEnumerable<PostWithCategoriesDto>> GetPostsByScrollAsync(DateTime? lastPostDate, int take = 5)
+        public async Task<IEnumerable<PostWithCategoriesDto>> GetPostsByScrollAsync(DateTime? lastPostDate, int take = 5, CancellationToken cancellationToken=default)
         {
             var query = _context.Posts
                 .Include(p => p.User)
@@ -217,13 +217,13 @@ namespace Infrastructure.Data.Repositories
             return posts;
         }
 
-        public async Task<int> CountNewPostsAsync(DateTime afterDate)
+        public async Task<int> CountNewPostsAsync(DateTime afterDate, CancellationToken cancellationToken)
         {
             return await _context.Posts
                 .Where(p => p.CreatedAt > afterDate)
                 .CountAsync();
         }
-        public async Task<IEnumerable<PostWithCategoriesDto>> GetNewPostsAfterAsync(DateTime afterDate)
+        public async Task<IEnumerable<PostWithCategoriesDto>> GetNewPostsAfterAsync(DateTime afterDate, CancellationToken cancellationToken)
         {
             var posts = await _context.Posts
                 .Where(p => p.CreatedAt > afterDate)

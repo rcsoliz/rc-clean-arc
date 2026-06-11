@@ -14,10 +14,10 @@ namespace Application.Features.PostsCategories.Commands.DeletePostCategories
 
         public async Task<bool> Handle(DeletePostCategoryCommand request, CancellationToken cancellationToken)
         {
-            var post = await _repository.GetPostByIdtWithCategoriesAsync(request.id);
+            var post = await _repository.GetPostByIdtWithCategoriesAsync(request.id, cancellationToken);
             if (post == null) return false;
 
-            await _repository.DeleteAsync(request.id, request.categoryIds);
+            await _repository.DeleteAsync(request.id, request.categoryIds, cancellationToken);
             return true;
         }
     }

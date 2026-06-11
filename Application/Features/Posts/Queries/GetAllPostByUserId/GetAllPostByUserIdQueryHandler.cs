@@ -14,7 +14,7 @@ namespace Application.Features.Posts.Queries.GetAllPostByUserId
         }
         public async Task<PagedResult<PostDto>> Handle(GetAllPostByUserIdQuery request, CancellationToken cancellationToken)
         {
-            return await _postRepository.GetAllPostByUserId(request.id);
+            return await _postRepository.GetAllPostByUserId(request.id, cancellationToken);
         }
     }
 }

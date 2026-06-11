@@ -22,7 +22,7 @@ namespace Application.Features.PostsCategories.Commands.UpdatePostCategories
                 UserId = request.UserId,
                 ImageUrl = request.ImageUrl,
             };
-            await _postRepository.UpdateAsync(post, request.CategoryIds);
+            await _postRepository.UpdateAsync(post, request.CategoryIds, cancellationToken);
 
             return (post, request.CategoryIds.ToList());
         }

@@ -16,7 +16,7 @@ namespace Application.Features.PostsCategories.Queries.GetNewPostsAfterAsync
         }
         public async Task<IEnumerable<PostWithCategoriesDto>> Handle(GetNewPostsAfterAsyncQuery request, CancellationToken cancellationToken)
         {
-            var posts = await _postCategoryRepository.GetNewPostsAfterAsync(request.afterDate);
+            var posts = await _postCategoryRepository.GetNewPostsAfterAsync(request.afterDate, cancellationToken);
             if (posts == null) return null;
             return _mapper.Map<IEnumerable<PostWithCategoriesDto>>(posts);
         }

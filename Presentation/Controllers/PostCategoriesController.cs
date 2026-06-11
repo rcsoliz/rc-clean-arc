@@ -18,7 +18,7 @@ namespace Presentation.Controllers
     [Route("api/[controller]")]
     [ApiController]
     [Authorize]
-    public class PostCategoriesController : Controller
+    public class PostCategoriesController : ControllerBase
     {
         private readonly IMediator _mediator;
 
@@ -35,7 +35,7 @@ namespace Presentation.Controllers
         }
         [HttpGet("scroll")]
         [AllowAnonymous]
-        public async Task<ActionResult<IEnumerable<PostCategory>>> GetAllWithScroll([FromQuery] DateTime? lastPostDate, [FromQuery] int take = 5)
+        public async Task<ActionResult<IEnumerable<PostCategoryDto>>> GetAllWithScroll([FromQuery] DateTime? lastPostDate, [FromQuery] int take = 5)
         {
             var postCategories = await _mediator.Send(new GetPostsByScrollQuery(lastPostDate, take));
             return Ok(postCategories);

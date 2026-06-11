@@ -1,9 +1,8 @@
 ﻿using Application.DTOs;
-using Core.Entities;
 using MediatR;
 
 namespace Application.Features.Posts.Commands.CreatePost
 {
-    public record CreatePostCommand(string PostContent, int UserId) : IRequest<Post>;
+    public record CreatePostCommand(string PostContent, int UserId, string? ImageUrl, List<int> CategoryId) : IRequest<PostDto>;
     
 }
