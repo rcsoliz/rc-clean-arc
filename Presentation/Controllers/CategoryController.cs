@@ -51,9 +51,8 @@ namespace Presentation.Controllers
         {
             if(id != command.Id) return BadRequest();
 
-            var category = await _mediator.Send(command);
-            if (category == null) return NotFound();
-
+            var updated = await _mediator.Send(command);
+            if (!updated) return NotFound();
             return NoContent();
         }
 

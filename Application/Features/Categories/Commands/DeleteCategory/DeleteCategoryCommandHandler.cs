@@ -12,7 +12,7 @@ namespace Application.Features.Categories.Commands.DeleteCategory
         }
         public async Task<bool> Handle(DeleteCategoryCommand request, CancellationToken cancellationToken)
         {
-           return await _categoryRepository.DeleteAsync(request.Id);
+           return await _categoryRepository.DeleteAsync(request.Id, cancellationToken);
         }
     }
 }

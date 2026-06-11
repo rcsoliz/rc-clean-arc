@@ -34,7 +34,7 @@ namespace Infrastructure.Data.Repositories
                 .AsNoTracking()
                 .ToListAsync(cancellationToken);
         }
-        public async Task<Category> GetByIdAsync(int id, CancellationToken cancellationToken)
+        public async Task<Category?> GetByIdAsync(int id, CancellationToken cancellationToken)
         {
             return await _context.Categories
                 .AsNoTracking()
