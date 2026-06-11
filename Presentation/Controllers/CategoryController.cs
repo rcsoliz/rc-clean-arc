@@ -2,9 +2,8 @@
 using Application.Features.Categories.Commands.CreateCategory;
 using Application.Features.Categories.Commands.DeleteCategory;
 using Application.Features.Categories.Commands.UpdateCategory;
-using Application.Features.Categories.Queries.GatAllCategories;
+using Application.Features.Categories.Queries.GetAllCategories;
 using Application.Features.Categories.Queries.GetCategoryById;
-//using Core.Entities;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -14,7 +13,7 @@ namespace Presentation.Controllers
     [Route("api/[controller]")]
     [ApiController]
     [Authorize]
-    public class CategoryController : Controller
+    public class CategoryController : ControllerBase
     {
         private readonly IMediator _mediator;
 

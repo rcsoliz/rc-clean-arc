@@ -2,7 +2,7 @@
 using Application.Interfaces;
 using MediatR;
 
-namespace Application.Features.Categories.Queries.GatAllCategories
+namespace Application.Features.Categories.Queries.GetAllCategories
 {
     public class GetAllCategoriesQueryHandlers : IRequestHandler<GetAllCategoriesQuery, IEnumerable<CategoryDto>>
     {

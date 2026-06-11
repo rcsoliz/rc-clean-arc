@@ -30,22 +30,15 @@ namespace Infrastructure.Data.Repositories
 
         public async Task<IEnumerable<Category>> GetAllAsync(CancellationToken cancellationToken = default)
         {
-            var categories = await _context.Categories
-                    .Select(c => new Category
-                    {
-                        Id = c.Id,
-                        Name = c.Name
-                    }).ToListAsync(cancellationToken);
-            return categories;
+            return await _context.Categories
+                .AsNoTracking()
+                .ToListAsync(cancellationToken);
         }
         public async Task<Category> GetByIdAsync(int id, CancellationToken cancellationToken)
         {
-            var category = await _context.Categories.FindAsync(new object[] { id }, cancellationToken);
-            return new Category
-            {
-                Id = category.Id,
-                Name = category.Name
-            };
+            return await _context.Categories
+                .AsNoTracking()
+                .FirstOrDefaultAsync(c => c.Id == id, cancellationToken);
         }
 
         public async Task UpdateAsync(Category entity, CancellationToken cancellationToken)
