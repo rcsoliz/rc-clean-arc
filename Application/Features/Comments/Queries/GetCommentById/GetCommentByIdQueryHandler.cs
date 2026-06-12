@@ -5,7 +5,7 @@ using MediatR;
 
 namespace Application.Features.Comments.Queries.GetCommentById
 {
-    public class GetCommentByIdQueryHandler : IRequestHandler<GetCommentByIdQuery, CommentDto>
+    public class GetCommentByIdQueryHandler : IRequestHandler<GetCommentByIdQuery, CommentDto?>
     {
         private readonly ICommentRepository _commentRepository;
 

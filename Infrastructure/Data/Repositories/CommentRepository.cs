@@ -1,7 +1,6 @@
 ﻿using Application.DTOs;
 using Application.Interfaces;
 using Core.Entities;
-using Core.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace Infrastructure.Data.Repositories
@@ -14,30 +13,27 @@ namespace Infrastructure.Data.Repositories
         {
             _context = context;
         }
-        public async Task AddAsync(CommentModel entity)
+        public async Task AddAsync(Comment entity, CancellationToken cancellationToken)
         {
-            var comment = new Comment
-            {
-                UserId = entity.UserId,
-                PostId = entity.PostId,
-                CommentContent = entity.CommentContent,
-                ParentCommentId = entity.ParentCommentId,
-            };
-            await _context.Comments.AddAsync(comment);
-            await _context.SaveChangesAsync();
+            await _context.Comments.AddAsync(entity, cancellationToken);
+            await _context.SaveChangesAsync(cancellationToken);
         }
 
-        public async Task<IEnumerable<Comment>> GetAllAsync()
+        public async Task<IEnumerable<Comment>> GetAllAsync(CancellationToken cancellationToken)
         {
-            return await _context.Comments.ToListAsync();
+            return await _context.Comments
+                .AsNoTracking()
+                .ToListAsync(cancellationToken);
         }
 
-        public async Task<Comment> GetByIdAsync(int id)
+        public async Task<Comment?> GetByIdAsync(int id, CancellationToken cancellationToken)
         {
-            return await _context.Comments.FindAsync(id);
+            return await _context.Comments
+                .AsNoTracking()
+                .FirstOrDefaultAsync(c => c.Id == id, cancellationToken);
         }
 
-        public async Task<IEnumerable<CommentDto>> GetAllCommentByPostId(int Id)
+        public async Task<IEnumerable<CommentDto>> GetAllCommentByPostId(int Id, CancellationToken cancellationToken)
         {
             return await _context.Comments
                 .Where(c => c.PostId == Id)
@@ -52,17 +48,16 @@ namespace Infrastructure.Data.Repositories
                     PostId = c.PostId,
                     ParentCommentId = c.ParentCommentId
                 })
-                .ToListAsync();
+                .ToListAsync(cancellationToken);
         }
 
-        public async Task DeleteAsync(int id)
+        public async Task<bool> DeleteAsync(int id, CancellationToken cancellationToken)
         {
-            var comment = await _context.Comments.FindAsync(id);
-            if (comment != null)
-            {
-                _context.Comments.Remove(comment);
-                await _context.SaveChangesAsync();
-            }
+            var comment = await _context.Comments.FindAsync(new object[] {id}, cancellationToken);
+            if (comment == null) return false;
+            _context.Comments.Remove(comment);
+            await _context.SaveChangesAsync(cancellationToken);
+            return true;
         }
     }
 }

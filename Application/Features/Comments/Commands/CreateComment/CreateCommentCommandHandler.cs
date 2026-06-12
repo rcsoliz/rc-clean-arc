@@ -29,7 +29,6 @@ namespace Application.Features.Comments.Commands.CreateComment
             {
                 Id = comment.Id,
                 CommentContent = comment.CommentContent,
-                Username = comment.User.Username,
                 UserId = comment.UserId,
                 PostId = comment.PostId,
                 Created = comment.CreatedAt.ToString("s")

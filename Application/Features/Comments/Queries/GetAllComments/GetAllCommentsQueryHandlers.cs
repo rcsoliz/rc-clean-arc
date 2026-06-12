@@ -20,7 +20,7 @@ namespace Application.Features.Comments.Queries.GetAllComments
             {
                 Id = c.Id,
                 CommentContent = c.CommentContent,
-                Username = c.User.Username,
+                Username = c.User.Username ?? string.Empty,
                 UserId = c.UserId,
                 PostId = c.PostId,
                 Created = c.CreatedAt.ToString("s")
