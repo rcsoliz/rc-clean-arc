@@ -1,6 +1,5 @@
 ﻿using Application.DTOs;
-using Application.Serivces;
-using Core.Entities;
+using Application.Interfaces;
 using MediatR;
 
 namespace Application.Features.Users.Queries.GetUserById

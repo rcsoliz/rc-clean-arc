@@ -39,9 +39,10 @@ namespace Presentation.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult> Create(CreatePostCommand command)
+        public async Task<ActionResult<PostDto>> Create(CreatePostCommand command)
         {
             var post = await _mediator.Send(command);
+            if (post == null) return NotFound();
             return CreatedAtAction(nameof(GetById), new { id = post.Id }, post);
         }
 

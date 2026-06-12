@@ -15,7 +15,7 @@ namespace Application.Features.Posts.Commands.CreatePost
         }
         public async Task<PostDto> Handle(CreatePostCommand request, CancellationToken cancellationToken)
         {
-            var post = new PostDto
+            var post = new Post
             {
                 PostContent = request.PostContent,
                 UserId = Convert.ToInt32(request.UserId)
@@ -24,7 +24,12 @@ namespace Application.Features.Posts.Commands.CreatePost
 
             await _postRepository.AddAsync(post, cancellationToken);
 
-            return post;
+            return new PostDto
+            {
+                Id = post.Id,
+                PostContent = post.PostContent,
+                UserId = post.UserId
+            };
         }
     }
 }

@@ -4,7 +4,7 @@ using MediatR;
 
 namespace Application.Features.PostsCategories.Commands.UpdatePostCategories
 {
-    public class UpdatePostCategoryCommandHandler : IRequestHandler<UpdatePostCategoryCommand, (Post post, List<int> categories)>
+    public class UpdatePostCategoryCommandHandler : IRequestHandler<UpdatePostCategoryCommand, bool>
     {
         private readonly IPostCategoryRepository _postRepository;
 
@@ -13,8 +13,11 @@ namespace Application.Features.PostsCategories.Commands.UpdatePostCategories
             _postRepository = postRepository;
         }
 
-        public async Task<(Post post, List<int> categories)> Handle(UpdatePostCategoryCommand request, CancellationToken cancellationToken)
+        public async Task<bool> Handle(UpdatePostCategoryCommand request, CancellationToken cancellationToken)
         {
+            var existingPost = await _postRepository.GetPostByIdtWithCategoriesAsync(request.Id, cancellationToken);
+            if (existingPost == null) return false;
+
             var post = new Post
             {
                 Id = request.Id,
@@ -24,7 +27,7 @@ namespace Application.Features.PostsCategories.Commands.UpdatePostCategories
             };
             await _postRepository.UpdateAsync(post, request.CategoryIds, cancellationToken);
 
-            return (post, request.CategoryIds.ToList());
+            return true;
         }
 
     }

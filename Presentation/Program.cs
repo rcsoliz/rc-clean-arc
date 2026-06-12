@@ -1,8 +1,8 @@
 ﻿using Application.Behaviors;
 using Application.DependencyInjection;
 using Application.Features.Products.Queries.GetAllProducts;
+using Application.Interfaces;
 using Application.Mapping;
-using Application.Serivces;
 using Application.Validators;
 using Application.Validators.Category;
 using Application.Validators.Comments;

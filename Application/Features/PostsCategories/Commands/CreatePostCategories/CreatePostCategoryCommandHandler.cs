@@ -1,10 +1,11 @@
-﻿using Application.Interfaces;
+﻿using Application.DTOs;
+using Application.Interfaces;
 using Core.Entities;
 using MediatR;
 
 namespace Application.Features.PostsCategories.Commands.CreatePostCategories
 {
-    public class CreatePostCategoryCommandHandler : IRequestHandler<CreatePostCategoryCommand, (Post post, List<int> categories)>
+    public class CreatePostCategoryCommandHandler : IRequestHandler<CreatePostCategoryCommand, PostDto>
     {
         private readonly IPostCategoryRepository _repository;
 
@@ -13,7 +14,7 @@ namespace Application.Features.PostsCategories.Commands.CreatePostCategories
             _repository = repository;
         }
 
-        public async Task<(Post post, List<int> categories)> Handle(CreatePostCategoryCommand request, CancellationToken cancellationToken)
+        public async Task<PostDto> Handle(CreatePostCategoryCommand request, CancellationToken cancellationToken)
         {
             var post = new Post
             {
@@ -24,7 +25,12 @@ namespace Application.Features.PostsCategories.Commands.CreatePostCategories
 
             await _repository.AddAsync(post, request.CategoryIds, cancellationToken);
 
-            return (post, request.CategoryIds);
+            return new PostDto
+            {
+                Id = post.Id,
+                PostContent = post.PostContent,
+                UserId = post.UserId
+            };
         }
     }
 }

@@ -1,7 +1,6 @@
 ﻿using Core.Entities;
-using Core.Models;
 
-namespace Application.Serivces
+namespace Application.Interfaces
 {
     public interface IUserRepository
     {

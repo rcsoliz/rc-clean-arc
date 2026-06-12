@@ -8,7 +8,6 @@ using Application.Features.PostsCategories.Queries.GetAllPostWithCategoryId;
 using Application.Features.PostsCategories.Queries.GetByPostWithCategoriesById;
 using Application.Features.PostsCategories.Queries.GetNewPostsAfterAsync;
 using Application.Features.PostsCategories.Queries.GetPostsByScroll;
-using Core.Entities;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -60,24 +59,25 @@ namespace Presentation.Controllers
         [HttpPost]
         public async Task<ActionResult> Create([FromBody] CreatePostCategoryCommand command)
         {
-            var postCategory = await _mediator.Send(command);
-            return CreatedAtAction(nameof(GetById), new { id = postCategory.post.Id }, postCategory);
+            var post = await _mediator.Send(command);
+            if (post == null) return BadRequest();
+            return CreatedAtAction(nameof(GetById), new { id = post.Id }, post);
         }
 
         [HttpPut("{id}")]
         public async Task<ActionResult> Update(int id, UpdatePostCategoryCommand command)
         {
             if (id != command.Id) return BadRequest("Id mismatch");
-            var postCategory = await _mediator.Send(command);
-            if (postCategory.post == null) return NotFound();
+            var update = await _mediator.Send(command);
+            if (!update) return NotFound();
             return NoContent();
         }
 
         [HttpDelete("{id}")]
         public async Task<ActionResult> Delete(int id, List<int> categoryIds)
         {
-            var postCategory = await _mediator.Send(new DeletePostCategoryCommand(id, categoryIds));
-            if (postCategory == null) return NotFound();
+            var deleted = await _mediator.Send(new DeletePostCategoryCommand(id, categoryIds));
+            if (!deleted) return NotFound();
             return NoContent();
         }
 

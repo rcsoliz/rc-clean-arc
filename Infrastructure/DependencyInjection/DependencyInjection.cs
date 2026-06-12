@@ -1,5 +1,4 @@
 ﻿using Application.Interfaces;
-using Application.Serivces;
 using Infrastructure.Data;
 using Infrastructure.Data.Repositories;
 using Infrastructure.Data.Repositories.Auth;
@@ -33,10 +32,6 @@ namespace Infrastructure.DependencyInjection
             services.AddScoped<IJwtService, JwtServiceRepository>();
             services.AddScoped<IRefreshTokenService, RefreshTokenService>();
         
-
-
-            // Otros servicios personalizados
-            services.AddScoped<IPostService, PostService>();
 
             return services;
         }

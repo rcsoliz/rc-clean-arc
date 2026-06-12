@@ -1,5 +1,5 @@
 ﻿using Application.DTOs;
-using Application.Serivces;
+using Application.Interfaces;
 using Core.Entities;
 using MediatR;
 
