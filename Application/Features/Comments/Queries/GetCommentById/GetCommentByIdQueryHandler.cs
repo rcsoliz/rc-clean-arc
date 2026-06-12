@@ -1,6 +1,5 @@
 ﻿using Application.DTOs;
 using Application.Interfaces;
-using Core.Entities;
 using MediatR;
 
 namespace Application.Features.Comments.Queries.GetCommentById
@@ -21,7 +20,7 @@ namespace Application.Features.Comments.Queries.GetCommentById
             {
                 Id = comment.Id,
                 CommentContent = comment.CommentContent,
-                Username = comment.User.Username,
+                Username = comment.User?.Username?? string.Empty,
                 UserId = comment.UserId,
                 PostId = comment.PostId,
                 Created = comment.CreatedAt.ToString("s")
