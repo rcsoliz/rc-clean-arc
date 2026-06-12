@@ -24,7 +24,9 @@ namespace Infrastructure.Data.Repositories
         public async Task<IEnumerable<Post>> GetAllAsync(CancellationToken cancellationToken)
         {
             return await _context.Posts
-                .ToListAsync();
+                .Include(p => p.User)
+                .AsNoTracking()
+                .ToListAsync(cancellationToken);
         }
 
         public async Task<PostDto> GetByIdAsync(int id, CancellationToken cancellationToken)
@@ -55,7 +57,7 @@ namespace Infrastructure.Data.Repositories
                     Created = p.CreatedAt.ToString(),
                     CommentCount = p.Comments.Count
                 })
-                .ToListAsync();
+                .ToListAsync(cancellationToken);
         }
 
         public async Task<List<PostDto>> GetPagedPostsAsync(int page, int pageSize, CancellationToken cancellationToken)
@@ -75,7 +77,7 @@ namespace Infrastructure.Data.Repositories
                     Created = p.CreatedAt.ToString(),
                     CommentCount = p.Comments.Count
                 })
-                .ToListAsync();
+                .ToListAsync(cancellationToken);
         }
 
         public async Task<PagedResult<PostDto>> GetPagedPostsAsyncRefactory(int page, int pageSize, CancellationToken cancellationToken)
@@ -84,7 +86,7 @@ namespace Infrastructure.Data.Repositories
                 .Include(p => p.User)
                 .Include(p => p.Comments);
 
-            var totalCount = await query.CountAsync();
+            var totalCount = await query.CountAsync(cancellationToken);
 
             var items = await query
                 .OrderByDescending(p => p.CreatedAt)
@@ -99,7 +101,7 @@ namespace Infrastructure.Data.Repositories
                     Created = p.CreatedAt.ToString(),
                     CommentCount = p.Comments.Count
                 })
-                .ToListAsync();
+                .ToListAsync(cancellationToken);
 
             return new PagedResult<PostDto>
             {
@@ -122,7 +124,7 @@ namespace Infrastructure.Data.Repositories
                  .Include(p => p.User)
                  .Include(p => p.Comments);
 
-            var totalCount = await query.CountAsync();
+            var totalCount = await query.CountAsync(cancellationToken);
 
             var items = await query
                 .OrderByDescending(p => p.CreatedAt)
@@ -135,7 +137,7 @@ namespace Infrastructure.Data.Repositories
                     Created = p.CreatedAt.ToString(),
                     CommentCount = p.Comments.Count
                 })
-                .ToListAsync();
+                .ToListAsync(cancellationToken);
 
             return new PagedResult<PostDto>
             {

@@ -18,8 +18,8 @@ namespace Application.Features.Posts.Commands.CreatePost
             var post = new Post
             {
                 PostContent = request.PostContent,
-                UserId = Convert.ToInt32(request.UserId)
-
+                UserId = request.UserId,
+                ImageUrl = request.ImageUrl
             };
 
             await _postRepository.AddAsync(post, cancellationToken);

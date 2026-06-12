@@ -19,7 +19,7 @@ namespace Application.Features.PostsCategories.Commands.CreatePostCategories
             var post = new Post
             {
                 PostContent = request.PostContent,
-                UserId = int.Parse(request.UserId),
+                UserId = request.UserId,
                 ImageUrl = request.ImageUrl,
             };
 
