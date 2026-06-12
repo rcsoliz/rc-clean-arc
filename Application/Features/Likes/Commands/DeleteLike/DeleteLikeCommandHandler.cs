@@ -13,11 +13,7 @@ namespace Application.Features.Likes.Commands.DeleteLike
 
         public async Task<bool> Handle(DeleteLikeCommand request, CancellationToken cancellationToken)
         {
-            var like = await _likeRepository.GetLikeByIdAsync(request.Id);
-            if (like == null) return false;
-
-            await _likeRepository.DeleteAsync(request.Id);
-            return true;
+            return await _likeRepository.DeleteAsync(request.Id, cancellationToken);
         }
     }
 }

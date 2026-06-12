@@ -1,7 +1,6 @@
 ﻿using Application.DTOs;
 using Application.Interfaces;
 using Core.Entities;
-using Core.Models;
 using MediatR;
 
 namespace Application.Features.Comments.Commands.CreateComment

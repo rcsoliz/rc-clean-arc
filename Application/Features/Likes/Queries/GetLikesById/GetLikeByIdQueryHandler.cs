@@ -4,7 +4,7 @@ using MediatR;
 
 namespace Application.Features.Likes.Queries.GetLikesById
 {
-    public class GetLikeByIdQueryHandler : IRequestHandler<GetLikeByIdQuery, LikeDto>
+    public class GetLikeByIdQueryHandler : IRequestHandler<GetLikeByIdQuery, LikeDto?>
     {
         private readonly ILikeRepository _likeRepository;
 
@@ -12,9 +12,16 @@ namespace Application.Features.Likes.Queries.GetLikesById
         {
             _likeRepository = likeRepository;
         }
-        public async Task<LikeDto> Handle(GetLikeByIdQuery request, CancellationToken cancellationToken)
+        public async Task<LikeDto?> Handle(GetLikeByIdQuery request, CancellationToken cancellationToken)
         {
-            return await _likeRepository.GetLikeByIdAsync(request.Id);
+            var like = await _likeRepository.GetLikeByIdAsync(request.Id, cancellationToken);
+            if (like == null) return null;
+            return new LikeDto
+            {
+                Id = like.Id,
+                PostId = like.PostId,
+                UserId = like.UserId
+            };
         }
     }
 }

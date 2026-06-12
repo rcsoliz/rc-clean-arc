@@ -13,33 +13,28 @@ namespace Infrastructure.Data.Repositories
             _context = context;
         }
 
-        public async Task<User> Access(User user)
+        public async Task<User?> Access(User user, CancellationToken cancellationToken = default)
         {
-            var userByEmail = await _context.Users.SingleOrDefaultAsync(u => u.Email == user.Email);
+            var userByEmail = await _context.Users
+                .FirstOrDefaultAsync(u => u.Email == user.Email, cancellationToken);
             if (userByEmail == null || !userByEmail.VerifyPassword(user.PasswordHash))
                 return new User();
-
-       
             return userByEmail;
         }
 
-        public async Task<User> AddAsync(User entity)
+        public async Task<User> AddAsync(User entity, CancellationToken cancellationToken)
         {
-            var user = new User();
-            user.Username = entity.Username;
-            user.Email = entity.Email;
-            user.SetPassword(entity.PasswordHash);
-
-            await _context.Users.AddAsync(user);
-            await _context.SaveChangesAsync();
-
-            return user;
+            await _context.Users.AddAsync(entity, cancellationToken);
+            await _context.SaveChangesAsync(cancellationToken);
+            return entity;
         }
 
 
-        public async Task<User> GetByIdAsync(int id)
+        public async Task<User?> GetByIdAsync(int id, CancellationToken cancellationToken = default)
         {
-            return await _context.Users.FindAsync(id);
+            return await _context.Users
+                .AsNoTracking()
+                .FirstOrDefaultAsync(u => u.Id == id, cancellationToken);
         }
 
     }

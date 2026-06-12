@@ -5,7 +5,7 @@ using MediatR;
 
 namespace Application.Features.Users.Commands.CreateUser
 {
-    public class CreateUserCommandHandler : IRequestHandler<CreateUserCommand, UserDto>
+    public class CreateUserCommandHandler : IRequestHandler<CreateUserCommand, UserDto?>
     {
         private readonly IUserRepository _userRepository;
 
@@ -14,16 +14,17 @@ namespace Application.Features.Users.Commands.CreateUser
             _userRepository = userRepository;
         }
 
-        public async Task<UserDto> Handle(CreateUserCommand request, CancellationToken cancellationToken)
+        public async Task<UserDto?> Handle(CreateUserCommand request, CancellationToken cancellationToken)
         {
             var user = new User
             {
                 Username = request.Username,
                 Email = request.Email,
-                PasswordHash = request.Password
+               
             };
+            user.PasswordHash = request.Password;
 
-            var createdUser = await _userRepository.AddAsync(user);
+            var createdUser = await _userRepository.AddAsync(user, cancellationToken);
 
             return new UserDto
             {

@@ -13,40 +13,35 @@ namespace Infrastructure.Data.Repositories
             _appDbContext = appDbContext;
         }
 
-        public async Task AddAsync(Like entity)
+        public async Task AddAsync(Like entity, CancellationToken cancellationToken)
         {
-            await _appDbContext.Likes.AddAsync(entity);
-            await _appDbContext.SaveChangesAsync();
+            await _appDbContext.Likes.AddAsync(entity,cancellationToken);
+            await _appDbContext.SaveChangesAsync(cancellationToken);
         }
 
-        public async Task DeleteAsync(int id)
+        public async Task<bool> DeleteAsync(int id , CancellationToken cancellationToken)
         {
-            var like = await _appDbContext.Likes.FindAsync(id);
-            if(like != null)
-            {
-               _appDbContext.Likes.Remove(like);
-               await _appDbContext.SaveChangesAsync();
-            }
+            var like = await _appDbContext.Likes.FindAsync(new object[] {id}, cancellationToken);
+            if (like == null) return false;
+            _appDbContext.Likes.Remove(like);
+            await _appDbContext.SaveChangesAsync(cancellationToken);
+            return true;
         }
 
-        public async Task UpdateAsync(Like entity)
+        public async Task UpdateAsync(Like entity, CancellationToken cancellationToken)
         {
             _appDbContext.Likes.Update(entity);
-            await _appDbContext.SaveChangesAsync();
+            await _appDbContext.SaveChangesAsync(cancellationToken);
         }
 
-        public async Task<LikeDto> GetLikeByIdAsync(int id)
+        public async Task<Like?> GetLikeByIdAsync(int id, CancellationToken cancellationToken)
         {
-            var like  = await _appDbContext.Likes.FindAsync(id);
-            return new LikeDto
-            {
-                Id = like.Id,
-                PostId = like.PostId,
-                UserId = like.UserId
-            };
+            return await _appDbContext.Likes
+                .AsNoTracking()
+                .FirstOrDefaultAsync(l => l.Id == id, cancellationToken);
         }
 
-        public async Task<IEnumerable<LikeDto>> GetAll()
+        public async Task<IEnumerable<LikeDto>> GetAll(CancellationToken cancellationToken)
         {
             var likes =await  _appDbContext.Likes
                 .Select(l => new LikeDto
@@ -54,7 +49,7 @@ namespace Infrastructure.Data.Repositories
                     Id = l.Id,
                     PostId = l.PostId,
                     UserId = l.UserId
-                }).ToListAsync();
+                }).ToListAsync(cancellationToken);
 
             return likes;
         }

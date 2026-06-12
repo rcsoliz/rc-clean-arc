@@ -9,7 +9,7 @@ namespace Presentation.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class UserController : Controller
+    public class UserController : ControllerBase
     {
         private readonly IMediator _mediator;
         public UserController(IMediator mediator)
@@ -22,6 +22,7 @@ namespace Presentation.Controllers
         public async Task<ActionResult<UserDto>> Register(CreateUserCommand command)
         {
             var user = await _mediator.Send(command);
+            if (user == null) return BadRequest();
             return CreatedAtAction(nameof(GetById), new { id = user.Id }, user);
         }
 

@@ -42,7 +42,6 @@ namespace Infrastructure.Data.Repositories
                 .Select(c => new CommentDto { 
                     Username = c.User.Username, 
                     CommentContent = c.CommentContent, 
-                    Created = c.CreatedAt.ToString("s"), 
                     UserId = c.UserId, 
                     PostId = c.PostId, 
                     Id = c.Id })

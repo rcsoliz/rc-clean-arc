@@ -16,23 +16,21 @@ namespace Application.Features.Likes.Commands.CreateLike
 
         public async Task<LikeDto> Handle(CreateLikeCommand request, CancellationToken cancellationToken)
         {
-            var like = new LikeDto
+            var like = new Like
             {
                 UserId = request.UserId,
                 PostId = request.PostId,
                 CommentId = request.CommentId,
             };
 
-            var createdLike = new Like
+            await _likeRepository.AddAsync(like);
+            return new LikeDto
             {
+                Id = like.Id,
                 UserId = like.UserId,
                 PostId = like.PostId,
-                CommentId = like.CommentId,
+                CommentId = like.CommentId
             };
-
-            await _likeRepository.AddAsync(createdLike);
-
-            return like;
         }
     }
 }
