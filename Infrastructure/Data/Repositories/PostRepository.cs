@@ -40,7 +40,7 @@ namespace Infrastructure.Data.Repositories
                     Username = c.User.Username,
                     UserId = c.UserId,
                     Created = c.CreatedAt.ToString()
-                }).FirstOrDefaultAsync(); ;
+                }).FirstOrDefaultAsync(cancellationToken); ;
         }
 
         public async Task<IEnumerable<PostDto>> GetAllPostWithDetailsAsync(CancellationToken cancellationToken)

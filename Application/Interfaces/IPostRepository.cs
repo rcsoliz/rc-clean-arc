@@ -7,7 +7,7 @@ namespace Application.Interfaces
     public interface IPostRepository
     {
         Task<IEnumerable<Post>> GetAllAsync(CancellationToken cancellation);
-        Task<PostDto> GetByIdAsync(int id, CancellationToken cancellationToken);
+        Task<PostDto?> GetByIdAsync(int id, CancellationToken cancellationToken);
 
         Task AddAsync(Post entity, CancellationToken cancellationToken);
 
