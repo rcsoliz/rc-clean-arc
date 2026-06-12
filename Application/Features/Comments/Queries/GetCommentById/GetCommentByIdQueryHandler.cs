@@ -1,10 +1,11 @@
-﻿using Application.Interfaces;
+﻿using Application.DTOs;
+using Application.Interfaces;
 using Core.Entities;
 using MediatR;
 
 namespace Application.Features.Comments.Queries.GetCommentById
 {
-    public class GetCommentByIdQueryHandler : IRequestHandler<GetCommentByIdQuery, Comment>
+    public class GetCommentByIdQueryHandler : IRequestHandler<GetCommentByIdQuery, CommentDto>
     {
         private readonly ICommentRepository _commentRepository;
 
@@ -12,9 +13,19 @@ namespace Application.Features.Comments.Queries.GetCommentById
         {
             _commentRepository = commentRepository;
         }
-        public async Task<Comment> Handle(GetCommentByIdQuery request, CancellationToken cancellationToken)
+        public async Task<CommentDto> Handle(GetCommentByIdQuery request, CancellationToken cancellationToken)
         {
-            return await _commentRepository.GetByIdAsync(request.Id);
+            var comment = await _commentRepository.GetByIdAsync(request.Id, cancellationToken);
+            if (comment == null) return null;
+            return new CommentDto
+            {
+                Id = comment.Id,
+                CommentContent = comment.CommentContent,
+                Username = comment.User.Username,
+                UserId = comment.UserId,
+                PostId = comment.PostId,
+                Created = comment.CreatedAt.ToString("s")
+            };
         }
     }
 }

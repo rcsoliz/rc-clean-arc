@@ -1,9 +1,9 @@
-﻿using Core.Entities;
+﻿using Application.DTOs;
 using MediatR;
 
 
 namespace Application.Features.Comments.Queries.GetCommentById
 {
-    public record GetCommentByIdQuery(int Id) : IRequest<Comment>;
+    public record GetCommentByIdQuery(int Id) : IRequest<CommentDto>;
 
 }

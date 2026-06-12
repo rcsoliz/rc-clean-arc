@@ -1,10 +1,11 @@
-﻿using Application.Interfaces;
+﻿using Application.DTOs;
+using Application.Interfaces;
 using Core.Entities;
 using MediatR;
 
 namespace Application.Features.Comments.Queries.GetAllComments
 {
-    public class GetAllCommentsQueryHandlers : IRequestHandler<GetAllCommentQuery, IEnumerable<Comment>>
+    public class GetAllCommentsQueryHandlers : IRequestHandler<GetAllCommentQuery, IEnumerable<CommentDto>>
     {
         private readonly ICommentRepository _commentRepository;
 
@@ -12,9 +13,18 @@ namespace Application.Features.Comments.Queries.GetAllComments
         {
             _commentRepository = commentRepository;
         }
-        public async Task<IEnumerable<Comment>> Handle(GetAllCommentQuery request, CancellationToken cancellationToken)
+        public async Task<IEnumerable<CommentDto>> Handle(GetAllCommentQuery request, CancellationToken cancellationToken)
         {
-            return await _commentRepository.GetAllAsync();
+            var comments = await _commentRepository.GetAllAsync(cancellationToken);
+            return comments.Select(c => new CommentDto
+            {
+                Id = c.Id,
+                CommentContent = c.CommentContent,
+                Username = c.User.Username,
+                UserId = c.UserId,
+                PostId = c.PostId,
+                Created = c.CreatedAt.ToString("s")
+            });
         }
     }
 }

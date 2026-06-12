@@ -1,10 +1,12 @@
-﻿using Application.Interfaces;
+﻿using Application.DTOs;
+using Application.Interfaces;
+using Core.Entities;
 using Core.Models;
 using MediatR;
 
 namespace Application.Features.Comments.Commands.CreateComment
 {
-    public class CreateCommentCommandHandler : IRequestHandler<CreateCommentCommand, CommentModel>
+    public class CreateCommentCommandHandler : IRequestHandler<CreateCommentCommand, CommentDto>
     {
         private readonly ICommentRepository _commentRepository;
 
@@ -12,9 +14,9 @@ namespace Application.Features.Comments.Commands.CreateComment
         {
             _commentRepository = commentRepository;
         }
-        public async Task<CommentModel> Handle(CreateCommentCommand request, CancellationToken cancellationToken)
+        public async Task<CommentDto> Handle(CreateCommentCommand request, CancellationToken cancellationToken)
         {
-            var comment = new CommentModel
+            var comment = new Comment
             {
                 CommentContent = request.CommentContent,
                 UserId = request.UserId,
@@ -22,8 +24,16 @@ namespace Application.Features.Comments.Commands.CreateComment
                 ParentCommentId = request.ParentCommentId
             };
 
-            await _commentRepository.AddAsync(comment);
-            return comment;
+            await _commentRepository.AddAsync(comment,cancellationToken);
+            return new CommentDto
+            {
+                Id = comment.Id,
+                CommentContent = comment.CommentContent,
+                Username = comment.User.Username,
+                UserId = comment.UserId,
+                PostId = comment.PostId,
+                Created = comment.CreatedAt.ToString("s")
+            };
         }
     }
 }

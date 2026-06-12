@@ -4,8 +4,6 @@ using Application.Features.Comments.Commands.DeleteComment;
 using Application.Features.Comments.Queries.GetAllCommentByPostId;
 using Application.Features.Comments.Queries.GetAllComments;
 using Application.Features.Comments.Queries.GetCommentById;
-using Application.Validators;
-using Core.Entities;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -15,7 +13,7 @@ namespace Presentation.Controllers
     [Route("api/[controller]")]
     [ApiController]
     [Authorize]
-    public class CommentController : Controller
+    public class CommentController : ControllerBase
     {
         private readonly IMediator _mediator;
 
@@ -40,9 +38,10 @@ namespace Presentation.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult> Create(CreateCommentCommand command)
+        public async Task<ActionResult<CommentDto>> Create(CreateCommentCommand command)
         {
             var comment = await _mediator.Send(command);
+            if (comment == null) return BadRequest();
             return CreatedAtAction(nameof(GetById), new { id = comment.Id }, comment);
         }
 
