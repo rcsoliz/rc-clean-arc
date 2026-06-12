@@ -1,6 +1,5 @@
 ﻿using Application.DTOs;
 using Application.Interfaces;
-using Core.Entities;
 using MediatR;
 
 namespace Application.Features.Comments.Queries.GetAllComments

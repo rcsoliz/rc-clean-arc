@@ -36,18 +36,16 @@ namespace Infrastructure.Data.Repositories
         public async Task<IEnumerable<CommentDto>> GetAllCommentByPostId(int Id, CancellationToken cancellationToken)
         {
             return await _context.Comments
+                .Include(c => c.User)
                 .Where(c => c.PostId == Id)
                 .OrderByDescending(c => c.CreatedAt)
-                .Select(c => new CommentDto
-                {
-                    Id = c.Id,
-                    CommentContent = c.CommentContent,
-                    Username = c.User.Username,
-                    UserId = c.UserId,
-                    Created = c.CreatedAt.ToString(),
-                    PostId = c.PostId,
-                    ParentCommentId = c.ParentCommentId
-                })
+                .Select(c => new CommentDto { 
+                    Username = c.User.Username, 
+                    CommentContent = c.CommentContent, 
+                    Created = c.CreatedAt.ToString("s"), 
+                    UserId = c.UserId, 
+                    PostId = c.PostId, 
+                    Id = c.Id })
                 .ToListAsync(cancellationToken);
         }
 

@@ -13,7 +13,7 @@ namespace Application.Features.Comments.Queries.GetCommentById
         {
             _commentRepository = commentRepository;
         }
-        public async Task<CommentDto> Handle(GetCommentByIdQuery request, CancellationToken cancellationToken)
+        public async Task<CommentDto?> Handle(GetCommentByIdQuery request, CancellationToken cancellationToken)
         {
             var comment = await _commentRepository.GetByIdAsync(request.Id, cancellationToken);
             if (comment == null) return null;
