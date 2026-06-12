@@ -18,7 +18,7 @@ namespace Infrastructure.Data.Repositories
         public async Task AddAsync(Post entity, CancellationToken cancellationToken)
         {
             await _context.Posts.AddAsync(entity, cancellationToken);
-            await _context.SaveChangesAsync();
+            await _context.SaveChangesAsync(cancellationToken);
         }
 
         public async Task<IEnumerable<Post>> GetAllAsync(CancellationToken cancellationToken)
@@ -29,7 +29,7 @@ namespace Infrastructure.Data.Repositories
                 .ToListAsync(cancellationToken);
         }
 
-        public async Task<PostDto> GetByIdAsync(int id, CancellationToken cancellationToken)
+        public async Task<PostDto?> GetByIdAsync(int id, CancellationToken cancellationToken)
         {
             return await _context.Posts
                 .Where(c => c.Id == id)
