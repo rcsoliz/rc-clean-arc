@@ -21,6 +21,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using OpenTelemetry.Metrics;
+using Presentation.Middleware;
 using Prometheus;
 using Serilog;
 using System.Text;
@@ -196,7 +197,6 @@ var app = builder.Build();
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
-    app.UseDeveloperExceptionPage();
     app.UseSwagger();
     //app.UseSwaggerUI();
     app.UseSwaggerUI( c =>
@@ -217,6 +217,7 @@ app.MapMetrics(); // Esto expone /metrics en formato Prometheus
 
 app.UseOpenTelemetryPrometheusScrapingEndpoint("/metrics");
 
+app.UseMiddleware<ErrorHandlingMiddleware>();
 app.UseHttpsRedirection();
 
 app.UseCors(MyAllowSpecificOrigins); // Service CORS

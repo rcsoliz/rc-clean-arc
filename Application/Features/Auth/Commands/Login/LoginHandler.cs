@@ -1,7 +1,6 @@
 ﻿using Application.Interfaces;
 using MediatR;
 
-
 namespace Application.Features.Auth.Commands.Login
 {
     public class LoginHandler : IRequestHandler<LoginCommand, LoginResponse?>
