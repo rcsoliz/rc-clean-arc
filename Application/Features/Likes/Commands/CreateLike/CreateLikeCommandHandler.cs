@@ -5,7 +5,7 @@ using MediatR;
 
 namespace Application.Features.Likes.Commands.CreateLike
 {
-    public class CreateLikeCommandHandler : IRequestHandler<CreateLikeCommand, LikeDto>
+    public class CreateLikeCommandHandler : IRequestHandler<CreateLikeCommand, LikeDto?>
     {
         private readonly ILikeRepository _likeRepository;
 
@@ -14,7 +14,7 @@ namespace Application.Features.Likes.Commands.CreateLike
             _likeRepository = likeRepository;
         }
 
-        public async Task<LikeDto> Handle(CreateLikeCommand request, CancellationToken cancellationToken)
+        public async Task<LikeDto?> Handle(CreateLikeCommand request, CancellationToken cancellationToken)
         {
             var like = new Like
             {
@@ -23,7 +23,7 @@ namespace Application.Features.Likes.Commands.CreateLike
                 CommentId = request.CommentId,
             };
 
-            await _likeRepository.AddAsync(like);
+            await _likeRepository.AddAsync(like, cancellationToken);
             return new LikeDto
             {
                 Id = like.Id,

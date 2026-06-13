@@ -13,7 +13,7 @@ namespace Presentation.Controllers
     [Route("api/[controller]")]
     [ApiController]
     [Authorize]
-    public class LikeController : Controller
+    public class LikeController : ControllerBase
     {
         private readonly IMediator _mediator;
 
@@ -49,7 +49,7 @@ namespace Presentation.Controllers
                 return BadRequest("El id de la ruta y el del cuerpo no coinciden.");
 
             var like = await _mediator.Send(command);
-            if (like == null) return NotFound();
+            if (!like) return NotFound();
             return Ok(like);
         }
 
