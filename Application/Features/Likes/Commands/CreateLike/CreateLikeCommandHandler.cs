@@ -29,7 +29,7 @@ namespace Application.Features.Likes.Commands.CreateLike
                 Id = like.Id,
                 UserId = like.UserId,
                 PostId = like.PostId,
-                CommentId = like.CommentId ?? 0
+                CommentId = like.CommentId
             };
         }
     }
