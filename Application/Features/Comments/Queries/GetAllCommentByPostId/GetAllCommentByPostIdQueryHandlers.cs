@@ -15,7 +15,7 @@ namespace Application.Features.Comments.Queries.GetAllCommentByPostId
 
         public async Task<IEnumerable<CommentDto>> Handle(GetAllCommentByPostIdQuery request, CancellationToken cancellationToken)
         {
-            return await _commentRepository.GetAllCommentByPostId(request.Id);
+            return await _commentRepository.GetAllCommentByPostId(request.Id, cancellationToken);
         }
     }
 }

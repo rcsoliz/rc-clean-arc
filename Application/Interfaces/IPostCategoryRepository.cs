@@ -13,7 +13,7 @@ namespace Application.Interfaces
 
         Task<IEnumerable<PostDto>> GetAllPostsWithCategoriesAsync(CancellationToken cancellationToken);
 
-        Task<PostDto> GetPostByIdtWithCategoriesAsync(int id, CancellationToken cancellationToken);
+        Task<PostDto?> GetPostByIdtWithCategoriesAsync(int id, CancellationToken cancellationToken);
 
         Task<IEnumerable<PostDto>> GetPostWithCategoryIdAsync(int categoryId, CancellationToken cancellationToken);
 
