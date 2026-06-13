@@ -193,6 +193,7 @@ builder.Services.AddHttpClient("ApiClient", client =>
 
 
 var app = builder.Build();
+app.UseMiddleware<ErrorHandlingMiddleware>();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
@@ -217,7 +218,7 @@ app.MapMetrics(); // Esto expone /metrics en formato Prometheus
 
 app.UseOpenTelemetryPrometheusScrapingEndpoint("/metrics");
 
-app.UseMiddleware<ErrorHandlingMiddleware>();
+
 app.UseHttpsRedirection();
 
 app.UseCors(MyAllowSpecificOrigins); // Service CORS

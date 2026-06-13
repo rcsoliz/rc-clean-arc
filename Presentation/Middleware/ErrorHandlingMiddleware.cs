@@ -8,7 +8,7 @@ namespace Presentation.Middleware
 {
     public class ErrorHandlingMiddleware
     {
-        public readonly RequestDelegate _next;
+        private readonly RequestDelegate _next;
 
         public ErrorHandlingMiddleware(RequestDelegate next)
         {
