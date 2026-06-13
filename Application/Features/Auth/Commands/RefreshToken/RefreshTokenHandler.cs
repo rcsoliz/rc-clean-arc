@@ -4,7 +4,7 @@ using MediatR;
 
 namespace Application.Features.Auth.Commands.RefreshToken
 {
-    public class RefreshTokenHandler : IRequestHandler<RefreshTokenCommand, RefreshTokenResponse>
+    public class RefreshTokenHandler : IRequestHandler<RefreshTokenCommand, RefreshTokenResponse?>
     {
         private readonly IJwtService _jwtService;
         private readonly IRefreshTokenService _refreshTokenService;
@@ -14,7 +14,7 @@ namespace Application.Features.Auth.Commands.RefreshToken
             _jwtService = jwtService;
             _refreshTokenService = refreshTokenService;
         }
-        public async Task<RefreshTokenResponse> Handle(RefreshTokenCommand request, CancellationToken cancellationToken)
+        public async Task<RefreshTokenResponse?> Handle(RefreshTokenCommand request, CancellationToken cancellationToken)
         {
             var tokenInDb = await _refreshTokenService.GetRefreshTokenAsync(request.RefreshToken);
             if (tokenInDb == null || tokenInDb.ExpirationDate < DateTime.UtcNow)
@@ -25,8 +25,8 @@ namespace Application.Features.Auth.Commands.RefreshToken
             var newAccessToken = _jwtService.GenerateAccessToken(user);
             var newRefreshToken = _jwtService.GenerateRefreshToken();
 
-            await _refreshTokenService.RevokeRefreshTokenAsync(request.RefreshToken);
-            await _refreshTokenService.SaveRefreshTokenAsync(user, newRefreshToken, DateTime.UtcNow.AddDays(7));
+            await _refreshTokenService.RevokeRefreshTokenAsync(request.RefreshToken, cancellationToken);
+            await _refreshTokenService.SaveRefreshTokenAsync(user, newRefreshToken, DateTime.UtcNow.AddDays(7),cancellationToken);
 
             return new RefreshTokenResponse
             {

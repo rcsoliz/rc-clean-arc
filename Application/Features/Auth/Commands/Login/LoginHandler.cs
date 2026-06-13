@@ -1,6 +1,5 @@
 ﻿using Application.Interfaces;
 using MediatR;
-using Microsoft.EntityFrameworkCore;
 
 
 namespace Application.Features.Auth.Commands.Login
@@ -10,19 +9,21 @@ namespace Application.Features.Auth.Commands.Login
         private readonly IJwtService _jwtService;
         private readonly IRefreshTokenService _refreshTokenService;
         private readonly IUserRepository _userRepository;
-        public LoginHandler(IJwtService jwtService, IRefreshTokenService refreshTokenService, IApplicationDbContext context)
+        public LoginHandler(IJwtService jwtService, IRefreshTokenService refreshTokenService, IUserRepository userRepository )
         {
             _jwtService = jwtService;
             _refreshTokenService = refreshTokenService;
+            _userRepository = userRepository;
         }
 
         public async Task<LoginResponse?> Handle(LoginCommand request, CancellationToken cancellationToken)
         {
-            var user = await _userRepository.Access(new Core.Entities.User { Email = request.Email, 
-                PasswordHash = request.Password }, cancellationToken);
-
-            if (user == null || !user.VerifyPassword(request.Password))
-                return null;
+            var user = await _userRepository.Access(new Core.Entities.User 
+            { 
+                Email = request.Email, 
+                PasswordHash = request.Password 
+            }, cancellationToken);
+            if (user == null) return null;
             
 
             // 1. Generar access token
@@ -33,7 +34,7 @@ namespace Application.Features.Auth.Commands.Login
 
             // 3. Guardar en BD
             var expiration = DateTime.UtcNow.AddDays(7);
-            await _refreshTokenService.SaveRefreshTokenAsync(user, refreshToken, expiration);
+            await _refreshTokenService.SaveRefreshTokenAsync(user, refreshToken, expiration,cancellationToken);
 
             // 4. Devolver tokens
             return new LoginResponse

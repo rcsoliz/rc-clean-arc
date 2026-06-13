@@ -53,6 +53,9 @@ namespace Infrastructure.Data.Repositories.Auth
 
         public ClaimsPrincipal GetPrincipalFromExpiredToken(string token)
         {
+            var jwtKey = _configuration["Jwt:Key"]
+                ?? throw new Exception("JWT Key is not configured");
+
             var tokenValidationParameters = new TokenValidationParameters
             {
                 ValidateIssuer = true,
@@ -61,7 +64,7 @@ namespace Infrastructure.Data.Repositories.Auth
                 ValidateLifetime = false,
                 ValidIssuer = _configuration["Jwt:Issuer"],
                 ValidAudience = _configuration["Jwt:Audience"],
-                IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["Jwt:Key"]))
+                IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtKey))
 
             };
             // 
