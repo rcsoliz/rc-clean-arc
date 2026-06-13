@@ -22,7 +22,7 @@ namespace Application.Features.Users.Commands.CreateUser
                 Email = request.Email,
                
             };
-            user.PasswordHash = request.Password;
+            user.SetPassword(request.Password);
 
             var createdUser = await _userRepository.AddAsync(user, cancellationToken);
 

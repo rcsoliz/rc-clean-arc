@@ -18,7 +18,7 @@ namespace Infrastructure.Data.Repositories
             var userByEmail = await _context.Users
                 .FirstOrDefaultAsync(u => u.Email == user.Email, cancellationToken);
             if (userByEmail == null || !userByEmail.VerifyPassword(user.PasswordHash))
-                return new User();
+                return null;
             return userByEmail;
         }
 
