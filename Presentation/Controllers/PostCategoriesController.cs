@@ -100,6 +100,7 @@ namespace Presentation.Controllers
         }
 
         [HttpGet("countNewPosts")]
+        [EnableRateLimiting("read")]
         [AllowAnonymous]
         public async Task<ActionResult<int>> CountNewPosts([FromQuery] DateTime afterDate)
         {

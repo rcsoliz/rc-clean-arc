@@ -50,6 +50,7 @@ namespace Presentation.Controllers
         }
 
         [HttpGet("post/{id}")]
+        [EnableRateLimiting("read")]
         [AllowAnonymous]
         public async Task<ActionResult<IEnumerable<CommentDto>>> GetAllCommentByPostId([FromRoute] int id)
         {
