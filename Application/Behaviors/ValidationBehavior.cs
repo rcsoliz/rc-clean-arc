@@ -21,10 +21,14 @@ namespace Application.Behaviors
 
             var context = new ValidationContext<TRequest>(request);
 
-            var failures = _validators
-                .Select(v => v.Validate(context))
+            var validationResult = _validators
+                .Select(v => v.ValidateAsync(context, cancellationToken));
+
+            var validationResults = await Task.WhenAll(validationResult);
+
+            var failures = validationResults
                 .SelectMany(r => r.Errors)
-                .Where(e => e != null)
+                .Where(f => f != null)
                 .ToList();
 
             if (failures.Any())

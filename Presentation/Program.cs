@@ -4,12 +4,8 @@ using Application.Features.Products.Queries.GetAllProducts;
 using Application.Interfaces;
 using Application.Mapping;
 using Application.Validators;
-using Application.Validators.Category;
-using Application.Validators.Comments;
-using Application.Validators.Like;
-using Application.Validators.Posts;
-using Application.Validators.Users;
 using FluentValidation;
+using Application.Validators.Category;
 using FluentValidation.AspNetCore;
 using Infrastructure.Data;
 using Infrastructure.Data.Repositories;
@@ -150,36 +146,19 @@ builder.Services.AddCors(options =>
 
 // Register validadores de FluentValidation
 builder.Services.AddTransient(typeof(IPipelineBehavior<,>), typeof(ValidationBehavior<,>));
-
 builder.Services.AddValidatorsFromAssemblyContaining<CreateCategoryCommandValidator>();
-builder.Services.AddValidatorsFromAssemblyContaining<UpdateCategoryCommandValidator>();
-builder.Services.AddValidatorsFromAssemblyContaining<DeleteCategoryCommandValidator>();
 
-builder.Services.AddValidatorsFromAssemblyContaining<CreateCommentCommandValidator>();
-builder.Services.AddValidatorsFromAssemblyContaining<DeleteCommentCommandValidator>();
-
-builder.Services.AddValidatorsFromAssemblyContaining<CreatePostCommandValidator>();
-
-builder.Services.AddValidatorsFromAssemblyContaining<CreateUserCommandValidator>();
-
-builder.Services.AddValidatorsFromAssemblyContaining<CreateLikeCommandValidator>();
-builder.Services.AddValidatorsFromAssemblyContaining<UpdateLikeCommandValidator>();
-builder.Services.AddValidatorsFromAssemblyContaining<DeleteLikeCommandValidator>();
-
+builder.Services.AddControllers();
 
 // Add conectivity to the database
 builder.Services.AddDbContext<AppDbContext>(options => 
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"),
     b => b.MigrationsAssembly("Infrastructure")));
 
-
 // Add services to the container.
 //builder.Services.AddScoped<IGenericRepository<Product>, GenericRepository<Product>>();
 builder.Services.AddApplicationLayer();
 builder.Services.AddInfrastructure(builder.Configuration);
-
-builder.Services.AddControllers()
-    .AddFluentValidation(fv => fv.RegisterValidatorsFromAssemblyContaining<ProductValidator>());
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
