@@ -3,10 +3,8 @@ using Application.DependencyInjection;
 using Application.Features.Products.Queries.GetAllProducts;
 using Application.Interfaces;
 using Application.Mapping;
-using Application.Validators;
-using FluentValidation;
 using Application.Validators.Category;
-using FluentValidation.AspNetCore;
+using FluentValidation;
 using Infrastructure.Data;
 using Infrastructure.Data.Repositories;
 using Infrastructure.DependencyInjection;
@@ -22,6 +20,8 @@ using Prometheus;
 using Serilog;
 using System.Text;
 using System.Text.Json;
+using Microsoft.AspNetCore.RateLimiting;
+using System.Threading.RateLimiting;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -143,6 +143,79 @@ builder.Services.AddCors(options =>
         });
 });
 
+// ── Rate Limiting ──────────────────────────────────────────
+// Agregar en la sección de servicios:
+builder.Services.AddRateLimiter(options =>
+{
+    options.RejectionStatusCode = StatusCodes.Status429TooManyRequests;
+
+    //JSON para respuestas de rechazo personalizadas "Rate Limiting"
+    options.OnRejected = async (context, cancellationToken) =>
+    {
+        context.HttpContext.Response.ContentType = "application/json";
+        context.HttpContext.Response.StatusCode = StatusCodes.Status429TooManyRequests;
+
+        var response = new
+        {
+            status = 429,
+            title = "Demasiadas solicitudes. Por favor espera un momento.",
+            traceId = context.HttpContext.TraceIdentifier
+        };
+
+        var json = System.Text.Json.JsonSerializer.Serialize(response,
+            new System.Text.Json.JsonSerializerOptions
+            {
+                PropertyNamingPolicy = System.Text.Json.JsonNamingPolicy.CamelCase
+            });
+
+        await context.HttpContext.Response.WriteAsync(json, cancellationToken);
+    };
+
+    // Política para login — muy restrictiva (fuerza bruta)
+    options.AddFixedWindowLimiter("login", opt =>
+    {
+        opt.Window = TimeSpan.FromMinutes(1);
+        opt.PermitLimit = 5;
+        opt.QueueLimit = 0;
+        opt.QueueProcessingOrder = QueueProcessingOrder.OldestFirst;
+    });
+
+    // Política para register — muy restrictiva
+    options.AddFixedWindowLimiter("register", opt =>
+    {
+        opt.Window = TimeSpan.FromMinutes(1);
+        opt.PermitLimit = 3;
+        opt.QueueLimit = 0;
+        opt.QueueProcessingOrder = QueueProcessingOrder.OldestFirst;
+    });
+
+    // Política para refresh-token
+    options.AddFixedWindowLimiter("refresh", opt =>
+    {
+        opt.Window = TimeSpan.FromMinutes(1);
+        opt.PermitLimit = 10;
+        opt.QueueLimit = 0;
+        opt.QueueProcessingOrder = QueueProcessingOrder.OldestFirst;
+    });
+
+    // Política general de lectura — por IP
+    options.AddFixedWindowLimiter("read", opt =>
+    {
+        opt.Window = TimeSpan.FromMinutes(1);
+        opt.PermitLimit = 60;
+        opt.QueueLimit = 0;
+        opt.QueueProcessingOrder = QueueProcessingOrder.OldestFirst;
+    });
+
+    // Política de escritura — por usuario autenticado
+    options.AddFixedWindowLimiter("write", opt =>
+    {
+        opt.Window = TimeSpan.FromMinutes(1);
+        opt.PermitLimit = 20;
+        opt.QueueLimit = 0;
+        opt.QueueProcessingOrder = QueueProcessingOrder.OldestFirst;
+    });
+});
 
 // Register validadores de FluentValidation
 builder.Services.AddTransient(typeof(IPipelineBehavior<,>), typeof(ValidationBehavior<,>));
@@ -167,9 +240,6 @@ builder.Services.AddHttpClient("ApiClient", client =>
 {
     client.BaseAddress = new Uri("https://localhost:7255"); // URL de tu API backend
 });
-
-
-
 
 var app = builder.Build();
 app.UseMiddleware<ErrorHandlingMiddleware>();
@@ -204,6 +274,8 @@ app.UseCors(MyAllowSpecificOrigins); // Service CORS
 
 app.UseAuthentication();
 app.UseAuthorization();
+app.UseRateLimiter();
+app.MapControllers();
 
 //Health Checks
 // Health Checks en formato Json para util para Dashboard Monitoreo

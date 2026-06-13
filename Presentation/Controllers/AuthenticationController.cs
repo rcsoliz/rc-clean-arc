@@ -4,6 +4,7 @@ using Application.Features.Auth.Commands.Logout;
 using Application.Features.Auth.Commands.RefreshToken;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.RateLimiting;
 
 namespace Presentation.Controllers
 {
@@ -19,6 +20,7 @@ namespace Presentation.Controllers
         }
 
         [HttpPost("login")]
+        [EnableRateLimiting("login")]
         public async Task<ActionResult> Login([FromBody] LoginCommand command)
         {
             var result = await _mediator.Send(command);
@@ -30,6 +32,7 @@ namespace Presentation.Controllers
         }
 
         [HttpPost("refresh-token")]
+        [EnableRateLimiting("refresh")]
         public async Task<ActionResult> RefreshToken([FromBody] RefreshTokenCommand command)
         {
             var result = await _mediator.Send(command);

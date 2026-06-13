@@ -8,6 +8,7 @@ using Application.Features.Posts.Queries.GetPostById;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.RateLimiting;
 
 namespace Presentation.Controllers
 {
@@ -23,6 +24,7 @@ namespace Presentation.Controllers
         }
 
         [HttpGet]
+        [EnableRateLimiting("read")]
         public async Task<ActionResult<IEnumerable<PostDto>>> GetAll()
         {
             var posts = await _mediator.Send(new GetAllPostQuery());
@@ -30,6 +32,7 @@ namespace Presentation.Controllers
         }
 
         [HttpGet("{id}")]
+        [EnableRateLimiting("read")]
         [AllowAnonymous]
         public async Task<ActionResult<PostDto>> GetById(int id)
         {
@@ -39,6 +42,7 @@ namespace Presentation.Controllers
         }
 
         [HttpPost]
+        [EnableRateLimiting("write")]
         public async Task<ActionResult<PostDto>> Create(CreatePostCommand command)
         {
             var post = await _mediator.Send(command);
@@ -47,6 +51,7 @@ namespace Presentation.Controllers
         }
 
         [HttpGet("detailed")]
+        [EnableRateLimiting("read")]
         [AllowAnonymous]
         public async Task<IActionResult> GetDetailedPosts()
         {
@@ -55,6 +60,7 @@ namespace Presentation.Controllers
         }
 
         [HttpGet("paged")]
+        [EnableRateLimiting("read")]
         [AllowAnonymous]
         public async Task<IActionResult> GetPagedPosts(int page , int pageSize)
         {
@@ -63,6 +69,7 @@ namespace Presentation.Controllers
         }
 
         [HttpGet("user/{id}")]
+        [EnableRateLimiting("read")]
         public async Task<IActionResult> GetAllPostByUserId(int id)
         {
             var post = await _mediator.Send(new GetAllPostByUserIdQuery(id));
@@ -72,6 +79,7 @@ namespace Presentation.Controllers
 
 
         [HttpPost("filter")]
+        [EnableRateLimiting("read")]
         [AllowAnonymous]
         public async Task<ActionResult> FiltersPost([FromBody]  PostFilterDto filter)
         {

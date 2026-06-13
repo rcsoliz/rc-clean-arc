@@ -11,6 +11,7 @@ using Application.Features.PostsCategories.Queries.GetPostsByScroll;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.RateLimiting;
 
 namespace Presentation.Controllers
 {
@@ -27,12 +28,14 @@ namespace Presentation.Controllers
         }
 
         [HttpGet]
+        [EnableRateLimiting("read")]
         public async Task<ActionResult<IEnumerable<PostCategoryDto>>> GetAll()
         {
             var postCategories = await _mediator.Send(new GetAllPostsWithCategoriesQuery());
             return Ok(postCategories);
         }
         [HttpGet("scroll")]
+        [EnableRateLimiting("read")]
         [AllowAnonymous]
         public async Task<ActionResult<IEnumerable<PostCategoryDto>>> GetAllWithScroll([FromQuery] DateTime? lastPostDate, [FromQuery] int take = 5)
         {
@@ -41,6 +44,7 @@ namespace Presentation.Controllers
         }
 
         [HttpGet("{id}")]
+        [EnableRateLimiting("read")]
         public async Task<ActionResult<PostWithCategoriesDto>> GetById(int id)
         {
             var postCategory = await _mediator.Send(new GetPostByIdWithCategoriesQuery(id));
@@ -49,6 +53,7 @@ namespace Presentation.Controllers
         }
 
         [HttpGet("category/{categoryId}")]
+        [EnableRateLimiting("read")]
         public async Task<ActionResult<IEnumerable<PostCategoryDto>>> GetByCategoryId(int categoryId)
         {
             var postCategories = await _mediator.Send(new GetPostWithCategoryIdQuery(categoryId));
@@ -57,6 +62,7 @@ namespace Presentation.Controllers
         }
 
         [HttpPost]
+        [EnableRateLimiting("write")]
         public async Task<ActionResult> Create([FromBody] CreatePostCategoryCommand command)
         {
             var post = await _mediator.Send(command);
@@ -65,6 +71,7 @@ namespace Presentation.Controllers
         }
 
         [HttpPut("{id}")]
+        [EnableRateLimiting("write")]
         public async Task<ActionResult> Update(int id, UpdatePostCategoryCommand command)
         {
             if (id != command.Id) return BadRequest("Id mismatch");
@@ -74,6 +81,7 @@ namespace Presentation.Controllers
         }
 
         [HttpDelete("{id}")]
+        [EnableRateLimiting("write")]
         public async Task<ActionResult> Delete(int id, List<int> categoryIds)
         {
             var deleted = await _mediator.Send(new DeletePostCategoryCommand(id, categoryIds));
@@ -82,6 +90,7 @@ namespace Presentation.Controllers
         }
 
         [HttpGet("newPosts")]
+        [EnableRateLimiting("read")]
         [AllowAnonymous]
         public async Task<ActionResult<IEnumerable<PostCategoryDto>>> GetNewPosts([FromQuery] DateTime afterDate)
         {

@@ -4,6 +4,7 @@ using Application.Features.Users.Queries.GetUserById;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.RateLimiting;
 
 namespace Presentation.Controllers
 {
@@ -18,7 +19,7 @@ namespace Presentation.Controllers
         }
 
         [HttpPost("register")]
-        [AllowAnonymous]
+        [EnableRateLimiting("register")]
         public async Task<ActionResult<UserDto>> Register(CreateUserCommand command)
         {
             var user = await _mediator.Send(command);

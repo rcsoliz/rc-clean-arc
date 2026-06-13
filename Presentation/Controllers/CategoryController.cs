@@ -7,6 +7,7 @@ using Application.Features.Categories.Queries.GetCategoryById;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.RateLimiting;
 
 namespace Presentation.Controllers
 {
@@ -23,12 +24,14 @@ namespace Presentation.Controllers
         }
 
         [HttpGet]
+        [EnableRateLimiting("read")]
         public async Task<ActionResult<IEnumerable<CategoryDto>>> GetAll() {
             var categories = await _mediator.Send(new GetAllCategoriesQuery());
             return Ok(categories);
         }
 
         [HttpGet("{id}")]
+        [EnableRateLimiting("read")]
         public async Task<ActionResult<CategoryDto>> GetById(int id)
         {
             var category = await _mediator.Send(new GetCategoryById(id));
@@ -38,6 +41,7 @@ namespace Presentation.Controllers
         }
 
         [HttpPost]
+        [EnableRateLimiting("write")]
         public async Task<ActionResult<CategoryDto>> Create(CreateCategoryCommand command)
         {
             var category = await _mediator.Send(command);
@@ -47,6 +51,7 @@ namespace Presentation.Controllers
         }
 
         [HttpPut("{id}")]
+        [EnableRateLimiting("write")]
         public async Task<ActionResult> Update(int id, UpdateCategoryCommand command)
         {
             if(id != command.Id) return BadRequest();
@@ -57,6 +62,7 @@ namespace Presentation.Controllers
         }
 
         [HttpDelete("{id}")]
+        [EnableRateLimiting("write")]
         public async Task<ActionResult> Delete(int id) 
         {
             var category = await _mediator.Send(new DeleteCategoryCommand(id));

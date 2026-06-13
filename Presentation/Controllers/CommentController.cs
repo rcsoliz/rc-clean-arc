@@ -7,6 +7,7 @@ using Application.Features.Comments.Queries.GetCommentById;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.RateLimiting;
 
 namespace Presentation.Controllers
 {
@@ -23,6 +24,7 @@ namespace Presentation.Controllers
         }
 
         [HttpGet]
+        [EnableRateLimiting("read")]
         public async Task<ActionResult<IEnumerable<CommentDto>>> GetAll()
         {
             var comments = await _mediator.Send(new GetAllCommentQuery());
@@ -30,6 +32,7 @@ namespace Presentation.Controllers
         }
 
         [HttpGet("{id}")]
+        [EnableRateLimiting("read")]
         public async Task<ActionResult<CommentDto>> GetById(int Id)
         {
             var comment = await _mediator.Send(new GetCommentByIdQuery(Id));
@@ -38,6 +41,7 @@ namespace Presentation.Controllers
         }
 
         [HttpPost]
+        [EnableRateLimiting("write")]
         public async Task<ActionResult<CommentDto>> Create(CreateCommentCommand command)
         {
             var comment = await _mediator.Send(command);
@@ -55,6 +59,7 @@ namespace Presentation.Controllers
         }
 
         [HttpDelete("{id}")]
+        [EnableRateLimiting("write")]
         public async Task<ActionResult> Delete(int id)
         {
             var comment = await _mediator.Send(new DeleteCommentCommand(id));
