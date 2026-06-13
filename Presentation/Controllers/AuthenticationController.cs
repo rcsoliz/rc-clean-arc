@@ -9,7 +9,7 @@ namespace Presentation.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class AuthenticationController : Controller
+    public class AuthenticationController : ControllerBase
     {
         private readonly IMediator _mediator;
 
@@ -41,7 +41,7 @@ namespace Presentation.Controllers
         }
 
         [HttpPost("logout")]
-        public async Task<ActionResult> Logout([FromBody] LogoutRequest request)
+        public async Task<ActionResult> Logout([FromBody] RefreshTokenRequest request)
         {
             await _mediator.Send(new LogoutCommand(request.RefreshToken));
             return NoContent();

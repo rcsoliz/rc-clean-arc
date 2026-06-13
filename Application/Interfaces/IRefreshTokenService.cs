@@ -6,8 +6,8 @@ namespace Application.Interfaces
 {
     public interface IRefreshTokenService
     {
-        Task SaveRefreshTokenAsync(User user, string refreshToken, DateTime expiration);
-        Task<UserRefreshToken> GetRefreshTokenAsync(string refreshToken);
-        Task RevokeRefreshTokenAsync(string refreshToken);
+        Task SaveRefreshTokenAsync(User user, string refreshToken, DateTime expiration, CancellationToken cancellationToken= default);
+        Task<UserRefreshToken?> GetRefreshTokenAsync(string refreshToken, CancellationToken cancellationToken = default);
+        Task RevokeRefreshTokenAsync(string refreshToken, CancellationToken cancellationToken = default);
     }
 }

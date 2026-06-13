@@ -1,7 +1,6 @@
 ﻿using Application.DTOs.Auth;
 using Application.Interfaces;
 using MediatR;
-using Microsoft.IdentityModel.Tokens;
 
 namespace Application.Features.Auth.Commands.RefreshToken
 {
@@ -19,7 +18,7 @@ namespace Application.Features.Auth.Commands.RefreshToken
         {
             var tokenInDb = await _refreshTokenService.GetRefreshTokenAsync(request.RefreshToken);
             if (tokenInDb == null || tokenInDb.ExpirationDate < DateTime.UtcNow)
-                throw new SecurityTokenException("Token inválido o expirado");
+                return null;
 
             var user = tokenInDb.User;
 

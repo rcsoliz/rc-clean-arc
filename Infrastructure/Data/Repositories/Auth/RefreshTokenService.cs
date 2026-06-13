@@ -11,7 +11,7 @@ namespace Infrastructure.Data.Repositories.Auth
         {
             _context = context;
         }
-        public async Task SaveRefreshTokenAsync(User user, string refreshToken, DateTime expiration)
+        public async Task SaveRefreshTokenAsync(User user, string refreshToken, DateTime expiration, CancellationToken cancellationToken = default)
         {
             var token = new UserRefreshToken
             {
@@ -20,23 +20,23 @@ namespace Infrastructure.Data.Repositories.Auth
                 ExpirationDate = expiration
             };
             _context.UserRefreshTokens.Add(token);
-            await _context.SaveChangesAsync();  
+            await _context.SaveChangesAsync(cancellationToken);  
         }
-        public async Task<UserRefreshToken> GetRefreshTokenAsync(string refreshToken)
+        public async Task<UserRefreshToken?> GetRefreshTokenAsync(string refreshToken, CancellationToken cancellationToken = default)
         {
             return await _context.UserRefreshTokens
                 .Include(x => x.User)
-                .FirstOrDefaultAsync(x => x.RefreshToken == refreshToken && x.RevokedAt ==null);
+                .FirstOrDefaultAsync(x => x.RefreshToken == refreshToken && x.RevokedAt == null, cancellationToken);
         }
 
-        public async Task RevokeRefreshTokenAsync(string refreshToken)
+        public async Task RevokeRefreshTokenAsync(string refreshToken, CancellationToken cancellationToken = default)
         {
             var token = await _context.UserRefreshTokens
                 .FirstOrDefaultAsync(x => x.RefreshToken == refreshToken);
             if (token != null)
             {
                 token.RevokedAt = DateTime.UtcNow;
-                await _context.SaveChangesAsync();
+                await _context.SaveChangesAsync(cancellationToken);
             }
         }
 
