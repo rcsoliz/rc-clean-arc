@@ -22,7 +22,7 @@ namespace Infrastructure.Data.Repositories
             return userByEmail;
         }
 
-        public async Task<User?> AddAsync(User entity, CancellationToken cancellationToken)
+        public async Task<User> AddAsync(User entity, CancellationToken cancellationToken)
         {
             await _context.Users.AddAsync(entity, cancellationToken);
             await _context.SaveChangesAsync(cancellationToken);

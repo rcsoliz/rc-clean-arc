@@ -2,7 +2,7 @@
 using Application.Features.Likes.Commands.CreateLike;
 using Application.Features.Likes.Commands.DeleteLike;
 using Application.Features.Likes.Commands.UpdateLike;
-using Application.Features.Likes.Queries.GeAllLikes;
+using Application.Features.Likes.Queries.GetAllLikes;
 using Application.Features.Likes.Queries.GetLikesById;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
@@ -50,7 +50,7 @@ namespace Presentation.Controllers
 
             var like = await _mediator.Send(command);
             if (!like) return NotFound();
-            return Ok(like);
+            return NoContent();
         }
 
         [HttpDelete("{id}")]
@@ -58,7 +58,7 @@ namespace Presentation.Controllers
         {
             var like = await _mediator.Send(new DeleteLikeCommand(id));
             if(!like) return NotFound();
-            return Ok(like);
+            return NoContent();
         }
 
     }

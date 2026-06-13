@@ -2,7 +2,7 @@
 using Application.Interfaces;
 using MediatR;
 
-namespace Application.Features.Likes.Queries.GeAllLikes
+namespace Application.Features.Likes.Queries.GetAllLikes
 {
     public class GetAllLikesQueryHandler : IRequestHandler<GetAllLikesQuery, IEnumerable<LikeDto>>
     {

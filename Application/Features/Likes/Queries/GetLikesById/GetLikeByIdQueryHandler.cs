@@ -21,7 +21,7 @@ namespace Application.Features.Likes.Queries.GetLikesById
                 Id = like.Id,
                 PostId = like.PostId,
                 UserId = like.UserId,
-                CommentId = like.CommentId
+                CommentId = like.CommentId ?? 0
             };
         }
     }
