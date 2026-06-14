@@ -13,14 +13,14 @@ namespace Application.Mapping
                 .ForMember(dest => dest.Username, opt => opt.MapFrom(src => src.User.Username))
                 .ForMember(dest => dest.CommentCount, opt => opt.MapFrom(src => src.Comments.Count))
                 .ForMember(dest => dest.LikeCount, opt => opt.MapFrom(src => src.Likes.Count))
-                .ForMember(dest => dest.Categories, opt => opt.MapFrom(src => src.PostCategories.Select(c => new PostCategoryDtos
+                .ForMember(dest => dest.Categories, opt => opt.MapFrom(src => src.PostCategories.Select(c => new PostCategoryDto
                 {
                     CategoryId = c.Category.Id,
                     Name = c.Category.Name
                 })));
 
             // PostCategory → PostCategoryDtos
-            CreateMap<PostCategory, PostCategoryDtos>()
+            CreateMap<PostCategory, PostCategoryDto>()
                  .ForMember(dest => dest.CategoryId, opt => opt.MapFrom(src => src.CategoryId))
                  .ForMember(dest => dest.Name, opt => opt.MapFrom(src => src.Category.Name));
 

@@ -33,7 +33,7 @@ namespace Application.Features.Auth.Commands.Login
 
             // 3. Guardar en BD
             var expiration = DateTime.UtcNow.AddDays(7);
-            await _refreshTokenService.SaveRefreshTokenAsync(user, refreshToken, expiration,cancellationToken);
+            await _refreshTokenService.SaveRefreshTokenAsync(user, refreshToken, expiration, cancellationToken);
 
             // 4. Devolver tokens
             return new LoginResponse
