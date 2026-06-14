@@ -22,6 +22,7 @@ using System.Text;
 using System.Text.Json;
 using Microsoft.AspNetCore.RateLimiting;
 using System.Threading.RateLimiting;
+using Infrastructure.Data.Repositories.Auth;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -116,6 +117,8 @@ builder.Services.AddSwaggerGen(c =>
 
 
 builder.Services.AddScoped<IUserRepository, UserRepository>();
+builder.Services.AddScoped<IJwtService, JwtServiceRepository>();
+builder.Services.AddScoped<IRefreshTokenService, RefreshTokenService>();
 
 // Add services to Medditor.
 builder.Services.AddMediatR(typeof(GetAllProductsQueryHandlers));
