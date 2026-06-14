@@ -52,7 +52,7 @@ namespace Tests.Auth.Commands
 
             // Assert
             result.Should().NotBeNull();
-            result!.JwtToken.Should().Be("access-token-jwt");
+            result!.AccessToken.Should().Be("access-token-jwt");
             result.RefreshToken.Should().Be("refresh-token-abc");
         }
 

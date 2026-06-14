@@ -1,4 +1,5 @@
-﻿using Application.Interfaces;
+﻿using Application.DTOs.Auth;
+using Application.Interfaces;
 using MediatR;
 
 namespace Application.Features.Auth.Commands.Login
@@ -38,8 +39,10 @@ namespace Application.Features.Auth.Commands.Login
             // 4. Devolver tokens
             return new LoginResponse
             {
-                JwtToken = jwtToken,
-                RefreshToken = refreshToken
+                AccessToken = jwtToken,
+                RefreshToken = refreshToken,
+                Username = user.Username,
+                Email = user.Email
             };
         }
     }

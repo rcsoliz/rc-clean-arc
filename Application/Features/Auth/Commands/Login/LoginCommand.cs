@@ -1,5 +1,5 @@
 ﻿using MediatR;
-
+using Application.DTOs.Auth;
 namespace Application.Features.Auth.Commands.Login
 {
     public class LoginCommand: IRequest<LoginResponse?>
