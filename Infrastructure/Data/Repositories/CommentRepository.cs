@@ -40,18 +40,31 @@ namespace Infrastructure.Data.Repositories
                 .Where(c => c.PostId == Id)
                 .OrderByDescending(c => c.CreatedAt)
                 .Select(c => new CommentDto { 
+                    Id = c.Id,
                     Username = c.User.Username, 
                     CommentContent = c.CommentContent, 
                     UserId = c.UserId, 
-                    PostId = c.PostId, 
-                    Id = c.Id })
+                    PostId = c.PostId,
+                    ParentCommentId = c.ParentCommentId,
+                    Created = c.CreatedAt.ToString("s")
+                })
                 .ToListAsync(cancellationToken);
         }
 
         public async Task<bool> DeleteAsync(int id, CancellationToken cancellationToken)
         {
-            var comment = await _context.Comments.FindAsync(new object[] {id}, cancellationToken);
+            var comment = await _context.Comments.FindAsync(new object[] { id }, cancellationToken);
             if (comment == null) return false;
+
+            var replies = await _context.Comments
+            .Where(c => c.ParentCommentId == id)
+            .ToListAsync(cancellationToken);
+
+            foreach (var reply in replies)
+            {
+                reply.ParentCommentId = null;
+            }
+
             _context.Comments.Remove(comment);
             await _context.SaveChangesAsync(cancellationToken);
             return true;
