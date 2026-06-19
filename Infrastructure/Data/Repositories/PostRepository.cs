@@ -84,7 +84,10 @@ namespace Infrastructure.Data.Repositories
         {
             var query = _context.Posts
                 .Include(p => p.User)
-                .Include(p => p.Comments);
+                .Include(p => p.Comments)
+                .Include(p => p.Likes)
+                .Include(p => p.PostCategories)
+                    .ThenInclude(pc => pc.Category);
 
             var totalCount = await query.CountAsync(cancellationToken);
 
@@ -98,8 +101,16 @@ namespace Infrastructure.Data.Repositories
                     PostContent = p.PostContent,
                     Username = p.User.Username,
                     UserId = p.UserId,
-                    Created = p.CreatedAt.ToString(),
-                    CommentCount = p.Comments.Count
+                    Created = p.CreatedAt.ToString("s"),
+                    CommentCount = p.Comments.Count,
+                    LikeCount = p.Likes.Count,
+                    Categories = p.PostCategories
+                        .Select(pc => new PostCategoryDto
+                        {
+                            CategoryId = pc.CategoryId,
+                            Name = pc.Category.Name
+                        })
+                        .ToList()
                 })
                 .ToListAsync(cancellationToken);
 
@@ -109,7 +120,6 @@ namespace Infrastructure.Data.Repositories
                 TotalCount = totalCount
             };
         }
-            
         public IQueryable<Post> GetQueryableWithUserAndComments(CancellationToken cancellationToken)
         {
             return _context.Posts
