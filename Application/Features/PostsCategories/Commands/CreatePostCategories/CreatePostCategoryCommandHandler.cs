@@ -29,7 +29,8 @@ namespace Application.Features.PostsCategories.Commands.CreatePostCategories
             {
                 Id = post.Id,
                 PostContent = post.PostContent,
-                UserId = post.UserId
+                UserId = post.UserId,
+                Categories = request.CategoryIds.Select(id => new PostCategoryDto { CategoryId = id }).ToList()
             };
         }
     }

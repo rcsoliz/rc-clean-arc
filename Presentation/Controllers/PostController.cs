@@ -1,10 +1,10 @@
 ﻿using Application.DTOs;
-using Application.Features.Posts.Commands.CreatePost;
 using Application.Features.Posts.Queries.FiltersPos;
 using Application.Features.Posts.Queries.GetAllPost;
 using Application.Features.Posts.Queries.GetAllPostByUserId;
 using Application.Features.Posts.Queries.GetAllPosts;
 using Application.Features.Posts.Queries.GetPostById;
+using Application.Features.PostsCategories.Commands.CreatePostCategories;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -43,7 +43,7 @@ namespace Presentation.Controllers
 
         [HttpPost]
         [EnableRateLimiting("write")]
-        public async Task<ActionResult<PostDto>> Create(CreatePostCommand command)
+        public async Task<ActionResult<PostDto>> Create(CreatePostCategoryCommand command)
         {
             var post = await _mediator.Send(command);
             if (post == null) return NotFound();
