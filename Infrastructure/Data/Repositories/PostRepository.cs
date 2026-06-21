@@ -36,6 +36,7 @@ namespace Infrastructure.Data.Repositories
                 .Select(c => new PostDto
                 {
                     Id = c.Id,
+                    ImageUrl = c.ImageUrl,
                     PostContent = c.PostContent,
                     Username = c.User.Username,
                     UserId = c.UserId,
@@ -99,6 +100,7 @@ namespace Infrastructure.Data.Repositories
                 {
                     Id = p.Id,
                     PostContent = p.PostContent,
+                    ImageUrl = p.ImageUrl,
                     Username = p.User.Username,
                     UserId = p.UserId,
                     Created = p.CreatedAt.ToString("s"),
@@ -132,7 +134,10 @@ namespace Infrastructure.Data.Repositories
             var query = _context.Posts
                  .Where(p => p.UserId == id)
                  .Include(p => p.User)
-                 .Include(p => p.Comments);
+                 .Include(p => p.Comments)
+                 .Include(p => p.Likes)
+                 .Include(p => p.PostCategories)
+                     .ThenInclude(pc => pc.Category);
 
             var totalCount = await query.CountAsync(cancellationToken);
 
@@ -142,10 +147,19 @@ namespace Infrastructure.Data.Repositories
                 {
                     Id = p.Id,
                     PostContent = p.PostContent,
+                    ImageUrl = p.ImageUrl,
                     Username = p.User.Username,
                     UserId = p.UserId,
-                    Created = p.CreatedAt.ToString(),
-                    CommentCount = p.Comments.Count
+                    Created = p.CreatedAt.ToString("s"),
+                    CommentCount = p.Comments.Count,
+                    LikeCount = p.Likes.Count,
+                    Categories = p.PostCategories
+                        .Select(pc => new PostCategoryDto
+                        {
+                            CategoryId = pc.CategoryId,
+                            Name = pc.Category.Name
+                        })
+                        .ToList()
                 })
                 .ToListAsync(cancellationToken);
 

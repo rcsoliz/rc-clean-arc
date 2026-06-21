@@ -91,7 +91,7 @@ namespace Infrastructure.Data.Repositories
                 }).FirstOrDefaultAsync();
 
             return post;
-        }
+        }   
 
         public async Task<IEnumerable<PostDto>> GetPostWithCategoryIdAsync(int categoryId, CancellationToken cancellationToken)
         {
