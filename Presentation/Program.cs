@@ -23,6 +23,10 @@ using System.Text.Json;
 using Microsoft.AspNetCore.RateLimiting;
 using System.Threading.RateLimiting;
 using Infrastructure.Data.Repositories.Auth;
+using Infrastructure.Hubs;
+using Infrastructure.Services;
+using Microsoft.AspNetCore.SignalR;
+using Presentation;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -122,7 +126,6 @@ builder.Services.AddScoped<IRefreshTokenService, RefreshTokenService>();
 
 // Add services to Medditor.
 builder.Services.AddMediatR(typeof(GetAllProductsQueryHandlers));
-
 
 // Add Serilog
 Log.Logger = new LoggerConfiguration()
@@ -245,8 +248,17 @@ builder.Services.AddHttpClient("ApiClient", client =>
     client.BaseAddress = new Uri("https://localhost:7255"); // URL de tu API backend
 });
 
+// Agregar en servicios
+builder.Services.AddSignalR();
+builder.Services.AddScoped<INotificationService, NotificationService>();
+
+// Agregar UserIdProvider para que SignalR sepa el ID del usuario conectado
+builder.Services.AddSingleton<IUserIdProvider, NameIdentifierUserIdProvider>();
+
 var app = builder.Build();
 app.UseMiddleware<ErrorHandlingMiddleware>();
+// En el pipeline, antes de MapControllers()
+app.MapHub<NotificationHub>("/hubs/notifications");
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())

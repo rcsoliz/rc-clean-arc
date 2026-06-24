@@ -39,6 +39,11 @@ namespace Infrastructure.Data.Repositories
             {
                 query = query.Where(p => p.CreatedAt < filter.EndDate.Value.Date.AddDays(1));
             }
+            if (filter.CategoryIds != null && filter.CategoryIds.Any())
+            {
+                query = query.Where(p => p.PostCategories
+                    .Any(pc => filter.CategoryIds.Contains(pc.CategoryId)));
+            }
 
             var totalCount = await query.CountAsync();
 
