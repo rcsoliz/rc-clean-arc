@@ -15,7 +15,23 @@ namespace Tests.Comments.Commands
         public CreateCommentCommandHandlerTests()
         {
             _repositoryMock = new Mock<ICommentRepository>();
-            _handler = new CreateCommentCommandHandler(_repositoryMock.Object);
+            var userRepositoryMock = new Mock<IUserRepository>();
+            var notificationServiceMock = new Mock<INotificationService>();
+            var postRepositoryMock = new Mock<IPostRepository>();
+
+            userRepositoryMock
+                .Setup(r => r.GetByIdAsync(It.IsAny<int>(), It.IsAny<CancellationToken>()))
+                .ReturnsAsync((User?)null);
+
+            postRepositoryMock
+                .Setup(r => r.GetByIdAsync(It.IsAny<int>(), It.IsAny<CancellationToken>()))
+                .ReturnsAsync((PostDto?)null);
+
+            _handler = new CreateCommentCommandHandler(
+                _repositoryMock.Object,
+                userRepositoryMock.Object,
+                notificationServiceMock.Object,
+                postRepositoryMock.Object);
         }
 
         [Fact]

@@ -2,6 +2,7 @@
 using Application.Features.Posts.Queries.FiltersPos;
 using Application.Features.Posts.Queries.GetAllPost;
 using Application.Features.Posts.Queries.GetAllPostByUserId;
+using Application.Features.Posts.Queries.GetAllPostWithDetails;
 using Application.Features.Posts.Queries.GetAllPosts;
 using Application.Features.Posts.Queries.GetPostById;
 using Application.Features.PostsCategories.Commands.CreatePostCategories;
@@ -55,7 +56,7 @@ namespace Presentation.Controllers
         [AllowAnonymous]
         public async Task<IActionResult> GetDetailedPosts()
         {
-            var posts = await _mediator.Send(new GetAllPostQuery());
+            var posts = await _mediator.Send(new GetAllPostWithDetailsQuery());
             return Ok(posts);
         }
 

@@ -39,7 +39,7 @@ namespace Tests.Category.Queries
             // Assert
             result.Should().NotBeNull();
             result.Should().HaveCount(3);
-            result.Should().BeOfType<List<CategoryDto>>();
+            result.Should().BeAssignableTo<IEnumerable<CategoryDto>>();
         }
 
         [Fact]

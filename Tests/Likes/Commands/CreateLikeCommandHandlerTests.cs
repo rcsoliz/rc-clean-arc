@@ -17,7 +17,17 @@ namespace Tests.Likes.Commands
         public CreateLikeCommandHandlerTests()
         {
             _repositoryMock = new Mock<ILikeRepository>();
-            _handler = new CreateLikeCommandHandler(_repositoryMock.Object);
+            var postRepositoryMock = new Mock<IPostRepository>();
+            var notificationServiceMock = new Mock<INotificationService>();
+
+            postRepositoryMock
+                .Setup(r => r.GetByIdAsync(It.IsAny<int>(), It.IsAny<CancellationToken>()))
+                .ReturnsAsync((PostDto?)null);
+
+            _handler = new CreateLikeCommandHandler(
+                _repositoryMock.Object,
+                postRepositoryMock.Object,
+                notificationServiceMock.Object);
         }
 
         [Fact]
