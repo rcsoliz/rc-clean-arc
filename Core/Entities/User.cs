@@ -21,6 +21,8 @@ namespace Core.Entities
             return BCrypt.Net.BCrypt.Verify(password, PasswordHash);
         }
 
+        public string? Bio { get; set; }
+        public string? AvatarUrl { get; set; }
 
         public ICollection<Post> Posts { get; set; } = new List<Post>();    
         public ICollection<Comment> Comments { get; set; } = new List<Comment>();

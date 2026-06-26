@@ -1,5 +1,6 @@
 ﻿using Application.DTOs;
 using Application.Features.Users.Commands.CreateUser;
+using Application.Features.Users.Commands.UpdateUser;
 using Application.Features.Users.Queries.GetUserById;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
@@ -37,6 +38,15 @@ namespace Presentation.Controllers
             return Ok(user);
         }
 
+        [HttpPut("{id}")]
+        [Authorize]
+        [EnableRateLimiting("write")]
+        public async Task<ActionResult<UserDto>> Update(int id, [FromBody] UpdateUserDto dto)
+        {
+            var user = await _mediator.Send(new UpdateUserCommand(id, dto.Username, dto.Bio, dto.AvatarUrl));
+            if (user == null) return NotFound();
+            return Ok(user);
+        }
 
     }
 }

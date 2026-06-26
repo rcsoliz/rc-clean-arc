@@ -37,5 +37,10 @@ namespace Infrastructure.Data.Repositories
                 .FirstOrDefaultAsync(u => u.Id == id, cancellationToken);
         }
 
+        public async Task UpdateAsync(User entity, CancellationToken cancellationToken = default)
+        {
+            _context.Users.Update(entity);
+            await _context.SaveChangesAsync(cancellationToken);
+        }
     }
 }
