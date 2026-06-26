@@ -45,21 +45,34 @@ namespace Infrastructure.Data.Repositories
         }
 
         public async Task<IEnumerable<PostDto>> GetAllPostWithDetailsAsync(CancellationToken cancellationToken)
-        {
-            return await _context.Posts
-                .Include(p => p.User)
-                .Include(p => p.Comments)
-                .Select(p => new PostDto
-                {
-                    Id = p.Id,
-                    PostContent = p.PostContent,
-                    Username = p.User.Username,
-                    UserId = p.UserId,
-                    Created = p.CreatedAt.ToString(),
-                    CommentCount = p.Comments.Count
-                })
-                .ToListAsync(cancellationToken);
-        }
+            {
+                return await _context.Posts
+                    .Include(p => p.User)
+                    .Include(p => p.Comments)
+                    .Include(p => p.Likes)
+                    .Include(p => p.PostCategories)
+                        .ThenInclude(pc => pc.Category)
+                    .OrderByDescending(p => p.CreatedAt)
+                    .Select(p => new PostDto
+                    {
+                        Id = p.Id,
+                        PostContent = p.PostContent,
+                        ImageUrl = p.ImageUrl,
+                        Username = p.User.Username,
+                        UserId = p.UserId,
+                        Created = p.CreatedAt.ToString("s"),
+                        CommentCount = p.Comments.Count,
+                        LikeCount = p.Likes.Count,
+                        Categories = p.PostCategories
+                            .Select(pc => new PostCategoryDto
+                            {
+                                CategoryId = pc.CategoryId,
+                                Name = pc.Category.Name
+                            })
+                            .ToList()
+                    })
+                    .ToListAsync(cancellationToken);
+            }
 
         public async Task<List<PostDto>> GetPagedPostsAsync(int page, int pageSize, CancellationToken cancellationToken)
         {

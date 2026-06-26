@@ -11,23 +11,21 @@ namespace Tests.Likes.Commands
 {
     public class CreateLikeCommandHandlerTests
     {
+
         private readonly Mock<ILikeRepository> _repositoryMock;
+        private readonly Mock<IPostRepository> _postRepositoryMock;
+        private readonly Mock<INotificationService> _notificationServiceMock;
         private readonly CreateLikeCommandHandler _handler;
 
         public CreateLikeCommandHandlerTests()
         {
             _repositoryMock = new Mock<ILikeRepository>();
-            var postRepositoryMock = new Mock<IPostRepository>();
-            var notificationServiceMock = new Mock<INotificationService>();
-
-            postRepositoryMock
-                .Setup(r => r.GetByIdAsync(It.IsAny<int>(), It.IsAny<CancellationToken>()))
-                .ReturnsAsync((PostDto?)null);
-
+            _postRepositoryMock = new Mock<IPostRepository>();
+            _notificationServiceMock = new Mock<INotificationService>();
             _handler = new CreateLikeCommandHandler(
                 _repositoryMock.Object,
-                postRepositoryMock.Object,
-                notificationServiceMock.Object);
+                _postRepositoryMock.Object,
+                _notificationServiceMock.Object);
         }
 
         [Fact]
