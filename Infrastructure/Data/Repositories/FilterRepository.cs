@@ -25,7 +25,9 @@ namespace Infrastructure.Data.Repositories
 
             if (!string.IsNullOrEmpty(filter.SearchText))
             {
-                query = query.Where(p => p.PostContent.Contains(filter.SearchText));
+                query = query.Where(p =>
+                    p.PostContent.Contains(filter.SearchText) ||
+                    p.User.Username.Contains(filter.SearchText));
             }
             if (!string.IsNullOrEmpty(filter.Username))
             {
