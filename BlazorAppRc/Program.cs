@@ -10,7 +10,7 @@ builder.Services.AddScoped<HttpClient>(sp =>
 {
     return new HttpClient
     {
-        BaseAddress = new Uri("https://localhost:7255") // tu API backend
+        BaseAddress = new Uri(builder.Configuration["ApiBaseUrl"] ?? "https://localhost:7255")// tu API backend
     };
 });
 
