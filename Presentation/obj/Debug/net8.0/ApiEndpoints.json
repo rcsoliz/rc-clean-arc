@@ -25,7 +25,7 @@
     "Parameters": [
       {
         "Name": "request",
-        "Type": "Application.DTOs.Auth.LogoutRequest",
+        "Type": "Application.DTOs.Auth.RefreshTokenRequest",
         "IsRequired": true
       }
     ],
@@ -83,7 +83,7 @@
     ],
     "ReturnTypes": [
       {
-        "Type": "Core.Entities.Category",
+        "Type": "Application.DTOs.CategoryDto",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -166,7 +166,7 @@
     "Parameters": [],
     "ReturnTypes": [
       {
-        "Type": "System.Collections.Generic.IEnumerable\u00601[[Core.Entities.Comment, Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[Application.DTOs.CommentDto, Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -190,7 +190,17 @@
         "IsRequired": true
       }
     ],
-    "ReturnTypes": []
+    "ReturnTypes": [
+      {
+        "Type": "Application.DTOs.CommentDto",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
   },
   {
     "ContainingType": "Presentation.Controllers.CommentController",
@@ -208,7 +218,7 @@
     ],
     "ReturnTypes": [
       {
-        "Type": "Core.Entities.Comment",
+        "Type": "Application.DTOs.CommentDto",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -296,7 +306,7 @@
     ],
     "ReturnTypes": [
       {
-        "Type": "Core.Entities.Like",
+        "Type": "Application.DTOs.LikeDto",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -379,7 +389,7 @@
     "Parameters": [],
     "ReturnTypes": [
       {
-        "Type": "System.Collections.Generic.IEnumerable\u00601[[Core.Entities.Post, Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[Application.DTOs.PostDto, Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -399,11 +409,21 @@
     "Parameters": [
       {
         "Name": "command",
-        "Type": "Application.Features.Posts.Commands.CreatePost.CreatePostCommand",
+        "Type": "Application.Features.PostsCategories.Commands.CreatePostCategories.CreatePostCategoryCommand",
         "IsRequired": true
       }
     ],
-    "ReturnTypes": []
+    "ReturnTypes": [
+      {
+        "Type": "Application.DTOs.PostDto",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
   },
   {
     "ContainingType": "Presentation.Controllers.PostController",
@@ -504,7 +524,7 @@
     "Parameters": [],
     "ReturnTypes": [
       {
-        "Type": "System.Collections.Generic.IEnumerable\u00601[[Core.Entities.PostCategory, Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[Application.DTOs.PostCategoryDto, Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -546,7 +566,7 @@
     ],
     "ReturnTypes": [
       {
-        "Type": "Core.Entities.PostCategory",
+        "Type": "Application.DTOs.PostWithCategoriesDto",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -614,7 +634,7 @@
     ],
     "ReturnTypes": [
       {
-        "Type": "System.Collections.Generic.IEnumerable\u00601[[Core.Entities.PostCategory, Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[Application.DTOs.PostCategoryDto, Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -666,7 +686,7 @@
     ],
     "ReturnTypes": [
       {
-        "Type": "System.Collections.Generic.IEnumerable\u00601[[Core.Entities.PostCategory, Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[Application.DTOs.PostCategoryDto, Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -697,7 +717,7 @@
     ],
     "ReturnTypes": [
       {
-        "Type": "System.Collections.Generic.IEnumerable\u00601[[Core.Entities.PostCategory, Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[Application.DTOs.PostCategoryDto, Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -717,7 +737,7 @@
     "Parameters": [],
     "ReturnTypes": [
       {
-        "Type": "System.Collections.Generic.IEnumerable\u00601[[Core.Entities.Product, Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[Application.DTOs.ProductDto, Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -759,7 +779,7 @@
     ],
     "ReturnTypes": [
       {
-        "Type": "Core.Entities.Product",
+        "Type": "Application.DTOs.ProductDto",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -771,7 +791,7 @@
   },
   {
     "ContainingType": "Presentation.Controllers.ProductController",
-    "Method": "UpdateProduct",
+    "Method": "Update",
     "RelativePath": "api/Product/{id}",
     "HttpMethod": "PUT",
     "IsController": true,
@@ -792,7 +812,7 @@
   },
   {
     "ContainingType": "Presentation.Controllers.ProductController",
-    "Method": "DeleteProduct",
+    "Method": "Delete",
     "RelativePath": "api/Product/{id}",
     "HttpMethod": "DELETE",
     "IsController": true,
@@ -822,7 +842,7 @@
     ],
     "ReturnTypes": [
       {
-        "Type": "Core.Entities.User",
+        "Type": "Application.DTOs.UserDto",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -834,7 +854,38 @@
   },
   {
     "ContainingType": "Presentation.Controllers.UserController",
-    "Method": "Create",
+    "Method": "Update",
+    "RelativePath": "api/User/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "dto",
+        "Type": "Application.DTOs.UpdateUserDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "Application.DTOs.UserDto",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "Presentation.Controllers.UserController",
+    "Method": "Register",
     "RelativePath": "api/User/register",
     "HttpMethod": "POST",
     "IsController": true,
@@ -842,10 +893,20 @@
     "Parameters": [
       {
         "Name": "command",
-        "Type": "Core.Models.UserModel",
+        "Type": "Application.Features.Users.Commands.CreateUser.CreateUserCommand",
         "IsRequired": true
       }
     ],
-    "ReturnTypes": []
+    "ReturnTypes": [
+      {
+        "Type": "Application.DTOs.UserDto",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
   }
 ]
