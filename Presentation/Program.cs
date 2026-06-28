@@ -132,7 +132,7 @@ builder.Services.AddSwaggerGen(c =>
     });
 
     c.DocInclusionPredicate((name, api) => true);
-    
+
 });
 
 
@@ -146,7 +146,7 @@ builder.Services.AddMediatR(typeof(GetAllProductsQueryHandlers));
 // Add Serilog
 Log.Logger = new LoggerConfiguration()
     .WriteTo.Console()
-    .WriteTo.File("logs/log.txt", rollingInterval: RollingInterval.Day)
+    //.WriteTo.File("logs/log.txt", rollingInterval: RollingInterval.Day)
     .CreateLogger();
 
 builder.Host.UseSerilog();
@@ -163,10 +163,10 @@ builder.Services.AddCors(options =>
                 ?? new[] { "http://localhost:5173" };
 
             //policy.WithOrigins("http://localhost:7195", "http://localhost:5173") // 5173  7195
-            policy.WithOrigins(allowedOrigins) 
+            policy.WithOrigins(allowedOrigins)
                   .AllowAnyHeader()
                   .AllowAnyMethod()
-                  .AllowCredentials();  
+                  .AllowCredentials();
         });
 });
 
@@ -251,9 +251,9 @@ builder.Services.AddValidatorsFromAssemblyContaining<CreateCategoryCommandValida
 builder.Services.AddControllers();
 
 // Add conectivity to the database
-builder.Services.AddDbContext<AppDbContext>(options => 
-    options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection"),
-    b => b.MigrationsAssembly("Infrastructure")));
+//builder.Services.AddDbContext<AppDbContext>(options => 
+//options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection"),
+//b => b.MigrationsAssembly("Infrastructure")));
 
 // Add services to the container.
 //builder.Services.AddScoped<IGenericRepository<Product>, GenericRepository<Product>>();
@@ -281,11 +281,11 @@ app.UseMiddleware<ErrorHandlingMiddleware>();
 app.MapHub<NotificationHub>("/hubs/notifications");
 
 // Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
+// if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     //app.UseSwaggerUI();
-    app.UseSwaggerUI( c =>
+    app.UseSwaggerUI(c =>
     {
         c.SwaggerEndpoint("/swagger/v1/swagger.json", "CleanArchitecture v1");
         //c.RoutePrefix = string.Empty;
@@ -299,12 +299,12 @@ app.MapMetrics(); // Esto expone /metrics en formato Prometheus
 app.UseHttpMetrics();
 
 // Mapea el endpoint /metrics
-app.MapMetrics(); // Esto expone /metrics en formato Prometheus
+//app.MapMetrics(); // Esto expone /metrics en formato Prometheus
 
 app.UseOpenTelemetryPrometheusScrapingEndpoint("/metrics");
 
 
-app.UseHttpsRedirection();
+//app.UseHttpsRedirection(); // Disabled for Railway (SSL termination at proxy)
 
 app.UseCors(MyAllowSpecificOrigins); // Service CORS
 
