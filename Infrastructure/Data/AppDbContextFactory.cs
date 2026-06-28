@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
+using Npgsql.EntityFrameworkCore.PostgreSQL;
 
 namespace Infrastructure.Data
 {
@@ -9,7 +10,7 @@ namespace Infrastructure.Data
         {
             var optionsBuilder = new DbContextOptionsBuilder<AppDbContext>();
 
-            optionsBuilder.UseSqlServer("Server=DESKTOP-5ES1ETN;Database=CleanArchDB;User Id=sa;Password=sa;TrustServerCertificate=True;");
+            optionsBuilder.UseNpgsql("Host=monorail.proxy.rlwy.net;Port=32735;Database=railway;Username=postgres;Password=HgJtquiGdmuTnwxmaBpRefhuIVCEllWb;SSL Mode=Require;Trust Server Certificate=true");
 
             return new AppDbContext(optionsBuilder.Options);
         }

@@ -7,26 +7,27 @@ using Application.Validators.Category;
 using FluentValidation;
 using Infrastructure.Data;
 using Infrastructure.Data.Repositories;
+using Infrastructure.Data.Repositories.Auth;
 using Infrastructure.DependencyInjection;
+using Infrastructure.Hubs;
+using Npgsql.EntityFrameworkCore.PostgreSQL;
+using Infrastructure.Services;
 using MediatR;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Diagnostics.HealthChecks;
+using Microsoft.AspNetCore.RateLimiting;
+using Microsoft.AspNetCore.SignalR;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using OpenTelemetry.Metrics;
+using Presentation;
 using Presentation.Middleware;
 using Prometheus;
 using Serilog;
 using System.Text;
 using System.Text.Json;
-using Microsoft.AspNetCore.RateLimiting;
 using System.Threading.RateLimiting;
-using Infrastructure.Data.Repositories.Auth;
-using Infrastructure.Hubs;
-using Infrastructure.Services;
-using Microsoft.AspNetCore.SignalR;
-using Presentation;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -251,7 +252,7 @@ builder.Services.AddControllers();
 
 // Add conectivity to the database
 builder.Services.AddDbContext<AppDbContext>(options => 
-    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"),
+    options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection"),
     b => b.MigrationsAssembly("Infrastructure")));
 
 // Add services to the container.
