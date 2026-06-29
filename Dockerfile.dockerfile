@@ -9,7 +9,7 @@ WORKDIR /src
 COPY . .
 RUN dotnet publish Presentation/Presentation.csproj -c Release -o /app/publish
 
-FROM base AS final
+FROM base AS final 
 WORKDIR /app
 COPY --from=build /app/publish .
 ENTRYPOINT ["dotnet", "Presentation.dll"]
