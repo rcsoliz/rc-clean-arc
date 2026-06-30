@@ -26,7 +26,7 @@ namespace Application.Features.Auth.Commands.RefreshToken
             var newRefreshToken = _jwtService.GenerateRefreshToken();
 
             await _refreshTokenService.RevokeRefreshTokenAsync(request.RefreshToken, cancellationToken);
-            await _refreshTokenService.SaveRefreshTokenAsync(user, newRefreshToken, DateTime.UtcNow.AddDays(7),cancellationToken);
+            await _refreshTokenService.SaveRefreshTokenAsync(user, newRefreshToken, DateTime.UtcNow.AddDays(1),cancellationToken);
 
             return new RefreshTokenResponse
             {
